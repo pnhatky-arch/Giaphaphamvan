@@ -1,0 +1,129 @@
+<!doctype html>
+<html lang="vi">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+  <meta name="theme-color" content="#771f24">
+  <meta name="description" content="Gia phả họ Phạm Văn — gìn giữ cội nguồn, kết nối thế hệ.">
+  <title>Gia phả họ Phạm Văn</title>
+  <link rel="stylesheet" href="/styles.css">
+</head>
+<body>
+  <div class="app-shell">
+    <aside class="sidebar" id="sidebar">
+      <div class="brand">
+        <div class="brand-mark">PG</div>
+        <div><strong>PHẠM</strong><span>GIA PHẢ HỌ PHẠM</span></div>
+      </div>
+
+      <nav class="nav" aria-label="Điều hướng chính">
+        <button class="nav-item" data-view="overview"><span>⌂</span>Tổng quan</button>
+        <button class="nav-item active" data-view="tree"><span>♧</span>Cây gia phả</button>
+        <button class="nav-item" data-view="members"><span>♙</span>Thành viên</button>
+        <button class="nav-item" data-view="events"><span>◷</span>Sự kiện</button>
+        <button class="nav-item" data-view="documents"><span>▤</span>Tư liệu</button>
+        <div class="nav-spacer"></div>
+        <button class="nav-item" data-view="settings"><span>⚙</span>Cài đặt</button>
+        <button class="nav-item" data-view="account"><span>◎</span>Tài khoản</button>
+      </nav>
+    </aside>
+
+    <main class="main">
+      <header class="topbar">
+        <button class="icon-button menu-button" id="menuButton" aria-label="Mở menu">☰</button>
+        <div>
+          <p class="eyebrow">PG · GIA PHẢ</p>
+          <h1>Dòng họ Phạm</h1>
+          <p class="subtitle">16 thành viên · 4 thế hệ</p>
+        </div>
+        <div class="top-actions">
+          <button class="icon-button" id="themeButton" aria-label="Đổi giao diện">◐</button>
+          <div class="avatar">PG</div>
+        </div>
+      </header>
+
+      <section class="workspace" id="treeView">
+        <aside class="filters card">
+          <div class="section-title">HIỂN THỊ THEO ĐỜI</div>
+          <div class="generation-list" id="generationList">
+            <button class="generation active" data-generation="all"><span>Tất cả các đời</span><b>16</b></button>
+            <button class="generation" data-generation="1"><span><i>1</i>Đời thứ 1</span><b>1</b></button>
+            <button class="generation" data-generation="2"><span><i>2</i>Đời thứ 2</span><b>3</b></button>
+            <button class="generation" data-generation="3"><span><i>3</i>Đời thứ 3</span><b>6</b></button>
+            <button class="generation" data-generation="4"><span><i>4</i>Đời thứ 4</span><b>6</b></button>
+          </div>
+          <div class="legend">
+            <div class="section-title">CHÚ THÍCH</div>
+            <p><span class="legend-dot ancestor"></span>Thủy tổ</p>
+            <p><span class="legend-dot member"></span>Thành viên dòng họ</p>
+          </div>
+        </aside>
+
+        <section class="tree-panel card">
+          <div class="tree-heading">
+            <div>
+              <p class="eyebrow">PHẠM · Dòng họ Phạm · Hà Nội</p>
+              <h2>Cây gia phả</h2>
+              <p class="subtitle"><span id="visibleCount">16</span> thành viên</p>
+            </div>
+            <button class="fit-button" id="fitButton">Vừa màn hình</button>
+          </div>
+
+          <div class="tree-viewport" id="treeViewport">
+            <div class="family-tree" id="familyTree">
+              <div class="generation-column" data-generation-column="1">
+                <div class="generation-label">ĐỜI 1</div>
+                <article class="person ancestor-card" data-generation="1">
+                  <div class="person-avatar">祖</div><div><strong>Phạm Văn An</strong><span>Thủy tổ · Đời thứ 1</span></div>
+                </article>
+              </div>
+
+              <div class="generation-column" data-generation-column="2">
+                <div class="generation-label">ĐỜI 2</div>
+                <article class="person" data-generation="2"><div class="person-avatar">B</div><div><strong>Phạm Văn Bình</strong><span>Đời thứ 2</span></div></article>
+                <article class="person" data-generation="2"><div class="person-avatar">C</div><div><strong>Phạm Văn Cường</strong><span>Đời thứ 2</span></div></article>
+                <article class="person" data-generation="2"><div class="person-avatar">D</div><div><strong>Phạm Văn Dũng</strong><span>Đời thứ 2</span></div></article>
+              </div>
+
+              <div class="generation-column" data-generation-column="3">
+                <div class="generation-label">ĐỜI 3</div>
+                <article class="person" data-generation="3"><div class="person-avatar">Đ</div><div><strong>Phạm Minh Đức</strong><span>Đời thứ 3</span></div></article>
+                <article class="person" data-generation="3"><div class="person-avatar">T</div><div><strong>Phạm Minh Tuấn</strong><span>Đời thứ 3</span></div></article>
+                <article class="person" data-generation="3"><div class="person-avatar">K</div><div><strong>Phạm Minh Khang</strong><span>Đời thứ 3</span></div></article>
+                <article class="person" data-generation="3"><div class="person-avatar">L</div><div><strong>Phạm Minh Long</strong><span>Đời thứ 3</span></div></article>
+                <article class="person" data-generation="3"><div class="person-avatar">N</div><div><strong>Phạm Minh Nam</strong><span>Đời thứ 3</span></div></article>
+                <article class="person" data-generation="3"><div class="person-avatar">P</div><div><strong>Phạm Minh Phúc</strong><span>Đời thứ 3</span></div></article>
+              </div>
+
+              <div class="generation-column" data-generation-column="4">
+                <div class="generation-label">ĐỜI 4</div>
+                <article class="person" data-generation="4"><div class="person-avatar">H</div><div><strong>Phạm Gia Huy</strong><span>Đời thứ 4</span></div></article>
+                <article class="person" data-generation="4"><div class="person-avatar">B</div><div><strong>Phạm Gia Bảo</strong><span>Đời thứ 4</span></div></article>
+                <article class="person" data-generation="4"><div class="person-avatar">K</div><div><strong>Phạm Gia Khánh</strong><span>Đời thứ 4</span></div></article>
+                <article class="person" data-generation="4"><div class="person-avatar">L</div><div><strong>Phạm Gia Long</strong><span>Đời thứ 4</span></div></article>
+                <article class="person" data-generation="4"><div class="person-avatar">N</div><div><strong>Phạm Gia Nam</strong><span>Đời thứ 4</span></div></article>
+                <article class="person" data-generation="4"><div class="person-avatar">P</div><div><strong>Phạm Gia Phúc</strong><span>Đời thứ 4</span></div></article>
+              </div>
+            </div>
+          </div>
+
+          <div class="zoom-controls" aria-label="Điều khiển thu phóng">
+            <button id="zoomOut" aria-label="Thu nhỏ">−</button>
+            <span id="zoomValue">100%</span>
+            <button id="zoomIn" aria-label="Phóng to">+</button>
+          </div>
+        </section>
+      </section>
+
+      <section class="placeholder card" id="placeholderView" hidden>
+        <p class="eyebrow">GIA PHẢ HỌ PHẠM</p>
+        <h2 id="placeholderTitle">Tổng quan</h2>
+        <p>Nội dung đang được khôi phục từ phiên bản dự án đã lưu. Cây gia phả và dữ liệu thành viên vẫn được giữ nguyên.</p>
+      </section>
+    </main>
+  </div>
+
+  <div class="scrim" id="scrim"></div>
+  <script src="/app.js" defer></script>
+</body>
+</html>
