@@ -1,5 +1,5 @@
-const CACHE='giaphaphamvan-v4';
-const ASSETS=['/','/index.html','/styles.css?v=3','/theme-white-red.css?v=1','/app.js?v=3','/data.js?v=3','/backup-engine.js?v=3','/storage-engine.js?v=3','/cloud-adapter.js?v=3','/manifest.webmanifest','/icon.svg'];
+const CACHE='giaphaphamvan-v5';
+const ASSETS=['/','/index.html','/styles.css?v=3','/theme-white-red.css?v=2','/app.js?v=4','/ios27-mobile.js?v=1','/data.js?v=3','/backup-engine.js?v=3','/storage-engine.js?v=3','/cloud-adapter.js?v=3','/manifest.webmanifest','/icon.svg'];
 self.addEventListener('install',event=>event.waitUntil(caches.open(CACHE).then(cache=>cache.addAll(ASSETS)).then(()=>self.skipWaiting())));
 self.addEventListener('activate',event=>event.waitUntil(caches.keys().then(keys=>Promise.all(keys.filter(key=>key!==CACHE).map(key=>caches.delete(key)))).then(()=>self.clients.claim())));
 self.addEventListener('fetch',event=>{
