@@ -1,0 +1,30 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 1800" preserveAspectRatio="xMidYMid slice">
+  <defs>
+    <linearGradient id="paper" x1="0" y1="0" x2="0" y2="1"><stop stop-color="#fffaf0"/><stop offset=".55" stop-color="#f4e8d2"/><stop offset="1" stop-color="#ead9bd"/></linearGradient>
+    <linearGradient id="mist" x1="0" y1="0" x2="1" y2="0"><stop stop-color="#fff" stop-opacity=".72"/><stop offset=".5" stop-color="#fff" stop-opacity=".18"/><stop offset="1" stop-color="#fff" stop-opacity=".72"/></linearGradient>
+    <filter id="blur"><feGaussianBlur stdDeviation="12"/></filter>
+    <pattern id="grain" width="34" height="34" patternUnits="userSpaceOnUse"><circle cx="5" cy="8" r="1" fill="#9b6b31" opacity=".035"/><circle cx="23" cy="25" r=".8" fill="#8a5b2b" opacity=".03"/></pattern>
+  </defs>
+  <rect width="1200" height="1800" fill="url(#paper)"/>
+  <rect width="1200" height="1800" fill="url(#grain)"/>
+  <g fill="#a7895d" opacity=".13" filter="url(#blur)">
+    <path d="M0 1020L170 840l120 115 175-235 130 150 160-210 155 225 130-125 180 260v330H0z"/>
+    <path d="M0 1360l190-170 115 92 145-150 130 112 170-170 150 105 145-115 155 165v255H0z" opacity=".75"/>
+  </g>
+  <g stroke="#7f633f" stroke-width="8" fill="none" opacity=".11" stroke-linecap="round">
+    <path d="M30 250c90-75 165-115 245-120M88 305c58-55 114-82 170-91M1040 270c-68-54-138-77-210-72M1110 340c-51-50-105-80-165-89"/>
+    <path d="M65 233c25 25 46 54 60 88M148 183c18 36 27 71 26 106M1050 230c-22 30-37 64-45 102M973 195c-15 33-19 66-12 100"/>
+  </g>
+  <g fill="#6e5032" opacity=".105">
+    <path d="M966 503h142v18H966zM984 461h106l30 42H954zM1003 426h68l18 34h-104zM1017 365h40v61h-40z"/>
+    <path d="M1001 520h18v129h-18zM1054 520h18v129h-18zM1100 520h18v129h-18z"/>
+  </g>
+  <g fill="none" stroke="#b18b50" stroke-width="3" opacity=".10">
+    <path d="M0 1570c112-76 223-88 334-35 98 47 200 52 305 16 122-43 245-30 369 38 64 35 128 48 192 39"/>
+    <path d="M0 1625c126-63 248-64 365-2 95 50 190 55 285 16 121-49 241-42 361 20 63 33 126 44 189 34"/>
+  </g>
+  <g fill="#7e613d" opacity=".09">
+    <path d="M840 760l18 8-14 4 22 6-18 5 16 8-25-5-11 8 3-17z"/><path d="M900 730l18 8-14 4 22 6-18 5 16 8-25-5-11 8 3-17z"/>
+  </g>
+  <rect width="1200" height="1800" fill="url(#mist)" opacity=".26"/>
+</svg>
