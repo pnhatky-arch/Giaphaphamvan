@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="vi" data-theme="auto" data-ui="pham-van-reference-v1">
+<html lang="vi" data-theme="auto" data-ui="pham-van-reference-v2">
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover,user-scalable=no">
@@ -16,109 +16,45 @@
   <link rel="preload" href="/hero-parchment.svg" as="image" type="image/svg+xml">
   <link rel="preload" href="/tree-parchment.svg" as="image" type="image/svg+xml">
   <link rel="preload" href="/crest.svg" as="image" type="image/svg+xml">
-  <link rel="stylesheet" href="/styles.css?v=11">
+  <link rel="stylesheet" href="/styles.css?v=12">
 </head>
 <body>
-  <div class="app-shell" id="appShell">
-    <header class="topbar" id="topbar">
-      <button class="menu-button" id="menuButton" aria-label="Mở menu">
-        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 7h14M5 12h14M5 17h14"/></svg>
-      </button>
-      <div class="top-brand">
-        <img src="/crest.svg" class="top-logo" alt="Phạm Văn">
-        <div class="top-copy"><strong>GIA PHẢ HỌ PHẠM VĂN</strong><span>Gìn giữ cội nguồn · Kết nối thế hệ</span></div>
-      </div>
-      <div class="top-actions">
-        <button class="language-button" id="languageButton" aria-label="Ngôn ngữ"><span class="flag">🇻🇳</span><b>Tiếng Việt</b><svg viewBox="0 0 20 20"><path d="m6 8 4 4 4-4"/></svg></button>
-        <button class="avatar-button" id="accountButton" aria-label="Tài khoản">D</button>
-      </div>
-    </header>
+<div class="app-shell" id="appShell">
+  <header class="topbar" id="topbar">
+    <button class="menu-button" id="menuButton" aria-label="Mở menu"><svg viewBox="0 0 24 24"><path d="M5 7h14M5 12h14M5 17h14"/></svg></button>
+    <div class="top-brand"><img src="/crest.svg" class="top-logo" alt="Phạm Văn"><div class="top-copy"><strong>GIA PHẢ HỌ PHẠM VĂN</strong><span>Gìn giữ cội nguồn · Kết nối thế hệ</span></div></div>
+    <div class="top-actions"><button class="language-button" id="languageButton"><span>🇻🇳</span><b>Tiếng Việt</b><svg viewBox="0 0 20 20"><path d="m6 8 4 4 4-4"/></svg></button><button class="avatar-button" id="accountButton">D</button></div>
+  </header>
 
-    <main id="mainContent">
-      <section class="view" id="overview-view" data-view="overview" hidden>
-        <article class="hero-panel">
-          <img src="/crest.svg" class="hero-crest" alt="Phạm Văn">
-          <h1>GIA PHẢ HỌ PHẠM VĂN</h1>
-          <p>Gìn giữ cội nguồn · Kết nối thế hệ</p>
-          <div class="ornament"><span></span><b>◆</b><span></span></div>
-        </article>
-        <article class="surface source-status"><div class="status-icon">◎</div><div class="status-copy"><strong>Dữ liệu đã khôi phục</strong><span id="sourceStatus">16 thành viên · 4 đời</span><small>Dữ liệu local-first trên thiết bị này.</small></div><span class="status-pill">LOCAL</span></article>
-        <div class="stats-grid"><article class="surface stat-card"><span>Thành viên</span><strong id="statMembers">16</strong><small>Đã ghi nhận</small></article><article class="surface stat-card"><span>Số đời</span><strong id="statGenerations">4</strong><small>Thế hệ</small></article><article class="surface stat-card"><span>Sự kiện</span><strong id="statEvents">0</strong><small>Đã lưu</small></article><article class="surface stat-card"><span>Tư liệu</span><strong id="statDocuments">0</strong><small>Đã lưu</small></article></div>
-        <section class="quick-section"><p class="eyebrow">TRUY CẬP NHANH</p><h2>Cội nguồn gia đình</h2><div class="quick-grid"><button class="surface quick-card" data-go="tree"><span>♧</span><strong>Cây gia phả</strong><small>Xem theo thế hệ</small></button><button class="surface quick-card" data-go="members"><span>人</span><strong>Thành viên</strong><small>Tìm kiếm và cập nhật</small></button><button class="surface quick-card" data-go="events"><span>◷</span><strong>Sự kiện</strong><small>Ghi lại dấu mốc</small></button><button class="surface quick-card" data-go="documents"><span>▤</span><strong>Tư liệu</strong><small>Lưu ghi chép dòng họ</small></button></div></section>
-      </section>
+  <main id="mainContent">
+    <section class="view active" id="tree-view" data-view="tree">
+      <article class="hero-panel tree-hero"><img src="/crest.svg" class="hero-crest" alt="Phạm Văn"><h1>GIA PHẢ HỌ PHẠM VĂN</h1><p>Gìn giữ cội nguồn · Kết nối thế hệ</p><div class="ornament"><span></span><b>◆</b><span></span></div><span class="sr-only"><span id="treeMemberCount">16</span> thành viên · <span id="treeGenerationCount">4</span> đời</span><button class="sr-only" id="fitTreeButton" type="button">Vừa màn hình</button></article>
+      <article class="tree-controls surface"><button class="tree-control-primary" type="button"><svg class="tree-symbol" viewBox="0 0 48 48"><circle cx="24" cy="8" r="4"/><circle cx="10" cy="23" r="4"/><circle cx="38" cy="23" r="4"/><circle cx="16" cy="39" r="4"/><circle cx="32" cy="39" r="4"/><path d="M24 12v9M24 18H10v1M24 18h14v1M10 27v5h6v3M38 27v5h-6v3M24 18v17"/></svg><span><strong>Cây gia phả</strong><small>Xem theo thế hệ</small></span><svg class="control-chevron" viewBox="0 0 20 20"><path d="m6 8 4 4 4-4"/></svg></button><div class="display-segment" id="displaySegment"><button data-display="auto" class="active"><span>✦</span>Tự động</button><button data-display="desktop" hidden>Desktop</button><button data-display="mobile"><svg viewBox="0 0 20 24"><rect x="4" y="2" width="12" height="20" rx="2"/><path d="M8 18h4"/></svg>Mobile</button></div><button class="filter-button" id="treeFilterButton"><svg viewBox="0 0 24 24"><path d="M4 5h16l-6 7v6l-4 2v-8z"/></svg></button><div class="generation-chips" id="generationChips"></div></article>
+      <article class="tree-stage"><div class="tree-viewport" id="treeViewport"><div class="family-tree" id="familyTree"></div></div><div class="zoom-controls sr-only" id="zoomControls"><button id="zoomOut">−</button><span id="zoomValue">100%</span><button id="zoomIn">+</button></div></article>
+    </section>
 
-      <section class="view active" id="tree-view" data-view="tree">
-        <article class="hero-panel tree-hero">
-          <img src="/crest.svg" class="hero-crest" alt="Phạm Văn">
-          <h1>GIA PHẢ HỌ PHẠM VĂN</h1>
-          <p>Gìn giữ cội nguồn · Kết nối thế hệ</p>
-          <div class="ornament"><span></span><b>◆</b><span></span></div>
-          <span class="sr-only"><span id="treeMemberCount">16</span> thành viên · <span id="treeGenerationCount">4</span> đời</span>
-          <button class="sr-only" id="fitTreeButton" type="button">Vừa màn hình</button>
-        </article>
+    <section class="view" id="overview-view" data-view="overview" hidden><article class="hero-panel"><img src="/crest.svg" class="hero-crest" alt="Phạm Văn"><h1>GIA PHẢ HỌ PHẠM VĂN</h1><p>Gìn giữ cội nguồn · Kết nối thế hệ</p><div class="ornament"><span></span><b>◆</b><span></span></div></article><article class="surface source-status"><div class="status-icon">◎</div><div class="status-copy"><strong>Dữ liệu gia phả</strong><span id="sourceStatus">16 thành viên · 4 đời</span><small>Dữ liệu local-first trên thiết bị này.</small></div><span class="status-pill">LOCAL</span></article><div class="stats-grid"><article class="surface stat-card"><span>Thành viên</span><strong id="statMembers">16</strong><small>Đã ghi nhận</small></article><article class="surface stat-card"><span>Số đời</span><strong id="statGenerations">4</strong><small>Thế hệ</small></article><article class="surface stat-card"><span>Sự kiện</span><strong id="statEvents">0</strong><small>Đã lưu</small></article><article class="surface stat-card"><span>Tư liệu</span><strong id="statDocuments">0</strong><small>Đã lưu</small></article></div><section class="quick-section"><p class="eyebrow">TRUY CẬP NHANH</p><h2>Cội nguồn gia đình</h2><div class="quick-grid"><button class="surface quick-card" data-go="tree"><span>♧</span><strong>Cây gia phả</strong><small>Xem theo thế hệ</small></button><button class="surface quick-card" data-go="members"><span>人</span><strong>Thành viên</strong><small>Tìm kiếm và cập nhật</small></button><button class="surface quick-card" data-go="events"><span>◷</span><strong>Sự kiện</strong><small>Ghi lại dấu mốc</small></button><button class="surface quick-card" data-go="documents"><span>▤</span><strong>Tư liệu</strong><small>Lưu ghi chép dòng họ</small></button></div></section></section>
 
-        <article class="tree-controls surface">
-          <button class="tree-control-primary" type="button" aria-label="Cây gia phả">
-            <svg class="tree-symbol" viewBox="0 0 48 48" aria-hidden="true"><circle cx="24" cy="8" r="4"/><circle cx="10" cy="23" r="4"/><circle cx="38" cy="23" r="4"/><circle cx="16" cy="39" r="4"/><circle cx="32" cy="39" r="4"/><path d="M24 12v9M24 18H10v1M24 18h14v1M10 27v5h6v3M38 27v5h-6v3M24 18v17"/></svg>
-            <span><strong>Cây gia phả</strong><small>Xem theo thế hệ</small></span>
-            <svg class="control-chevron" viewBox="0 0 20 20"><path d="m6 8 4 4 4-4"/></svg>
-          </button>
+    <section class="view" id="members-view" data-view="members" hidden><div class="page-header"><div><p class="eyebrow">DÒNG HỌ</p><h1>Thành viên</h1><p class="page-sub" id="membersSubtitle">16 thành viên</p></div><button class="primary-circle" id="addMemberButton">＋</button></div><div class="surface search-row"><span class="search-icon">⌕</span><input id="memberSearch" type="search" placeholder="Tìm theo họ tên..."><select id="memberGenerationFilter"><option value="all">Tất cả</option></select></div><div class="member-list" id="memberList"></div></section>
+    <section class="view" id="events-view" data-view="events" hidden><div class="page-header"><div><p class="eyebrow">DẤU MỐC</p><h1>Sự kiện</h1><p class="page-sub">Lưu các ngày quan trọng của dòng họ</p></div><button class="primary-circle" id="addEventButton">＋</button></div><div class="timeline" id="eventList"></div></section>
+    <section class="view" id="documents-view" data-view="documents" hidden><div class="page-header"><div><p class="eyebrow">KÝ ỨC</p><h1>Tư liệu</h1><p class="page-sub">Ghi chép, câu chuyện và tư liệu dòng họ</p></div><button class="primary-circle" id="addDocumentButton">＋</button></div><div class="document-list" id="documentList"></div></section>
 
-          <div class="display-segment" id="displaySegment" role="radiogroup" aria-label="Chế độ hiển thị cây">
-            <button data-display="auto" class="active" aria-checked="true"><span>✦</span>Tự động</button>
-            <button data-display="desktop" aria-checked="false" hidden>Desktop</button>
-            <button data-display="mobile" aria-checked="false"><svg viewBox="0 0 20 24"><rect x="4" y="2" width="12" height="20" rx="2"/><path d="M8 18h4"/></svg>Mobile</button>
-          </div>
+    <section class="view settings-view" id="settings-view" data-view="settings" hidden><div class="page-header"><div><p class="eyebrow">QUẢN TRỊ HỆ THỐNG</p><h1>Cài đặt</h1><p class="page-sub">Giao diện, dữ liệu, sao lưu và lưu trữ.</p></div></div><details class="surface settings-group" open><summary><span class="settings-icon">◐</span><span class="settings-summary-copy"><strong>Giao diện</strong><small>Gia phả đỏ–vàng · mobile-first</small></span><span>⌄</span></summary><div class="settings-group-body"><div class="settings-row"><div><strong>Chế độ sáng tối</strong><small>Tự động theo hệ thống hoặc chọn thủ công.</small></div></div><div class="segment theme-segment" id="themeSegment"><button data-theme-choice="light">Sáng</button><button data-theme-choice="auto" class="active">Tự động</button><button data-theme-choice="dark">Tối</button></div><div class="settings-row"><div><strong>Chế độ cây gia phả</strong><small>Tự động co giãn theo màn hình.</small></div></div><div class="segment settings-display-segment"><button data-display-setting="auto" class="active">Tự động</button><button data-display-setting="desktop">Desktop</button><button data-display-setting="mobile">Mobile</button></div></div></details><details class="surface settings-group" open><summary><span class="settings-icon">↻</span><span class="settings-summary-copy"><strong>Cài đặt dữ liệu</strong><small>Local-first · Cloud-second</small></span><span>⌄</span></summary><div class="settings-group-body"><section class="settings-subsection"><h3>Sao lưu Cloud</h3><div class="cloud-status" id="cloudStatus">Google Drive chưa được thiết lập</div><div class="cloud-actions"><button class="ui-button secondary-button" id="cloud-sync-now">Đồng bộ ngay</button><button class="ui-button secondary-button" id="cloud-connect">Thiết lập Google Drive</button></div></section><section class="settings-subsection"><h3>Sao lưu thủ công</h3><div class="backup-grid"><button class="backup-action" id="export-data"><span>⇩</span><b>Tải file sao lưu</b></button><button class="backup-action" id="share-data"><span>⇧</span><b>Chia sẻ file</b></button><button class="backup-action" id="import-data"><span>↺</span><b>Phục hồi dữ liệu</b></button><button class="backup-action danger" id="delete-local-data"><span>⌫</span><b>Xóa dữ liệu</b></button></div><input type="file" id="backupFileInput" accept="application/json,.json" hidden></section></div></details><details class="surface settings-group" id="storage-capacity-card"><summary><span class="settings-icon">◫</span><span class="settings-summary-copy"><strong>Dung lượng lưu trữ</strong><small id="storageSummary">Đang kiểm tra...</small></span><span>⌄</span></summary><div class="settings-group-body storage-capacity-body"><div class="storage-metrics"><div><span>Đã dùng</span><b id="storageUsed">—</b></div><div><span>Khả dụng</span><b id="storageAvailable">—</b></div><div><span>localStorage</span><b id="localStorageUsed">—</b></div><div><span>Lưu trữ bền vững</span><b id="persistentState">—</b></div></div><div class="storage-progress"><i id="storageProgress"></i></div><div class="storage-capacity-actions"><button class="ui-button secondary-button" id="optimizeStorage">Tối ưu</button><button class="ui-button secondary-button" id="persistStorage">Lưu bền vững</button><button class="ui-button secondary-button" id="refreshStorage">Quét lại</button></div></div></details><details class="surface settings-group"><summary><span class="settings-icon">◎</span><span class="settings-summary-copy"><strong>Tài khoản</strong><small>Phạm vi dữ liệu gia phả hiện tại</small></span><span>⌄</span></summary><div class="settings-group-body"><div class="account-card"><div class="account-avatar">PV</div><div><strong>Gia phả họ Phạm Văn</strong><small id="accountIdText">pham-van-family</small></div><span class="status-pill">LOCAL</span></div><button class="ui-button secondary-button full" id="resetSeedButton">Khôi phục bộ dữ liệu gốc</button></div></details></section>
+  </main>
 
-          <button class="filter-button" id="treeFilterButton" type="button" aria-label="Lọc thế hệ"><svg viewBox="0 0 24 24"><path d="M4 5h16l-6 7v6l-4 2v-8z"/></svg></button>
-          <div class="generation-chips" id="generationChips"></div>
-        </article>
+  <nav class="bottom-nav" id="bottomNav"><button data-nav="overview"><svg viewBox="0 0 28 28"><path d="M4 13.5 14 5l10 8.5V24h-7v-7h-6v7H4z"/></svg><b>Tổng quan</b></button><button data-nav="tree" class="active"><svg viewBox="0 0 32 32"><circle cx="16" cy="5" r="2.5"/><circle cx="7" cy="16" r="2.5"/><circle cx="25" cy="16" r="2.5"/><circle cx="11" cy="27" r="2.5"/><circle cx="21" cy="27" r="2.5"/><path d="M16 7.5v6.5M16 12H7v1.5M16 12h9v1.5M7 18.5v4h4V24M25 18.5v4h-4V24M16 12v12"/></svg><b>Cây</b></button><button data-nav="members"><svg viewBox="0 0 30 28"><circle cx="11" cy="9" r="4"/><circle cx="21" cy="10" r="3.4"/><path d="M4 24c.4-6 3.3-9 7-9s6.6 3 7 9M18 16c4.5.2 7 2.8 7.5 7"/></svg><b>Thành viên</b></button><button data-nav="events"><svg viewBox="0 0 28 28"><rect x="4" y="6" width="20" height="18" rx="3"/><path d="M9 3v6M19 3v6M4 11h20M9 16h3M16 16h3"/></svg><b>Sự kiện</b></button><button data-nav="more"><svg viewBox="0 0 28 28"><circle cx="14" cy="14" r="10"/><circle cx="9" cy="14" r="1"/><circle cx="14" cy="14" r="1"/><circle cx="19" cy="14" r="1"/></svg><b>Khác</b></button></nav>
+</div>
 
-        <article class="tree-stage">
-          <div class="tree-viewport" id="treeViewport"><div class="family-tree" id="familyTree"></div></div>
-          <div class="zoom-controls sr-only" id="zoomControls"><button id="zoomOut" type="button">−</button><span id="zoomValue">100%</span><button id="zoomIn" type="button">+</button></div>
-        </article>
-      </section>
+<aside class="drawer" id="drawer" aria-hidden="true"><div class="drawer-panel"><div class="drawer-brand"><img src="/crest.svg" alt="Phạm Văn"><div><strong>Gia phả họ Phạm Văn</strong><span>Gìn giữ cội nguồn</span></div></div><div class="drawer-menu"><button data-drawer-go="overview">Tổng quan <span>›</span></button><button data-drawer-go="tree">Cây gia phả <span>›</span></button><button data-drawer-go="members">Thành viên <span>›</span></button><button data-drawer-go="events">Sự kiện <span>›</span></button><button data-drawer-go="documents">Tư liệu <span>›</span></button><button data-drawer-go="settings">Cài đặt <span>›</span></button></div></div></aside>
+<div class="sheet" id="actionSheet" hidden aria-hidden="true"><div class="sheet-backdrop" data-sheet-close></div><div class="sheet-panel"><div class="sheet-grabber"></div><div class="sheet-head"><div><h2 id="sheetTitle">Tùy chọn</h2><p id="sheetDescription"></p></div><button class="close-button" data-sheet-close>×</button></div><div class="sheet-actions" id="sheetActions"></div></div></div>
+<div class="modal" id="confirmModal" hidden aria-hidden="true"><div class="modal-backdrop"></div><div class="modal-panel"><h2 id="confirmTitle">Xác nhận</h2><p id="confirmMessage"></p><div class="modal-actions"><button class="ui-button secondary-button" id="confirmCancel">Hủy</button><button class="ui-button primary-button" id="confirmOk">Đồng ý</button></div></div></div>
+<div class="modal" id="editorModal" hidden aria-hidden="true"><div class="modal-backdrop" data-editor-close></div><form class="modal-panel editor-panel" id="editorForm"><div class="sheet-head"><div><p class="eyebrow" id="editorEyebrow">THÔNG TIN</p><h2 id="editorTitle">Chỉnh sửa</h2></div><button type="button" class="close-button" data-editor-close>×</button></div><div class="form-grid" id="editorFields"></div><div class="modal-actions"><button type="button" class="ui-button secondary-button" data-editor-close>Hủy</button><button type="submit" class="ui-button primary-button">Lưu</button></div></form></div>
+<div class="toast" id="toast" role="status" aria-live="polite"></div>
 
-      <section class="view" id="members-view" data-view="members" hidden>
-        <div class="page-header"><div><p class="eyebrow">DÒNG HỌ</p><h1>Thành viên</h1><p class="page-sub" id="membersSubtitle">16 thành viên</p></div><button class="primary-circle" id="addMemberButton" aria-label="Thêm thành viên">＋</button></div>
-        <div class="surface search-row"><span class="search-icon">⌕</span><input id="memberSearch" type="search" placeholder="Tìm theo họ tên..." autocomplete="off"><select id="memberGenerationFilter" aria-label="Lọc theo đời"><option value="all">Tất cả</option></select></div>
-        <div class="member-list" id="memberList"></div>
-      </section>
-
-      <section class="view" id="events-view" data-view="events" hidden><div class="page-header"><div><p class="eyebrow">DẤU MỐC</p><h1>Sự kiện</h1><p class="page-sub">Lưu các ngày quan trọng của dòng họ</p></div><button class="primary-circle" id="addEventButton" aria-label="Thêm sự kiện">＋</button></div><div class="timeline" id="eventList"></div></section>
-      <section class="view" id="documents-view" data-view="documents" hidden><div class="page-header"><div><p class="eyebrow">KÝ ỨC</p><h1>Tư liệu</h1><p class="page-sub">Ghi chép, câu chuyện và tư liệu dòng họ</p></div><button class="primary-circle" id="addDocumentButton" aria-label="Thêm tư liệu">＋</button></div><div class="document-list" id="documentList"></div></section>
-
-      <section class="view settings-view" id="settings-view" data-view="settings" hidden>
-        <div class="page-header"><div><p class="eyebrow">QUẢN TRỊ HỆ THỐNG</p><h1>Cài đặt</h1><p class="page-sub">Giao diện, dữ liệu, sao lưu và lưu trữ.</p></div></div>
-        <details class="surface settings-group" open><summary><span class="settings-icon">◐</span><span class="settings-summary-copy"><strong>Giao diện</strong><small>Gia phả đỏ–vàng · mobile-first</small></span><span>⌄</span></summary><div class="settings-group-body"><div class="settings-row"><div><strong>Chế độ sáng tối</strong><small>Tự động theo hệ thống hoặc chọn thủ công.</small></div></div><div class="segment theme-segment" id="themeSegment"><button data-theme-choice="light">Sáng</button><button data-theme-choice="auto" class="active">Tự động</button><button data-theme-choice="dark">Tối</button></div><div class="settings-row"><div><strong>Chế độ cây gia phả</strong><small>Tự động co giãn theo màn hình.</small></div></div><div class="segment settings-display-segment"><button data-display-setting="auto" class="active">Tự động</button><button data-display-setting="desktop">Desktop</button><button data-display-setting="mobile">Mobile</button></div></div></details>
-        <details class="surface settings-group" open><summary><span class="settings-icon">↻</span><span class="settings-summary-copy"><strong>Cài đặt dữ liệu</strong><small>Local-first · Cloud-second</small></span><span>⌄</span></summary><div class="settings-group-body"><section class="settings-subsection"><h3>Sao lưu Cloud</h3><div class="cloud-status" id="cloudStatus">Google Drive chưa được thiết lập</div><div class="cloud-actions"><button class="ui-button secondary-button" id="cloud-sync-now">Đồng bộ ngay</button><button class="ui-button secondary-button" id="cloud-connect">Thiết lập Google Drive</button></div></section><section class="settings-subsection"><h3>Sao lưu thủ công</h3><div class="backup-grid"><button class="backup-action" id="export-data"><span>⇩</span><b>Tải file sao lưu</b></button><button class="backup-action" id="share-data"><span>⇧</span><b>Chia sẻ file</b></button><button class="backup-action" id="import-data"><span>↺</span><b>Phục hồi dữ liệu</b></button><button class="backup-action danger" id="delete-local-data"><span>⌫</span><b>Xóa dữ liệu</b></button></div><input type="file" id="backupFileInput" accept="application/json,.json" hidden></section></div></details>
-        <details class="surface settings-group" id="storage-capacity-card"><summary><span class="settings-icon">◫</span><span class="settings-summary-copy"><strong>Dung lượng lưu trữ</strong><small id="storageSummary">Đang kiểm tra...</small></span><span>⌄</span></summary><div class="settings-group-body storage-capacity-body"><div class="storage-metrics"><div><span>Đã dùng</span><b id="storageUsed">—</b></div><div><span>Khả dụng</span><b id="storageAvailable">—</b></div><div><span>localStorage</span><b id="localStorageUsed">—</b></div><div><span>Lưu trữ bền vững</span><b id="persistentState">—</b></div></div><div class="storage-progress"><i id="storageProgress"></i></div><div class="storage-capacity-actions"><button class="ui-button secondary-button" id="optimizeStorage">Tối ưu</button><button class="ui-button secondary-button" id="persistStorage">Lưu bền vững</button><button class="ui-button secondary-button" id="refreshStorage">Quét lại</button></div></div></details>
-        <details class="surface settings-group"><summary><span class="settings-icon">◎</span><span class="settings-summary-copy"><strong>Tài khoản</strong><small>Phạm vi dữ liệu của gia phả hiện tại</small></span><span>⌄</span></summary><div class="settings-group-body"><div class="account-card"><div class="account-avatar">PV</div><div><strong>Gia phả họ Phạm Văn</strong><small id="accountIdText">pham-van-family</small></div><span class="status-pill">LOCAL</span></div><button class="ui-button secondary-button full" id="resetSeedButton">Khôi phục bộ dữ liệu đã đọc từ Site</button></div></details>
-      </section>
-    </main>
-
-    <nav class="bottom-nav" id="bottomNav" aria-label="Điều hướng">
-      <button data-nav="overview"><svg viewBox="0 0 28 28"><path d="M4 13.5 14 5l10 8.5V24h-7v-7h-6v7H4z"/></svg><b>Tổng quan</b></button>
-      <button data-nav="tree" class="active"><svg viewBox="0 0 32 32"><circle cx="16" cy="5" r="2.5"/><circle cx="7" cy="16" r="2.5"/><circle cx="25" cy="16" r="2.5"/><circle cx="11" cy="27" r="2.5"/><circle cx="21" cy="27" r="2.5"/><path d="M16 7.5v6M16 12H7v1.5M16 12h9v1.5M7 18.5v4h4V24M25 18.5v4h-4V24M16 12v12"/></svg><b>Cây</b></button>
-      <button data-nav="members"><svg viewBox="0 0 32 32"><circle cx="11" cy="10" r="4"/><circle cx="22" cy="9" r="3.2"/><path d="M4 27c0-6 3-9 7-9s7 3 7 9M18 19c5-1 9 2 9 8"/></svg><b>Thành viên</b></button>
-      <button data-nav="events"><svg viewBox="0 0 32 32"><rect x="5" y="7" width="22" height="20" rx="3"/><path d="M10 4v6M22 4v6M5 13h22M10 18h3M16 18h3M22 18h1M10 22h3M16 22h3"/></svg><b>Sự kiện</b></button>
-      <button data-nav="more"><svg viewBox="0 0 32 32"><circle cx="16" cy="16" r="12"/><circle cx="10" cy="16" r="1.3" fill="currentColor"/><circle cx="16" cy="16" r="1.3" fill="currentColor"/><circle cx="22" cy="16" r="1.3" fill="currentColor"/></svg><b>Khác</b></button>
-    </nav>
-  </div>
-
-  <aside class="drawer" id="drawer" aria-hidden="true"><div class="drawer-panel"><div class="drawer-brand"><img src="/crest.svg" alt="Phạm Văn"><div><strong>Gia phả họ Phạm Văn</strong><span>Gìn giữ cội nguồn</span></div></div><div class="drawer-menu"><button data-drawer-go="overview">Tổng quan <span>›</span></button><button data-drawer-go="tree">Cây gia phả <span>›</span></button><button data-drawer-go="members">Thành viên <span>›</span></button><button data-drawer-go="events">Sự kiện <span>›</span></button><button data-drawer-go="documents">Tư liệu <span>›</span></button><button data-drawer-go="settings">Cài đặt <span>›</span></button></div></div></aside>
-
-  <div class="sheet" id="actionSheet" hidden aria-hidden="true"><div class="sheet-backdrop" data-sheet-close></div><div class="sheet-panel" role="dialog" aria-modal="true" aria-labelledby="sheetTitle"><div class="sheet-grabber"></div><div class="sheet-head"><div><h2 id="sheetTitle">Tùy chọn</h2><p id="sheetDescription"></p></div><button class="close-button" data-sheet-close aria-label="Đóng">×</button></div><div class="sheet-actions" id="sheetActions"></div></div></div>
-  <div class="modal" id="confirmModal" hidden aria-hidden="true"><div class="modal-backdrop"></div><div class="modal-panel" role="dialog" aria-modal="true" aria-labelledby="confirmTitle"><h2 id="confirmTitle">Xác nhận</h2><p id="confirmMessage"></p><div class="modal-actions"><button class="ui-button secondary-button" id="confirmCancel">Hủy</button><button class="ui-button primary-button" id="confirmOk">Đồng ý</button></div></div></div>
-  <div class="modal" id="editorModal" hidden aria-hidden="true"><div class="modal-backdrop" data-editor-close></div><form class="modal-panel editor-panel" id="editorForm"><div class="sheet-head"><div><p class="eyebrow" id="editorEyebrow">THÀNH VIÊN</p><h2 id="editorTitle">Thêm thành viên</h2></div><button type="button" class="close-button" data-editor-close aria-label="Đóng">×</button></div><div class="form-grid" id="editorFields"></div><div class="modal-actions"><button type="button" class="ui-button secondary-button" data-editor-close>Hủy</button><button type="submit" class="ui-button primary-button">Lưu</button></div></form></div>
-  <div class="toast" id="toast" role="status" aria-live="polite"></div>
-
-  <script src="/data.js?v=3"></script>
-  <script src="/backup-engine.js?v=3"></script>
-  <script src="/storage-engine.js?v=3"></script>
-  <script src="/cloud-adapter.js?v=3"></script>
-  <script src="/app.js?v=4" defer></script>
-  <script src="/ui.js?v=11" defer></script>
+<script src="/data.js?v=3"></script>
+<script src="/backup-engine.js?v=3"></script>
+<script src="/storage-engine.js?v=3"></script>
+<script src="/cloud-adapter.js?v=3"></script>
+<script src="/app.js?v=12" defer></script>
 </body>
 </html>
