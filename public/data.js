@@ -50,9 +50,13 @@ window.PHAM_VAN_SEED = {
   ensureStyle('pham-van-approved-reference-css','/target-ui.css?v=3');
   ensureStyle('pham-van-reference-polish-css','/reference-polish.css?v=1');
   ensureStyle('pham-van-parchment-v4-css','/parchment-v4.css?v=4');
+  ensureStyle('pham-van-reference-exact-css','/reference-exact.css?v=1');
 
-  const refreshCrest = () => document.querySelectorAll('img[src="/crest.svg"],img[src^="/crest.svg?"]').forEach(img => {
-    if (!img.src.includes('v=4')) img.src = '/crest.svg?v=4';
+  const referenceCrest='/reference-crest.webp?v=1';
+  const legacyCrest='/crest.svg?v=4';
+  const refreshCrest = () => document.querySelectorAll('img[src="/crest.svg"],img[src^="/crest.svg?"],img.top-logo').forEach(img => {
+    img.onerror=()=>{ if(!img.src.includes('crest.svg')) img.src=legacyCrest; };
+    if(!img.src.includes('reference-crest.webp')) img.src=referenceCrest;
   });
   if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', refreshCrest, {once:true});
   else refreshCrest();

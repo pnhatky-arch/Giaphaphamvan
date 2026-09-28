@@ -1,0 +1,65 @@
+/* Exact approved artwork lock — source: Library reference image, v1 */
+:root{
+  --reference-paper:#f7eddd;
+  --reference-paper-deep:#efe0c6;
+}
+
+html,body{background:#65080d!important}
+.app-shell{
+  background:linear-gradient(180deg,#fbf4e8 0%,#f4e6d0 48%,#efdec2 100%)!important;
+}
+
+/* Use the approved crest artwork in the compact header. */
+.top-brand{grid-template-columns:76px minmax(0,1fr)!important;gap:7px!important}
+.top-logo{
+  content:url('/reference-crest.webp?v=1')!important;
+  width:76px!important;
+  height:46px!important;
+  object-fit:contain!important;
+  filter:none!important;
+}
+
+/* The approved hero is treated as a locked visual asset, not redrawn in CSS. */
+.hero-panel{
+  height:130px!important;
+  padding:0!important;
+  overflow:hidden!important;
+  border:0!important;
+  border-radius:18px!important;
+  background:#f8eedf url('/reference-hero.webp?v=1') center/100% 100% no-repeat!important;
+  box-shadow:0 8px 18px rgba(87,51,22,.11)!important;
+}
+.hero-panel:after{display:none!important}
+.hero-panel>.hero-crest,
+.hero-panel>h1,
+.hero-panel>p,
+.hero-panel>.ornament{opacity:0!important;pointer-events:none!important}
+
+/* Continuous warm ivory parchment matching the approved genealogy mock-up. */
+#tree-view{background:var(--reference-paper)!important}
+#tree-view .tree-stage{
+  background:#f8eedf url('/reference-tree.webp?v=1') center/100% 100% no-repeat!important;
+  border-radius:0!important;
+  box-shadow:none!important;
+}
+#tree-view .tree-viewport,#tree-view .family-tree{background:transparent!important}
+#tree-view .generation-title{
+  background:transparent!important;
+  color:#8d591a!important;
+  text-shadow:0 1px rgba(255,255,255,.55)!important;
+}
+#tree-view .person-card{
+  background:linear-gradient(145deg,rgba(255,253,248,.985),rgba(251,246,237,.975))!important;
+  border-color:rgba(139,91,39,.12)!important;
+  box-shadow:0 5px 12px rgba(76,46,22,.08)!important;
+}
+#tree-view .person-card.ancestor{
+  border-color:#cf9228!important;
+  background:linear-gradient(145deg,rgba(255,254,249,.995),rgba(255,249,238,.985))!important;
+}
+
+/* Overview uses the same warm reference parchment instead of a gray/flat cream fill. */
+#overview-view{
+  background:linear-gradient(180deg,#fbf4e8 0%,#f5e8d2 42%,#efe0c7 100%)!important;
+}
+#overview-view:after{opacity:.18!important;filter:sepia(.18) saturate(.92)!important}
