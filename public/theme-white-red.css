@@ -1,0 +1,103 @@
+/* White + Red Liquid Glass material layer.
+   Geometry remains owned by styles.css / Pham Gia Design System. */
+:root,
+html[data-theme="light"],
+html[data-theme="auto"]{
+  --paper:#f7f8fa;
+  --card:rgba(255,255,255,.82);
+  --card-strong:rgba(255,255,255,.92);
+  --field:rgba(255,255,255,.86);
+  --ink:#171719;
+  --muted:#6f7076;
+  --red:#b3182b;
+  --red-2:#ce2940;
+  --red-3:#86101f;
+  --line:rgba(29,30,34,.09);
+  --glass-border:rgba(255,255,255,.96);
+  --shadow:0 12px 34px rgba(28,31,38,.07),0 2px 8px rgba(28,31,38,.035);
+  --shadow-float:0 16px 42px rgba(28,31,38,.11),0 2px 8px rgba(28,31,38,.05);
+  color-scheme:light;
+}
+html body,
+html[data-theme="light"] body,
+html[data-theme="auto"] body{
+  background:
+    radial-gradient(circle at 100% -8%,rgba(192,28,48,.055),transparent 25%),
+    radial-gradient(circle at -8% 80%,rgba(192,28,48,.035),transparent 27%),
+    linear-gradient(180deg,#fbfbfc 0%,#f5f6f8 48%,#fafafa 100%);
+}
+.ambient{opacity:.12;filter:blur(78px)}
+.ambient-a{background:#df5262}.ambient-b{background:#e5d7d9}
+.glass,.glass-card,.settings-group,.search-row,.tree-card{
+  background:linear-gradient(145deg,rgba(255,255,255,.91),rgba(255,255,255,.72));
+  border-color:rgba(255,255,255,.98);
+  box-shadow:var(--shadow),inset 0 1px 0 rgba(255,255,255,1);
+}
+.topbar,.bottom-nav{
+  background:rgba(255,255,255,.78);
+  border-color:rgba(255,255,255,.96);
+  box-shadow:0 10px 30px rgba(28,31,38,.075),inset 0 1px rgba(255,255,255,.98);
+}
+.glass-button,.secondary-button,.backup-action,.row-action,.generation-chip,.sheet-action,.drawer-menu button,.zoom-controls button{
+  background:rgba(255,255,255,.84);
+  border-color:rgba(25,28,34,.08);
+  color:var(--ink);
+  box-shadow:0 4px 13px rgba(28,31,38,.035),inset 0 1px rgba(255,255,255,.98);
+}
+.top-copy strong{color:var(--red-3)}
+.brand-hero{
+  background:linear-gradient(145deg,rgba(255,255,255,.94),rgba(255,255,255,.78))!important;
+  border-color:rgba(255,255,255,.98)!important;
+  box-shadow:var(--shadow),inset 0 1px rgba(255,255,255,1)!important;
+}
+.brand-hero:before{background:radial-gradient(circle,rgba(191,25,46,.075),transparent 68%)}
+.brand-hero:after{background:radial-gradient(circle,rgba(191,25,46,.04),transparent 68%)}
+.hero-seal{box-shadow:0 12px 26px rgba(125,19,32,.12)}
+.hero-copy .eyebrow{color:var(--red)}
+.hero-copy h1{color:#221719}
+.hero-copy p:last-child{color:var(--muted)}
+.status-icon,.settings-icon,.quick-icon,.person-avatar,.timeline-icon,.document-icon,.empty-state .empty-icon{
+  background:rgba(179,24,43,.075);
+  color:var(--red);
+}
+.status-pill,.generation-chip.active,.bottom-nav button.active,.sheet-action.selected{
+  background:rgba(179,24,43,.075);
+  border-color:rgba(179,24,43,.16);
+  color:var(--red);
+}
+.segment{background:rgba(28,31,38,.035);border-color:rgba(28,31,38,.055)}
+.segment button.active,.primary-button,.avatar-button,.primary-circle,.account-avatar{
+  background:linear-gradient(180deg,#ca2a3f,#aa1426);
+  color:#fff;
+  border-color:rgba(148,14,34,.18);
+  box-shadow:0 7px 18px rgba(166,20,37,.16),inset 0 1px rgba(255,255,255,.25);
+}
+.person-card{background:rgba(255,255,255,.88);border-color:rgba(30,31,35,.075);box-shadow:0 5px 14px rgba(28,31,38,.035)}
+.person-card.ancestor{background:rgba(255,252,244,.92);border-color:rgba(193,151,61,.30)}
+.cloud-status,.storage-metrics>div{background:rgba(28,31,38,.032)}
+.search-row input,.search-row select,.form-grid input,.form-grid select,.form-grid textarea{background:rgba(255,255,255,.88);border-color:rgba(28,31,38,.08)}
+.drawer.open{background:rgba(20,22,26,.18)}
+.sheet-backdrop,.modal-backdrop{background:rgba(20,22,26,.20)}
+.toast{background:rgba(32,32,35,.90)}
+
+/* Auto is intentionally white/red too: dark remains an explicit user choice. */
+@media(prefers-color-scheme:dark){
+  html[data-theme="auto"]{
+    --paper:#f7f8fa;--card:rgba(255,255,255,.82);--card-strong:rgba(255,255,255,.92);--field:rgba(255,255,255,.86);
+    --ink:#171719;--muted:#6f7076;--red:#b3182b;--red-2:#ce2940;--red-3:#86101f;
+    --line:rgba(29,30,34,.09);--glass-border:rgba(255,255,255,.96);
+    --shadow:0 12px 34px rgba(28,31,38,.07),0 2px 8px rgba(28,31,38,.035);color-scheme:light;
+  }
+  html[data-theme="auto"] body{background:radial-gradient(circle at 100% -8%,rgba(192,28,48,.055),transparent 25%),linear-gradient(180deg,#fbfbfc,#f5f6f8 48%,#fafafa)}
+  html[data-theme="auto"] .glass,html[data-theme="auto"] .glass-card,html[data-theme="auto"] .settings-group,html[data-theme="auto"] .search-row,html[data-theme="auto"] .tree-card{background:linear-gradient(145deg,rgba(255,255,255,.91),rgba(255,255,255,.72));border-color:rgba(255,255,255,.98);box-shadow:var(--shadow),inset 0 1px rgba(255,255,255,1)}
+  html[data-theme="auto"] .glass-button,html[data-theme="auto"] .secondary-button,html[data-theme="auto"] .backup-action,html[data-theme="auto"] .row-action,html[data-theme="auto"] .generation-chip,html[data-theme="auto"] .sheet-action,html[data-theme="auto"] .drawer-menu button{background:rgba(255,255,255,.84);color:var(--ink);border-color:rgba(25,28,34,.08);box-shadow:0 4px 13px rgba(28,31,38,.035),inset 0 1px rgba(255,255,255,.98)}
+  html[data-theme="auto"] .person-card{background:rgba(255,255,255,.88);border-color:rgba(30,31,35,.075)}
+  html[data-theme="auto"] .person-card.ancestor{background:rgba(255,252,244,.92);border-color:rgba(193,151,61,.30)}
+  html[data-theme="auto"] .cloud-status,html[data-theme="auto"] .storage-metrics>div{background:rgba(28,31,38,.032)}
+  html[data-theme="auto"] .segment{background:rgba(28,31,38,.035);border-color:rgba(28,31,38,.055)}
+  html[data-theme="auto"] .top-copy strong{color:var(--red-3)}
+  html[data-theme="auto"] .brand-hero{background:linear-gradient(145deg,rgba(255,255,255,.94),rgba(255,255,255,.78))!important}
+  html[data-theme="auto"] .hero-copy .eyebrow{color:var(--red)}
+  html[data-theme="auto"] .hero-copy h1{color:#221719}
+  html[data-theme="auto"] .hero-copy p:last-child{color:var(--muted)}
+}
