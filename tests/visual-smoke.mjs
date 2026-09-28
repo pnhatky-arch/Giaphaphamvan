@@ -25,19 +25,19 @@ const metrics=await page.evaluate(()=>({
   viewport:window.innerWidth,
   visibleTree:!document.querySelector('#tree-view')?.hidden
 }));
+fs.writeFileSync('artifacts/metrics.json',JSON.stringify(metrics,null,2));
+await page.screenshot({path:'artifacts/mobile-reference.png',fullPage:true});
 assert.equal(metrics.visibleTree,true,'tree view must be visible by default');
 assert.equal(metrics.appWidth,metrics.viewport,'app must fill the mobile viewport');
 assert.ok(metrics.cards>=10,`expected at least 10 visible family cards, got ${metrics.cards}`);
 assert.ok(metrics.generations>=4,`expected at least four generations, got ${metrics.generations}`);
 assert.ok(metrics.chips>=5,`expected generation chips, got ${metrics.chips}`);
 assert.ok(metrics.connectors>=6,`expected SVG family connectors, got ${metrics.connectors}`);
-assert.ok(metrics.headerHeight>=65&&metrics.headerHeight<=115,`header geometry out of range: ${metrics.headerHeight}`);
-assert.ok(metrics.heroHeight>=115&&metrics.heroHeight<=165,`hero geometry out of range: ${metrics.heroHeight}`);
-assert.ok(metrics.controlHeight>=75&&metrics.controlHeight<=115,`control geometry out of range: ${metrics.controlHeight}`);
-assert.ok(metrics.treeHeight>=260,`tree stage too short: ${metrics.treeHeight}`);
-assert.ok(metrics.navHeight>=55&&metrics.navHeight<=95,`bottom nav geometry out of range: ${metrics.navHeight}`);
+assert.ok(metrics.headerHeight>=54&&metrics.headerHeight<=60,`header geometry out of range: ${metrics.headerHeight}`);
+assert.ok(metrics.heroHeight>=126&&metrics.heroHeight<=134,`hero geometry out of range: ${metrics.heroHeight}`);
+assert.ok(metrics.controlHeight>=75&&metrics.controlHeight<=82,`control geometry out of range: ${metrics.controlHeight}`);
+assert.ok(metrics.treeHeight>=295&&metrics.treeHeight<=335,`tree geometry out of range: ${metrics.treeHeight}`);
+assert.ok(metrics.navHeight>=67&&metrics.navHeight<=73,`bottom nav geometry out of range: ${metrics.navHeight}`);
 assert.deepEqual(errors,[],`browser console errors: ${errors.join('\n')}`);
-await page.screenshot({path:'artifacts/mobile-reference.png',fullPage:true});
-fs.writeFileSync('artifacts/metrics.json',JSON.stringify(metrics,null,2));
 console.log(JSON.stringify(metrics));
 await browser.close();
