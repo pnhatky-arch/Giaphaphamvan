@@ -1,37 +1,34 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 864 720" preserveAspectRatio="xMidYMid slice">
 <defs>
-  <linearGradient id="paper" x1="0" y1="0" x2="0" y2="1"><stop stop-color="#fcf3e1"/><stop offset=".52" stop-color="#f5e5cc"/><stop offset="1" stop-color="#ead0aa"/></linearGradient>
-  <filter id="blur"><feGaussianBlur stdDeviation="5"/></filter>
-  <pattern id="grain" width="25" height="25" patternUnits="userSpaceOnUse"><circle cx="5" cy="7" r=".7" fill="#82572e" opacity=".04"/><circle cx="19" cy="20" r=".55" fill="#82572e" opacity=".028"/></pattern>
+  <linearGradient id="paper" x1="0" y1="0" x2="0" y2="1"><stop stop-color="#f8ebd2"/><stop offset=".5" stop-color="#efd9b8"/><stop offset="1" stop-color="#e2c197"/></linearGradient>
+  <radialGradient id="centerGlow" cx="50%" cy="30%" r="68%"><stop stop-color="#fff6e3" stop-opacity=".44"/><stop offset=".58" stop-color="#fff6e3" stop-opacity=".12"/><stop offset="1" stop-color="#9b6c3d" stop-opacity=".06"/></radialGradient>
+  <pattern id="grain" width="20" height="20" patternUnits="userSpaceOnUse"><circle cx="4" cy="5" r=".65" fill="#80552c" opacity=".06"/><circle cx="15" cy="15" r=".55" fill="#9c7145" opacity=".045"/><path d="M2 18l5-1M12 3l4-1" stroke="#78502c" stroke-width=".35" opacity=".045"/></pattern>
+  <filter id="blur"><feGaussianBlur stdDeviation="4"/></filter>
 </defs>
-<rect width="864" height="720" fill="url(#paper)"/><rect width="864" height="720" fill="url(#grain)"/>
+<rect width="864" height="720" fill="url(#paper)"/><rect width="864" height="720" fill="url(#grain)"/><rect width="864" height="720" fill="url(#centerGlow)"/>
 
 <!-- distant mountain wash -->
-<g fill="#806d55" filter="url(#blur)">
-  <path opacity=".11" d="M0 352L78 284l54 38 70-91 67 68 75-64 72 75 68-64 80 75 67-47 72 60 70-45 65 47 100-57v213H0z"/>
-  <path opacity=".08" d="M0 451l105-67 67 47 83-61 77 52 92-73 90 65 83-52 94 61 78-45 95 59 100-47v255H0z"/>
-  <path opacity=".055" d="M0 555l118-59 76 42 82-52 92 55 93-67 98 64 81-40 94 50 130-69v241H0z"/>
+<g fill="#735e49" filter="url(#blur)">
+  <path opacity=".12" d="M0 390L72 328l53 39 70-98 65 74 72-66 72 79 67-70 78 78 68-52 73 62 67-46 107 82v190H0z"/>
+  <path opacity=".095" d="M0 495l99-69 71 51 79-65 76 55 89-78 91 70 81-54 91 63 79-48 108 73v214H0z"/>
+  <path opacity=".07" d="M0 579l116-61 75 44 86-55 87 55 96-68 96 67 86-43 94 51 128-68v219H0z"/>
 </g>
 
-<!-- true pine branch at upper-left -->
-<g fill="none" stroke="#5e432b" stroke-linecap="round" opacity=".27">
-  <path stroke-width="5.2" d="M-14 105C30 56 83 34 150 52M-2 144c42-34 86-43 131-29M64 8c21 41 28 82 20 126M27 36c29 31 46 66 50 106"/>
-  <path stroke-width="1.55" d="M27 51L0 40M39 61L6 58M52 72L13 85M65 84L28 103M78 96l-33 24M89 109l-28 27M82 32l13-24M95 38l23-20M108 44l31-12M119 53l35-1M128 64l35 13M16 124l-26 20M31 125l-28 7M46 126l-25-10"/>
-  <g stroke-width="1"><path d="M6 44l8 10m3-19 9 13m7-16 7 16m10-19 4 17m15-17-3 19m17-12-9 17m22-8-14 13M13 80l7 9m7-13 5 11m13-17 3 13m12-14-2 14m16-11-7 13m18-4-11 9"/></g>
-</g>
+<!-- pine brushwork left -->
+<g fill="none" stroke="#5b432d" stroke-linecap="round" opacity=".29"><path stroke-width="5.2" d="M-12 105C33 53 87 34 154 56M1 151c44-39 90-50 139-31M67 15c21 41 28 83 22 126M27 43c31 34 48 70 52 110"/><path stroke-width="1.7" d="M33 56L1 45M46 67L8 64M58 79L16 93M70 90l-39 21M82 102l-34 25M90 114l-28 27M87 38l13-27M101 42l25-22M114 48l33-13M124 57l38-1M133 68l37 14M18 130l-28 22M34 131l-31 8M49 132l-28-11"/></g>
 
-<!-- upper-right mountain ridge and birds -->
-<g fill="#725d47" opacity=".08"><path d="M642 185l47-66 37 35 42-76 44 58 52-38v165H623z"/></g>
-<g fill="none" stroke="#684d32" stroke-width="1.7" opacity=".22" stroke-linecap="round"><path d="M672 135q9-8 18 0q9-8 18 0M714 110q7-6 14 0q7-6 14 0M758 155q8-7 16 0q8-7 16 0"/></g>
-
-<!-- restrained right pine branch -->
-<g fill="none" stroke="#5c432c" stroke-linecap="round" opacity=".17"><path stroke-width="4.3" d="M879 286c-48-45-98-60-150-44m128 83c-43-33-84-40-125-22m72-84c-16 33-22 68-17 104"/><path stroke-width="1.45" d="M833 251l36-10m-45 23 41 2m-48 11 39 14m-48 1 33 21M853 317l17 16m-29-4 22 7"/></g>
+<!-- middle and lower ridge detail -->
+<g fill="#8a6f52" opacity=".075"><path d="M95 604l80-44 57 31 65-37 63 35 75-47 74 44 68-31 75 39 79-29 133 65v90H95z"/><path d="M0 642l98-39 72 29 78-33 71 36 87-42 82 38 88-26 96 38 94-21 98 39v59H0z"/></g>
 
 <!-- ancestral pavilion silhouette -->
-<g fill="#705137" opacity=".105"><path d="M667 470h144v8H667z"/><path d="M682 443h114l29 27H654z"/><path d="M698 420h82l22 23H677z"/><path d="M717 399h44l15 21h-74z"/><rect x="684" y="478" width="9" height="105"/><rect x="723" y="478" width="10" height="105"/><rect x="764" y="478" width="10" height="105"/><rect x="800" y="478" width="8" height="105"/><path d="M646 468l24-14-9 14 21-5-15 17zm187 0-24-14 9 14-21-5 15 17z"/></g>
+<g fill="#66492f" opacity=".13"><path d="M679 470h141v8H679z"/><path d="M693 443h113l29 27H664z"/><path d="M709 420h81l22 23H688z"/><path d="M728 401h42l14 19h-70z"/><rect x="694" y="478" width="9" height="104"/><rect x="734" y="478" width="9" height="104"/><rect x="775" y="478" width="9" height="104"/><rect x="808" y="478" width="8" height="104"/><path d="M656 468l24-14-9 14 22-6-15 17zm186 0-24-14 9 14-22-6 15 17z"/></g>
 
-<!-- lower lotus and traditional waves -->
-<g fill="#9a703a" opacity=".10"><path d="M14 590c18-36 47-47 86-25-31 6-50 22-59 49 28-19 56-16 83 10-42-8-73 4-90 37-5-26-12-49-20-71z"/><path d="M850 595c-16-31-42-41-76-23 27 5 44 19 52 43-24-16-49-13-73 9 38-7 65 3 80 32 5-22 11-43 17-61z"/></g>
-<g fill="none" stroke="#a97a3c" stroke-width="2" opacity=".15"><path d="M0 600c103-42 202-45 296-11 84 30 168 30 252 0 98-35 203-29 316 18"/><path d="M0 644c113-38 220-33 322 12 76 34 151 33 228-1 94-42 199-36 314 12"/><path d="M0 686c126-29 245-22 356 20 51 20 102 20 154-1 103-41 221-37 354 13"/></g>
-<g fill="none" stroke="#ad8148" stroke-width="1.3" opacity=".10"><path d="M0 225q42-27 84 0t84 0M696 241q42-27 84 0t84 0"/><path d="M0 247q31-20 62 0t62 0M736 267q32-21 64 0t64 0"/></g>
+<!-- right pine -->
+<g fill="none" stroke="#5d432e" stroke-linecap="round" opacity=".21"><path stroke-width="4.8" d="M879 301c-53-48-105-64-158-46m134 88c-45-34-88-42-130-24m77-91c-18 36-25 72-20 109"/><path stroke-width="1.55" d="M830 263l39-11m-48 24 45 2m-53 12 43 15m-52 1 36 23M852 331l18 18m-31-5 24 8"/></g>
+
+<!-- lotus and cloud etching -->
+<g fill="#9b7039" opacity=".13"><path d="M17 589c18-35 47-47 84-26-29 7-48 22-57 48 27-18 54-15 81 10-41-8-71 4-89 36-4-25-11-48-19-68z"/><path d="M847 596c-15-30-41-40-75-22 27 5 44 18 52 42-23-16-48-13-72 9 37-7 64 3 79 31 5-22 10-42 16-60z"/></g>
+<g fill="none" stroke="#a17339" stroke-width="2" opacity=".18"><path d="M0 603c102-43 200-47 293-12 83 32 167 32 251 0 97-37 203-32 320 17"/><path d="M0 646c112-39 219-36 320 10 76 35 151 34 227-1 94-43 200-39 317 11"/><path d="M0 687c126-29 245-23 355 19 51 20 102 20 153-1 103-43 221-39 356 12"/></g>
+<g fill="none" stroke="#694e34" stroke-width="1.7" opacity=".21" stroke-linecap="round"><path d="M678 153q9-8 18 0q9-8 18 0M716 131q7-6 14 0q7-6 14 0"/></g>
+<rect width="864" height="720" fill="none" stroke="#b4864b" stroke-opacity=".10" stroke-width="14"/>
 </svg>
