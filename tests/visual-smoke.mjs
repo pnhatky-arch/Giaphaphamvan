@@ -46,6 +46,43 @@ assert.ok(metrics.treeHeight>=320&&metrics.treeHeight<=490,`adaptive tree geomet
 assert.ok(metrics.navHeight>=67&&metrics.navHeight<=73,`bottom nav geometry out of range: ${metrics.navHeight}`);
 const canvasGap=metrics.navTop-metrics.treeBottom;
 assert.ok(canvasGap>=0&&canvasGap<=12,`parchment canvas should meet bottom nav, gap: ${canvasGap}`);
+
+/* Overview regression: this is the screen users see most often on iPhone. */
+await page.click('#bottomNav [data-nav="overview"]');
+await page.waitForSelector('#overview-view:not([hidden])',{timeout:5000});
+await page.waitForTimeout(300);
+const overview=await page.evaluate(()=>{
+  const view=document.querySelector('#overview-view');
+  const source=document.querySelector('#overview-view .source-status')?.getBoundingClientRect();
+  const nav=document.querySelector('#bottomNav')?.getBoundingClientRect();
+  const quick=[...document.querySelectorAll('#overview-view .quick-card')];
+  const stats=[...document.querySelectorAll('#overview-view .stat-card')];
+  const active=document.querySelector('#bottomNav [data-nav="overview"].active');
+  const viewRect=view?.getBoundingClientRect();
+  return {
+    visible:!!view&&!view.hidden,
+    stats:stats.length,
+    quick:quick.length,
+    sourceHeight:source?.height||0,
+    viewHeight:viewRect?.height||0,
+    navHeight:nav?.height||0,
+    overviewActive:!!active,
+    bodyWidth:document.body.getBoundingClientRect().width,
+    scrollWidth:document.documentElement.scrollWidth,
+    viewport:window.innerWidth
+  };
+});
+fs.writeFileSync('artifacts/overview-metrics.json',JSON.stringify(overview,null,2));
+await page.screenshot({path:'artifacts/mobile-overview.png',fullPage:true});
+assert.equal(overview.visible,true,'overview must open from bottom navigation');
+assert.equal(overview.stats,4,'overview must contain four statistic cards');
+assert.equal(overview.quick,4,'overview must contain four quick-access cards');
+assert.ok(overview.sourceHeight>=55&&overview.sourceHeight<=75,`source card geometry out of range: ${overview.sourceHeight}`);
+assert.equal(overview.overviewActive,true,'overview navigation pill must be active');
+assert.equal(overview.bodyWidth,overview.viewport,'overview must fill viewport width');
+assert.equal(overview.scrollWidth,overview.viewport,'overview must not overflow horizontally');
+assert.ok(overview.navHeight>=67&&overview.navHeight<=73,`overview bottom nav geometry out of range: ${overview.navHeight}`);
+
 assert.deepEqual(errors,[],`browser console errors: ${errors.join('\n')}`);
-console.log(JSON.stringify(metrics));
+console.log(JSON.stringify({tree:metrics,overview}));
 await browser.close();
