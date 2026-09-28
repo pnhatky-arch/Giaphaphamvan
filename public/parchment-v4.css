@@ -13,6 +13,13 @@
     var(--pham-paper-ivory)!important;
 }
 
+#overview-view:after{
+  background:
+    linear-gradient(180deg,rgba(248,234,211,0),rgba(220,184,139,.10)),
+    url('/heritage-bg.svg?v=4') center 34%/cover no-repeat!important;
+  opacity:.58!important;
+}
+
 .hero-panel{
   background:
     linear-gradient(180deg,rgba(255,250,238,.04),rgba(216,177,126,.04)),
