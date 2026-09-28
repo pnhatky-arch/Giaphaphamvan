@@ -39,14 +39,17 @@ window.PHAM_VAN_SEED = {
 };
 
 (() => {
-  const id = 'pham-van-approved-reference-css';
-  if (!document.getElementById(id)) {
+  const ensureStyle = (id, href) => {
+    if (document.getElementById(id)) return;
     const link = document.createElement('link');
     link.id = id;
     link.rel = 'stylesheet';
-    link.href = '/target-ui.css?v=3';
+    link.href = href;
     document.head.appendChild(link);
-  }
+  };
+  ensureStyle('pham-van-approved-reference-css','/target-ui.css?v=3');
+  ensureStyle('pham-van-reference-polish-css','/reference-polish.css?v=1');
+
   const refreshCrest = () => document.querySelectorAll('img[src="/crest.svg"],img[src^="/crest.svg?"]').forEach(img => {
     if (!img.src.includes('v=3')) img.src = '/crest.svg?v=3';
   });
