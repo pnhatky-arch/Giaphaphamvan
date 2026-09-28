@@ -75,7 +75,10 @@ main{padding:0 9px}
 .generation-column[data-generation="2"]{padding-bottom:11px!important}
 .generation-column[data-generation="3"]{padding-bottom:11px!important}
 .generation-column[data-generation="4"]{padding-bottom:0!important}
-.generation-title{height:13px;line-height:13px;margin-bottom:3px!important;font-size:8.8px!important;letter-spacing:.12em!important;background:linear-gradient(90deg,transparent 0 43%,rgba(247,237,219,.93) 43% 57%,transparent 57% 100%)!important}
+.generation-title{
+  height:13px;line-height:13px;margin-bottom:3px!important;font-size:8.8px!important;letter-spacing:.12em!important;
+  background:linear-gradient(90deg,transparent 0 34%,rgba(247,237,219,.25) 36%,rgba(247,237,219,.98) 41% 59%,rgba(247,237,219,.25) 64%,transparent 66% 100%)!important;
+}
 .generation-title:before,.generation-title:after{width:27px;margin-inline:7px}
 
 .generation-column[data-count="1"]{grid-template-columns:minmax(146px,150px)!important}
@@ -87,17 +90,22 @@ main{padding:0 9px}
 .person-card.ancestor .person-avatar{width:36px!important;height:36px!important}
 .person-card.ancestor .person-copy strong{font-size:10px}.person-card.ancestor .person-copy span{font-size:7.3px}
 .person-card.ancestor .person-badge{width:26px;height:26px;font-size:12px}
-.generation-column[data-generation="2"] .person-card{height:41px!important;min-height:41px!important;grid-template-columns:27px minmax(0,1fr) 20px!important}
-.generation-column[data-generation="2"] .person-avatar{width:27px!important;height:27px!important}
-.generation-column[data-generation="2"] .person-copy strong{font-size:7.7px}
-.generation-column[data-generation="3"] .person-card{height:38px!important;min-height:38px!important;grid-template-columns:27px minmax(0,1fr) 19px!important}
-.generation-column[data-generation="3"] .person-avatar{width:27px!important;height:27px!important}
-.generation-column[data-generation="3"] .person-copy strong{font-size:7.2px}
-.generation-column[data-generation="4"] .person-card{height:34px!important;min-height:34px!important;grid-template-columns:23px minmax(0,1fr) 17px!important}
-.generation-column[data-generation="4"] .person-avatar{width:23px!important;height:23px!important}
-.generation-column[data-generation="4"] .person-copy strong{font-size:6.2px}
-.generation-column[data-generation="4"] .person-copy span{font-size:5.8px}
-.generation-column[data-generation="4"] .person-badge{width:17px;height:17px;font-size:6.2px}
+
+.generation-column[data-generation="2"] .person-card{height:41px!important;min-height:41px!important;grid-template-columns:26px minmax(0,1fr) 18px!important;gap:3px!important;padding-inline:4px!important}
+.generation-column[data-generation="2"] .person-avatar{width:26px!important;height:26px!important}
+.generation-column[data-generation="2"] .person-copy strong{font-size:7.2px}
+.generation-column[data-generation="2"] .person-badge{width:18px;height:18px;font-size:6.5px}
+
+.generation-column[data-generation="3"] .person-card{height:38px!important;min-height:38px!important;grid-template-columns:25px minmax(0,1fr) 17px!important;gap:3px!important;padding-inline:4px!important}
+.generation-column[data-generation="3"] .person-avatar{width:25px!important;height:25px!important}
+.generation-column[data-generation="3"] .person-copy strong{font-size:6.5px}
+.generation-column[data-generation="3"] .person-badge{width:17px;height:17px;font-size:6.2px}
+
+.generation-column[data-generation="4"] .person-card{height:34px!important;min-height:34px!important;grid-template-columns:20px minmax(0,1fr) 14px!important;gap:2px!important;padding:3px!important}
+.generation-column[data-generation="4"] .person-avatar{width:20px!important;height:20px!important}
+.generation-column[data-generation="4"] .person-copy strong{font-size:5.8px}
+.generation-column[data-generation="4"] .person-copy span{font-size:5.3px}
+.generation-column[data-generation="4"] .person-badge{width:14px;height:14px;font-size:5.5px}
 .tree-connectors line,.tree-connectors path{stroke:#ad741e;stroke-width:1.28}
 .tree-connectors circle{fill:#c38a31;stroke:#986018;stroke-width:.7}
 
