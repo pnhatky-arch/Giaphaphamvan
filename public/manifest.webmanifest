@@ -1,0 +1,14 @@
+{
+  "name": "Gia phả họ Phạm Văn",
+  "short_name": "Phạm Văn",
+  "description": "Gìn giữ cội nguồn · Kết nối thế hệ",
+  "start_url": "/",
+  "scope": "/",
+  "display": "standalone",
+  "background_color": "#6f0b15",
+  "theme_color": "#8c0f1a",
+  "orientation": "portrait-primary",
+  "icons": [
+    {"src":"/icon.svg","sizes":"any","type":"image/svg+xml","purpose":"any maskable"}
+  ]
+}
