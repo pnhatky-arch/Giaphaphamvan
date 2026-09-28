@@ -1,56 +1,46 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 864 300" preserveAspectRatio="xMidYMid slice">
 <defs>
-  <linearGradient id="paper" x1="0" y1="0" x2="0" y2="1"><stop stop-color="#fffaf0"/><stop offset=".48" stop-color="#f8ead4"/><stop offset="1" stop-color="#edd4b2"/></linearGradient>
-  <linearGradient id="mist" x1="0" y1="0" x2="1" y2="0"><stop stop-color="#fff" stop-opacity=".50"/><stop offset=".43" stop-color="#fff" stop-opacity=".05"/><stop offset=".57" stop-color="#fff" stop-opacity=".05"/><stop offset="1" stop-color="#fff" stop-opacity=".46"/></linearGradient>
-  <filter id="blur"><feGaussianBlur stdDeviation="3.2"/></filter>
-  <pattern id="grain" width="22" height="22" patternUnits="userSpaceOnUse"><circle cx="4" cy="5" r=".7" fill="#77502d" opacity=".045"/><circle cx="17" cy="16" r=".55" fill="#77502d" opacity=".03"/></pattern>
+  <linearGradient id="paper" x1="0" y1="0" x2="0" y2="1"><stop stop-color="#fffaf0"/><stop offset=".44" stop-color="#f7ead4"/><stop offset="1" stop-color="#edd4b0"/></linearGradient>
+  <linearGradient id="mist" x1="0" y1="0" x2="1" y2="0"><stop stop-color="#fff" stop-opacity=".40"/><stop offset=".35" stop-color="#fff" stop-opacity=".04"/><stop offset=".65" stop-color="#fff" stop-opacity=".03"/><stop offset="1" stop-color="#fff" stop-opacity=".32"/></linearGradient>
+  <filter id="blur"><feGaussianBlur stdDeviation="3.0"/></filter>
+  <pattern id="grain" width="22" height="22" patternUnits="userSpaceOnUse"><circle cx="4" cy="5" r=".7" fill="#77502d" opacity=".05"/><circle cx="17" cy="16" r=".55" fill="#77502d" opacity=".032"/></pattern>
 </defs>
 <rect width="864" height="300" fill="url(#paper)"/><rect width="864" height="300" fill="url(#grain)"/>
 
 <!-- layered ink-wash mountains -->
-<g fill="#776550" filter="url(#blur)">
-  <path opacity=".09" d="M0 222L92 163l42 27 70-94 59 70 67-46 72 68 70-88 68 88 59-54 74 71 68-58 61 52 104-55v116H0z"/>
-  <path opacity=".12" d="M0 252l111-62 60 42 73-63 66 49 77-70 70 63 74-50 71 58 71-48 80 60 80-44 71 58v75H0z"/>
-  <path opacity=".07" d="M94 262l83-43 52 22 63-36 78 45 80-48 74 42 75-31 86 44 81-28 98 54v37H94z"/>
+<g fill="#77634d" filter="url(#blur)">
+  <path opacity=".12" d="M0 225L88 167l44 28 72-101 59 73 68-50 72 69 69-91 70 92 60-55 74 73 68-58 63 53 107-57v117H0z"/>
+  <path opacity=".15" d="M0 254l109-62 62 44 72-64 68 52 78-73 72 67 74-54 74 61 72-51 80 63 81-46 72 60v79H0z"/>
+  <path opacity=".08" d="M89 265l88-45 54 23 64-38 79 46 82-49 77 42 76-31 87 44 82-29 106 58v34H89z"/>
 </g>
 
-<!-- left pine, deliberately detailed like brushwork -->
-<g fill="none" stroke="#5d472f" stroke-linecap="round" opacity=".28">
-  <path stroke-width="5" d="M-8 118C39 65 92 45 158 61M8 151c42-35 86-46 132-31M63 18c22 37 31 76 26 119M31 42c30 31 47 66 51 104"/>
-  <path stroke-width="1.7" d="M31 55L0 43M43 65L6 62M55 76L14 89M67 87L29 105M79 98l-34 24M88 108l-27 27M84 40l13-27M97 43l23-22M109 49l31-14M119 57l36-2M128 67l36 13M22 127l-29 23M36 128l-31 7M50 129l-28-11"/>
-  <path stroke-width="1.2" d="M8 48l8 10m4-20 9 13m7-16 7 16m12-21 3 18m18-18-4 20m19-11-10 16m25-7-16 13"/>
+<!-- detailed pine on left -->
+<g fill="none" stroke="#5b432c" stroke-linecap="round" opacity=".34">
+  <path stroke-width="5.6" d="M-10 119C37 64 90 43 158 61M3 154c43-37 87-48 134-32M65 14c23 39 31 80 25 124M28 39c31 32 49 69 53 109"/>
+  <path stroke-width="1.75" d="M30 53L0 41M43 64L6 61M56 76L15 89M69 88l-39 21M82 100l-35 26M92 113l-29 28M86 37l14-27M100 42l25-22M114 49l34-13M124 58l39-1M134 69l38 14M17 132l-29 22M34 133l-31 8M50 134l-29-12"/>
+  <path stroke-width="1.1" d="M8 45l8 10m5-21 9 13m7-17 7 17m13-22 3 20m18-19-4 21m20-12-11 17m26-8-16 14"/>
 </g>
 
 <!-- right multi-tier ancestral pavilion -->
-<g fill="#715238" opacity=".24">
-  <path d="M685 95h151v9H685z"/>
-  <path d="M700 68h120l31 27H669z"/>
-  <path d="M716 45h88l24 23H692z"/>
-  <path d="M733 26h54l18 19h-90z"/>
-  <path d="M662 95l26-15-10 15 23-6-16 19zm196 0-26-15 10 15-23-6 16 19z"/>
-  <rect x="702" y="104" width="9" height="102"/><rect x="741" y="104" width="10" height="102"/><rect x="781" y="104" width="10" height="102"/><rect x="820" y="104" width="8" height="102"/>
-  <path d="M692 145h145v6H692zm7 36h132v6H699z" opacity=".75"/>
-  <path d="M714 105l12 17 12-17 12 17 12-17 12 17 12-17" fill="none" stroke="#715238" stroke-width="4"/>
+<g fill="#6d4e34" opacity=".31">
+  <path d="M682 99h156v9H682z"/>
+  <path d="M699 70h121l32 29H667z"/>
+  <path d="M716 46h87l25 24H691z"/>
+  <path d="M734 26h52l18 20h-89z"/>
+  <path d="M658 98l29-16-11 16 24-7-17 20zm204 0-29-16 11 16-24-7 17 20z"/>
+  <rect x="702" y="108" width="9" height="105"/><rect x="741" y="108" width="10" height="105"/><rect x="781" y="108" width="10" height="105"/><rect x="821" y="108" width="8" height="105"/>
+  <path d="M694 148h145v6H694zm7 37h133v6H701z" opacity=".78"/>
+  <path d="M715 108l12 18 12-18 12 18 12-18 12 18 12-18" fill="none" stroke="#6d4e34" stroke-width="4"/>
 </g>
 
-<!-- right pine and bamboo -->
-<g fill="none" stroke="#5f472f" stroke-linecap="round" opacity=".20">
-  <path stroke-width="4.2" d="M871 151c-42-39-85-52-130-36m115 72c-40-31-79-38-118-18m73-85c-16 31-23 64-19 96"/>
-  <path stroke-width="1.5" d="M821 120l39-11m-48 24 44 2m-52 12 42 15m-51 0 35 23M844 209l10 46M828 211l-3 48M853 224l18-15M849 235l22 5M829 226l-21-14M827 240l-24 4"/>
-</g>
+<!-- right pine around pavilion -->
+<g fill="none" stroke="#5a432c" stroke-linecap="round" opacity=".23"><path stroke-width="4.4" d="M875 155c-43-41-87-54-133-37m116 75c-40-32-79-39-119-19m75-89c-16 33-22 65-18 99"/><path stroke-width="1.5" d="M824 123l40-11m-50 25 45 2m-53 12 43 16m-53 1 36 24M847 211l12 46m-27-44-3 47m26-33 17-16m-19 28 21 5m-42-14-20-14m17 29-24 4"/></g>
 
-<!-- lotus/cloud corner ornaments -->
-<g fill="#9b713b" opacity=".12">
-  <path d="M16 246c15-29 38-39 69-27-24 7-40 20-46 41 22-14 43-11 63 8-33-6-57 4-70 29-3-20-9-37-16-51z"/>
-  <path d="M848 246c-15-29-38-39-69-27 24 7 40 20 46 41-22-14-43-11-63 8 33-6 57 4 70 29 3-20 9-37 16-51z"/>
-</g>
-<g fill="none" stroke="#ab7f3e" stroke-width="2" opacity=".17">
-  <path d="M0 267c78-27 153-26 224 4 70 30 138 30 205 0 72-32 145-30 220 6 68 32 139 31 215-4"/>
-  <path d="M0 288c90-23 175-19 254 12 56 22 113 20 171-4 83-35 166-32 249 8 55 26 118 28 190 7"/>
-  <path d="M20 278q16-18 33 0q17-18 34 0m690 0q16-18 33 0q17-18 34 0"/>
-</g>
+<!-- lotus / wave ornaments -->
+<g fill="#9b7037" opacity=".15"><path d="M13 246c16-31 40-41 72-28-25 8-41 21-48 43 23-14 45-11 66 9-34-7-59 4-72 30-4-21-10-39-18-54z"/><path d="M851 246c-16-31-40-41-72-28 25 8 41 21 48 43-23-14-45-11-66 9 34-7 59 4 72 30 4-21 10-39 18-54z"/></g>
+<g fill="none" stroke="#aa7b37" stroke-width="2" opacity=".20"><path d="M0 267c80-28 156-27 229 4 70 30 138 30 205 0 73-33 147-31 223 6 68 33 137 32 207-4"/><path d="M0 289c91-23 177-19 257 12 56 22 114 20 172-4 83-35 166-32 249 8 56 26 118 28 186 7"/><path d="M24 278q16-18 33 0q17-18 34 0m685 0q16-18 33 0q17-18 34 0"/></g>
 
 <!-- birds -->
-<g fill="none" stroke="#6d5338" stroke-width="1.8" opacity=".24" stroke-linecap="round"><path d="M592 117q8-8 16 0q8-8 16 0M626 99q7-6 14 0q7-6 14 0"/></g>
-<rect width="864" height="300" fill="url(#mist)" opacity=".18"/>
+<g fill="none" stroke="#684d31" stroke-width="1.8" opacity=".27" stroke-linecap="round"><path d="M587 116q8-8 16 0q8-8 16 0M622 98q7-6 14 0q7-6 14 0"/></g>
+<rect width="864" height="300" fill="url(#mist)" opacity=".15"/>
 </svg>
