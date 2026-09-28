@@ -6,10 +6,10 @@
   --target-paper:#f6ead5;
 }
 
-/* Target screenshot geometry is normalized to a 390px mobile viewport. */
+/* Target geometry normalized to a 390px mobile viewport while preserving iOS safe areas. */
 .topbar{
-  height:58px;
-  padding:0 8px 4px;
+  height:calc(58px + env(safe-area-inset-top));
+  padding:env(safe-area-inset-top) 8px 4px;
   grid-template-columns:35px minmax(0,1fr) auto;
   gap:5px;
   background:
@@ -21,9 +21,9 @@
 }
 .menu-button{width:35px;height:35px;border-radius:10px;border-color:rgba(245,209,125,.86);background:rgba(55,3,7,.26)}
 .menu-button svg{width:18px;height:18px}
-.top-brand{grid-template-columns:62px minmax(0,1fr);gap:8px}
-.top-logo{width:62px;height:40px;object-fit:contain;filter:drop-shadow(0 2px 2px rgba(44,6,2,.18))}
-.top-copy strong{font-size:9.3px;letter-spacing:.028em;line-height:1.08;color:#f3d986}
+.top-brand{grid-template-columns:64px minmax(0,1fr);gap:7px}
+.top-logo{width:64px;height:41px;object-fit:contain;filter:drop-shadow(0 2px 2px rgba(44,6,2,.20))}
+.top-copy strong{font-size:9.3px;letter-spacing:.028em;line-height:1.08;color:#f3d986;text-shadow:0 1px rgba(57,4,7,.25)}
 .top-copy span{font-size:6.8px;margin-top:2px;color:#f0ddd0}
 .language-button{height:35px;padding:0 6px;border-radius:10px;border-color:rgba(245,207,119,.74);background:rgba(56,3,8,.29)}
 .language-button span{font-size:10px}.language-button b{font-size:8px}.language-button svg{width:10px;height:10px}
@@ -35,11 +35,11 @@ main{padding:0 9px}
 .hero-panel{
   height:130px;
   border-radius:17px;
-  border-color:rgba(193,139,47,.64);
-  box-shadow:0 7px 18px rgba(87,51,22,.10),inset 0 1px rgba(255,255,255,.86);
+  border-color:rgba(193,139,47,.68);
+  box-shadow:0 7px 18px rgba(87,51,22,.11),inset 0 1px rgba(255,255,255,.88);
 }
-.hero-crest{width:124px;height:61px;margin-top:-2px;filter:drop-shadow(0 2px 2px rgba(100,52,9,.14))}
-.hero-panel h1{font-size:16.5px;letter-spacing:.04em;margin-top:0}
+.hero-crest{width:128px;height:64px;margin-top:-3px;filter:drop-shadow(0 2px 2px rgba(100,52,9,.17))}
+.hero-panel h1{font-size:16.5px;letter-spacing:.04em;margin-top:-1px;color:#744414}
 .hero-panel p{font-size:9.4px;margin-top:4px}
 .ornament{margin-top:5px}.ornament span{width:36px}
 
@@ -51,6 +51,7 @@ main{padding:0 9px}
   gap:4px 5px;
   border-radius:16px;
   background:rgba(255,250,244,.97);
+  box-shadow:0 7px 18px rgba(91,58,28,.075);
 }
 .tree-control-primary{height:39px;border-radius:11px;grid-template-columns:27px minmax(0,1fr) 12px;padding:0 8px}
 .tree-symbol{width:25px;height:25px}.tree-control-primary strong{font-size:11.2px}.tree-control-primary small{font-size:7.2px}
@@ -58,13 +59,15 @@ main{padding:0 9px}
 .filter-button{width:35px;height:35px;border-radius:10px}.filter-button svg{width:17px;height:17px}
 .generation-chip{height:26px;border-radius:9px;font-size:8px}
 
-/* The reference is 9:16, while modern iPhones are taller. Keep the tree itself at
-   the approved scale and extend only the parchment canvas to meet the fixed nav. */
+/* Modern iPhones are taller than the approved 9:16 reference. Extend parchment, not the genealogy scale. */
 .tree-stage{
   height:clamp(320px,calc(100svh - 356px),488px);
   min-height:320px;
   overflow:hidden;
   background-position:center top;
+  background-size:100% auto;
+  background-repeat:no-repeat;
+  background-color:#f6ead5;
   border-radius:0;
 }
 .tree-viewport{height:100%;padding:7px 3px 3px;overflow:hidden}
@@ -77,41 +80,42 @@ main{padding:0 9px}
 .generation-column[data-generation="4"]{padding-bottom:0!important}
 .generation-title{
   height:13px;line-height:13px;margin-bottom:3px!important;font-size:8.8px!important;letter-spacing:.12em!important;
-  background:linear-gradient(90deg,transparent 0 34%,rgba(247,237,219,.25) 36%,rgba(247,237,219,.98) 41% 59%,rgba(247,237,219,.25) 64%,transparent 66% 100%)!important;
+  color:#8e5a1a!important;
+  background:linear-gradient(90deg,transparent 0 34%,rgba(247,237,219,.22) 36%,rgba(247,237,219,.97) 41% 59%,rgba(247,237,219,.22) 64%,transparent 66% 100%)!important;
 }
-.generation-title:before,.generation-title:after{width:27px;margin-inline:7px}
+.generation-title:before,.generation-title:after{width:27px;margin-inline:7px;background:rgba(151,96,30,.58)}
 
-.generation-column[data-count="1"]{grid-template-columns:minmax(146px,150px)!important}
-.generation-column[data-count="2"]{padding-inline:16.5%!important}
+.generation-column[data-count="1"]{grid-template-columns:minmax(148px,152px)!important}
+.generation-column[data-count="2"]{padding-inline:16%!important}
 .generation-column[data-count="3"]{padding-inline:0!important}
 .generation-column[data-count="4"]{padding-inline:0!important}
-.person-card{border-radius:10px!important;box-shadow:0 4px 9px rgba(69,44,23,.075)!important}
-.person-card.ancestor{height:50px!important;min-height:50px!important;grid-template-columns:36px minmax(0,1fr) 26px!important;border-color:#ce9326!important}
-.person-card.ancestor .person-avatar{width:36px!important;height:36px!important}
+.person-card{border-radius:10px!important;background:rgba(255,253,248,.975)!important;box-shadow:0 4px 9px rgba(69,44,23,.08)!important}
+.person-card.ancestor{height:51px!important;min-height:51px!important;grid-template-columns:37px minmax(0,1fr) 26px!important;border-color:#ce9326!important;box-shadow:0 5px 12px rgba(151,101,30,.12)!important}
+.person-card.ancestor .person-avatar{width:37px!important;height:37px!important}
 .person-card.ancestor .person-copy strong{font-size:10px}.person-card.ancestor .person-copy span{font-size:7.3px}
 .person-card.ancestor .person-badge{width:26px;height:26px;font-size:12px}
 
-.generation-column[data-generation="2"] .person-card{height:41px!important;min-height:41px!important;grid-template-columns:26px minmax(0,1fr) 18px!important;gap:3px!important;padding-inline:4px!important}
-.generation-column[data-generation="2"] .person-avatar{width:26px!important;height:26px!important}
-.generation-column[data-generation="2"] .person-copy strong{font-size:7.2px}
+.generation-column[data-generation="2"] .person-card{height:42px!important;min-height:42px!important;grid-template-columns:28px minmax(0,1fr) 18px!important;gap:3px!important;padding-inline:4px!important}
+.generation-column[data-generation="2"] .person-avatar{width:28px!important;height:28px!important}
+.generation-column[data-generation="2"] .person-copy strong{font-size:7.15px}
 .generation-column[data-generation="2"] .person-badge{width:18px;height:18px;font-size:6.5px}
 
-.generation-column[data-generation="3"] .person-card{height:38px!important;min-height:38px!important;grid-template-columns:25px minmax(0,1fr) 17px!important;gap:3px!important;padding-inline:4px!important}
-.generation-column[data-generation="3"] .person-avatar{width:25px!important;height:25px!important}
-.generation-column[data-generation="3"] .person-copy strong{font-size:6.5px}
+.generation-column[data-generation="3"] .person-card{height:39px!important;min-height:39px!important;grid-template-columns:27px minmax(0,1fr) 17px!important;gap:3px!important;padding-inline:4px!important}
+.generation-column[data-generation="3"] .person-avatar{width:27px!important;height:27px!important}
+.generation-column[data-generation="3"] .person-copy strong{font-size:6.45px}
 .generation-column[data-generation="3"] .person-badge{width:17px;height:17px;font-size:6.2px}
 
-.generation-column[data-generation="4"] .person-card{height:34px!important;min-height:34px!important;grid-template-columns:20px minmax(0,1fr) 14px!important;gap:2px!important;padding:3px!important}
-.generation-column[data-generation="4"] .person-avatar{width:20px!important;height:20px!important}
-.generation-column[data-generation="4"] .person-copy strong{font-size:5.8px}
-.generation-column[data-generation="4"] .person-copy span{font-size:5.3px}
+.generation-column[data-generation="4"] .person-card{height:35px!important;min-height:35px!important;grid-template-columns:23px minmax(0,1fr) 14px!important;gap:2px!important;padding:3px!important}
+.generation-column[data-generation="4"] .person-avatar{width:23px!important;height:23px!important}
+.generation-column[data-generation="4"] .person-copy strong{font-size:5.75px}
+.generation-column[data-generation="4"] .person-copy span{font-size:5.25px}
 .generation-column[data-generation="4"] .person-badge{width:14px;height:14px;font-size:5.5px}
 .tree-connectors line,.tree-connectors path{stroke:#ad741e;stroke-width:1.28}
 .tree-connectors circle{fill:#c38a31;stroke:#986018;stroke-width:.7}
 
 .bottom-nav{
-  height:70px;
-  padding:4px 7px 0;
+  height:calc(70px + env(safe-area-inset-bottom));
+  padding:4px 7px env(safe-area-inset-bottom);
   background:
     linear-gradient(180deg,rgba(101,5,9,.08),rgba(45,0,4,.20)),
     #65080d url('/dongson-header.svg') center bottom/cover no-repeat;
@@ -122,12 +126,12 @@ main{padding:0 9px}
 .bottom-nav button b{font-size:8.4px}
 .bottom-nav button.active{background:linear-gradient(180deg,rgba(177,26,35,.98),rgba(124,9,16,.97));box-shadow:inset 0 0 0 1.2px rgba(239,180,76,.80),0 4px 13px rgba(32,3,5,.22)}
 
-#tree-view{padding-bottom:70px}
-#overview-view,#members-view,#events-view,#documents-view,#settings-view{padding-bottom:76px}
+#tree-view{padding-bottom:calc(70px + env(safe-area-inset-bottom))}
+#overview-view,#members-view,#events-view,#documents-view,#settings-view{padding-bottom:calc(76px + env(safe-area-inset-bottom))}
 
 @media(max-width:374px){
-  .topbar{grid-template-columns:33px minmax(0,1fr) auto;padding-inline:7px;gap:4px}
-  .menu-button{width:33px;height:33px}.top-brand{grid-template-columns:53px minmax(0,1fr);gap:5px}.top-logo{width:53px;height:36px}
+  .topbar{grid-template-columns:33px minmax(0,1fr) auto;padding-left:7px;padding-right:7px;gap:4px}
+  .menu-button{width:33px;height:33px}.top-brand{grid-template-columns:54px minmax(0,1fr);gap:5px}.top-logo{width:54px;height:37px}
   .top-copy strong{font-size:8.2px}.top-copy span{font-size:6.1px}
   .language-button{height:33px;padding-inline:4px}.language-button b{font-size:7.4px}.avatar-button{width:33px;height:33px}
   .tree-controls{grid-template-columns:minmax(124px,1.18fr) minmax(122px,1.2fr) 33px;gap-column:4px;padding-inline:5px}
