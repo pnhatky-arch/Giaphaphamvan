@@ -46,7 +46,7 @@ assert.ok(data.includes("/target-ui.css?v=1"),'approved target reference stylesh
 assert.ok(target.includes('.topbar')&&target.includes('height:58px'),'target header geometry missing');
 assert.ok(target.includes('.hero-panel')&&target.includes('height:130px'),'target hero geometry missing');
 assert.ok(target.includes('.tree-controls')&&target.includes('height:80px'),'target control geometry missing');
-assert.ok(target.includes('.tree-stage')&&target.includes('height:320px'),'target tree geometry missing');
+assert.ok(target.includes('.tree-stage')&&target.includes('height:clamp(320px,calc(100svh - 356px),488px)'),'adaptive target tree geometry missing');
 assert.ok(target.includes('.bottom-nav')&&target.includes('height:70px'),'target bottom navigation geometry missing');
 
 assert.ok(app.includes('function renderGenerationControls'),'generation chips renderer missing');
@@ -80,4 +80,4 @@ assert.ok(cloud.includes('resolveConflict'),'cloud conflicts must be explicit');
 assert.ok(app.includes('appConfirm'),'destructive actions must use shared confirm');
 assert.ok(!app.includes('window.confirm('),'native window.confirm is forbidden');
 
-console.log('Giaphaphamvan approved reference geometry v15 audit: PASS');
+console.log('Giaphaphamvan approved responsive reference v15 audit: PASS');
