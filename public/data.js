@@ -40,10 +40,16 @@ window.PHAM_VAN_SEED = {
 
 (() => {
   const id = 'pham-van-approved-reference-css';
-  if (document.getElementById(id)) return;
-  const link = document.createElement('link');
-  link.id = id;
-  link.rel = 'stylesheet';
-  link.href = '/target-ui.css?v=2';
-  document.head.appendChild(link);
+  if (!document.getElementById(id)) {
+    const link = document.createElement('link');
+    link.id = id;
+    link.rel = 'stylesheet';
+    link.href = '/target-ui.css?v=3';
+    document.head.appendChild(link);
+  }
+  const refreshCrest = () => document.querySelectorAll('img[src="/crest.svg"],img[src^="/crest.svg?"]').forEach(img => {
+    if (!img.src.includes('v=3')) img.src = '/crest.svg?v=3';
+  });
+  if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', refreshCrest, {once:true});
+  else refreshCrest();
 })();
