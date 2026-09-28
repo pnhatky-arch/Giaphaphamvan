@@ -1,0 +1,25 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 420" role="img" aria-label="Gia phả họ Phạm Văn">
+  <defs>
+    <linearGradient id="gold" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#fff2b8"/><stop offset=".42" stop-color="#e4b951"/><stop offset="1" stop-color="#9b6614"/></linearGradient>
+    <linearGradient id="red" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#9d1422"/><stop offset=".55" stop-color="#6b0812"/><stop offset="1" stop-color="#3b0208"/></linearGradient>
+    <filter id="s" x="-20%" y="-20%" width="140%" height="150%"><feDropShadow dx="0" dy="12" stdDeviation="9" flood-color="#3b0900" flood-opacity=".28"/></filter>
+  </defs>
+  <g filter="url(#s)">
+    <path d="M92 124C136 83 191 63 258 67c37 2 70 14 102 37 33-23 66-35 103-37 66-4 121 16 165 57v137c-41-32-90-47-147-45-42 1-82 15-121 40-39-25-79-39-121-40-57-2-106 13-147 45z" fill="url(#gold)" stroke="#6b3307" stroke-width="10"/>
+    <path d="M117 132c39-28 82-41 130-38 36 2 71 14 105 37v93c-33-18-69-28-107-29-45-2-88 8-128 29z" fill="#fff4cf" stroke="#a46c1f" stroke-width="5"/>
+    <path d="M603 132c-39-28-82-41-130-38-36 2-71 14-105 37v93c33-18 69-28 107-29 45-2 88 8 128 29z" fill="#fff4cf" stroke="#a46c1f" stroke-width="5"/>
+    <path d="M360 104v150" stroke="#8a5511" stroke-width="6"/>
+    <g fill="#8b1321" opacity=".82">
+      <circle cx="176" cy="135" r="8"/><circle cx="222" cy="122" r="8"/><circle cx="269" cy="139" r="8"/><circle cx="310" cy="120" r="8"/>
+      <circle cx="410" cy="120" r="8"/><circle cx="452" cy="139" r="8"/><circle cx="499" cy="122" r="8"/><circle cx="544" cy="135" r="8"/>
+    </g>
+    <g stroke="#a46c1f" stroke-width="5" fill="none" stroke-linecap="round">
+      <path d="M176 135c23 18 44 31 66 39M222 122c13 25 26 40 45 56M269 139c12 13 24 24 41 33"/>
+      <path d="M544 135c-23 18-44 31-66 39M499 122c-13 25-26 40-45 56M452 139c-12 13-24 24-41 33"/>
+    </g>
+    <path d="M74 251c51 7 105 8 162 4 42-3 83-10 124-23 41 13 82 20 124 23 57 4 111 3 162-4l-42 105c-73 16-145 20-217 12-9-1-18-3-27-5-9 2-18 4-27 5-72 8-144 4-217-12z" fill="url(#red)" stroke="url(#gold)" stroke-width="10"/>
+    <text x="360" y="322" text-anchor="middle" font-family="Georgia,serif" font-size="66" font-weight="700" letter-spacing="6" fill="url(#gold)">PHẠM VĂN</text>
+    <path d="M73 247c-38-28-52-61-42-99 7-27 26-49 55-67-10 31-7 63 9 96 13 27 30 50 53 70" fill="none" stroke="url(#gold)" stroke-width="16" stroke-linecap="round"/>
+    <path d="M647 247c38-28 52-61 42-99-7-27-26-49-55-67 10 31 7 63-9 96-13 27-30 50-53 70" fill="none" stroke="url(#gold)" stroke-width="16" stroke-linecap="round"/>
+  </g>
+</svg>
