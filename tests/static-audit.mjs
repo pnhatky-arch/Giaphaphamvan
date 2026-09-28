@@ -22,9 +22,7 @@ for(const file of [
 ]) assert.ok(fs.existsSync(file),`missing ${file}`);
 assert.ok(!fs.existsSync('public/ui.js'),'legacy secondary UI runtime must be deleted');
 
-for(const id of ['bottomNav','tree-view','familyTree','generationChips','treeFilterButton','members-view','events-view','documents-view','settings-view','cloud-sync-now','cloud-connect','export-data','share-data','import-data','delete-local-data','storage-capacity-card']){
-  assert.ok(index.includes(`id="${id}"`),`missing #${id}`);
-}
+for(const id of ['bottomNav','tree-view','familyTree','generationChips','treeFilterButton','members-view','events-view','documents-view','settings-view','cloud-sync-now','cloud-connect','export-data','share-data','import-data','delete-local-data','storage-capacity-card']) assert.ok(index.includes(`id="${id}"`),`missing #${id}`);
 assert.ok(index.includes('/styles.css?v=12'),'reference stylesheet version must be v12');
 assert.ok(index.includes('/app.js?v=12'),'single application runtime must be v12');
 assert.ok(!index.includes('/ui.js'),'legacy UI runtime must not be loaded');
@@ -39,6 +37,7 @@ assert.ok(css.includes('grid-template-columns:repeat(5,minmax(0,1fr))'),'bottom 
 assert.ok(css.includes('.tree-connectors'),'SVG connector layer must be styled');
 assert.ok(css.includes('.person-card.ancestor'),'ancestor card styling missing');
 assert.ok(css.includes('.generation-title:before')&&css.includes('.generation-title:after'),'generation ornaments missing');
+assert.ok(css.includes('.hero-panel{')&&css.includes('height:142px'),'mobile hero geometry must stay compact');
 
 assert.ok(app.includes('function renderGenerationControls'),'generation chips renderer missing');
 assert.ok(app.includes('function renderTree'),'family tree renderer missing');
@@ -52,11 +51,12 @@ assert.ok(app.includes("navigate('tree')"),'tree must open as default view');
 assert.ok(app.includes('renderAll(); bindEvents();'),'runtime must render before interaction binding');
 
 assert.ok(crest.includes('PHẠM VĂN'),'crest must contain PHẠM VĂN');
-assert.ok(dongson.length>500,'Dong Son artwork unexpectedly small');
-assert.ok(hero.length>500,'hero artwork unexpectedly small');
-assert.ok(treebg.length>500,'tree parchment artwork unexpectedly small');
+assert.ok(crest.length>2000,'crest artwork unexpectedly simple');
+assert.ok(dongson.length>1000,'Dong Son artwork unexpectedly small');
+assert.ok(hero.length>1500,'hero artwork unexpectedly small');
+assert.ok(treebg.length>1500,'tree parchment artwork unexpectedly small');
 
-assert.ok(sw.includes("giaphaphamvan-v12"),'service worker cache version mismatch');
+assert.ok(sw.includes("giaphaphamvan-v13"),'service worker cache version mismatch');
 for(const asset of ['/styles.css?v=12','/app.js?v=12','/dongson-header.svg','/hero-parchment.svg','/tree-parchment.svg','/crest.svg']) assert.ok(sw.includes(asset),`service worker missing ${asset}`);
 assert.ok(!sw.includes('/ui.js'),'service worker must not cache legacy UI runtime');
 assert.ok(wrangler.includes('"directory": "./public"'),'Wrangler must deploy ./public');
