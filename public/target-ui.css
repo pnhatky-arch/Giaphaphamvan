@@ -58,8 +58,10 @@ main{padding:0 9px}
 .filter-button{width:35px;height:35px;border-radius:10px}.filter-button svg{width:17px;height:17px}
 .generation-chip{height:26px;border-radius:9px;font-size:8px}
 
+/* The reference is 9:16, while modern iPhones are taller. Keep the tree itself at
+   the approved scale and extend only the parchment canvas to meet the fixed nav. */
 .tree-stage{
-  height:320px;
+  height:clamp(320px,calc(100svh - 356px),488px);
   min-height:320px;
   overflow:hidden;
   background-position:center top;
