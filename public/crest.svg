@@ -1,31 +1,52 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 380" role="img" aria-label="Gia phả họ Phạm Văn">
 <defs>
- <linearGradient id="gold" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#fff4be"/><stop offset=".23" stop-color="#f2d27a"/><stop offset=".58" stop-color="#d29b2d"/><stop offset="1" stop-color="#86500f"/></linearGradient>
- <linearGradient id="gold2" x1="0" y1="0" x2="0" y2="1"><stop stop-color="#ffe6a0"/><stop offset="1" stop-color="#ae7015"/></linearGradient>
- <linearGradient id="red" x1="0" y1="0" x2="0" y2="1"><stop stop-color="#b82125"/><stop offset=".52" stop-color="#7f0c12"/><stop offset="1" stop-color="#4b0307"/></linearGradient>
- <filter id="shadow" x="-30%" y="-30%" width="160%" height="180%"><feDropShadow dx="0" dy="9" stdDeviation="7" flood-color="#4c1607" flood-opacity=".28"/></filter>
+  <linearGradient id="gold" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#fff3b4"/><stop offset=".22" stop-color="#f1ca65"/><stop offset=".55" stop-color="#c98217"/><stop offset=".82" stop-color="#f1c55f"/><stop offset="1" stop-color="#7b3c08"/></linearGradient>
+  <linearGradient id="goldDeep" x1="0" y1="0" x2="0" y2="1"><stop stop-color="#f8d36f"/><stop offset=".5" stop-color="#c67a14"/><stop offset="1" stop-color="#743707"/></linearGradient>
+  <linearGradient id="red" x1="0" y1="0" x2="0" y2="1"><stop stop-color="#ba2027"/><stop offset=".52" stop-color="#7e0b12"/><stop offset="1" stop-color="#490307"/></linearGradient>
+  <linearGradient id="page" x1="0" y1="0" x2="0" y2="1"><stop stop-color="#fff6d9"/><stop offset="1" stop-color="#efd59c"/></linearGradient>
+  <filter id="shadow" x="-30%" y="-35%" width="160%" height="180%"><feDropShadow dx="0" dy="9" stdDeviation="7" flood-color="#4b1607" flood-opacity=".30"/></filter>
+  <filter id="glow" x="-40%" y="-40%" width="180%" height="180%"><feGaussianBlur stdDeviation="2.4" result="b"/><feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge></filter>
 </defs>
 <g filter="url(#shadow)">
- <!-- vertical scrolls -->
- <g stroke="#693608" stroke-width="7" stroke-linejoin="round">
-  <path d="M78 74c-26 22-35 48-26 76l13 31-18 22 15 34-20 24 31 50 42-12-24-43 16-21-16-38 15-23-16-31c-11-21-8-42 10-62z" fill="url(#gold)"/>
-  <path d="M642 74c26 22 35 48 26 76l-13 31 18 22-15 34 20 24-31 50-42-12 24-43-16-21 16-38-15-23 16-31c11-21 8-42-10-62z" fill="url(#gold)"/>
-  <path d="M56 91q26 14 48 0M50 124q28 13 51-1M55 158q27 13 49 0M664 91q-26 14-48 0M670 124q-28 13-51-1M665 158q-27 13-49 0" fill="none" stroke="#9a5b12" stroke-width="4"/>
- </g>
- <!-- book body -->
- <path d="M111 110c46-38 97-55 153-52 39 2 71 13 96 32 26-19 58-30 97-32 56-3 107 14 152 52v118c-40-26-84-38-132-36-46 2-85 15-117 39-32-24-71-37-117-39-48-2-92 10-132 36z" fill="url(#gold)" stroke="#6b3508" stroke-width="9"/>
- <path d="M132 121c35-25 72-36 114-34 36 2 68 12 97 31v82c-28-15-60-22-95-23-40-1-78 8-116 26z" fill="#fff0c7" stroke="#ad6d18" stroke-width="5"/>
- <path d="M588 121c-35-25-72-36-114-34-36 2-68 12-97 31v82c28-15 60-22 95-23 40-1 78 8 116 26z" fill="#fff0c7" stroke="#ad6d18" stroke-width="5"/>
- <path d="M360 90v139" stroke="#8d5613" stroke-width="5"/>
- <!-- family tree symbols in book -->
- <g fill="#8b1118" stroke="#8b1118" stroke-linecap="round"><circle cx="177" cy="131" r="6"/><circle cx="223" cy="117" r="6"/><circle cx="269" cy="135" r="6"/><circle cx="310" cy="116" r="6"/><circle cx="410" cy="116" r="6"/><circle cx="451" cy="135" r="6"/><circle cx="497" cy="117" r="6"/><circle cx="543" cy="131" r="6"/><path d="M177 131c21 14 42 27 62 34M223 117c12 20 24 35 41 49M269 135c11 12 23 21 38 28M543 131c-21 14-42 27-62 34M497 117c-12 20-24 35-41 49M451 135c-11 12-23 21-38 28" fill="none" stroke-width="4"/></g>
- <!-- crown / lineage ornament -->
- <path d="M277 70l18-20 18 20 20-28 27 29 27-29 20 28 18-20 18 20" fill="none" stroke="url(#gold2)" stroke-width="7" stroke-linecap="round" stroke-linejoin="round"/>
- <!-- lower scroll banner -->
- <path d="M72 235c58 10 116 12 170 8 46-3 85-10 118-21 33 11 72 18 118 21 54 4 112 2 170-8l-35 91c-75 15-147 19-217 11-13-1-25-3-36-5-11 2-23 4-36 5-70 8-142 4-217-11z" fill="url(#red)" stroke="url(#gold)" stroke-width="10"/>
- <path d="M110 258c63 6 118 4 164-7 31-7 60-15 86-24 26 9 55 17 86 24 46 11 101 13 164 7" fill="none" stroke="#f3cf70" stroke-opacity=".56" stroke-width="3"/>
- <text x="360" y="305" text-anchor="middle" font-family="Georgia,'Times New Roman',serif" font-size="60" font-weight="700" letter-spacing="5" fill="url(#gold)">PHẠM VĂN</text>
- <!-- curled end caps -->
- <path d="M77 239c-23-3-39 5-48 24 19-5 34 1 43 18M643 239c23-3 39 5 48 24-19-5-34 1-43 18" fill="none" stroke="#d69d31" stroke-width="8" stroke-linecap="round"/>
+  <!-- ceremonial scroll rods -->
+  <g stroke="#6e3508" stroke-width="7" stroke-linejoin="round">
+    <path d="M72 89c-24 18-33 39-26 63l13 32-17 22 15 30-17 21 25 50 42-10-20-42 15-20-13-34 15-22-15-33c-8-18-5-37 11-54z" fill="url(#gold)"/>
+    <path d="M648 89c24 18 33 39 26 63l-13 32 17 22-15 30 17 21-25 50-42-10 20-42-15-20 13-34-15-22 15-33c8-18 5-37-11-54z" fill="url(#gold)"/>
+  </g>
+  <g fill="url(#red)" stroke="#7a3a09" stroke-width="5">
+    <rect x="59" y="104" width="29" height="144" rx="14"/><rect x="632" y="104" width="29" height="144" rx="14"/>
+  </g>
+  <g fill="url(#goldDeep)" stroke="#743705" stroke-width="4">
+    <ellipse cx="73.5" cy="102" rx="24" ry="10"/><ellipse cx="73.5" cy="247" rx="24" ry="10"/>
+    <ellipse cx="646.5" cy="102" rx="24" ry="10"/><ellipse cx="646.5" cy="247" rx="24" ry="10"/>
+    <path d="M52 88l22-24 22 24-12 12H64zM624 88l22-24 22 24-12 12h-20z"/>
+  </g>
+
+  <!-- open genealogy book -->
+  <path d="M115 111c45-42 96-61 153-58 40 2 70 13 92 34 22-21 52-32 92-34 57-3 108 16 153 58v121c-42-27-86-39-133-37-47 2-84 14-112 38-28-24-65-36-112-38-47-2-91 10-133 37z" fill="url(#gold)" stroke="#6d3508" stroke-width="9"/>
+  <path d="M136 122c33-26 69-38 109-36 36 2 69 12 98 31v83c-27-15-58-22-93-23-38-1-76 7-114 25z" fill="url(#page)" stroke="#ad6b16" stroke-width="5"/>
+  <path d="M584 122c-33-26-69-38-109-36-36 2-69 12-98 31v83c27-15 58-22 93-23 38-1 76 7 114 25z" fill="url(#page)" stroke="#ad6b16" stroke-width="5"/>
+  <path d="M360 88v143" stroke="#86500f" stroke-width="5"/>
+  <path d="M347 100q13-12 26 0M347 108q13-12 26 0" fill="none" stroke="#bb7d1f" stroke-width="3"/>
+
+  <!-- lineage symbols -->
+  <g fill="#8c1016" stroke="#8c1016" stroke-linecap="round" stroke-linejoin="round">
+    <circle cx="180" cy="127" r="5"/><circle cx="221" cy="112" r="5"/><circle cx="266" cy="132" r="5"/><circle cx="309" cy="113" r="5"/>
+    <circle cx="411" cy="113" r="5"/><circle cx="454" cy="132" r="5"/><circle cx="499" cy="112" r="5"/><circle cx="540" cy="127" r="5"/>
+    <path d="M180 127c22 17 42 28 62 34M221 112c13 24 25 38 43 50M266 132c12 13 25 22 39 28M540 127c-22 17-42 28-62 34M499 112c-13 24-25 38-43 50M454 132c-12 13-25 22-39 28" fill="none" stroke-width="4"/>
+    <path d="M178 156h132M410 156h132" fill="none" stroke-width="2.5" opacity=".45"/>
+  </g>
+
+  <!-- crown / ancestral seal -->
+  <g filter="url(#glow)" fill="none" stroke="url(#goldDeep)" stroke-width="6" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M278 72l18-18 18 17 20-28 26 29 26-29 20 28 18-17 18 18"/>
+    <path d="M292 78h136" stroke-width="4"/>
+  </g>
+
+  <!-- curled red banner -->
+  <path d="M74 238c63 9 120 11 171 7 47-4 85-11 115-22 30 11 68 18 115 22 51 4 108 2 171-7l-33 91c-71 14-143 18-216 11-15-1-27-3-37-5-10 2-22 4-37 5-73 7-145 3-216-11z" fill="url(#red)" stroke="url(#gold)" stroke-width="10"/>
+  <path d="M109 259c58 5 109 3 155-5 37-7 69-16 96-27 27 11 59 20 96 27 46 8 97 10 155 5" fill="none" stroke="#f5d77d" stroke-width="3" opacity=".55"/>
+  <path d="M76 243c-23-4-40 3-50 22 20-3 35 3 44 20M644 243c23-4 40 3 50 22-20-3-35 3-44 20" fill="none" stroke="#d59b2e" stroke-width="8" stroke-linecap="round"/>
+  <text x="360" y="307" text-anchor="middle" font-family="Georgia,'Times New Roman',serif" font-size="58" font-weight="700" letter-spacing="5" fill="url(#gold)">PHẠM VĂN</text>
 </g>
 </svg>
