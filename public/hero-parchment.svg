@@ -1,0 +1,24 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 864 300" preserveAspectRatio="xMidYMid slice">
+<defs>
+ <linearGradient id="p" x1="0" y1="0" x2="0" y2="1"><stop stop-color="#fff9ed"/><stop offset="1" stop-color="#f0dec0"/></linearGradient>
+ <linearGradient id="m" x1="0" y1="0" x2="1" y2="0"><stop stop-color="#ffffff" stop-opacity=".55"/><stop offset=".45" stop-color="#ffffff" stop-opacity=".05"/><stop offset="1" stop-color="#ffffff" stop-opacity=".55"/></linearGradient>
+ <filter id="b"><feGaussianBlur stdDeviation="5"/></filter>
+ <pattern id="grain" width="28" height="28" patternUnits="userSpaceOnUse"><circle cx="4" cy="7" r=".9" fill="#8a642d" opacity=".035"/><circle cx="19" cy="23" r=".7" fill="#8a642d" opacity=".03"/></pattern>
+</defs>
+<rect width="864" height="300" fill="url(#p)"/><rect width="864" height="300" fill="url(#grain)"/>
+<g fill="#8c775c" opacity=".12" filter="url(#b)">
+ <path d="M0 212L80 126l56 55 72-92 70 99 72-59 83 80 66-67 94 89 69-53 102 86v56H0z"/>
+ <path d="M0 252l104-72 58 45 68-52 74 54 87-70 92 72 76-50 84 52 91-56 130 95v30H0z" opacity=".75"/>
+</g>
+<g fill="#745536" opacity=".16">
+ <path d="M720 95h93v12h-93zM734 69h65l19 26h-103zM746 46h42l13 22h-69zM756 12h22v34h-22z"/>
+ <path d="M735 107h11v77h-11zM770 107h11v77h-11zM805 107h11v77h-11z"/>
+</g>
+<g fill="none" stroke="#684a2c" stroke-width="5" stroke-linecap="round" opacity=".16">
+ <path d="M25 75c40-43 83-56 128-39M47 100c31-32 64-43 98-31M101 36c15 28 22 54 21 79M61 47c22 24 35 48 39 72"/>
+ <path d="M824 174c-38-30-74-40-108-30M803 196c-30-22-59-28-87-17"/>
+</g>
+<g fill="#805f3b" opacity=".12"><path d="M82 212c-11 2-20 11-24 25 13-8 25-7 35 2-2-12-6-21-11-27z"/><path d="M792 210c10 2 19 10 23 23-12-7-23-6-33 2 2-11 5-19 10-25z"/></g>
+<g fill="none" stroke="#b07b2f" stroke-opacity=".12" stroke-width="2"><path d="M0 260c93-34 177-35 253-3 74 31 146 31 216 1 91-39 184-34 279 17 39 21 78 27 116 19"/><path d="M0 280c103-29 195-26 275 9 67 29 134 27 202-5 85-40 171-37 258 8 43 22 86 27 129 15"/></g>
+<rect width="864" height="300" fill="url(#m)" opacity=".38"/>
+</svg>
