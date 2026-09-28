@@ -57,7 +57,7 @@ assert.ok(dongson.length>1000,'Dong Son artwork unexpectedly small');
 assert.ok(hero.length>1500,'hero artwork unexpectedly small');
 assert.ok(treebg.length>1500,'tree parchment artwork unexpectedly small');
 
-assert.ok(sw.includes("giaphaphamvan-v13"),'service worker cache version mismatch');
+assert.ok(sw.includes("giaphaphamvan-v14"),'service worker cache version mismatch');
 for(const asset of ['/styles.css?v=12','/app.js?v=12','/dongson-header.svg','/hero-parchment.svg','/tree-parchment.svg','/crest.svg']) assert.ok(sw.includes(asset),`service worker missing ${asset}`);
 assert.ok(!sw.includes('/ui.js'),'service worker must not cache legacy UI runtime');
 assert.ok(wrangler.includes('"directory": "./public"'),'Wrangler must deploy ./public');
@@ -71,4 +71,4 @@ assert.ok(cloud.includes('resolveConflict'),'cloud conflicts must be explicit');
 assert.ok(app.includes('appConfirm'),'destructive actions must use shared confirm');
 assert.ok(!app.includes('window.confirm('),'native window.confirm is forbidden');
 
-console.log('Giaphaphamvan reference geometry v13 audit: PASS');
+console.log('Giaphaphamvan reference geometry v14 audit: PASS');
