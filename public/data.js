@@ -49,9 +49,10 @@ window.PHAM_VAN_SEED = {
   };
   ensureStyle('pham-van-approved-reference-css','/target-ui.css?v=3');
   ensureStyle('pham-van-reference-polish-css','/reference-polish.css?v=1');
+  ensureStyle('pham-van-parchment-v4-css','/parchment-v4.css?v=4');
 
   const refreshCrest = () => document.querySelectorAll('img[src="/crest.svg"],img[src^="/crest.svg?"]').forEach(img => {
-    if (!img.src.includes('v=3')) img.src = '/crest.svg?v=3';
+    if (!img.src.includes('v=4')) img.src = '/crest.svg?v=4';
   });
   if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', refreshCrest, {once:true});
   else refreshCrest();
