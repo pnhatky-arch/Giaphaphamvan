@@ -26,12 +26,35 @@
     },true);
   }
 
+  function syncApprovedLabels(){
+    const lang=$('#languageButton');
+    if(lang){lang.innerHTML='<span>🇻🇳</span><b>Tiếng Việt</b>';}
+
+    const account=$('#accountButton');
+    if(account && account.textContent.trim()==='PV')account.textContent='D';
+
+    const chips=$$('#generationChips .generation-chip');
+    chips.forEach(btn=>{
+      const generation=btn.dataset.generation;
+      if(generation==='all')btn.textContent='Tất cả';
+      else if(generation)btn.textContent=`Đời thứ ${generation}`;
+    });
+
+    const treeMode=$('#displaySegment [data-display="mobile"]');
+    if(treeMode)treeMode.textContent='Mobile';
+    const autoMode=$('#displaySegment [data-display="auto"]');
+    if(autoMode)autoMode.textContent='✦ Tự động';
+  }
+
   function observeViews(){
     const views=$$('.view');
     if(!views.length)return;
-    const observer=new MutationObserver(syncMoreState);
+    const observer=new MutationObserver(()=>{syncMoreState();syncApprovedLabels();});
     views.forEach(view=>observer.observe(view,{attributes:true,attributeFilter:['hidden','class']}));
+    const generationRoot=$('#generationChips');
+    if(generationRoot)observer.observe(generationRoot,{childList:true,subtree:true});
     syncMoreState();
+    syncApprovedLabels();
   }
 
   function syncViewport(){
@@ -41,10 +64,12 @@
   }
 
   function init(){
-    document.body.classList.add('ios27-mobile-ready');
+    document.body.classList.add('ios27-mobile-ready','heritage-reference-ui');
     bindMore();
     observeViews();
     syncViewport();
+    setTimeout(syncApprovedLabels,0);
+    setTimeout(syncApprovedLabels,250);
     window.visualViewport?.addEventListener('resize',syncViewport,{passive:true});
   }
 
