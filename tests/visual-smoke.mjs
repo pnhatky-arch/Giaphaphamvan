@@ -11,20 +11,26 @@ page.on('console',m=>{if(m.type()==='error')errors.push(m.text());});
 await page.goto('http://127.0.0.1:4173/',{waitUntil:'networkidle'});
 await page.waitForSelector('#familyTree .person-card',{timeout:10000});
 await page.waitForTimeout(500);
-const metrics=await page.evaluate(()=>({
-  cards:document.querySelectorAll('#familyTree .person-card').length,
-  generations:document.querySelectorAll('#familyTree .generation-column').length,
-  chips:document.querySelectorAll('#generationChips .generation-chip').length,
-  connectors:document.querySelectorAll('.tree-connectors line').length,
-  headerHeight:document.querySelector('#topbar')?.getBoundingClientRect().height||0,
-  heroHeight:document.querySelector('.tree-hero')?.getBoundingClientRect().height||0,
-  controlHeight:document.querySelector('.tree-controls')?.getBoundingClientRect().height||0,
-  treeHeight:document.querySelector('.tree-stage')?.getBoundingClientRect().height||0,
-  navHeight:document.querySelector('#bottomNav')?.getBoundingClientRect().height||0,
-  appWidth:document.querySelector('#appShell')?.getBoundingClientRect().width||0,
-  viewport:window.innerWidth,
-  visibleTree:!document.querySelector('#tree-view')?.hidden
-}));
+const metrics=await page.evaluate(()=>{
+  const tree=document.querySelector('.tree-stage')?.getBoundingClientRect();
+  const nav=document.querySelector('#bottomNav')?.getBoundingClientRect();
+  return {
+    cards:document.querySelectorAll('#familyTree .person-card').length,
+    generations:document.querySelectorAll('#familyTree .generation-column').length,
+    chips:document.querySelectorAll('#generationChips .generation-chip').length,
+    connectors:document.querySelectorAll('.tree-connectors line').length,
+    headerHeight:document.querySelector('#topbar')?.getBoundingClientRect().height||0,
+    heroHeight:document.querySelector('.tree-hero')?.getBoundingClientRect().height||0,
+    controlHeight:document.querySelector('.tree-controls')?.getBoundingClientRect().height||0,
+    treeHeight:tree?.height||0,
+    treeBottom:tree?.bottom||0,
+    navHeight:nav?.height||0,
+    navTop:nav?.top||0,
+    appWidth:document.querySelector('#appShell')?.getBoundingClientRect().width||0,
+    viewport:window.innerWidth,
+    visibleTree:!document.querySelector('#tree-view')?.hidden
+  };
+});
 fs.writeFileSync('artifacts/metrics.json',JSON.stringify(metrics,null,2));
 await page.screenshot({path:'artifacts/mobile-reference.png',fullPage:true});
 assert.equal(metrics.visibleTree,true,'tree view must be visible by default');
@@ -36,8 +42,10 @@ assert.ok(metrics.connectors>=6,`expected SVG family connectors, got ${metrics.c
 assert.ok(metrics.headerHeight>=54&&metrics.headerHeight<=60,`header geometry out of range: ${metrics.headerHeight}`);
 assert.ok(metrics.heroHeight>=126&&metrics.heroHeight<=134,`hero geometry out of range: ${metrics.heroHeight}`);
 assert.ok(metrics.controlHeight>=75&&metrics.controlHeight<=82,`control geometry out of range: ${metrics.controlHeight}`);
-assert.ok(metrics.treeHeight>=295&&metrics.treeHeight<=335,`tree geometry out of range: ${metrics.treeHeight}`);
+assert.ok(metrics.treeHeight>=320&&metrics.treeHeight<=490,`adaptive tree geometry out of range: ${metrics.treeHeight}`);
 assert.ok(metrics.navHeight>=67&&metrics.navHeight<=73,`bottom nav geometry out of range: ${metrics.navHeight}`);
+const canvasGap=metrics.navTop-metrics.treeBottom;
+assert.ok(canvasGap>=0&&canvasGap<=12,`parchment canvas should meet bottom nav, gap: ${canvasGap}`);
 assert.deepEqual(errors,[],`browser console errors: ${errors.join('\n')}`);
 console.log(JSON.stringify(metrics));
 await browser.close();
