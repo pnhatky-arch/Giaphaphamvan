@@ -1,8 +1,9 @@
 (() => {
   'use strict';
 
-  const $ = (selector, root=document) => root.querySelector(selector);
-  const $$ = (selector, root=document) => [...root.querySelectorAll(selector)];
+  const $=(selector,root=document)=>root.querySelector(selector);
+  const $$=(selector,root=document)=>[...root.querySelectorAll(selector)];
+  let defaultOpened=false;
 
   function syncMoreState(){
     const more=$('#bottomNav [data-nav="more"]');
@@ -11,14 +12,14 @@
       const view=document.getElementById(id);
       return view && !view.hidden;
     });
-    if(secondaryActive)more.classList.add('active');
-    else if(!more.matches(':active'))more.classList.remove('active');
+    more.classList.toggle('active',secondaryActive);
   }
 
   function bindMore(){
     const more=$('#bottomNav [data-nav="more"]');
     const menu=$('#menuButton');
-    if(!more||!menu)return;
+    if(!more||!menu||more.dataset.boundMore==='1')return;
+    more.dataset.boundMore='1';
     more.addEventListener('click',event=>{
       event.preventDefault();
       event.stopImmediatePropagation();
@@ -26,51 +27,80 @@
     },true);
   }
 
-  function syncApprovedLabels(){
-    const lang=$('#languageButton');
-    if(lang){lang.innerHTML='<span>🇻🇳</span><b>Tiếng Việt</b>';}
-
-    const account=$('#accountButton');
-    if(account && account.textContent.trim()==='PV')account.textContent='D';
-
+  function decorateGenerationFilters(){
     const chips=$$('#generationChips .generation-chip');
-    chips.forEach(btn=>{
-      const generation=btn.dataset.generation;
-      if(generation==='all')btn.textContent='Tất cả';
-      else if(generation)btn.textContent=`Đời thứ ${generation}`;
+    chips.forEach((chip,index)=>{
+      const value=chip.dataset.generation;
+      chip.textContent=value==='all'?'Tất cả':`Đời thứ ${value}`;
+      if(index===0)chip.setAttribute('aria-label','Tất cả các đời');
     });
-
-    const treeMode=$('#displaySegment [data-display="mobile"]');
-    if(treeMode)treeMode.textContent='Mobile';
-    const autoMode=$('#displaySegment [data-display="auto"]');
-    if(autoMode)autoMode.textContent='✦ Tự động';
   }
 
-  function observeViews(){
-    const views=$$('.view');
-    if(!views.length)return;
-    const observer=new MutationObserver(()=>{syncMoreState();syncApprovedLabels();});
-    views.forEach(view=>observer.observe(view,{attributes:true,attributeFilter:['hidden','class']}));
-    const generationRoot=$('#generationChips');
-    if(generationRoot)observer.observe(generationRoot,{childList:true,subtree:true});
+  function decorateTree(){
+    const columns=$$('#familyTree .generation-column');
+    columns.forEach(column=>{
+      [...column.classList].filter(name=>name.startsWith('count-')).forEach(name=>column.classList.remove(name));
+      const cards=$$('.person-card',column);
+      column.classList.add(`count-${Math.min(cards.length,8)}`);
+      const generation=column.dataset.generation||'';
+      const title=$('.generation-title',column);
+      if(title)title.textContent=`ĐỜI THỨ ${generation}`;
+      cards.forEach((card,index)=>{
+        const avatar=$('.person-avatar',card);
+        const raw=(avatar?.textContent||'').trim();
+        const ancestor=card.classList.contains('ancestor');
+        card.dataset.initial=ancestor?'祖':(raw||'P').slice(0,1).toUpperCase();
+        card.dataset.avatar=String((index+Number(generation||1)-1)%4+1);
+        if(avatar)avatar.setAttribute('aria-hidden','true');
+      });
+    });
+  }
+
+  function decorateAll(){
+    decorateGenerationFilters();
+    decorateTree();
     syncMoreState();
-    syncApprovedLabels();
+  }
+
+  function observeDynamicUI(){
+    const tree=document.getElementById('familyTree');
+    const chips=document.getElementById('generationChips');
+    const views=$$('.view');
+    const observer=new MutationObserver(()=>requestAnimationFrame(decorateAll));
+    if(tree)observer.observe(tree,{childList:true,subtree:true});
+    if(chips)observer.observe(chips,{childList:true,subtree:true});
+    views.forEach(view=>observer.observe(view,{attributes:true,attributeFilter:['hidden','class']}));
   }
 
   function syncViewport(){
     const vv=window.visualViewport;
-    if(!vv)return;
-    document.documentElement.style.setProperty('--ios27-vv-height',`${Math.round(vv.height)}px`);
+    const h=vv?.height||window.innerHeight;
+    document.documentElement.style.setProperty('--mobile-vv-height',`${Math.round(h)}px`);
+    document.documentElement.style.setProperty('--mobile-vw',`${Math.round(window.innerWidth)}px`);
+  }
+
+  function openTreeAsDefault(){
+    if(defaultOpened)return;
+    defaultOpened=true;
+    const treeButton=$('#bottomNav [data-nav="tree"]');
+    if(treeButton){
+      treeButton.click();
+      requestAnimationFrame(()=>{
+        window.scrollTo({top:0,left:0,behavior:'auto'});
+        decorateAll();
+      });
+    }
   }
 
   function init(){
-    document.body.classList.add('ios27-mobile-ready','heritage-reference-ui');
+    document.body.classList.add('approved-reference-ui','mobile-tree-first');
     bindMore();
-    observeViews();
+    observeDynamicUI();
     syncViewport();
-    setTimeout(syncApprovedLabels,0);
-    setTimeout(syncApprovedLabels,250);
+    decorateAll();
+    requestAnimationFrame(openTreeAsDefault);
     window.visualViewport?.addEventListener('resize',syncViewport,{passive:true});
+    window.addEventListener('resize',syncViewport,{passive:true});
   }
 
   if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',init,{once:true});
