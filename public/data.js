@@ -44,6 +44,6 @@ window.PHAM_VAN_SEED = {
   const link = document.createElement('link');
   link.id = id;
   link.rel = 'stylesheet';
-  link.href = '/target-ui.css?v=1';
+  link.href = '/target-ui.css?v=2';
   document.head.appendChild(link);
 })();
