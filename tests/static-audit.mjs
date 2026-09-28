@@ -42,12 +42,13 @@ assert.ok(css.includes('.generation-title:before')&&css.includes('.generation-ti
 assert.ok(css.includes('.hero-panel{')&&css.includes('height:130px'),'base mobile hero geometry must remain 130px');
 assert.ok(css.includes('height:78px')&&css.includes('.tree-controls'),'base tree control geometry must remain compact');
 
-assert.ok(data.includes("/target-ui.css?v=1"),'approved target reference stylesheet must be loaded');
-assert.ok(target.includes('.topbar')&&target.includes('height:58px'),'target header geometry missing');
+assert.ok(data.includes("/target-ui.css?v=2"),'approved target reference stylesheet must be loaded');
+assert.ok(target.includes('.topbar')&&target.includes('height:calc(58px + env(safe-area-inset-top))'),'target header safe-area geometry missing');
 assert.ok(target.includes('.hero-panel')&&target.includes('height:130px'),'target hero geometry missing');
 assert.ok(target.includes('.tree-controls')&&target.includes('height:80px'),'target control geometry missing');
 assert.ok(target.includes('.tree-stage')&&target.includes('height:clamp(320px,calc(100svh - 356px),488px)'),'adaptive target tree geometry missing');
-assert.ok(target.includes('.bottom-nav')&&target.includes('height:70px'),'target bottom navigation geometry missing');
+assert.ok(target.includes('background-size:100% auto'),'genealogy parchment must preserve artwork proportion');
+assert.ok(target.includes('.bottom-nav')&&target.includes('height:calc(70px + env(safe-area-inset-bottom))'),'target bottom safe-area geometry missing');
 
 assert.ok(app.includes('function renderGenerationControls'),'generation chips renderer missing');
 assert.ok(app.includes('function renderTree'),'family tree renderer missing');
@@ -61,13 +62,16 @@ assert.ok(app.includes("navigate('tree')"),'tree must open as default view');
 assert.ok(app.includes('renderAll(); bindEvents();'),'runtime must render before interaction binding');
 
 assert.ok(crest.includes('PHẠM VĂN'),'crest must contain PHẠM VĂN');
-assert.ok(crest.length>2000,'crest artwork unexpectedly simple');
+assert.ok(crest.length>4000,'crest artwork unexpectedly simple');
+assert.ok(crest.includes('ceremonial scroll rods')&&crest.includes('open genealogy book'),'crest heritage detailing missing');
 assert.ok(dongson.length>1000,'Dong Son artwork unexpectedly small');
-assert.ok(hero.length>1500,'hero artwork unexpectedly small');
-assert.ok(treebg.length>1500,'tree parchment artwork unexpectedly small');
+assert.ok(hero.length>3000,'hero artwork unexpectedly simple');
+assert.ok(hero.includes('multi-tier ancestral pavilion')&&hero.includes('layered ink-wash mountains'),'hero heritage scenery missing');
+assert.ok(treebg.length>3000,'tree parchment artwork unexpectedly simple');
+assert.ok(treebg.includes('distant mountain wash')&&treebg.includes('ancestral pavilion silhouette'),'tree heritage scenery missing');
 
-assert.ok(sw.includes("giaphaphamvan-v15"),'service worker cache version mismatch');
-for(const asset of ['/styles.css?v=12','/target-ui.css?v=1','/app.js?v=12','/dongson-header.svg','/hero-parchment.svg','/tree-parchment.svg','/crest.svg']) assert.ok(sw.includes(asset),`service worker missing ${asset}`);
+assert.ok(sw.includes("giaphaphamvan-v16"),'service worker cache version mismatch');
+for(const asset of ['/styles.css?v=12','/target-ui.css?v=2','/app.js?v=12','/dongson-header.svg','/hero-parchment.svg','/tree-parchment.svg','/crest.svg']) assert.ok(sw.includes(asset),`service worker missing ${asset}`);
 assert.ok(!sw.includes('/ui.js'),'service worker must not cache legacy UI runtime');
 assert.ok(wrangler.includes('"directory": "./public"'),'Wrangler must deploy ./public');
 assert.ok(manifest.includes('"theme_color": "#650912"')||manifest.includes('"theme_color": "#65080d"'),'PWA theme must be heritage red');
@@ -80,4 +84,4 @@ assert.ok(cloud.includes('resolveConflict'),'cloud conflicts must be explicit');
 assert.ok(app.includes('appConfirm'),'destructive actions must use shared confirm');
 assert.ok(!app.includes('window.confirm('),'native window.confirm is forbidden');
 
-console.log('Giaphaphamvan approved responsive reference v15 audit: PASS');
+console.log('Giaphaphamvan heritage reference v16 audit: PASS');
