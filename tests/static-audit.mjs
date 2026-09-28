@@ -37,7 +37,8 @@ assert.ok(css.includes('grid-template-columns:repeat(5,minmax(0,1fr))'),'bottom 
 assert.ok(css.includes('.tree-connectors'),'SVG connector layer must be styled');
 assert.ok(css.includes('.person-card.ancestor'),'ancestor card styling missing');
 assert.ok(css.includes('.generation-title:before')&&css.includes('.generation-title:after'),'generation ornaments missing');
-assert.ok(css.includes('.hero-panel{')&&css.includes('height:142px'),'mobile hero geometry must stay compact');
+assert.ok(css.includes('.hero-panel{')&&css.includes('height:130px'),'mobile hero geometry must be locked to 130px');
+assert.ok(css.includes('height:78px')&&css.includes('.tree-controls'),'tree control geometry must be compact');
 
 assert.ok(app.includes('function renderGenerationControls'),'generation chips renderer missing');
 assert.ok(app.includes('function renderTree'),'family tree renderer missing');
@@ -70,4 +71,4 @@ assert.ok(cloud.includes('resolveConflict'),'cloud conflicts must be explicit');
 assert.ok(app.includes('appConfirm'),'destructive actions must use shared confirm');
 assert.ok(!app.includes('window.confirm('),'native window.confirm is forbidden');
 
-console.log('Giaphaphamvan single-runtime reference UI audit: PASS');
+console.log('Giaphaphamvan reference geometry v13 audit: PASS');
