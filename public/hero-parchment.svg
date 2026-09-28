@@ -1,46 +1,43 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 864 300" preserveAspectRatio="xMidYMid slice">
 <defs>
-  <linearGradient id="paper" x1="0" y1="0" x2="0" y2="1"><stop stop-color="#fffaf0"/><stop offset=".44" stop-color="#f7ead4"/><stop offset="1" stop-color="#edd4b0"/></linearGradient>
-  <linearGradient id="mist" x1="0" y1="0" x2="1" y2="0"><stop stop-color="#fff" stop-opacity=".40"/><stop offset=".35" stop-color="#fff" stop-opacity=".04"/><stop offset=".65" stop-color="#fff" stop-opacity=".03"/><stop offset="1" stop-color="#fff" stop-opacity=".32"/></linearGradient>
-  <filter id="blur"><feGaussianBlur stdDeviation="3.0"/></filter>
-  <pattern id="grain" width="22" height="22" patternUnits="userSpaceOnUse"><circle cx="4" cy="5" r=".7" fill="#77502d" opacity=".05"/><circle cx="17" cy="16" r=".55" fill="#77502d" opacity=".032"/></pattern>
+  <linearGradient id="paper" x1="0" y1="0" x2="0" y2="1"><stop stop-color="#fbf0da"/><stop offset=".46" stop-color="#f3dfc0"/><stop offset="1" stop-color="#e5c49a"/></linearGradient>
+  <linearGradient id="wash" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#fff8e8" stop-opacity=".38"/><stop offset=".5" stop-color="#c69a62" stop-opacity=".05"/><stop offset="1" stop-color="#8f6338" stop-opacity=".09"/></linearGradient>
+  <pattern id="grain" width="18" height="18" patternUnits="userSpaceOnUse"><circle cx="3" cy="4" r=".65" fill="#70451f" opacity=".06"/><circle cx="14" cy="12" r=".5" fill="#9a6d3f" opacity=".055"/><path d="M1 16l5-1M11 3l4-1" stroke="#8c6138" stroke-width=".35" opacity=".05"/></pattern>
+  <filter id="soft"><feGaussianBlur stdDeviation="2.1"/></filter>
 </defs>
-<rect width="864" height="300" fill="url(#paper)"/><rect width="864" height="300" fill="url(#grain)"/>
+<rect width="864" height="300" fill="url(#paper)"/><rect width="864" height="300" fill="url(#grain)"/><rect width="864" height="300" fill="url(#wash)"/>
 
 <!-- layered ink-wash mountains -->
-<g fill="#77634d" filter="url(#blur)">
-  <path opacity=".12" d="M0 225L88 167l44 28 72-101 59 73 68-50 72 69 69-91 70 92 60-55 74 73 68-58 63 53 107-57v117H0z"/>
-  <path opacity=".15" d="M0 254l109-62 62 44 72-64 68 52 78-73 72 67 74-54 74 61 72-51 80 63 81-46 72 60v79H0z"/>
-  <path opacity=".08" d="M89 265l88-45 54 23 64-38 79 46 82-49 77 42 76-31 87 44 82-29 106 58v34H89z"/>
+<g fill="#735b43" filter="url(#soft)">
+  <path opacity=".12" d="M0 228L80 171l45 25 66-92 54 60 56-42 68 70 65-88 62 82 60-47 62 57 58-43 61 48 97-54 70 55v98H0z"/>
+  <path opacity=".10" d="M0 259l100-57 56 35 70-56 67 45 79-63 69 51 72-42 69 49 66-39 73 49 68-35 75 43v61H0z"/>
+  <path opacity=".065" d="M27 282l114-42 72 25 87-38 77 35 90-42 84 39 83-29 96 36 134-48v82H27z"/>
 </g>
 
-<!-- detailed pine on left -->
-<g fill="none" stroke="#5b432c" stroke-linecap="round" opacity=".34">
-  <path stroke-width="5.6" d="M-10 119C37 64 90 43 158 61M3 154c43-37 87-48 134-32M65 14c23 39 31 80 25 124M28 39c31 32 49 69 53 109"/>
-  <path stroke-width="1.75" d="M30 53L0 41M43 64L6 61M56 76L15 89M69 88l-39 21M82 100l-35 26M92 113l-29 28M86 37l14-27M100 42l25-22M114 49l34-13M124 58l39-1M134 69l38 14M17 132l-29 22M34 133l-31 8M50 134l-29-12"/>
-  <path stroke-width="1.1" d="M8 45l8 10m5-21 9 13m7-17 7 17m13-22 3 20m18-19-4 21m20-12-11 17m26-8-16 14"/>
+<!-- left pine and bamboo brushwork -->
+<g fill="none" stroke="#59422d" stroke-linecap="round" opacity=".31">
+  <path stroke-width="5.2" d="M-10 122C37 63 91 43 157 59M7 157c43-37 88-49 137-33M62 14c25 39 34 81 29 127M29 39c31 34 49 72 51 113"/>
+  <path stroke-width="1.8" d="M28 54L0 43M42 65L4 63M54 78L12 91M68 89l-39 23M80 101l-33 25M91 112l-28 27M83 37l14-25M97 42l24-23M110 48l31-14M119 57l37-3M129 68l36 13M19 130l-28 24M34 131l-31 8M48 132l-29-11"/>
+  <path stroke-width="1.2" d="M9 46l8 11m4-20 9 14m8-18 8 16m12-20 3 19m19-19-4 21m21-11-10 16m26-7-16 13"/>
 </g>
 
 <!-- right multi-tier ancestral pavilion -->
-<g fill="#6d4e34" opacity=".31">
-  <path d="M682 99h156v9H682z"/>
-  <path d="M699 70h121l32 29H667z"/>
-  <path d="M716 46h87l25 24H691z"/>
-  <path d="M734 26h52l18 20h-89z"/>
-  <path d="M658 98l29-16-11 16 24-7-17 20zm204 0-29-16 11 16-24-7 17 20z"/>
-  <rect x="702" y="108" width="9" height="105"/><rect x="741" y="108" width="10" height="105"/><rect x="781" y="108" width="10" height="105"/><rect x="821" y="108" width="8" height="105"/>
-  <path d="M694 148h145v6H694zm7 37h133v6H701z" opacity=".78"/>
-  <path d="M715 108l12 18 12-18 12 18 12-18 12 18 12-18" fill="none" stroke="#6d4e34" stroke-width="4"/>
+<g fill="#66472e" opacity=".28">
+  <path d="M682 100h158v9H682z"/>
+  <path d="M697 72h128l34 28H663z"/>
+  <path d="M715 48h92l25 24H690z"/>
+  <path d="M734 28h54l18 20h-90z"/>
+  <path d="M656 99l30-17-11 17 25-7-17 21zm210 0-30-17 11 17-25-7 17 21z"/>
+  <rect x="700" y="109" width="9" height="108"/><rect x="741" y="109" width="10" height="108"/><rect x="782" y="109" width="10" height="108"/><rect x="823" y="109" width="8" height="108"/>
+  <path d="M691 151h151v6H691zm8 38h136v6H699z" opacity=".76"/>
 </g>
+<g fill="none" stroke="#63462d" opacity=".24" stroke-linecap="round"><path stroke-width="4.4" d="M875 160c-44-42-90-56-139-39m120 73c-40-31-80-39-120-20m76-88c-17 33-24 69-20 105"/><path stroke-width="1.5" d="M822 127l40-12m-48 25 45 2m-53 12 42 16m-50 0 35 23"/></g>
 
-<!-- right pine around pavilion -->
-<g fill="none" stroke="#5a432c" stroke-linecap="round" opacity=".23"><path stroke-width="4.4" d="M875 155c-43-41-87-54-133-37m116 75c-40-32-79-39-119-19m75-89c-16 33-22 65-18 99"/><path stroke-width="1.5" d="M824 123l40-11m-50 25 45 2m-53 12 43 16m-53 1 36 24M847 211l12 46m-27-44-3 47m26-33 17-16m-19 28 21 5m-42-14-20-14m17 29-24 4"/></g>
+<!-- warm cloud and lotus etching -->
+<g fill="#9f733c" opacity=".15"><path d="M14 246c16-31 40-42 72-29-25 7-41 21-48 43 23-15 45-12 65 8-34-6-58 4-72 30-3-21-9-39-17-52z"/><path d="M850 247c-16-31-40-42-72-29 25 7 41 21 48 43-23-15-45-12-65 8 34-6 58 4 72 30 3-21 9-39 17-52z"/></g>
+<g fill="none" stroke="#9f7135" stroke-width="2" opacity=".20"><path d="M0 268c75-29 151-28 225 5 68 31 137 31 207 1 74-32 148-29 222 7 66 32 136 32 210-2"/><path d="M0 289c88-24 174-20 254 13 57 23 114 21 172-4 82-35 165-32 249 8 54 26 117 28 189 6"/></g>
+<g fill="none" stroke="#644a32" stroke-width="1.6" opacity=".27" stroke-linecap="round"><path d="M584 117q8-7 16 0q8-7 16 0M620 101q7-6 14 0q7-6 14 0"/></g>
 
-<!-- lotus / wave ornaments -->
-<g fill="#9b7037" opacity=".15"><path d="M13 246c16-31 40-41 72-28-25 8-41 21-48 43 23-14 45-11 66 9-34-7-59 4-72 30-4-21-10-39-18-54z"/><path d="M851 246c-16-31-40-41-72-28 25 8 41 21 48 43-23-14-45-11-66 9 34-7 59 4 72 30 4-21 10-39 18-54z"/></g>
-<g fill="none" stroke="#aa7b37" stroke-width="2" opacity=".20"><path d="M0 267c80-28 156-27 229 4 70 30 138 30 205 0 73-33 147-31 223 6 68 33 137 32 207-4"/><path d="M0 289c91-23 177-19 257 12 56 22 114 20 172-4 83-35 166-32 249 8 56 26 118 28 186 7"/><path d="M24 278q16-18 33 0q17-18 34 0m685 0q16-18 33 0q17-18 34 0"/></g>
-
-<!-- birds -->
-<g fill="none" stroke="#684d31" stroke-width="1.8" opacity=".27" stroke-linecap="round"><path d="M587 116q8-8 16 0q8-8 16 0M622 98q7-6 14 0q7-6 14 0"/></g>
-<rect width="864" height="300" fill="url(#mist)" opacity=".15"/>
+<!-- warm vignette -->
+<rect width="864" height="300" fill="none" stroke="#b88a4c" stroke-opacity=".10" stroke-width="12"/>
 </svg>
