@@ -1,0 +1,19 @@
+/* Final reference polish — keep approved card scale while using the full genealogy canvas. */
+#tree-view .tree-viewport{padding-top:8px;padding-bottom:8px}
+#tree-view .family-tree{height:100%!important;min-height:100%!important;justify-content:space-between!important;align-content:stretch!important}
+#tree-view .generation-column,#tree-view .generation-column[data-generation="1"],#tree-view .generation-column[data-generation="2"],#tree-view .generation-column[data-generation="3"],#tree-view .generation-column[data-generation="4"]{padding-bottom:0!important}
+#tree-view .generation-column[data-generation="4"]{padding-inline:1.2%!important}
+#tree-view .generation-title{margin-bottom:4px!important}
+
+/* Keep person cards visually close to the approved mock-up. */
+#tree-view .person-card{backdrop-filter:blur(1.5px);-webkit-backdrop-filter:blur(1.5px)}
+#tree-view .person-card.ancestor{background:linear-gradient(145deg,rgba(255,253,247,.99),rgba(255,249,238,.985))!important}
+#tree-view .generation-column[data-generation="2"] .person-card,#tree-view .generation-column[data-generation="3"] .person-card,#tree-view .generation-column[data-generation="4"] .person-card{background:linear-gradient(145deg,rgba(255,253,248,.985),rgba(250,244,234,.98))!important}
+
+/* Make the overview use the heritage parchment instead of a flat cream void. */
+#overview-view{position:relative;min-height:calc(100svh - 58px - 70px - env(safe-area-inset-top) - env(safe-area-inset-bottom));isolation:isolate}
+#overview-view:after{content:"";position:absolute;z-index:-1;left:-9px;right:-9px;top:286px;bottom:0;background:linear-gradient(180deg,rgba(255,248,236,0),rgba(244,226,198,.08)),url('/heritage-bg.svg?v=3') center 34%/cover no-repeat;opacity:.40;pointer-events:none}
+
+/* Slightly more pronounced premium surfaces on the overview. */
+#overview-view .source-status,#overview-view .stat-card,#overview-view .quick-card{border-color:rgba(133,91,43,.11);box-shadow:0 9px 20px rgba(78,46,21,.095),0 2px 5px rgba(78,46,21,.04),inset 0 1px rgba(255,255,255,.9)}
+#overview-view .quick-card:active,#overview-view .stat-card:active{transform:scale(.985)}
