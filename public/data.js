@@ -37,3 +37,13 @@ window.PHAM_VAN_SEED = {
     note: "Chỉ lưu dữ liệu thực tế đọc được từ Site projection; không tự tạo thêm thành viên."
   }
 };
+
+(() => {
+  const id = 'pham-van-approved-reference-css';
+  if (document.getElementById(id)) return;
+  const link = document.createElement('link');
+  link.id = id;
+  link.rel = 'stylesheet';
+  link.href = '/target-ui.css?v=1';
+  document.head.appendChild(link);
+})();
