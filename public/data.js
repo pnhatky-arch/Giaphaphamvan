@@ -50,15 +50,62 @@ window.PHAM_VAN_SEED = {
   ensureStyle('pham-van-approved-reference-css','/target-ui.css?v=3');
   ensureStyle('pham-van-reference-polish-css','/reference-polish.css?v=1');
   ensureStyle('pham-van-parchment-v4-css','/parchment-v4.css?v=4');
-  ensureStyle('pham-van-reference-exact-css','/reference-exact.css?v=1');
-  ensureStyle('pham-van-liquid-menu-css','/liquid-menu.css?v=8');
+  ensureStyle('pham-van-reference-exact-css','/reference-exact.css?v=2');
+  ensureStyle('pham-van-liquid-menu-css','/liquid-menu.css?v=9');
 
-  const referenceCrest='/reference-crest.webp?v=1';
-  const legacyCrest='/crest.svg?v=4';
-  const refreshCrest = () => document.querySelectorAll('img[src="/crest.svg"],img[src^="/crest.svg?"],img.top-logo').forEach(img => {
-    img.onerror=()=>{ if(!img.src.includes('crest.svg')) img.src=legacyCrest; };
-    if(!img.src.includes('reference-crest.webp')) img.src=referenceCrest;
+  const crispCrest='/crest.svg?v=5';
+  const rasterFallback='/reference-crest.webp?v=1';
+  const refreshCrest = () => document.querySelectorAll('img[src="/crest.svg"],img[src^="/crest.svg?"],img.top-logo,img.hero-crest').forEach(img => {
+    img.onerror=()=>{ if(!img.src.includes('reference-crest.webp')) img.src=rasterFallback; };
+    if(!img.src.includes('crest.svg?v=5')) img.src=crispCrest;
   });
-  if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', refreshCrest, {once:true});
-  else refreshCrest();
+
+  const setupAutoHideNav = () => {
+    const nav=document.getElementById('bottomNav');
+    if(!nav || nav.dataset.autoHideBound==='1') return;
+    nav.dataset.autoHideBound='1';
+    const body=document.body;
+    let lastScrollY=window.scrollY||0;
+    let touchY=null;
+    let lastTouchY=null;
+    let ticking=false;
+    const show=()=>{body.classList.add('nav-visible');body.classList.remove('nav-hidden');};
+    const hide=()=>{body.classList.add('nav-hidden');body.classList.remove('nav-visible');};
+    show();
+
+    window.addEventListener('scroll',()=>{
+      if(ticking) return;
+      ticking=true;
+      requestAnimationFrame(()=>{
+        const y=window.scrollY||0;
+        const delta=y-lastScrollY;
+        if(y<24) show();
+        else if(delta>10) hide();
+        else if(delta<-8) show();
+        lastScrollY=y;
+        ticking=false;
+      });
+    },{passive:true});
+
+    window.addEventListener('touchstart',event=>{
+      touchY=event.touches?.[0]?.clientY??null;
+      lastTouchY=touchY;
+    },{passive:true});
+    window.addEventListener('touchmove',event=>{
+      const current=event.touches?.[0]?.clientY;
+      if(current==null || lastTouchY==null) return;
+      const delta=current-lastTouchY;
+      if(delta<-11) hide();
+      else if(delta>11) show();
+      lastTouchY=current;
+    },{passive:true});
+    window.addEventListener('touchend',()=>{touchY=null;lastTouchY=null;},{passive:true});
+    nav.addEventListener('touchstart',show,{passive:true});
+    nav.addEventListener('pointerdown',show,{passive:true});
+    document.addEventListener('focusin',show,{passive:true});
+  };
+
+  const bootVisuals=()=>{refreshCrest();setupAutoHideNav();};
+  if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', bootVisuals, {once:true});
+  else bootVisuals();
 })();
