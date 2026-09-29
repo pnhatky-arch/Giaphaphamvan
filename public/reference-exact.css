@@ -1,37 +1,27 @@
-/* Single-background system — v6: one canonical Dong Son drum through every layer */
+/* Single-background system — v7: approved Dong Son artwork through every layer */
 :root{
   --reference-paper:#fbefda;
   --reference-paper-deep:#ecd1a5;
-  --glass-paper:rgba(255,250,240,.66);
-  --glass-paper-strong:rgba(255,250,240,.76);
+  --glass-paper:rgba(255,250,240,.62);
+  --glass-paper-strong:rgba(255,250,240,.72);
   --glass-line:rgba(164,111,46,.22);
 }
-
 html,body{background:#65080d!important}
 body{background:#65080d!important}
 .app-shell{
   position:relative!important;
   min-height:100svh!important;
   background:
-    linear-gradient(180deg,rgba(255,252,245,.035),rgba(248,235,212,.018)),
-    url('/heritage-bg.svg?v=7') center top/100% 100% no-repeat,
+    linear-gradient(180deg,rgba(255,252,245,.025),rgba(248,235,212,.012)),
+    url('/heritage-bg.svg?v=8') center top/100% 100% no-repeat,
     #f3dfbd!important;
   background-attachment:scroll!important;
 }
 main{padding-top:12px!important}
 .view{background:transparent!important}
-
-/* One crest image only; it is content, not another background artwork. */
 .top-brand{grid-template-columns:76px minmax(0,1fr)!important;gap:7px!important}
-.top-logo,
-.hero-crest{
-  content:url('/reference-crest.webp?v=2')!important;
-  object-fit:contain!important;
-  image-rendering:auto!important;
-}
+.top-logo,.hero-crest{content:url('/reference-crest.webp?v=2')!important;object-fit:contain!important;image-rendering:auto!important}
 .top-logo{width:76px!important;height:46px!important;filter:drop-shadow(0 1px 1px rgba(58,8,8,.18))!important}
-
-/* Hero is translucent so the single drum continues visibly underneath. */
 .hero-panel{
   height:138px!important;
   margin-top:4px!important;
@@ -39,84 +29,28 @@ main{padding-top:12px!important}
   overflow:hidden!important;
   border:1px solid rgba(194,139,49,.48)!important;
   border-radius:20px!important;
-  background:linear-gradient(180deg,rgba(255,252,245,.68),rgba(248,236,216,.54))!important;
-  box-shadow:0 8px 20px rgba(87,51,22,.10),inset 0 1px 0 rgba(255,255,255,.72)!important;
+  background:linear-gradient(180deg,rgba(255,252,245,.62),rgba(248,236,216,.48))!important;
+  box-shadow:0 8px 20px rgba(87,51,22,.10),inset 0 1px 0 rgba(255,255,255,.68)!important;
 }
 .hero-panel:after{display:none!important}
-.hero-panel>.hero-crest,
-.hero-panel>h1,
-.hero-panel>p,
-.hero-panel>.ornament{opacity:1!important;pointer-events:auto!important}
+.hero-panel>.hero-crest,.hero-panel>h1,.hero-panel>p,.hero-panel>.ornament{opacity:1!important;pointer-events:auto!important}
 .hero-crest{width:132px!important;height:61px!important;margin-top:-2px!important;filter:drop-shadow(0 2px 2px rgba(75,34,10,.16))!important}
 .hero-panel h1{margin-top:1px!important;font-size:16px!important;color:#704111!important;text-shadow:0 1px 0 rgba(255,255,255,.48)!important}
-.hero-panel p{margin-top:4px!important;color:#7b392c!important}
-.hero-panel .ornament{margin-top:5px!important}
-
-/* Every view is transparent: the same drum stays continuous across the whole app. */
-#overview-view,
-#tree-view,
-#members-view,
-#events-view,
-#documents-view,
-#settings-view,
-#tree-view .tree-stage,
-#tree-view .tree-viewport,
-#tree-view .family-tree{background:transparent!important}
+.hero-panel p{margin-top:4px!important;color:#7b392c!important}.hero-panel .ornament{margin-top:5px!important}
+#overview-view,#tree-view,#members-view,#events-view,#documents-view,#settings-view,#tree-view .tree-stage,#tree-view .tree-viewport,#tree-view .family-tree{background:transparent!important}
 #tree-view .tree-stage{border-radius:0!important;box-shadow:none!important}
-
-/* Cards expose the same drum through translucent cream material. */
-.surface,
-.member-row,
-.timeline-item,
-.document-row,
-.empty-state,
-.settings-group,
-.search-row,
-.source-status,
-.stat-card,
-.quick-card,
-.tree-controls,
-.account-card,
-.storage-metrics>div,
-.backup-action,
-.cloud-status{
-  background:linear-gradient(145deg,rgba(255,253,247,.72),rgba(248,238,222,.58))!important;
+.surface,.member-row,.timeline-item,.document-row,.empty-state,.settings-group,.search-row,.source-status,.stat-card,.quick-card,.tree-controls,.account-card,.storage-metrics>div,.backup-action,.cloud-status{
+  background:linear-gradient(145deg,rgba(255,253,247,.66),rgba(248,238,222,.52))!important;
   border-color:var(--glass-line)!important;
-  -webkit-backdrop-filter:none!important;
-  backdrop-filter:none!important;
-  box-shadow:0 8px 20px rgba(77,46,23,.075),inset 0 1px rgba(255,255,255,.58)!important;
+  -webkit-backdrop-filter:none!important;backdrop-filter:none!important;
+  box-shadow:0 8px 20px rgba(77,46,23,.075),inset 0 1px rgba(255,255,255,.56)!important;
 }
-
-/* Controls and buttons are translucent only; they own no image texture. */
-.segment,
-.display-segment,
-.theme-segment,
-.settings-display-segment,
-input,
-select,
-textarea,
-.ui-button,
-.secondary-button,
-.filter-button,
-.generation-chip{
-  background:rgba(255,251,244,.58)!important;
+.segment,.display-segment,.theme-segment,.settings-display-segment,input,select,textarea,.ui-button,.secondary-button,.filter-button,.generation-chip{
+  background:rgba(255,251,244,.54)!important;
   border-color:rgba(135,91,43,.18)!important;
 }
-.tree-control-primary,
-.primary-circle,
-.generation-chip.active{
-  background:linear-gradient(145deg,rgba(177,22,34,.86),rgba(105,7,16,.88))!important;
-}
-.display-segment button.active,
-.theme-segment button.active,
-.settings-display-segment button.active{
-  background:rgba(255,250,239,.70)!important;
-}
-
+.tree-control-primary,.primary-circle,.generation-chip.active{background:linear-gradient(145deg,rgba(177,22,34,.84),rgba(105,7,16,.86))!important}
+.display-segment button.active,.theme-segment button.active,.settings-display-segment button.active{background:rgba(255,250,239,.66)!important}
 #tree-view .generation-title{background:transparent!important;color:#8d591a!important;text-shadow:0 1px rgba(255,255,255,.58)!important}
-#tree-view .person-card{
-  background:linear-gradient(145deg,rgba(255,253,248,.76),rgba(251,246,237,.64))!important;
-  border-color:rgba(139,91,39,.14)!important;
-  box-shadow:0 5px 12px rgba(76,46,22,.07)!important;
-}
-#tree-view .person-card.ancestor{border-color:#cf9228!important;background:linear-gradient(145deg,rgba(255,254,249,.82),rgba(255,249,238,.68))!important}
+#tree-view .person-card{background:linear-gradient(145deg,rgba(255,253,248,.70),rgba(251,246,237,.58))!important;border-color:rgba(139,91,39,.14)!important;box-shadow:0 5px 12px rgba(76,46,22,.07)!important}
+#tree-view .person-card.ancestor{border-color:#cf9228!important;background:linear-gradient(145deg,rgba(255,254,249,.78),rgba(255,249,238,.64))!important}
