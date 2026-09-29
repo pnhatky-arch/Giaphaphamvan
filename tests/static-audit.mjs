@@ -30,34 +30,37 @@ assert.ok(!index.includes('id="drawer"'),'duplicate drawer navigation must be re
 assert.ok(css.includes('.tree-connectors'),'SVG connector layer must be styled');
 assert.ok(css.includes('.person-card.ancestor'),'ancestor card styling missing');
 
-assert.ok(data.includes("/reference-exact.css?v=6"),'single-background visual stylesheet must be v6');
+assert.ok(data.includes("/reference-exact.css?v=7"),'single-background visual stylesheet must be v7');
 assert.ok(data.includes("/liquid-menu.css?v=11"),'navigation stylesheet must be v11');
 assert.ok(data.includes("const approvedCrest='/reference-crest.webp?v=2'"),'approved crest must remain canonical');
 
-/* Exactly one decorative background asset is allowed. */
-assert.ok(exact.includes("url('/heritage-bg.svg?v=7')"),'canonical Dong Son background missing');
-assert.ok(exact.includes('100% 100% no-repeat'),'canonical drum must appear once, never tiled or repeated');
+/* One decorative background asset only; every UI layer reveals it. */
+assert.ok(exact.includes("url('/heritage-bg.svg?v=8')"),'canonical approved Dong Son background missing');
+assert.ok(exact.includes('100% 100% no-repeat'),'canonical artwork must appear once across the app canvas');
 assert.ok(!exact.includes('reference-hero.webp'),'hero must not use a second background image');
 assert.ok(!exact.includes('tree-parchment.svg'),'tree must not use a second background image');
 assert.ok(!exact.includes('dongson-header.svg'),'header must not use a second background image');
 assert.ok(!liquid.includes('url('),'navigation may use color/glass only, never another image');
 for(const view of ['#overview-view','#tree-view','#members-view','#events-view','#documents-view','#settings-view']) assert.ok(exact.includes(view),`transparent shared-background view missing ${view}`);
 assert.ok(exact.includes('background:transparent!important'),'views must expose the same continuous background');
-assert.ok(exact.includes('.surface')&&exact.includes('rgba(255,253,247,.72)'),'cards must be translucent over the same background');
-assert.ok(exact.includes('.ui-button')&&exact.includes('rgba(255,251,244,.58)'),'buttons must be translucent over the same background');
-assert.ok(liquid.includes('rgba(162,24,39,.76)')&&liquid.includes('rgba(104,7,17,.82)'),'red dock must expose the same background');
-assert.ok(liquid.includes('rgba(125,7,17,.76)')&&liquid.includes('rgba(82,4,11,.78)'),'topbar must expose the same background');
+assert.ok(exact.includes('.surface')&&exact.includes('rgba(255,253,247,.66)'),'cards must reveal the shared background');
+assert.ok(exact.includes('.ui-button')&&exact.includes('rgba(255,251,244,.54)'),'buttons must reveal the shared background');
+assert.ok(liquid.includes('rgba(162,24,39,.76)')&&liquid.includes('rgba(104,7,17,.82)'),'red dock must expose the shared background');
+assert.ok(liquid.includes('rgba(125,7,17,.76)')&&liquid.includes('rgba(82,4,11,.78)'),'topbar must expose the shared background');
 assert.ok(liquid.includes('@keyframes goldTabSweep'),'selected tab must retain the one-shot gold tracer');
 assert.ok(liquid.includes('animation:goldTabSweep .9s'),'gold tracer must run once per selection');
 assert.ok(liquid.includes('grid-template-columns:repeat(6,minmax(0,1fr))'),'bottom navigation must use six equal tabs');
 
-assert.ok(heritage.includes('Main Dong Son drum medallion'),'single Dong Son medallion marker missing');
+/* Approved reference geometry: faint upper arcs, one large lower drum, birds/figures, bottom waves. */
+assert.ok(heritage.includes('approved upper partial drum arcs'),'approved upper arc field missing');
+assert.ok(heritage.includes('Main Dong Son drum medallion: one drum only'),'single main drum marker missing');
 assert.ok(heritage.includes('central Đông Sơn starburst'),'Dong Son starburst marker missing');
-assert.ok(heritage.includes('circular scenes: birds'),'Dong Son bird ring missing');
+assert.ok(heritage.includes('circular scenes: Lac birds'),'Dong Son bird ring missing');
 assert.ok(heritage.includes('circular scenes: people, deer and boats'),'Dong Son narrative ring missing');
-assert.ok(!heritage.includes('upper drum arcs'),'no second upper drum is allowed');
-assert.ok(!heritage.includes('lower waves / water bands'),'no separate scenery outside the single drum is allowed');
-assert.ok(heritage.includes('preserveAspectRatio="none"'),'single drum must scale with the full app canvas');
+assert.ok(heritage.includes('lower waves from approved mockup'),'approved lower wave band missing');
+assert.ok(!heritage.includes('mountain'),'mountain scenery is forbidden in the approved Dong Son background');
+assert.ok(!heritage.includes('pavilion'),'pavilion scenery is forbidden in the approved Dong Son background');
+assert.ok(heritage.includes('preserveAspectRatio="none"'),'background must scale continuously with the app canvas');
 
 assert.ok(app.includes('function renderTree'),'family tree renderer missing');
 assert.ok(app.includes('function drawConnectors'),'coordinate connector renderer missing');
@@ -69,11 +72,11 @@ assert.ok(cloud.includes('resolveConflict'),'cloud conflicts must be explicit');
 assert.ok(app.includes('appConfirm'),'destructive actions must use shared confirm');
 assert.ok(!app.includes('window.confirm('),'native window.confirm is forbidden');
 
-assert.ok(sw.includes("giaphaphamvan-v32"),'service worker cache version mismatch');
-for(const asset of ['/reference-exact.css?v=6','/liquid-menu.css?v=11','/reference-crest.webp?v=2','/heritage-bg.svg?v=7']) assert.ok(sw.includes(asset),`service worker missing ${asset}`);
+assert.ok(sw.includes("giaphaphamvan-v33"),'service worker cache version mismatch');
+for(const asset of ['/reference-exact.css?v=7','/liquid-menu.css?v=11','/reference-crest.webp?v=2','/heritage-bg.svg?v=8']) assert.ok(sw.includes(asset),`service worker missing ${asset}`);
 for(const retired of ['/reference-hero.webp','/dongson-header.svg','/tree-parchment.svg','/hero-parchment.svg']) assert.ok(!sw.includes(retired),`retired background must not be precached: ${retired}`);
 assert.ok(sw.includes("cache:'no-store'"),'service worker must bypass stale HTTP artwork cache');
 assert.ok(wrangler.includes('"directory": "./public"'),'Wrangler must deploy ./public');
 assert.ok(manifest.includes('"theme_color": "#650912"')||manifest.includes('"theme_color": "#65080d"'),'PWA theme must be heritage red');
 
-console.log('Giaphaphamvan corrected single Dong Son drum v32 audit: PASS');
+console.log('Giaphaphamvan approved Dong Son reference v33 audit: PASS');
