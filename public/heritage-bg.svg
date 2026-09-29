@@ -1,92 +1,171 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 1800" preserveAspectRatio="xMidYMid slice">
 <defs>
   <linearGradient id="paper" x1="0" y1="0" x2="0" y2="1">
-    <stop stop-color="#fbf2e3"/>
-    <stop offset=".42" stop-color="#f2dfc3"/>
-    <stop offset="1" stop-color="#e7cba5"/>
+    <stop stop-color="#fff8e9"/>
+    <stop offset=".42" stop-color="#f7e7ca"/>
+    <stop offset="1" stop-color="#ecd1a5"/>
   </linearGradient>
-  <radialGradient id="light" cx="50%" cy="18%" r="78%">
-    <stop stop-color="#fffdf7" stop-opacity=".58"/>
-    <stop offset=".52" stop-color="#fff8ea" stop-opacity=".12"/>
-    <stop offset="1" stop-color="#9d7040" stop-opacity=".045"/>
+  <radialGradient id="glow" cx="50%" cy="22%" r="82%">
+    <stop stop-color="#fffdf8" stop-opacity=".60"/>
+    <stop offset=".54" stop-color="#fff7e6" stop-opacity=".16"/>
+    <stop offset="1" stop-color="#b67a35" stop-opacity=".045"/>
   </radialGradient>
   <linearGradient id="edge" x1="0" y1="0" x2="1" y2="0">
-    <stop stop-color="#8b5b2d" stop-opacity=".065"/>
-    <stop offset=".12" stop-color="#8b5b2d" stop-opacity="0"/>
-    <stop offset=".88" stop-color="#8b5b2d" stop-opacity="0"/>
-    <stop offset="1" stop-color="#8b5b2d" stop-opacity=".065"/>
+    <stop stop-color="#9a641f" stop-opacity=".055"/>
+    <stop offset=".10" stop-color="#9a641f" stop-opacity="0"/>
+    <stop offset=".90" stop-color="#9a641f" stop-opacity="0"/>
+    <stop offset="1" stop-color="#9a641f" stop-opacity=".055"/>
   </linearGradient>
-  <pattern id="grain" width="28" height="28" patternUnits="userSpaceOnUse">
-    <circle cx="5" cy="8" r=".7" fill="#7b522b" opacity=".045"/>
-    <circle cx="21" cy="20" r=".6" fill="#9a7041" opacity=".04"/>
-    <path d="M2 25l8-1M16 4l6-1M10 15l4-.7" stroke="#7b522b" stroke-width=".42" opacity=".04"/>
+  <pattern id="grain" width="30" height="30" patternUnits="userSpaceOnUse">
+    <circle cx="5" cy="8" r=".7" fill="#86551f" opacity=".035"/>
+    <circle cx="22" cy="21" r=".55" fill="#a36c2c" opacity=".03"/>
+    <path d="M3 26l8-1M17 4l6-1M10 16l5-.7" stroke="#875b2b" stroke-width=".4" opacity=".03"/>
+  </pattern>
+
+  <!-- Dong Son decorative symbols -->
+  <g id="bird" fill="none" stroke="#a36d2a" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M-42 2c17-15 34-20 52-15 11 3 20 10 29 21-16-3-28-2-36 3 13 5 25 13 36 24-18-8-34-11-48-8-12 3-23 10-33 21 6-18 14-31 24-40-8-1-16-3-24-6z"/>
+    <path d="M-10 1c8-8 15-15 21-23M-1 8c13-4 26-4 39-1M-3 16c13 2 25 6 36 13"/>
+    <path d="M-34 8l-18 8 15 2-13 10 19-4"/>
+  </g>
+  <g id="human" fill="none" stroke="#a16a29" stroke-linecap="round" stroke-linejoin="round">
+    <circle cx="0" cy="-18" r="4"/>
+    <path d="M0-14v24M0-7l-12 9M0-7l12 9M0 10l-9 17M0 10l9 17"/>
+    <path d="M-12 2l-6-5M12 2l6-5"/>
+  </g>
+  <g id="deer" fill="none" stroke="#a16a29" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M-24 5h28l12-9 9 2-7 6 8 3-11 4-8 10M-18 5l-5 18M-4 5l-2 18M6 6l9 17"/>
+    <path d="M15-3l2-10m2 10 5-8m-7 8-5-8"/>
+  </g>
+  <g id="boat" fill="none" stroke="#a16a29" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M-55 10c28 13 64 13 110 0-13 18-31 27-55 27S-42 28-55 10z"/>
+    <path d="M-40 10l10-17 12 17M-10 10L0-11l10 21M20 10l10-17 12 17"/>
+  </g>
+
+  <pattern id="triangles" width="28" height="14" patternUnits="userSpaceOnUse">
+    <path d="M0 14 7 0l7 14L21 0l7 14" fill="none" stroke="#a46f2b" stroke-width="1" opacity=".72"/>
+  </pattern>
+  <pattern id="meander" width="44" height="18" patternUnits="userSpaceOnUse">
+    <path d="M0 3h18v12H8V8h28v7H26V3h18" fill="none" stroke="#9d6826" stroke-width="1.2" opacity=".70"/>
   </pattern>
 </defs>
 
+<!-- warm cream parchment -->
 <rect width="1200" height="1800" fill="url(#paper)"/>
 <rect width="1200" height="1800" fill="url(#grain)"/>
-<rect width="1200" height="1800" fill="url(#light)"/>
+<rect width="1200" height="1800" fill="url(#glow)"/>
 <rect width="1200" height="1800" fill="url(#edge)"/>
 
-<!-- crisp ancestral mountain layers -->
-<g fill="#80664d">
-  <path opacity=".075" d="M0 620L104 530l82 66 118-156 104 106 108-133 101 111 92-86 126 135 105-94 130 135 130-92v276H0z"/>
-  <path opacity=".085" d="M0 940l130-98 82 69 125-128 106 92 132-151 120 120 115-96 127 121 103-78 160 142v280H0z"/>
-  <path opacity=".07" d="M0 1368l164-119 115 70 132-118 122 82 141-101 121 73 146-96 123 88 136-76v330H0z"/>
-  <path opacity=".048" d="M0 1570l182-82 126 61 147-76 126 68 163-90 146 85 136-61 174 97v228H0z"/>
+<!-- faint upper drum arcs, visible behind hero and cards -->
+<g fill="none" stroke="#aa762f" opacity=".115">
+  <circle cx="600" cy="82" r="420" stroke-width="2.4"/>
+  <circle cx="600" cy="82" r="385" stroke-width="1.5" stroke-dasharray="10 9"/>
+  <circle cx="600" cy="82" r="346" stroke-width="1.2"/>
+  <circle cx="600" cy="82" r="310" stroke-width="1.2" stroke-dasharray="3 8"/>
+</g>
+<g opacity=".11">
+  <path d="M0 210h1200v18H0z" fill="url(#triangles)"/>
+  <path d="M0 246h1200v18H0z" fill="url(#meander)"/>
 </g>
 
-<!-- left pine: crisp brush strokes -->
-<g fill="none" stroke="#5b4129" stroke-linecap="round" stroke-linejoin="round" opacity=".22">
-  <path stroke-width="9" d="M-25 238C70 153 165 126 264 152M0 316c79-63 157-82 235-56M94 22c41 89 53 185 37 290M42 81c61 72 87 149 79 231"/>
-  <path stroke-width="2.2" d="M46 176L-7 155M70 187L4 186M94 200l-70 34M120 213l-61 43M144 231l-50 52M170 249l-41 54M132 104l25-54M161 113l43-45M188 128l54-28M208 150l60-6M221 176l58 22M228 204l50 40"/>
-  <path stroke-width="1.3" d="M19 155l15 20m8-36 18 27m12-39 17 28m19-47 9 33m32-38-5 38m41-31-17 34m47-15-29 29M15 277l42-2m-30 23 45-11m-27 34 45-21"/>
+<!-- side flying birds, echoing the approved mockup -->
+<g opacity=".14" stroke-width="2">
+  <use href="#bird" transform="translate(126 338) scale(1.45) rotate(-11)"/>
+  <use href="#bird" transform="translate(1070 352) scale(-1.45 1.45) rotate(-11)"/>
+  <use href="#bird" transform="translate(106 948) scale(1.05) rotate(8)"/>
+  <use href="#bird" transform="translate(1094 987) scale(-1.05 1.05) rotate(8)"/>
+  <use href="#bird" transform="translate(122 1488) scale(1.18) rotate(-7)"/>
+  <use href="#bird" transform="translate(1080 1510) scale(-1.18 1.18) rotate(-7)"/>
 </g>
 
-<!-- right upper ancestral pavilion -->
-<g fill="#704b2d" opacity=".17">
-  <path d="M898 402h232v13H898z"/>
-  <path d="M923 354h184l48 48H875z"/>
-  <path d="M948 312h136l36 42H913z"/>
-  <path d="M979 278h72l27 34H951z"/>
-  <rect x="922" y="415" width="15" height="180"/>
-  <rect x="977" y="415" width="15" height="180"/>
-  <rect x="1032" y="415" width="15" height="180"/>
-  <rect x="1087" y="415" width="15" height="180"/>
-  <path d="M878 399l40-24-14 24 33-10-24 30zm276 0-40-24 14 24-33-10 24 30z"/>
-  <path d="M904 466h218v8H904zm12 61h194v8H916z" opacity=".72"/>
+<!-- Main Dong Son drum medallion -->
+<g transform="translate(600 1110)" fill="none" stroke="#9f6925">
+  <circle r="520" stroke-width="2.2" opacity=".16"/>
+  <circle r="490" stroke-width="1.1" opacity=".13"/>
+  <circle r="454" stroke-width="18" stroke-dasharray="1 12" opacity=".10"/>
+  <circle r="424" stroke-width="1.4" opacity=".14"/>
+  <circle r="394" stroke-width="16" stroke-dasharray="10 10" opacity=".075"/>
+  <circle r="365" stroke-width="1.4" opacity=".14"/>
+  <circle r="322" stroke-width="1.2" stroke-dasharray="5 8" opacity=".12"/>
+  <circle r="276" stroke-width="1.5" opacity=".15"/>
+  <circle r="236" stroke-width="1.2" stroke-dasharray="4 7" opacity=".12"/>
+  <circle r="184" stroke-width="1.5" opacity=".14"/>
 </g>
 
-<!-- right pine / bamboo -->
-<g fill="none" stroke="#5c422b" stroke-linecap="round" opacity=".17">
-  <path stroke-width="7" d="M1214 650c-96-78-192-99-286-64m254 139c-80-60-158-71-233-33m149-169c-31 67-41 136-29 206"/>
-  <path stroke-width="2" d="M1111 613l73-24m-88 52 84 4m-99 30 77 31m-92 1 66 48m-97-117l-52-45m66 79-72-25"/>
+<!-- geometric ring bands -->
+<g opacity=".125">
+  <circle cx="600" cy="1110" r="474" fill="none" stroke="#9d6826" stroke-width="28" stroke-dasharray="2 20"/>
+  <circle cx="600" cy="1110" r="343" fill="none" stroke="#9d6826" stroke-width="22" stroke-dasharray="14 10"/>
+  <circle cx="600" cy="1110" r="256" fill="none" stroke="#9d6826" stroke-width="18" stroke-dasharray="2 14"/>
 </g>
 
-<!-- lower-left secondary ancestral gate -->
-<g fill="#724d2f" opacity=".12">
-  <path d="M58 1322h204v13H58zM83 1281h154l42 41H42zM110 1248h100l28 33H80z"/>
-  <rect x="83" y="1335" width="14" height="166"/><rect x="142" y="1335" width="14" height="166"/><rect x="201" y="1335" width="14" height="166"/><rect x="245" y="1335" width="13" height="166"/>
+<!-- central Đông Sơn starburst -->
+<g transform="translate(600 1110)" fill="#a66f29" opacity=".15">
+  <path d="M0-166 22-63 83-144 64-39 144-83 62-14 166 0 62 14 144 83 64 39 83 144 22 63 0 166-22 63-83 144-64 39-144 83-62 14-166 0-62-14-144-83-64-39-83-144-22-63z"/>
+  <circle r="42" fill="#f6e4c3" opacity=".72"/>
+  <circle r="28" fill="none" stroke="#a66f29" stroke-width="2" opacity=".80"/>
 </g>
 
-<!-- cloud linework and birds -->
-<g fill="none" stroke="#8d6538" stroke-linecap="round" opacity=".13">
-  <path stroke-width="2.2" d="M35 514q38-27 76 0t76 0M940 735q41-29 82 0t82 0M81 1090q47-31 94 0t94 0M886 1456q38-25 76 0t76 0"/>
-  <path stroke-width="1.7" d="M707 701q14-13 28 0q14-13 28 0M768 657q11-10 22 0q11-10 22 0M366 1200q13-12 26 0q13-12 26 0"/>
+<!-- circular scenes: birds -->
+<g opacity=".14" stroke-width="1.9">
+  <use href="#bird" transform="translate(600 693) scale(.72) rotate(0)"/>
+  <use href="#bird" transform="translate(808 752) scale(.72) rotate(45)"/>
+  <use href="#bird" transform="translate(954 902) scale(.72) rotate(88)"/>
+  <use href="#bird" transform="translate(1008 1110) scale(.72) rotate(90)"/>
+  <use href="#bird" transform="translate(938 1327) scale(.72) rotate(135)"/>
+  <use href="#bird" transform="translate(790 1475) scale(.72) rotate(180)"/>
+  <use href="#bird" transform="translate(600 1520) scale(.72) rotate(180)"/>
+  <use href="#bird" transform="translate(406 1472) scale(.72) rotate(225)"/>
+  <use href="#bird" transform="translate(258 1324) scale(.72) rotate(270)"/>
+  <use href="#bird" transform="translate(192 1110) scale(.72) rotate(270)"/>
+  <use href="#bird" transform="translate(248 900) scale(.72) rotate(315)"/>
+  <use href="#bird" transform="translate(398 752) scale(.72) rotate(0)"/>
 </g>
 
-<!-- crisp parchment tide lines -->
-<g fill="none" stroke="#9b6c35" stroke-width="3" opacity=".14">
-  <path d="M0 1514c122-62 241-67 356-15 103 46 207 48 314 7 126-49 247-40 364 28 56 33 111 45 166 36"/>
-  <path d="M0 1591c140-54 270-49 389 15 88 48 178 51 270 9 119-55 240-47 364 24 59 34 118 43 177 27"/>
-  <path d="M0 1670c149-41 292-34 429 21 72 29 147 27 226-5 117-48 239-42 366 17 64 30 124 39 179 26"/>
+<!-- circular scenes: people, deer and boats -->
+<g opacity=".13" stroke-width="1.7">
+  <use href="#human" transform="translate(600 816) scale(.86)"/>
+  <use href="#human" transform="translate(705 840) scale(.80) rotate(18 0 0)"/>
+  <use href="#deer" transform="translate(795 912) scale(.86)"/>
+  <use href="#boat" transform="translate(815 1040) scale(.72) rotate(76)"/>
+  <use href="#human" transform="translate(804 1218) scale(.84) rotate(170 0 0)"/>
+  <use href="#deer" transform="translate(723 1354) scale(.82) rotate(180)"/>
+  <use href="#boat" transform="translate(600 1400) scale(.72) rotate(180)"/>
+  <use href="#human" transform="translate(478 1350) scale(.84) rotate(180 0 0)"/>
+  <use href="#deer" transform="translate(390 1264) scale(.82) rotate(180)"/>
+  <use href="#boat" transform="translate(374 1110) scale(.72) rotate(-90)"/>
+  <use href="#human" transform="translate(406 956) scale(.82)"/>
+  <use href="#deer" transform="translate(486 850) scale(.82)"/>
 </g>
 
-<!-- lotus corner etching -->
-<g fill="#9b6d36" opacity=".10">
-  <path d="M20 1682c24-48 62-65 113-37-40 9-66 30-78 64 37-24 73-20 109 14-55-10-95 6-119 50-6-34-14-64-25-91z"/>
-  <path d="M1180 1682c-24-48-62-65-113-37 40 9 66 30 78 64-37-24-73-20-109 14 55-10 95 6 119 50 6-34 14-64 25-91z"/>
+<!-- key-fret ring accents -->
+<g opacity=".13" fill="none" stroke="#9e6928" stroke-width="1.6">
+  <path d="M198 1090h54v-22h-32v-22h54v44h54v22h-76v22h-54z"/>
+  <path d="M1002 1090h-54v-22h32v-22h-54v44h-54v22h76v22h54z"/>
+  <path d="M580 708v54h-22v-32h-22v54h44v54h22v-76h22v-54z"/>
+  <path d="M580 1512v-54h-22v32h-22v-54h44v-54h22v76h22v54z"/>
 </g>
 
-<rect width="1200" height="1800" fill="none" stroke="#b48245" stroke-opacity=".10" stroke-width="18"/>
+<!-- lower waves / water bands from approved preview -->
+<g fill="none" stroke="#a8732f" opacity=".14">
+  <path stroke-width="2.4" d="M0 1528c93-42 183-43 271-2 91 42 182 42 273 0 97-45 194-43 291 6 86 43 174 44 265 3 35-16 68-22 100-18"/>
+  <path stroke-width="2.2" d="M0 1584c102-38 200-34 294 13 78 39 158 39 239 1 104-50 210-48 319 8 74 38 151 40 231 6 43-18 82-22 117-13"/>
+  <path stroke-width="2" d="M0 1644c117-33 226-26 327 21 67 31 136 29 207-6 101-50 204-46 309 11 68 37 138 42 211 15 55-20 104-19 146 5"/>
+  <path stroke-width="1.8" d="M0 1700c126-26 245-16 357 28 55 22 111 20 168-5 94-42 190-38 288 10 73 36 148 41 225 15 63-21 117-16 162 13"/>
+</g>
+
+<!-- subtle cloud curls -->
+<g fill="none" stroke="#ac7630" stroke-linecap="round" opacity=".11">
+  <path stroke-width="2" d="M24 520q46-31 92 0t92 0M982 553q49-34 98 0t98 0M38 1330q42-29 84 0t84 0M1010 1385q40-27 80 0t80 0"/>
+</g>
+
+<!-- top/bottom ceremonial borders -->
+<g opacity=".10">
+  <path d="M0 36h1200v18H0z" fill="url(#meander)"/>
+  <path d="M0 69h1200v14H0z" fill="url(#triangles)"/>
+  <path d="M0 1722h1200v14H0z" fill="url(#triangles)"/>
+  <path d="M0 1750h1200v18H0z" fill="url(#meander)"/>
+</g>
+
+<rect x="9" y="9" width="1182" height="1782" rx="22" fill="none" stroke="#b98138" stroke-opacity=".09" stroke-width="3"/>
 </svg>
