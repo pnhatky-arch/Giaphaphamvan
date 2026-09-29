@@ -1,10 +1,10 @@
-/* Single approved-background system — v22; exact artwork under true Liquid Glass */
+/* Single approved-background system — v23; exact artwork at 10% under true Liquid Glass */
 :root{--reference-paper:#f5ddb4;--glass-clear:rgba(255,251,243,.24);--glass-clear-strong:rgba(255,251,243,.34);--glass-line:rgba(255,245,220,.46);--glass-gold:rgba(187,128,42,.30)}
 html,body{background:#65080d!important}body{background:#65080d!important}
 .app-shell{position:relative!important;min-height:100svh!important;background:#f4ddb6!important;isolation:isolate!important;overflow-x:hidden!important}
-/* Exactly one approved artwork. No tiling, no stitching, no redraw, no image-level blur or tone edits. */
+/* Exactly one approved artwork. No tiling, no stitching, no redraw. The artwork is intentionally shown at 10% opacity. */
 .heritage-canvas{position:absolute!important;inset:0!important;z-index:0!important;overflow:hidden!important;pointer-events:none!important;min-height:100%!important;background:#f4ddb6!important}
-.heritage-bg-image{position:absolute!important;top:0!important;left:0!important;width:100%!important;height:auto!important;max-width:none!important;display:block!important;object-fit:contain!important;object-position:center top!important;opacity:1!important;filter:none!important;transform:translate3d(0,0,0)!important;-webkit-backface-visibility:hidden!important;backface-visibility:hidden!important;image-rendering:auto!important}
+.heritage-bg-image{position:absolute!important;top:0!important;left:0!important;width:100%!important;height:auto!important;max-width:none!important;display:block!important;object-fit:contain!important;object-position:center top!important;opacity:.10!important;filter:none!important;transform:translate3d(0,0,0)!important;-webkit-backface-visibility:hidden!important;backface-visibility:hidden!important;image-rendering:auto!important}
 .heritage-canvas>img:not(.heritage-bg-image),.heritage-continuation{display:none!important}.heritage-canvas::before,.heritage-canvas::after{content:none!important;display:none!important}
 .topbar,main{position:relative!important;z-index:1!important}.bottom-nav{z-index:120!important}main{padding-top:12px!important}.view{background:transparent!important}
 #overview-view,#tree-view,#members-view,#events-view,#documents-view,#settings-view,#tree-view .tree-stage,#tree-view .tree-viewport,#tree-view .family-tree{background:transparent!important;background-image:none!important}#tree-view .tree-stage{border-radius:0!important;box-shadow:none!important}
