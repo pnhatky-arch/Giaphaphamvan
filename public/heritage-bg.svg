@@ -1,30 +1,92 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 1800" preserveAspectRatio="xMidYMid slice">
 <defs>
-  <linearGradient id="paper" x1="0" y1="0" x2="0" y2="1"><stop stop-color="#f8ecd7"/><stop offset=".46" stop-color="#efd9ba"/><stop offset="1" stop-color="#e1c39b"/></linearGradient>
-  <radialGradient id="glow" cx="48%" cy="24%" r="72%"><stop stop-color="#fff7e7" stop-opacity=".46"/><stop offset=".52" stop-color="#fff7e7" stop-opacity=".10"/><stop offset="1" stop-color="#9c6f42" stop-opacity=".06"/></radialGradient>
-  <pattern id="grain" width="24" height="24" patternUnits="userSpaceOnUse"><circle cx="5" cy="7" r=".75" fill="#7d542c" opacity=".055"/><circle cx="18" cy="19" r=".55" fill="#987047" opacity=".04"/><path d="M2 21l7-1M15 4l5-1" stroke="#805a34" stroke-width=".4" opacity=".04"/></pattern>
-  <filter id="soft"><feGaussianBlur stdDeviation="7"/></filter>
+  <linearGradient id="paper" x1="0" y1="0" x2="0" y2="1">
+    <stop stop-color="#fbf2e3"/>
+    <stop offset=".42" stop-color="#f2dfc3"/>
+    <stop offset="1" stop-color="#e7cba5"/>
+  </linearGradient>
+  <radialGradient id="light" cx="50%" cy="18%" r="78%">
+    <stop stop-color="#fffdf7" stop-opacity=".58"/>
+    <stop offset=".52" stop-color="#fff8ea" stop-opacity=".12"/>
+    <stop offset="1" stop-color="#9d7040" stop-opacity=".045"/>
+  </radialGradient>
+  <linearGradient id="edge" x1="0" y1="0" x2="1" y2="0">
+    <stop stop-color="#8b5b2d" stop-opacity=".065"/>
+    <stop offset=".12" stop-color="#8b5b2d" stop-opacity="0"/>
+    <stop offset=".88" stop-color="#8b5b2d" stop-opacity="0"/>
+    <stop offset="1" stop-color="#8b5b2d" stop-opacity=".065"/>
+  </linearGradient>
+  <pattern id="grain" width="28" height="28" patternUnits="userSpaceOnUse">
+    <circle cx="5" cy="8" r=".7" fill="#7b522b" opacity=".045"/>
+    <circle cx="21" cy="20" r=".6" fill="#9a7041" opacity=".04"/>
+    <path d="M2 25l8-1M16 4l6-1M10 15l4-.7" stroke="#7b522b" stroke-width=".42" opacity=".04"/>
+  </pattern>
 </defs>
-<rect width="1200" height="1800" fill="url(#paper)"/><rect width="1200" height="1800" fill="url(#grain)"/><rect width="1200" height="1800" fill="url(#glow)"/>
 
-<!-- layered ancestral mountains -->
-<g fill="#7a624b" filter="url(#soft)">
-  <path opacity=".11" d="M0 690L130 582l91 73 112-145 101 91 116-172 116 146 108-126 138 162 101-84 107 131v285H0z"/>
-  <path opacity=".085" d="M0 1108l136-118 93 64 117-132 103 93 125-149 122 113 106-88 131 112 111-76 156 151v294H0z"/>
-  <path opacity=".065" d="M0 1475l171-122 105 68 147-111 122 75 128-104 120 78 145-98 121 82 141-90v302H0z"/>
+<rect width="1200" height="1800" fill="url(#paper)"/>
+<rect width="1200" height="1800" fill="url(#grain)"/>
+<rect width="1200" height="1800" fill="url(#light)"/>
+<rect width="1200" height="1800" fill="url(#edge)"/>
+
+<!-- crisp ancestral mountain layers -->
+<g fill="#80664d">
+  <path opacity=".075" d="M0 620L104 530l82 66 118-156 104 106 108-133 101 111 92-86 126 135 105-94 130 135 130-92v276H0z"/>
+  <path opacity=".085" d="M0 940l130-98 82 69 125-128 106 92 132-151 120 120 115-96 127 121 103-78 160 142v280H0z"/>
+  <path opacity=".07" d="M0 1368l164-119 115 70 132-118 122 82 141-101 121 73 146-96 123 88 136-76v330H0z"/>
+  <path opacity=".048" d="M0 1570l182-82 126 61 147-76 126 68 163-90 146 85 136-61 174 97v228H0z"/>
 </g>
 
-<!-- side brushwork -->
-<g stroke="#61472f" stroke-linecap="round" fill="none" opacity=".19"><path stroke-width="8" d="M13 252c76-56 151-80 226-74M49 322c60-43 119-60 177-55M1187 286c-72-56-146-78-220-67M1153 360c-55-40-107-57-158-52"/><path stroke-width="2.4" d="M62 239c24 22 42 47 53 76M130 201c21 30 32 61 31 92M1124 246c-24 24-42 50-51 80M1044 206c-18 28-25 56-20 85"/><path stroke-width="7" d="M71 1240c81-58 154-81 220-73M1139 1255c-82-61-155-83-220-67"/></g>
+<!-- left pine: crisp brush strokes -->
+<g fill="none" stroke="#5b4129" stroke-linecap="round" stroke-linejoin="round" opacity=".22">
+  <path stroke-width="9" d="M-25 238C70 153 165 126 264 152M0 316c79-63 157-82 235-56M94 22c41 89 53 185 37 290M42 81c61 72 87 149 79 231"/>
+  <path stroke-width="2.2" d="M46 176L-7 155M70 187L4 186M94 200l-70 34M120 213l-61 43M144 231l-50 52M170 249l-41 54M132 104l25-54M161 113l43-45M188 128l54-28M208 150l60-6M221 176l58 22M228 204l50 40"/>
+  <path stroke-width="1.3" d="M19 155l15 20m8-36 18 27m12-39 17 28m19-47 9 33m32-38-5 38m41-31-17 34m47-15-29 29M15 277l42-2m-30 23 45-11m-27 34 45-21"/>
+</g>
 
-<!-- ancestral architecture -->
-<g fill="#67482f" opacity=".14"><path d="M950 486h183v17H950zM974 444h135l34 42H941zM995 407h94l23 37H972zM1018 345h48v62h-48z"/><path d="M969 503h17v143h-17zM1020 503h17v143h-17zM1072 503h17v143h-17zM1116 503h17v143h-17z"/><path d="M91 1369h136v13H91zM109 1336h99l26 33H84zM127 1307h62l18 29h-98z" opacity=".8"/></g>
+<!-- right upper ancestral pavilion -->
+<g fill="#704b2d" opacity=".17">
+  <path d="M898 402h232v13H898z"/>
+  <path d="M923 354h184l48 48H875z"/>
+  <path d="M948 312h136l36 42H913z"/>
+  <path d="M979 278h72l27 34H951z"/>
+  <rect x="922" y="415" width="15" height="180"/>
+  <rect x="977" y="415" width="15" height="180"/>
+  <rect x="1032" y="415" width="15" height="180"/>
+  <rect x="1087" y="415" width="15" height="180"/>
+  <path d="M878 399l40-24-14 24 33-10-24 30zm276 0-40-24 14 24-33-10 24 30z"/>
+  <path d="M904 466h218v8H904zm12 61h194v8H916z" opacity=".72"/>
+</g>
 
-<!-- paper tide lines -->
-<g fill="none" stroke="#9f733d" stroke-width="3" opacity=".16"><path d="M0 1572c118-71 230-80 337-26 103 52 210 56 321 12 122-48 245-37 368 30 58 32 116 45 174 38"/><path d="M0 1632c128-58 249-56 365 6 96 52 194 56 294 11 119-52 238-44 358 22 61 34 122 45 183 33"/><path d="M0 1690c138-45 271-41 399 13 76 32 153 32 230-1 114-49 235-45 363 12 71 31 140 39 208 24"/></g>
+<!-- right pine / bamboo -->
+<g fill="none" stroke="#5c422b" stroke-linecap="round" opacity=".17">
+  <path stroke-width="7" d="M1214 650c-96-78-192-99-286-64m254 139c-80-60-158-71-233-33m149-169c-31 67-41 136-29 206"/>
+  <path stroke-width="2" d="M1111 613l73-24m-88 52 84 4m-99 30 77 31m-92 1 66 48m-97-117l-52-45m66 79-72-25"/>
+</g>
 
-<!-- decorative birds and cloud marks -->
-<g fill="#745638" opacity=".14"><path d="M835 725l20 8-15 5 23 7-19 5 17 9-27-5-12 9 4-19z"/><path d="M901 692l20 8-15 5 23 7-19 5 17 9-27-5-12 9 4-19z"/><path d="M760 1170l16 6-12 4 18 5-15 5 14 7-21-4-9 7 3-15z"/></g>
-<g fill="none" stroke="#a77a42" stroke-width="2" opacity=".11"><path d="M35 445q36-24 72 0t72 0M985 730q38-26 76 0t76 0M48 1004q42-28 84 0t84 0"/></g>
-<rect width="1200" height="1800" fill="none" stroke="#b18148" stroke-opacity=".08" stroke-width="20"/>
+<!-- lower-left secondary ancestral gate -->
+<g fill="#724d2f" opacity=".12">
+  <path d="M58 1322h204v13H58zM83 1281h154l42 41H42zM110 1248h100l28 33H80z"/>
+  <rect x="83" y="1335" width="14" height="166"/><rect x="142" y="1335" width="14" height="166"/><rect x="201" y="1335" width="14" height="166"/><rect x="245" y="1335" width="13" height="166"/>
+</g>
+
+<!-- cloud linework and birds -->
+<g fill="none" stroke="#8d6538" stroke-linecap="round" opacity=".13">
+  <path stroke-width="2.2" d="M35 514q38-27 76 0t76 0M940 735q41-29 82 0t82 0M81 1090q47-31 94 0t94 0M886 1456q38-25 76 0t76 0"/>
+  <path stroke-width="1.7" d="M707 701q14-13 28 0q14-13 28 0M768 657q11-10 22 0q11-10 22 0M366 1200q13-12 26 0q13-12 26 0"/>
+</g>
+
+<!-- crisp parchment tide lines -->
+<g fill="none" stroke="#9b6c35" stroke-width="3" opacity=".14">
+  <path d="M0 1514c122-62 241-67 356-15 103 46 207 48 314 7 126-49 247-40 364 28 56 33 111 45 166 36"/>
+  <path d="M0 1591c140-54 270-49 389 15 88 48 178 51 270 9 119-55 240-47 364 24 59 34 118 43 177 27"/>
+  <path d="M0 1670c149-41 292-34 429 21 72 29 147 27 226-5 117-48 239-42 366 17 64 30 124 39 179 26"/>
+</g>
+
+<!-- lotus corner etching -->
+<g fill="#9b6d36" opacity=".10">
+  <path d="M20 1682c24-48 62-65 113-37-40 9-66 30-78 64 37-24 73-20 109 14-55-10-95 6-119 50-6-34-14-64-25-91z"/>
+  <path d="M1180 1682c-24-48-62-65-113-37 40 9 66 30 78 64-37-24-73-20-109 14 55-10 95 6 119 50 6-34 14-64 25-91z"/>
+</g>
+
+<rect width="1200" height="1800" fill="none" stroke="#b48245" stroke-opacity=".10" stroke-width="18"/>
 </svg>
