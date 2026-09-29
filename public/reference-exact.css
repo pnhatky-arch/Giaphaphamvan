@@ -1,9 +1,9 @@
-/* Single approved-background system — v14; Safari-safe direct raster */
+/* Single approved-background system — v15; Safari-safe approved layers */
 :root{--reference-paper:#fff3dc;--reference-paper-deep:#ebcf9f;--glass-paper:rgba(255,250,240,.58);--glass-paper-strong:rgba(255,250,240,.68);--glass-line:rgba(164,111,46,.24)}
 html,body{background:#65080d!important}body{background:#65080d!important}
 .app-shell{position:relative!important;min-height:100svh!important;background:#f3d7a8!important;isolation:isolate!important}
-/* Safari-safe: render the approved heritage artwork as a normal WebP background. No raster embedded inside SVG. */
-.heritage-canvas{position:absolute!important;inset:0!important;z-index:0!important;overflow:hidden!important;pointer-events:none!important;min-height:100%!important;background-color:#f3d7a8!important;background-image:url('/heritage-background.webp?v=1')!important;background-position:center top!important;background-size:100% auto!important;background-repeat:no-repeat!important}
+/* Use the two approved native WebP assets directly. The top artwork sits once; only the continuation repeats below it. */
+.heritage-canvas{position:absolute!important;inset:0!important;z-index:0!important;overflow:hidden!important;pointer-events:none!important;min-height:100%!important;background-color:#f3d7a8!important;background-image:url('/heritage-approved-top.webp?v=3'),url('/heritage-approved-cont.webp?v=3')!important;background-position:center top,center 675px!important;background-size:100% auto,100% auto!important;background-repeat:no-repeat,repeat-y!important}
 .heritage-canvas>img,.heritage-continuation{display:none!important}.heritage-canvas::before,.heritage-canvas::after{content:none!important;display:none!important}
 .topbar,main,.bottom-nav{position:relative!important;z-index:1!important}main{padding-top:12px!important}.view{background:transparent!important}
 .top-brand{grid-template-columns:76px minmax(0,1fr)!important;gap:7px!important}.top-logo,.hero-crest{content:url('/reference-crest.webp?v=2')!important;object-fit:contain!important;image-rendering:auto!important}.top-logo{width:76px!important;height:46px!important;filter:drop-shadow(0 1px 1px rgba(58,8,8,.18))!important}
