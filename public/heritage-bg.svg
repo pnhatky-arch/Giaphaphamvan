@@ -1,16 +1,146 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 941 1672" preserveAspectRatio="none">
-<defs><linearGradient id="paper" x1="0" y1="0" x2="0" y2="1"><stop stop-color="#fff6df"/><stop offset=".48" stop-color="#f8e7c8"/><stop offset="1" stop-color="#efd5ab"/></linearGradient><radialGradient id="glow" cx="50%" cy="24%" r="80%"><stop stop-color="#fffdf6" stop-opacity=".55"/><stop offset=".55" stop-color="#fff5db" stop-opacity=".10"/><stop offset="1" stop-color="#a9691f" stop-opacity=".025"/></radialGradient><pattern id="grain" width="24" height="24" patternUnits="userSpaceOnUse"><circle cx="4" cy="6" r=".45" fill="#9a6425" opacity=".022"/><circle cx="18" cy="17" r=".4" fill="#b1782f" opacity=".02"/><path d="M2 20l6-.7M13 4l5-.6" stroke="#906025" stroke-width=".3" opacity=".02"/></pattern></defs>
-<rect width="941" height="1672" fill="url(#paper)"/><rect width="941" height="1672" fill="url(#grain)"/><rect width="941" height="1672" fill="url(#glow)"/>
-<!-- approved Dong Son drum -->
-<g transform="translate(470.5 545)" fill="none" stroke="#b87720"><circle r="500" stroke-width="2.8" opacity=".44"/><circle r="474" stroke-width="1.8" opacity=".40"/><circle r="448" stroke-width="9" stroke-dasharray="2 13" opacity=".34"/><circle r="421" stroke-width="1.8" opacity=".40"/><circle r="393" stroke-width="16" stroke-dasharray="17 8" opacity=".24"/><circle r="363" stroke-width="1.7" opacity=".42"/><circle r="334" stroke-width="10" stroke-dasharray="2 11" opacity=".30"/><circle r="306" stroke-width="1.6" opacity=".42"/><circle r="278" stroke-width="1.5" stroke-dasharray="4 7" opacity=".36"/><circle r="250" stroke-width="1.6" opacity=".42"/><circle r="216" stroke-width="1.5" stroke-dasharray="3 7" opacity=".36"/><circle r="181" stroke-width="1.7" opacity=".40"/></g>
-<!-- central star -->
-<g transform="translate(470.5 545)" fill="#c58b36" opacity=".46"><path d="M0-164 22-62 64-151 62-52 116-116 71-34 151-64 84-17 164 0 84 17 151 64 71 34 116 116 62 52 64 151 22 62 0 164-22 62-64 151-62 52-116 116-71 34-151 64-84 17-164 0-84-17-151-64-71-34-116-116-62-52-64-151-22-62z"/><circle r="42" fill="#f7e5c0" opacity=".78"/></g>
+<defs>
+  <linearGradient id="paper" x1="0" y1="0" x2="0" y2="1">
+    <stop stop-color="#fff6df"/>
+    <stop offset=".48" stop-color="#f8e7c8"/>
+    <stop offset="1" stop-color="#efd5ab"/>
+  </linearGradient>
+  <radialGradient id="glow" cx="50%" cy="24%" r="80%">
+    <stop stop-color="#fffdf6" stop-opacity=".55"/>
+    <stop offset=".55" stop-color="#fff5db" stop-opacity=".10"/>
+    <stop offset="1" stop-color="#a9691f" stop-opacity=".025"/>
+  </radialGradient>
+  <pattern id="grain" width="24" height="24" patternUnits="userSpaceOnUse">
+    <circle cx="4" cy="6" r=".45" fill="#9a6425" opacity=".022"/>
+    <circle cx="18" cy="17" r=".4" fill="#b1782f" opacity=".02"/>
+    <path d="M2 20l6-.7M13 4l5-.6" stroke="#906025" stroke-width=".3" opacity=".02"/>
+  </pattern>
+  <g id="bird" fill="none" stroke="#b77922" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M-42 4c15-15 32-20 48-15 12 3 23 12 33 25-16-5-29-4-40 1 13 5 25 14 36 26-18-8-34-11-49-7-11 3-21 10-30 20 5-15 12-27 21-36-7-3-14-7-19-14z"/>
+    <path d="M-7 4c7-10 13-18 18-25M1 11c12-5 25-6 37-3M-1 19c13 2 26 6 37 12M-34 10l-18 7 13 3-13 9 18-4"/>
+  </g>
+  <g id="person" fill="none" stroke="#ad7122" stroke-linecap="round">
+    <circle cy="-15" r="3.5"/><path d="M0-11v21M0-5l-10 8M0-5l10 8M0 10l-8 15M0 10l8 15"/>
+  </g>
+  <g id="deer" fill="none" stroke="#ad7122" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M-21 4H4l11-8 8 2-6 5 8 4-10 4-8 9M-16 4l-4 17M-3 4l-2 17M6 5l8 16"/>
+    <path d="M15-3l2-10m2 10 5-8m-7 8-5-8"/>
+  </g>
+  <g id="boat" fill="none" stroke="#ad7122" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M-46 8c24 12 54 12 92 0-11 16-27 23-46 23S-35 24-46 8z"/>
+    <path d="M-33 8l9-15 10 15M-7 8 0-10 8 8M17 8l9-15 10 15"/>
+  </g>
+  <pattern id="fret" width="42" height="16" patternUnits="userSpaceOnUse">
+    <path d="M0 3h17v10H7V8h28v5H25V3h17" fill="none" stroke="#b37524" stroke-width="1.2"/>
+  </pattern>
+  <pattern id="tri" width="28" height="13" patternUnits="userSpaceOnUse">
+    <path d="M0 13 7 1 14 13 21 1 28 13" fill="none" stroke="#b77825" stroke-width="1"/>
+  </pattern>
+</defs>
+<rect width="941" height="1672" fill="url(#paper)"/>
+<rect width="941" height="1672" fill="url(#grain)"/>
+<rect width="941" height="1672" fill="url(#glow)"/>
+
+<!-- approved Dong Son drum: bold, single medallion -->
+<g transform="translate(470.5 545)" fill="none" stroke="#b87720">
+  <circle r="500" stroke-width="2.8" opacity=".44"/>
+  <circle r="474" stroke-width="1.8" opacity=".40"/>
+  <circle r="448" stroke-width="9" stroke-dasharray="2 13" opacity=".34"/>
+  <circle r="421" stroke-width="1.8" opacity=".40"/>
+  <circle r="393" stroke-width="16" stroke-dasharray="17 8" opacity=".24"/>
+  <circle r="363" stroke-width="1.7" opacity=".42"/>
+  <circle r="334" stroke-width="10" stroke-dasharray="2 11" opacity=".30"/>
+  <circle r="306" stroke-width="1.6" opacity=".42"/>
+  <circle r="278" stroke-width="1.5" stroke-dasharray="4 7" opacity=".36"/>
+  <circle r="250" stroke-width="1.6" opacity=".42"/>
+  <circle r="216" stroke-width="1.5" stroke-dasharray="3 7" opacity=".36"/>
+  <circle r="181" stroke-width="1.7" opacity=".40"/>
+</g>
+<g transform="translate(470.5 545)" fill="none" stroke="#ad6f1d" opacity=".26">
+  <circle r="458" stroke-width="20" stroke-dasharray="3 14"/>
+  <circle r="405" stroke-width="13" stroke-dasharray="12 8"/>
+  <circle r="348" stroke-width="16" stroke-dasharray="2 12"/>
+  <circle r="290" stroke-width="12" stroke-dasharray="11 8"/>
+  <circle r="230" stroke-width="15" stroke-dasharray="2 11"/>
+</g>
+
+<!-- large Lac birds around outer ring -->
+<g opacity=".72" stroke-width="2.2">
+  <use href="#bird" transform="translate(135 160) scale(1.52) rotate(-10)"/>
+  <use href="#bird" transform="translate(806 160) scale(-1.52 1.52) rotate(-10)"/>
+  <use href="#bird" transform="translate(94 374) scale(1.18) rotate(-22)"/>
+  <use href="#bird" transform="translate(847 374) scale(-1.18 1.18) rotate(-22)"/>
+  <use href="#bird" transform="translate(80 748) scale(1.24) rotate(-31)"/>
+  <use href="#bird" transform="translate(861 748) scale(-1.24 1.24) rotate(-31)"/>
+</g>
+
+<!-- small upper birds -->
+<g opacity=".50" stroke-width="1.8">
+  <use href="#bird" transform="translate(245 72) scale(.72)"/>
+  <use href="#bird" transform="translate(696 72) scale(-.72 .72)"/>
+  <use href="#bird" transform="translate(255 310) scale(.68)"/>
+  <use href="#bird" transform="translate(686 310) scale(-.68 .68)"/>
+</g>
+
 <!-- narrative ring -->
-<g fill="none" stroke="#ad7122" opacity=".58" stroke-linecap="round"><circle cx="470" cy="292" r="4"/><path d="M470 296v21m0-15-10 8m10-8 10 8m-10 7-8 15m8-15 8 15"/><path d="M620 350h25l11-8 8 2-6 5 8 4-10 4-8 9m-16-16-4 17m17-17-2 17"/><path d="M660 455c24 12 54 12 92 0-11 16-27 23-46 23s-35-7-46-23zM673 455l9-15 10 15m7 0 7-18 8 18m9 0 9-15 10 15"/><circle cx="710" cy="566" r="4"/><path d="M710 570v21m0-15-10 8m10-8 10 8m-10 7-8 15m8-15 8 15"/><path d="M645 662h25l11-8 8 2-6 5 8 4-10 4-8 9m-16-16-4 17m17-17-2 17"/><path d="M520 742c24 12 54 12 92 0-11 16-27 23-46 23s-35-7-46-23z"/><circle cx="463" cy="760" r="4"/><path d="M463 764v21m0-15-10 8m10-8 10 8m-10 7-8 15m8-15 8 15"/><path d="M350 720h25l11-8 8 2-6 5 8 4-10 4-8 9m-16-16-4 17m17-17-2 17"/><path d="M237 650c24 12 54 12 92 0-11 16-27 23-46 23s-35-7-46-23z"/></g>
-<!-- Lac birds -->
-<g fill="none" stroke="#b77922" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" opacity=".70"><path d="M58 165c28-28 58-38 88-29 22 7 42 24 61 48-29-9-53-8-72 2 23 10 45 26 65 48-31-14-59-19-85-12-20 6-38 18-54 36 9-27 21-49 38-65-13-5-26-13-41-28z"/><path d="M883 165c-28-28-58-38-88-29-22 7-42 24-61 48 29-9 53-8 72 2-23 10-45 26-65 48 31-14 59-19 85-12 20 6 38 18 54 36-9-27-21-49-38-65 13-5 26-13 41-28z"/><path d="M30 380c22-22 45-30 68-23 17 5 33 18 47 37-22-7-41-6-56 2 18 8 35 20 50 37-24-11-46-15-66-9-15 4-29 14-42 28 7-21 17-38 29-50-10-4-20-10-30-22z"/><path d="M911 380c-22-22-45-30-68-23-17 5-33 18-47 37 22-7 41-6 56 2-18 8-35 20-50 37 24-11 46-15 66-9 15 4 29 14 42 28-7-21-17-38-29-50 10-4 20-10 30-22z"/></g>
+<g opacity=".58" stroke-width="1.7">
+  <use href="#person" transform="translate(470 292) scale(.88)"/>
+  <use href="#person" transform="translate(565 310) scale(.82) rotate(18)"/>
+  <use href="#deer" transform="translate(650 362) scale(.84) rotate(33)"/>
+  <use href="#boat" transform="translate(704 455) scale(.66) rotate(58)"/>
+  <use href="#person" transform="translate(710 566) scale(.82) rotate(95)"/>
+  <use href="#deer" transform="translate(662 668) scale(.84) rotate(130)"/>
+  <use href="#boat" transform="translate(566 742) scale(.66) rotate(160)"/>
+  <use href="#person" transform="translate(463 760) scale(.82) rotate(188)"/>
+  <use href="#deer" transform="translate(365 724) scale(.84) rotate(220)"/>
+  <use href="#boat" transform="translate(283 650) scale(.66) rotate(250)"/>
+  <use href="#person" transform="translate(245 547) scale(.82) rotate(280)"/>
+  <use href="#deer" transform="translate(281 444) scale(.84) rotate(315)"/>
+  <use href="#boat" transform="translate(363 356) scale(.66) rotate(343)"/>
+</g>
+
+<!-- central star -->
+<g transform="translate(470.5 545)" fill="#c58b36" opacity=".46">
+  <path d="M0-164 22-62 64-151 62-52 116-116 71-34 151-64 84-17 164 0 84 17 151 64 71 34 116 116 62 52 64 151 22 62 0 164-22 62-64 151-62 52-116 116-71 34-151 64-84 17-164 0-84-17-151-64-71-34-116-116-62-52-64-151-22-62z"/>
+  <circle r="42" fill="#f7e5c0" opacity=".78"/>
+</g>
+
+<!-- people procession above waves -->
+<g opacity=".54" stroke-width="1.7">
+  <use href="#person" transform="translate(150 850) scale(.78) rotate(-12)"/>
+  <use href="#person" transform="translate(220 875) scale(.82) rotate(-5)"/>
+  <use href="#deer" transform="translate(295 884) scale(.78)"/>
+  <use href="#person" transform="translate(385 900) scale(.82)"/>
+  <use href="#person" transform="translate(470 910) scale(.82)"/>
+  <use href="#person" transform="translate(555 900) scale(.82)"/>
+  <use href="#deer" transform="translate(642 884) scale(.78)"/>
+  <use href="#person" transform="translate(720 875) scale(.82) rotate(5)"/>
+  <use href="#person" transform="translate(790 850) scale(.78) rotate(12)"/>
+</g>
+
 <!-- seamless transition waves -->
-<g fill="none" stroke="#b87824" opacity=".52"><path stroke-width="2.4" d="M0 946c82-42 160-43 235-5 76 38 150 39 224 0 80-42 160-41 240 4 70 40 142 42 216 4 10-5 19-8 26-10"/><path stroke-width="2.1" d="M0 986c93-34 181-30 265 12 65 33 132 33 198 1 87-42 175-40 264 7 61 33 125 35 191 8 8-3 16-5 23-6"/><path stroke-width="1.9" d="M0 1026c105-29 203-23 294 18 56 26 114 25 174-5 84-41 168-38 254 9 57 31 116 36 178 13 16-6 30-8 41-6"/></g>
+<g fill="none" stroke="#b87824" opacity=".52">
+  <path stroke-width="2.4" d="M0 946c82-42 160-43 235-5 76 38 150 39 224 0 80-42 160-41 240 4 70 40 142 42 216 4 10-5 19-8 26-10"/>
+  <path stroke-width="2.1" d="M0 986c93-34 181-30 265 12 65 33 132 33 198 1 87-42 175-40 264 7 61 33 125 35 191 8 8-3 16-5 23-6"/>
+  <path stroke-width="1.9" d="M0 1026c105-29 203-23 294 18 56 26 114 25 174-5 84-41 168-38 254 9 57 31 116 36 178 13 16-6 30-8 41-6"/>
+</g>
+<g opacity=".42"><rect y="1036" width="941" height="13" fill="url(#tri)"/><rect y="1070" width="941" height="16" fill="url(#fret)"/></g>
+
 <!-- continuation: no repeated drum -->
-<g fill="none" stroke="#b97c2b" opacity=".40"><path stroke-width="1.8" d="M0 1130c104-22 204-17 300 16 65 23 133 21 204-6 83-32 169-30 258 8 62 27 122 31 179 16"/><path stroke-width="1.6" d="M0 1212c110-27 214-22 312 16 60 23 123 21 188-7 88-38 178-34 270 10 57 27 114 30 171 10"/><path stroke-width="1.7" d="M0 1292c118-24 229-16 333 23 52 20 107 18 164-7 85-37 172-33 260 9 62 30 123 34 184 12"/><path stroke-width="1.5" d="M0 1378c126-21 244-11 353 28 46 17 95 15 146-7 82-35 165-31 251 8 67 31 131 35 191 12"/><path stroke-width="1.8" d="M0 1462c134-18 257-8 370 30 40 14 84 12 130-8 80-34 162-30 246 7 70 31 135 35 195 11"/><path stroke-width="2.1" d="M0 1542c116-36 222-31 318 15 64 31 130 30 199-4 88-43 177-40 267 9 58 31 110 37 157 22"/><path stroke-width="2" d="M0 1624c107-32 207-28 300 11 63 26 128 24 195-7 87-40 174-37 263 7 67 33 128 38 183 19"/></g>
+<g fill="none" stroke="#b97c2b" opacity=".40">
+  <path stroke-width="1.8" d="M0 1130c104-22 204-17 300 16 65 23 133 21 204-6 83-32 169-30 258 8 62 27 122 31 179 16"/>
+  <path stroke-width="1.6" d="M0 1212c110-27 214-22 312 16 60 23 123 21 188-7 88-38 178-34 270 10 57 27 114 30 171 10"/>
+  <path stroke-width="1.7" d="M0 1292c118-24 229-16 333 23 52 20 107 18 164-7 85-37 172-33 260 9 62 30 123 34 184 12"/>
+  <path stroke-width="1.5" d="M0 1378c126-21 244-11 353 28 46 17 95 15 146-7 82-35 165-31 251 8 67 31 131 35 191 12"/>
+  <path stroke-width="1.8" d="M0 1462c134-18 257-8 370 30 40 14 84 12 130-8 80-34 162-30 246 7 70 31 135 35 195 11"/>
+  <path stroke-width="2.1" d="M0 1542c116-36 222-31 318 15 64 31 130 30 199-4 88-43 177-40 267 9 58 31 110 37 157 22"/>
+</g>
+<g opacity=".42"><rect y="1200" width="941" height="13" fill="url(#tri)"/></g>
+<g opacity=".38"><rect y="1310" width="941" height="16" fill="url(#fret)"/></g>
+<g opacity=".40"><rect y="1450" width="941" height="13" fill="url(#tri)"/></g>
+<g fill="none" stroke="#b77926" opacity=".48">
+  <path stroke-width="2" d="M0 1582c96-39 187-38 275 1 72 32 146 31 223-4 90-41 180-38 271 9 61 31 118 36 172 17"/>
+  <path stroke-width="1.7" d="M0 1624c107-32 207-28 300 11 63 26 128 24 195-7 87-40 174-37 263 7 67 33 128 38 183 19"/>
+</g>
+<g opacity=".40"><rect y="1640" width="941" height="16" fill="url(#fret)"/></g>
 </svg>
