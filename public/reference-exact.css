@@ -1,89 +1,121 @@
-/* Approved heritage artwork — v4: canonical crest/hero + full-page Dong Son parchment */
+/* Single-background system — v5: one Dong Son artwork through every layer */
 :root{
   --reference-paper:#fbefda;
   --reference-paper-deep:#ecd1a5;
+  --glass-paper:rgba(255,250,240,.72);
+  --glass-paper-strong:rgba(255,250,240,.82);
+  --glass-line:rgba(164,111,46,.22);
 }
 
 html,body{background:#65080d!important}
 body{background:#65080d!important}
 .app-shell{
+  position:relative!important;
   min-height:100svh!important;
   background:
-    linear-gradient(180deg,rgba(255,252,245,.09),rgba(248,235,212,.045)),
-    url('/heritage-bg.svg?v=6') center top/cover no-repeat,
+    linear-gradient(180deg,rgba(255,252,245,.05),rgba(248,235,212,.025)),
+    url('/heritage-bg.svg?v=6') center top/100% auto repeat-y,
     #f3dfbd!important;
-  background-attachment:scroll!important;
 }
 main{padding-top:12px!important}
 .view{background:transparent!important}
 
-/* Canonical approved crest. No legacy SVG fallback. */
+/* One crest image only; it is content, not a background texture. */
 .top-brand{grid-template-columns:76px minmax(0,1fr)!important;gap:7px!important}
-.top-logo{
+.top-logo,
+.hero-crest{
   content:url('/reference-crest.webp?v=2')!important;
-  width:76px!important;
-  height:46px!important;
   object-fit:contain!important;
-  filter:drop-shadow(0 1px 1px rgba(58,8,8,.18))!important;
   image-rendering:auto!important;
 }
+.top-logo{width:76px!important;height:46px!important;filter:drop-shadow(0 1px 1px rgba(58,8,8,.18))!important}
 
-/* Canonical approved top card artwork stays unchanged. */
+/* Hero uses the same Dong Son background below it. No second artwork. */
 .hero-panel{
   height:138px!important;
   margin-top:4px!important;
-  padding:0!important;
+  padding:7px 12px 9px!important;
   overflow:hidden!important;
   border:1px solid rgba(194,139,49,.48)!important;
   border-radius:20px!important;
-  background:#f8eedf url('/reference-hero.webp?v=2') center/100% 100% no-repeat!important;
-  box-shadow:
-    0 8px 20px rgba(87,51,22,.10),
-    inset 0 1px 0 rgba(255,255,255,.78)!important;
+  background:linear-gradient(180deg,rgba(255,252,245,.76),rgba(248,236,216,.66))!important;
+  box-shadow:0 8px 20px rgba(87,51,22,.10),inset 0 1px 0 rgba(255,255,255,.76)!important;
 }
 .hero-panel:after{display:none!important}
 .hero-panel>.hero-crest,
 .hero-panel>h1,
 .hero-panel>p,
-.hero-panel>.ornament{
-  opacity:0!important;
-  pointer-events:none!important;
-}
-.hero-crest{content:url('/reference-crest.webp?v=2')!important}
+.hero-panel>.ornament{opacity:1!important;pointer-events:auto!important}
+.hero-crest{width:132px!important;height:61px!important;margin-top:-2px!important;filter:drop-shadow(0 2px 2px rgba(75,34,10,.16))!important}
+.hero-panel h1{margin-top:1px!important;font-size:16px!important;color:#704111!important;text-shadow:0 1px 0 rgba(255,255,255,.48)!important}
+.hero-panel p{margin-top:4px!important;color:#7b392c!important}
+.hero-panel .ornament{margin-top:5px!important}
 
-/* One continuous Dong Son cream background across the whole app. */
+/* Every view is transparent: one background continues underneath all screens. */
 #overview-view,
 #tree-view,
 #members-view,
 #events-view,
 #documents-view,
-#settings-view{
-  background:transparent!important;
-}
-#tree-view .tree-stage{
-  background:transparent!important;
-  border-radius:0!important;
-  box-shadow:none!important;
-}
-#tree-view .tree-viewport,#tree-view .family-tree{background:transparent!important}
-#tree-view .generation-title{
-  background:transparent!important;
-  color:#8d591a!important;
-  text-shadow:0 1px rgba(255,255,255,.58)!important;
-}
-#tree-view .person-card{
-  background:linear-gradient(145deg,rgba(255,253,248,.985),rgba(251,246,237,.975))!important;
-  border-color:rgba(139,91,39,.13)!important;
-  box-shadow:0 5px 12px rgba(76,46,22,.08)!important;
-}
-#tree-view .person-card.ancestor{
-  border-color:#cf9228!important;
-  background:linear-gradient(145deg,rgba(255,254,249,.995),rgba(255,249,238,.985))!important;
+#settings-view,
+#tree-view .tree-stage,
+#tree-view .tree-viewport,
+#tree-view .family-tree{background:transparent!important}
+#tree-view .tree-stage{border-radius:0!important;box-shadow:none!important}
+
+/* Cards reveal the very same background through a single translucent material. */
+.surface,
+.member-row,
+.timeline-item,
+.document-row,
+.empty-state,
+.settings-group,
+.search-row,
+.source-status,
+.stat-card,
+.quick-card,
+.tree-controls,
+.account-card,
+.storage-metrics>div,
+.backup-action,
+.cloud-status{
+  background:linear-gradient(145deg,rgba(255,253,247,.80),rgba(248,238,222,.68))!important;
+  border-color:var(--glass-line)!important;
+  -webkit-backdrop-filter:none!important;
+  backdrop-filter:none!important;
+  box-shadow:0 8px 20px rgba(77,46,23,.075),inset 0 1px rgba(255,255,255,.62)!important;
 }
 
-/* Cards stay readable while the Dong Son linework remains visible behind them. */
-.surface,.member-row,.timeline-item,.document-row,.empty-state,
-.settings-group,.search-row{
-  -webkit-backdrop-filter:blur(2px) saturate(1.02)!important;
-  backdrop-filter:blur(2px) saturate(1.02)!important;
+/* Controls and buttons use transparent color only; no decorative image layers. */
+.segment,
+.display-segment,
+.theme-segment,
+.settings-display-segment,
+input,
+select,
+textarea,
+.ui-button,
+.secondary-button,
+.filter-button,
+.generation-chip{
+  background:rgba(255,251,244,.64)!important;
+  border-color:rgba(135,91,43,.18)!important;
 }
+.tree-control-primary,
+.primary-circle,
+.generation-chip.active{
+  background:linear-gradient(145deg,rgba(177,22,34,.92),rgba(105,7,16,.92))!important;
+}
+.display-segment button.active,
+.theme-segment button.active,
+.settings-display-segment button.active{
+  background:rgba(255,250,239,.78)!important;
+}
+
+#tree-view .generation-title{background:transparent!important;color:#8d591a!important;text-shadow:0 1px rgba(255,255,255,.58)!important}
+#tree-view .person-card{
+  background:linear-gradient(145deg,rgba(255,253,248,.83),rgba(251,246,237,.72))!important;
+  border-color:rgba(139,91,39,.14)!important;
+  box-shadow:0 5px 12px rgba(76,46,22,.07)!important;
+}
+#tree-view .person-card.ancestor{border-color:#cf9228!important;background:linear-gradient(145deg,rgba(255,254,249,.88),rgba(255,249,238,.76))!important}
