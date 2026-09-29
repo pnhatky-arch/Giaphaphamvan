@@ -1,4 +1,4 @@
-/* Exact heritage artwork — v2: crisp vector crest, hero and full-page parchment */
+/* Approved heritage artwork — v3: one canonical crest + one canonical hero */
 :root{
   --reference-paper:#f8eddc;
   --reference-paper-deep:#ead2ae;
@@ -9,67 +9,48 @@ body{background:#65080d!important}
 .app-shell{
   min-height:100svh!important;
   background:
-    linear-gradient(180deg,rgba(255,251,244,.16),rgba(248,236,216,.10)),
+    linear-gradient(180deg,rgba(255,251,244,.13),rgba(248,236,216,.08)),
     url('/heritage-bg.svg?v=5') center top/cover fixed no-repeat,
     #f1ddbd!important;
 }
-main{padding-top:10px!important}
+main{padding-top:12px!important}
 .view{background:transparent!important}
 
-/* Crisp vector crest in compact header. */
+/* Canonical approved crest. No legacy SVG fallback. */
 .top-brand{grid-template-columns:76px minmax(0,1fr)!important;gap:7px!important}
 .top-logo{
+  content:url('/reference-crest.webp?v=2')!important;
   width:76px!important;
   height:46px!important;
   object-fit:contain!important;
-  filter:drop-shadow(0 1px 1px rgba(58,8,8,.20))!important;
+  filter:drop-shadow(0 1px 1px rgba(58,8,8,.18))!important;
   image-rendering:auto!important;
 }
 
-/* Hero is rebuilt from vectors instead of the soft raster reference. */
+/* Canonical approved top card artwork. */
 .hero-panel{
   height:138px!important;
-  margin-top:2px!important;
-  padding:7px 12px 9px!important;
+  margin-top:4px!important;
+  padding:0!important;
   overflow:hidden!important;
   border:1px solid rgba(194,139,49,.48)!important;
   border-radius:20px!important;
-  background:
-    linear-gradient(180deg,rgba(255,255,255,.07),rgba(255,251,241,.02)),
-    url('/hero-parchment.svg?v=5') center/cover no-repeat!important;
+  background:#f8eedf url('/reference-hero.webp?v=2') center/100% 100% no-repeat!important;
   box-shadow:
     0 8px 20px rgba(87,51,22,.10),
     inset 0 1px 0 rgba(255,255,255,.78)!important;
 }
-.hero-panel:after{
-  display:block!important;
-  background:radial-gradient(circle at 50% 2%,rgba(255,255,255,.18),transparent 54%)!important;
-}
+.hero-panel:after{display:none!important}
 .hero-panel>.hero-crest,
 .hero-panel>h1,
 .hero-panel>p,
 .hero-panel>.ornament{
-  opacity:1!important;
-  pointer-events:auto!important;
+  opacity:0!important;
+  pointer-events:none!important;
 }
-.hero-crest{
-  width:132px!important;
-  height:61px!important;
-  object-fit:contain!important;
-  margin-top:-2px!important;
-  filter:drop-shadow(0 2px 2px rgba(75,34,10,.16))!important;
-  image-rendering:auto!important;
-}
-.hero-panel h1{
-  margin-top:1px!important;
-  font-size:16px!important;
-  color:#704111!important;
-  text-shadow:0 1px 0 rgba(255,255,255,.48)!important;
-}
-.hero-panel p{margin-top:4px!important;color:#7b392c!important}
-.hero-panel .ornament{margin-top:5px!important}
+.hero-crest{content:url('/reference-crest.webp?v=2')!important}
 
-/* One continuous sharp parchment across Tree and every other view. */
+/* One continuous full-page heritage parchment across the whole app. */
 #overview-view,
 #tree-view,
 #members-view,
@@ -99,7 +80,6 @@ main{padding-top:10px!important}
   background:linear-gradient(145deg,rgba(255,254,249,.995),rgba(255,249,238,.985))!important;
 }
 
-/* Cards stay readable while the same heritage artwork remains visible behind them. */
 .surface,.member-row,.timeline-item,.document-row,.empty-state,
 .settings-group,.search-row{
   -webkit-backdrop-filter:blur(2px) saturate(1.02)!important;
