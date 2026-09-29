@@ -26,15 +26,20 @@ for(const id of ['bottomNav','tree-view','familyTree','generationChips','members
 assert.ok(index.includes('/styles.css?v=12'),'reference stylesheet version must be v12');
 assert.ok(index.includes('/app.js?v=12'),'single application runtime must be v12');
 assert.ok(index.includes('GIA PHẢ HỌ PHẠM VĂN'),'brand copy missing');
-assert.ok(css.includes('grid-template-columns:repeat(5,minmax(0,1fr))'),'bottom navigation must use five equal tabs');
 assert.ok(css.includes('.tree-connectors'),'SVG connector layer must be styled');
 assert.ok(css.includes('.person-card.ancestor'),'ancestor card styling missing');
+
+for(const view of ['overview','tree','members','events','documents','settings']) assert.ok(index.includes(`data-nav="${view}"`),`primary navigation missing ${view}`);
+assert.ok(!index.includes('data-nav="more"'),'legacy Khác tab must be removed');
+assert.ok(!index.includes('id="menuButton"'),'hamburger control must be removed');
+assert.ok(!index.includes('id="drawer"'),'duplicate drawer navigation must be removed');
+assert.ok(liquid.includes('grid-template-columns:repeat(6,minmax(0,1fr))'),'bottom navigation must use six equal tabs');
 
 assert.ok(data.includes("/target-ui.css?v=3"),'approved target reference stylesheet v3 must be loaded');
 assert.ok(data.includes("/reference-polish.css?v=1"),'reference polish stylesheet must be loaded');
 assert.ok(data.includes("/parchment-v4.css?v=4"),'warm parchment stylesheet must be loaded');
 assert.ok(data.includes("/reference-exact.css?v=1"),'exact reference artwork stylesheet must be loaded');
-assert.ok(data.includes("/liquid-menu.css?v=7"),'brighter gold-sweep Liquid Glass stylesheet must be loaded last');
+assert.ok(data.includes("/liquid-menu.css?v=8"),'six-tab Liquid Glass stylesheet must be loaded last');
 assert.ok(data.includes('/reference-crest.webp?v=1'),'approved reference crest must be routed at runtime');
 
 assert.ok(target.includes('.topbar')&&target.includes('height:calc(58px + env(safe-area-inset-top))'),'target header safe-area geometry missing');
@@ -50,7 +55,8 @@ assert.ok(liquid.includes('animation:goldTabSweep .9s'),'selected tab must run t
 assert.ok(liquid.includes('#fffbe8')&&liquid.includes('brightness(1.32)'),'gold tracer must use a hotter white-gold core');
 assert.ok(liquid.includes('drop-shadow(0 0 14px rgba(255,194,44,.92))'),'gold tracer must use a strong luminous halo');
 assert.ok(liquid.includes('@media (prefers-reduced-motion:reduce)'),'motion accessibility fallback missing');
-assert.ok(liquid.includes('.menu-button')&&liquid.includes('.language-button')&&liquid.includes('.avatar-button'),'top controls must use Liquid Glass material');
+assert.ok(liquid.includes('.language-button')&&liquid.includes('.avatar-button'),'top controls must retain Liquid Glass material');
+assert.ok(liquid.includes('grid-template-columns:minmax(0,1fr) auto'),'header must reflow after hamburger removal');
 assert.ok(liquid.includes('border-radius:26px!important'),'floating dock geometry missing');
 
 assert.ok(app.includes('function renderTree'),'family tree renderer missing');
@@ -63,10 +69,10 @@ assert.ok(cloud.includes('resolveConflict'),'cloud conflicts must be explicit');
 assert.ok(app.includes('appConfirm'),'destructive actions must use shared confirm');
 assert.ok(!app.includes('window.confirm('),'native window.confirm is forbidden');
 
-assert.ok(sw.includes("giaphaphamvan-v26"),'service worker cache version mismatch');
-for(const asset of ['/styles.css?v=12','/target-ui.css?v=3','/reference-polish.css?v=1','/parchment-v4.css?v=4','/reference-exact.css?v=1','/liquid-menu.css?v=7','/app.js?v=12','/reference-crest.webp?v=1','/reference-hero.webp?v=1','/reference-tree.webp?v=1']) assert.ok(sw.includes(asset),`service worker missing ${asset}`);
+assert.ok(sw.includes("giaphaphamvan-v27"),'service worker cache version mismatch');
+for(const asset of ['/styles.css?v=12','/target-ui.css?v=3','/reference-polish.css?v=1','/parchment-v4.css?v=4','/reference-exact.css?v=1','/liquid-menu.css?v=8','/app.js?v=12','/reference-crest.webp?v=1','/reference-hero.webp?v=1','/reference-tree.webp?v=1']) assert.ok(sw.includes(asset),`service worker missing ${asset}`);
 assert.ok(sw.includes("cache:'no-store'"),'service worker must bypass stale HTTP artwork cache');
 assert.ok(wrangler.includes('"directory": "./public"'),'Wrangler must deploy ./public');
 assert.ok(manifest.includes('"theme_color": "#650912"')||manifest.includes('"theme_color": "#65080d"'),'PWA theme must be heritage red');
 
-console.log('Giaphaphamvan brighter gold tab sweep v26 audit: PASS');
+console.log('Giaphaphamvan six-tab primary navigation v27 audit: PASS');
