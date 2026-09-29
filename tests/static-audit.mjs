@@ -34,7 +34,7 @@ assert.ok(data.includes("/target-ui.css?v=3"),'approved target reference stylesh
 assert.ok(data.includes("/reference-polish.css?v=1"),'reference polish stylesheet must be loaded');
 assert.ok(data.includes("/parchment-v4.css?v=4"),'warm parchment stylesheet must be loaded');
 assert.ok(data.includes("/reference-exact.css?v=1"),'exact reference artwork stylesheet must be loaded');
-assert.ok(data.includes("/liquid-menu.css?v=3"),'clear Liquid Glass menu stylesheet must be loaded last');
+assert.ok(data.includes("/liquid-menu.css?v=4"),'red dock glass-active navigation stylesheet must be loaded last');
 assert.ok(data.includes('/reference-crest.webp?v=1'),'approved reference crest must be routed at runtime');
 
 assert.ok(target.includes('.topbar')&&target.includes('height:calc(58px + env(safe-area-inset-top))'),'target header safe-area geometry missing');
@@ -43,11 +43,11 @@ assert.ok(target.includes('.tree-controls')&&target.includes('height:80px'),'tar
 assert.ok(polish.includes('justify-content:space-between!important'),'tall mobile genealogy must distribute generations across parchment');
 assert.ok(parchment.includes("url('/heritage-bg.svg?v=4')"),'parchment artwork routing missing');
 
-assert.ok(liquid.includes('backdrop-filter:blur(24px)')&&liquid.includes('-webkit-backdrop-filter:blur(24px)'),'bottom navigation must use clear Liquid Glass blur');
-assert.ok(liquid.includes('.menu-button')&&liquid.includes('.language-button')&&liquid.includes('.avatar-button'),'top controls must use Liquid Glass material');
-assert.ok(liquid.includes('--lg-active-red-1:#b91c2c')&&liquid.includes('--lg-active-red-2:#7b0d15'),'selected tab must retain heritage red');
+assert.ok(liquid.includes('--lg-dock-red-top:rgba(161,29,41,.96)')&&liquid.includes('--lg-dock-red-bottom:rgba(111,10,18,.97)'),'bottom dock must remain heritage red');
+assert.ok(liquid.includes('backdrop-filter:blur(16px)')&&liquid.includes('-webkit-backdrop-filter:blur(16px)'),'red dock blur missing');
+assert.ok(liquid.includes('.bottom-nav button.active')&&liquid.includes('rgba(255,255,255,.20)')&&liquid.includes('rgba(255,255,255,.08)'),'selected tab must be translucent glass');
+assert.ok(liquid.includes('backdrop-filter:blur(18px)')&&liquid.includes('-webkit-backdrop-filter:blur(18px)'),'selected glass tab blur missing');
 assert.ok(liquid.includes('border-radius:26px!important'),'floating dock geometry missing');
-assert.ok(liquid.includes('rgba(255,255,255,.18)')&&liquid.includes('rgba(152,28,39,.18)'),'dock must remain transparent rather than opaque');
 
 assert.ok(app.includes('function renderTree'),'family tree renderer missing');
 assert.ok(app.includes('function drawConnectors'),'coordinate connector renderer missing');
@@ -59,10 +59,10 @@ assert.ok(cloud.includes('resolveConflict'),'cloud conflicts must be explicit');
 assert.ok(app.includes('appConfirm'),'destructive actions must use shared confirm');
 assert.ok(!app.includes('window.confirm('),'native window.confirm is forbidden');
 
-assert.ok(sw.includes("giaphaphamvan-v22"),'service worker cache version mismatch');
-for(const asset of ['/styles.css?v=12','/target-ui.css?v=3','/reference-polish.css?v=1','/parchment-v4.css?v=4','/reference-exact.css?v=1','/liquid-menu.css?v=3','/app.js?v=12','/reference-crest.webp?v=1','/reference-hero.webp?v=1','/reference-tree.webp?v=1']) assert.ok(sw.includes(asset),`service worker missing ${asset}`);
+assert.ok(sw.includes("giaphaphamvan-v23"),'service worker cache version mismatch');
+for(const asset of ['/styles.css?v=12','/target-ui.css?v=3','/reference-polish.css?v=1','/parchment-v4.css?v=4','/reference-exact.css?v=1','/liquid-menu.css?v=4','/app.js?v=12','/reference-crest.webp?v=1','/reference-hero.webp?v=1','/reference-tree.webp?v=1']) assert.ok(sw.includes(asset),`service worker missing ${asset}`);
 assert.ok(sw.includes("cache:'no-store'"),'service worker must bypass stale HTTP artwork cache');
 assert.ok(wrangler.includes('"directory": "./public"'),'Wrangler must deploy ./public');
 assert.ok(manifest.includes('"theme_color": "#650912"')||manifest.includes('"theme_color": "#65080d"'),'PWA theme must be heritage red');
 
-console.log('Giaphaphamvan clear Liquid Glass v22 audit: PASS');
+console.log('Giaphaphamvan red dock + glass active tab v23 audit: PASS');
