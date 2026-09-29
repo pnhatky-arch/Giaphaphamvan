@@ -51,7 +51,7 @@ window.PHAM_VAN_SEED = {
   ensureStyle('pham-van-reference-polish-css','/reference-polish.css?v=1');
   ensureStyle('pham-van-parchment-v4-css','/parchment-v4.css?v=4');
   ensureStyle('pham-van-reference-exact-css','/reference-exact.css?v=1');
-  ensureStyle('pham-van-liquid-menu-css','/liquid-menu.css?v=7');
+  ensureStyle('pham-van-liquid-menu-css','/liquid-menu.css?v=8');
 
   const referenceCrest='/reference-crest.webp?v=1';
   const legacyCrest='/crest.svg?v=4';
