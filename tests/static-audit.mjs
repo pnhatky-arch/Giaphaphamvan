@@ -34,21 +34,26 @@ assert.ok(!index.includes('id="drawer"'),'duplicate drawer navigation must be re
 assert.ok(css.includes('.tree-connectors'),'SVG connector layer must be styled');
 assert.ok(css.includes('.person-card.ancestor'),'ancestor card styling missing');
 
-assert.ok(data.includes("/reference-exact.css?v=10"),'approved visual stylesheet must be v10');
+assert.ok(data.includes("/target-ui.css?v=4"),'geometry stylesheet must be v4');
+assert.ok(data.includes("/reference-exact.css?v=11"),'approved visual stylesheet must be v11');
 assert.ok(data.includes("/liquid-menu.css?v=11"),'navigation stylesheet must be v11');
 assert.ok(!data.includes('reference-polish.css'),'retired polish stylesheet must not load');
 assert.ok(!data.includes('parchment-v4.css'),'retired parchment stylesheet must not load');
 assert.ok(data.includes("const approvedCrest='/reference-crest.webp?v=2'"),'approved crest must remain canonical');
-assert.ok(index.includes('/heritage-approved-top.webp?v=1'),'index must preload approved top artwork');
-assert.ok(index.includes('/heritage-approved-cont.webp?v=1'),'index must preload approved continuation artwork');
+assert.ok(index.includes('/heritage-approved-top.webp?v=1'),'index keeps approved top preload');
+assert.ok(index.includes('/heritage-approved-cont.webp?v=1'),'index keeps approved continuation preload');
 assert.ok(index.includes('class="heritage-canvas"'),'approved background canvas missing');
 assert.ok(index.includes('class="heritage-continuation"'),'approved continuation layer missing');
 assert.ok(index.includes('/data.js?v=6'),'index must load current visual bootstrap');
 assert.ok(!index.includes('/heritage-bg.svg'),'obsolete SVG background must not load');
 
-/* One direct raster background system only. */
-assert.ok(exact.includes('.heritage-canvas'),'direct approved canvas styling missing');
-assert.ok(exact.includes("url('/heritage-approved-cont.webp?v=1')"),'approved continuation artwork missing');
+/* One approved composition. Safari-broken DOM image is hidden; CSS owns rendering. */
+assert.ok(exact.includes('.heritage-canvas>img,.heritage-continuation{display:none!important}'),'legacy DOM background children must never render');
+assert.ok(exact.includes("url('/heritage-approved-top.webp?v=2')"),'approved top artwork must render once via CSS');
+assert.ok(exact.includes("url('/heritage-approved-cont.webp?v=2')"),'approved continuation artwork missing');
+assert.ok(exact.includes('height:177.6vw'),'approved top aspect ratio must be preserved');
+assert.ok(exact.includes('top:calc(177.6vw - 1px)'),'continuation must overlap top by one pixel');
+assert.ok(exact.includes('background-position:center -1.6vw'),'continuation phase must match the approved top edge');
 assert.ok(!exact.includes('heritage-bg.svg'),'obsolete SVG background wrapper must not be referenced');
 assert.ok(!exact.includes('reference-hero.webp'),'hero must not use a second background image');
 assert.ok(!exact.includes('tree-parchment.svg'),'tree must not use a second background image');
@@ -56,7 +61,6 @@ assert.ok(!exact.includes('dongson-header.svg'),'header must not use a second ba
 assert.ok(!liquid.includes('url('),'navigation may use color/glass only, never another artwork image');
 for(const view of ['#overview-view','#tree-view','#members-view','#events-view','#documents-view','#settings-view']) assert.ok(exact.includes(view),`transparent shared-background view missing ${view}`);
 assert.ok(exact.includes('background:transparent!important'),'views must expose the same continuous background');
-assert.equal((index.match(/heritage-approved-top\.webp/g)||[]).length,2,'approved drum image should appear only once in DOM plus one preload');
 assert.ok(liquid.includes('@keyframes goldTabSweep'),'selected tab must retain the one-shot gold tracer');
 assert.ok(liquid.includes('animation:goldTabSweep .9s'),'gold tracer must run once per selection');
 assert.ok(liquid.includes('grid-template-columns:repeat(6,minmax(0,1fr))'),'bottom navigation must use six equal tabs');
@@ -71,11 +75,11 @@ assert.ok(cloud.includes('resolveConflict'),'cloud conflicts must be explicit');
 assert.ok(app.includes('appConfirm'),'destructive actions must use shared confirm');
 assert.ok(!app.includes('window.confirm('),'native window.confirm is forbidden');
 
-assert.ok(sw.includes("giaphaphamvan-v36"),'service worker cache version mismatch');
-for(const asset of ['/reference-exact.css?v=10','/liquid-menu.css?v=11','/reference-crest.webp?v=2','/heritage-approved-top.webp?v=1','/heritage-approved-cont.webp?v=1','/data.js?v=6']) assert.ok(sw.includes(asset),`service worker missing ${asset}`);
+assert.ok(sw.includes("giaphaphamvan-v37"),'service worker cache version mismatch');
+for(const asset of ['/target-ui.css?v=4','/reference-exact.css?v=11','/liquid-menu.css?v=11','/reference-crest.webp?v=2','/heritage-approved-top.webp?v=2','/heritage-approved-cont.webp?v=2','/data.js?v=6']) assert.ok(sw.includes(asset),`service worker missing ${asset}`);
 for(const retired of ['/heritage-bg.svg','/reference-polish.css','/parchment-v4.css','/reference-hero.webp','/reference-tree.webp','/dongson-header.svg','/tree-parchment.svg','/hero-parchment.svg']) assert.ok(!sw.includes(retired),`retired layer must not be precached: ${retired}`);
 assert.ok(sw.includes("cache:'no-store'"),'service worker must bypass stale HTTP artwork cache');
 assert.ok(wrangler.includes('"directory": "./public"'),'Wrangler must deploy ./public');
 assert.ok(manifest.includes('"theme_color": "#650912"')||manifest.includes('"theme_color": "#65080d"'),'PWA theme must be heritage red');
 
-console.log('Giaphaphamvan direct approved Dong Son canvas v36 audit: PASS');
+console.log('Giaphaphamvan approved seamless Dong Son v37 audit: PASS');
