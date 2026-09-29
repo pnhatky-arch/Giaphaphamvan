@@ -25,14 +25,15 @@ assert.ok(!index.includes('id="drawer"'),'duplicate drawer navigation must be re
 assert.ok(css.includes('.tree-connectors'),'SVG connector layer must be styled');
 assert.ok(css.includes('.person-card.ancestor'),'ancestor card styling missing');
 assert.ok(data.includes("/target-ui.css?v=4"),'geometry stylesheet must be v4');
-assert.ok(data.includes("/reference-exact.css?v=16"),'approved visual stylesheet must be v16');
+assert.ok(data.includes("/reference-exact.css?v=17"),'approved visual stylesheet must be v17');
 assert.ok(data.includes("/liquid-menu.css?v=12"),'navigation stylesheet must be v12');
 assert.ok(data.includes("const approvedCrest='/reference-crest.webp?v=2'"),'approved crest must remain canonical');
-assert.ok(data.includes('normalizeHeritage'),'runtime must remove legacy split background nodes');
+assert.ok(data.includes("img.className='heritage-bg-image'"),'runtime must inject the single full background image node');
+assert.ok(data.includes("img.src='/heritage-approved-full.webp?v=2'"),'runtime must use the approved full artwork directly');
 
-assert.ok(exact.includes("url('/heritage-approved-full.webp?v=1')"),'single approved full heritage artwork must render');
-assert.ok(exact.includes('background-repeat:no-repeat!important'),'full heritage artwork must never tile');
-assert.ok(exact.includes('background-size:100% auto!important'),'full heritage artwork must reveal from top downward without vertical stretching');
+assert.ok(exact.includes('.heritage-bg-image{'),'full heritage image node must be styled');
+assert.ok(exact.includes('width:100%!important;height:auto!important'),'full heritage artwork must preserve natural vertical ratio');
+assert.ok(!exact.includes("background-image:url('/heritage-approved-full.webp"),'full heritage artwork must render as a DOM image, not CSS background');
 assert.ok(!exact.includes('heritage-approved-top.webp'),'split top background must not render');
 assert.ok(!exact.includes('heritage-approved-cont.webp'),'split continuation background must not render');
 assert.ok(!exact.includes('heritage-background.svg'),'embedded-raster SVG must never render on Safari');
@@ -54,12 +55,12 @@ assert.ok(cloud.includes('drive.appdata'),'Google Drive must use appDataFolder s
 assert.ok(cloud.includes('resolveConflict'),'cloud conflicts must be explicit');
 assert.ok(app.includes('appConfirm'),'destructive actions must use shared confirm');
 assert.ok(!app.includes('window.confirm('),'native window.confirm is forbidden');
-assert.ok(sw.includes("giaphaphamvan-v42"),'service worker cache version mismatch');
-for(const asset of ['/target-ui.css?v=4','/reference-exact.css?v=16','/liquid-menu.css?v=12','/reference-crest.webp?v=2','/heritage-approved-full.webp?v=1','/data.js?v=6']) assert.ok(sw.includes(asset),`service worker missing ${asset}`);
+assert.ok(sw.includes("giaphaphamvan-v43"),'service worker cache version mismatch');
+for(const asset of ['/target-ui.css?v=4','/reference-exact.css?v=17','/liquid-menu.css?v=12','/reference-crest.webp?v=2','/heritage-approved-full.webp?v=2','/data.js?v=7']) assert.ok(sw.includes(asset),`service worker missing ${asset}`);
 assert.ok(!sw.includes('heritage-approved-top.webp'),'split top background must not be precached');
 assert.ok(!sw.includes('heritage-approved-cont.webp'),'split continuation background must not be precached');
 assert.ok(!sw.includes('heritage-background.svg'),'broken embedded SVG must not be precached');
 assert.ok(sw.includes("cache:'no-store'"),'service worker must bypass stale HTTP artwork cache');
 assert.ok(wrangler.includes('"directory": "./public"'),'Wrangler must deploy ./public');
 assert.ok(manifest.includes('"theme_color": "#650912"')||manifest.includes('"theme_color": "#65080d"'),'PWA theme must be heritage red');
-console.log('Giaphaphamvan single full heritage background + fixed Safari nav v42 audit: PASS');
+console.log('Giaphaphamvan single DOM heritage background + fixed Safari nav v43 audit: PASS');
