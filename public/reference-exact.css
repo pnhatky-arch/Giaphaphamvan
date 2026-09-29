@@ -1,7 +1,7 @@
-/* Approved heritage artwork — v3: one canonical crest + one canonical hero */
+/* Approved heritage artwork — v4: canonical crest/hero + full-page Dong Son parchment */
 :root{
-  --reference-paper:#f8eddc;
-  --reference-paper-deep:#ead2ae;
+  --reference-paper:#fbefda;
+  --reference-paper-deep:#ecd1a5;
 }
 
 html,body{background:#65080d!important}
@@ -9,9 +9,10 @@ body{background:#65080d!important}
 .app-shell{
   min-height:100svh!important;
   background:
-    linear-gradient(180deg,rgba(255,251,244,.13),rgba(248,236,216,.08)),
-    url('/heritage-bg.svg?v=5') center top/cover fixed no-repeat,
-    #f1ddbd!important;
+    linear-gradient(180deg,rgba(255,252,245,.09),rgba(248,235,212,.045)),
+    url('/heritage-bg.svg?v=6') center top/cover no-repeat,
+    #f3dfbd!important;
+  background-attachment:scroll!important;
 }
 main{padding-top:12px!important}
 .view{background:transparent!important}
@@ -27,7 +28,7 @@ main{padding-top:12px!important}
   image-rendering:auto!important;
 }
 
-/* Canonical approved top card artwork. */
+/* Canonical approved top card artwork stays unchanged. */
 .hero-panel{
   height:138px!important;
   margin-top:4px!important;
@@ -50,7 +51,7 @@ main{padding-top:12px!important}
 }
 .hero-crest{content:url('/reference-crest.webp?v=2')!important}
 
-/* One continuous full-page heritage parchment across the whole app. */
+/* One continuous Dong Son cream background across the whole app. */
 #overview-view,
 #tree-view,
 #members-view,
@@ -80,6 +81,7 @@ main{padding-top:12px!important}
   background:linear-gradient(145deg,rgba(255,254,249,.995),rgba(255,249,238,.985))!important;
 }
 
+/* Cards stay readable while the Dong Son linework remains visible behind them. */
 .surface,.member-row,.timeline-item,.document-row,.empty-state,
 .settings-group,.search-row{
   -webkit-backdrop-filter:blur(2px) saturate(1.02)!important;
