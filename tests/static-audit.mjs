@@ -6,6 +6,7 @@ const index=read('public/index.html');
 const css=read('public/styles.css');
 const exact=read('public/reference-exact.css');
 const liquid=read('public/liquid-menu.css');
+const heritage=read('public/heritage-background.svg');
 const data=read('public/data.js');
 const app=read('public/app.js');
 const backup=read('public/backup-engine.js');
@@ -17,7 +18,7 @@ const wrangler=read('wrangler.jsonc');
 for(const file of [
   'public/index.html','public/styles.css','public/target-ui.css','public/reference-exact.css','public/liquid-menu.css','public/app.js','public/data.js',
   'public/backup-engine.js','public/storage-engine.js','public/cloud-adapter.js','public/manifest.webmanifest','public/icon.svg',
-  'public/reference-crest.webp','public/heritage-approved-top.webp','public/heritage-approved-cont.webp','public/sw.js'
+  'public/reference-crest.webp','public/heritage-background.svg','public/sw.js'
 ]) assert.ok(fs.existsSync(file),`missing ${file}`);
 
 for(const retired of [
@@ -35,27 +36,22 @@ assert.ok(css.includes('.tree-connectors'),'SVG connector layer must be styled')
 assert.ok(css.includes('.person-card.ancestor'),'ancestor card styling missing');
 
 assert.ok(data.includes("/target-ui.css?v=4"),'geometry stylesheet must be v4');
-assert.ok(data.includes("/reference-exact.css?v=11"),'approved visual stylesheet must be v11');
+assert.ok(data.includes("/reference-exact.css?v=12"),'approved visual stylesheet must be v12');
 assert.ok(data.includes("/liquid-menu.css?v=11"),'navigation stylesheet must be v11');
-assert.ok(!data.includes('reference-polish.css'),'retired polish stylesheet must not load');
-assert.ok(!data.includes('parchment-v4.css'),'retired parchment stylesheet must not load');
 assert.ok(data.includes("const approvedCrest='/reference-crest.webp?v=2'"),'approved crest must remain canonical');
-assert.ok(index.includes('/heritage-approved-top.webp?v=1'),'index keeps approved top preload');
-assert.ok(index.includes('/heritage-approved-cont.webp?v=1'),'index keeps approved continuation preload');
-assert.ok(index.includes('class="heritage-canvas"'),'approved background canvas missing');
-assert.ok(index.includes('class="heritage-continuation"'),'approved continuation layer missing');
-assert.ok(index.includes('/data.js?v=6'),'index must load current visual bootstrap');
-assert.ok(!index.includes('/heritage-bg.svg'),'obsolete SVG background must not load');
 
-/* One approved composition. Safari-broken DOM image is hidden; CSS owns rendering. */
-assert.ok(exact.includes('.heritage-canvas>img,.heritage-continuation{display:none!important}'),'legacy DOM background children must never render');
-assert.ok(exact.includes("url('/heritage-approved-top.webp?v=2')"),'approved top artwork must render once via CSS');
-assert.ok(exact.includes("url('/heritage-approved-cont.webp?v=2')"),'approved continuation artwork missing');
-assert.ok(exact.includes('height:177.6vw'),'approved top aspect ratio must be preserved');
-assert.ok(exact.includes('top:calc(177.6vw - 1px)'),'continuation must overlap top by one pixel');
-assert.ok(exact.includes('background-position:center -1.6vw'),'continuation phase must match the approved top edge');
-assert.ok(!exact.includes('heritage-bg.svg'),'obsolete SVG background wrapper must not be referenced');
-assert.ok(!exact.includes('reference-hero.webp'),'hero must not use a second background image');
+/* One self-contained long SVG background for roughly 30 mobile screens. */
+assert.ok(exact.includes("url('/heritage-background.svg?v=1')"),'long SVG background must be the canonical runtime artwork');
+assert.ok(exact.includes('.heritage-canvas::before,.heritage-canvas::after{content:none!important'),'old split background pseudo-layers must be disabled');
+assert.ok(exact.includes('.heritage-canvas>img,.heritage-continuation{display:none!important}'),'old split DOM background layers must be disabled');
+assert.ok(heritage.includes('height="50000"'),'SVG must provide the long 30-screen canvas');
+assert.ok(heritage.includes('viewBox="0 0 724 50000"'),'SVG viewBox must preserve the long canvas');
+assert.ok(heritage.includes('id="continuation"'),'SVG continuation pattern missing');
+assert.ok(heritage.includes('id="crane"'),'crane motif missing');
+assert.ok(heritage.includes('id="lacBird"'),'Dong Son bird motif missing');
+assert.equal((heritage.match(/transform="translate\(362 345\)"/g)||[]).length,1,'the main Dong Son drum must appear once');
+assert.ok(!exact.includes('heritage-approved-top.webp?v=2'),'split top raster must no longer render');
+assert.ok(!exact.includes('heritage-approved-cont.webp?v=2'),'split continuation raster must no longer render');
 assert.ok(!exact.includes('tree-parchment.svg'),'tree must not use a second background image');
 assert.ok(!exact.includes('dongson-header.svg'),'header must not use a second background image');
 assert.ok(!liquid.includes('url('),'navigation may use color/glass only, never another artwork image');
@@ -75,11 +71,13 @@ assert.ok(cloud.includes('resolveConflict'),'cloud conflicts must be explicit');
 assert.ok(app.includes('appConfirm'),'destructive actions must use shared confirm');
 assert.ok(!app.includes('window.confirm('),'native window.confirm is forbidden');
 
-assert.ok(sw.includes("giaphaphamvan-v37"),'service worker cache version mismatch');
-for(const asset of ['/target-ui.css?v=4','/reference-exact.css?v=11','/liquid-menu.css?v=11','/reference-crest.webp?v=2','/heritage-approved-top.webp?v=2','/heritage-approved-cont.webp?v=2','/data.js?v=6']) assert.ok(sw.includes(asset),`service worker missing ${asset}`);
+assert.ok(sw.includes("giaphaphamvan-v38"),'service worker cache version mismatch');
+for(const asset of ['/target-ui.css?v=4','/reference-exact.css?v=12','/liquid-menu.css?v=11','/reference-crest.webp?v=2','/heritage-background.svg?v=1','/data.js?v=6']) assert.ok(sw.includes(asset),`service worker missing ${asset}`);
 for(const retired of ['/heritage-bg.svg','/reference-polish.css','/parchment-v4.css','/reference-hero.webp','/reference-tree.webp','/dongson-header.svg','/tree-parchment.svg','/hero-parchment.svg']) assert.ok(!sw.includes(retired),`retired layer must not be precached: ${retired}`);
+assert.ok(!sw.includes('heritage-approved-top.webp'),'split top raster must not be precached');
+assert.ok(!sw.includes('heritage-approved-cont.webp'),'split continuation raster must not be precached');
 assert.ok(sw.includes("cache:'no-store'"),'service worker must bypass stale HTTP artwork cache');
 assert.ok(wrangler.includes('"directory": "./public"'),'Wrangler must deploy ./public');
 assert.ok(manifest.includes('"theme_color": "#650912"')||manifest.includes('"theme_color": "#65080d"'),'PWA theme must be heritage red');
 
-console.log('Giaphaphamvan approved seamless Dong Son v37 audit: PASS');
+console.log('Giaphaphamvan single long SVG background v38 audit: PASS');
