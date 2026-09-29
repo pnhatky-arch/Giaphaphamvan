@@ -34,7 +34,7 @@ assert.ok(data.includes("/target-ui.css?v=3"),'approved target reference stylesh
 assert.ok(data.includes("/reference-polish.css?v=1"),'reference polish stylesheet must be loaded');
 assert.ok(data.includes("/parchment-v4.css?v=4"),'warm parchment stylesheet must be loaded');
 assert.ok(data.includes("/reference-exact.css?v=1"),'exact reference artwork stylesheet must be loaded');
-assert.ok(data.includes("/liquid-menu.css?v=5"),'glossy active-tab Liquid Glass stylesheet must be loaded last');
+assert.ok(data.includes("/liquid-menu.css?v=6"),'gold-sweep Liquid Glass stylesheet must be loaded last');
 assert.ok(data.includes('/reference-crest.webp?v=1'),'approved reference crest must be routed at runtime');
 
 assert.ok(target.includes('.topbar')&&target.includes('height:calc(58px + env(safe-area-inset-top))'),'target header safe-area geometry missing');
@@ -45,8 +45,10 @@ assert.ok(parchment.includes("url('/heritage-bg.svg?v=4')"),'parchment artwork r
 
 assert.ok(liquid.includes('linear-gradient(180deg,var(--lg-dock-red-top),var(--lg-dock-red-bottom))'),'dock must remain heritage red');
 assert.ok(liquid.includes('backdrop-filter:blur(21px)')&&liquid.includes('-webkit-backdrop-filter:blur(21px)'),'selected tab must use glossy glass blur');
-assert.ok(liquid.includes('rgba(255,255,255,.52)'),'selected tab must include a strong specular highlight');
-assert.ok(liquid.includes('0 0 16px rgba(244,206,118,.16)'),'selected tab must include a restrained gold glow');
+assert.ok(liquid.includes('@keyframes goldTabSweep'),'selected tab must define a one-shot gold sweep animation');
+assert.ok(liquid.includes('animation:goldTabSweep .9s'),'selected tab must run the gold tracer exactly once');
+assert.ok(liquid.includes('conic-gradient(')&&liquid.includes('#ffd45f'),'gold tracer must use a bright moving segment');
+assert.ok(liquid.includes('@media (prefers-reduced-motion:reduce)'),'motion accessibility fallback missing');
 assert.ok(liquid.includes('.menu-button')&&liquid.includes('.language-button')&&liquid.includes('.avatar-button'),'top controls must use Liquid Glass material');
 assert.ok(liquid.includes('border-radius:26px!important'),'floating dock geometry missing');
 
@@ -60,10 +62,10 @@ assert.ok(cloud.includes('resolveConflict'),'cloud conflicts must be explicit');
 assert.ok(app.includes('appConfirm'),'destructive actions must use shared confirm');
 assert.ok(!app.includes('window.confirm('),'native window.confirm is forbidden');
 
-assert.ok(sw.includes("giaphaphamvan-v24"),'service worker cache version mismatch');
-for(const asset of ['/styles.css?v=12','/target-ui.css?v=3','/reference-polish.css?v=1','/parchment-v4.css?v=4','/reference-exact.css?v=1','/liquid-menu.css?v=5','/app.js?v=12','/reference-crest.webp?v=1','/reference-hero.webp?v=1','/reference-tree.webp?v=1']) assert.ok(sw.includes(asset),`service worker missing ${asset}`);
+assert.ok(sw.includes("giaphaphamvan-v25"),'service worker cache version mismatch');
+for(const asset of ['/styles.css?v=12','/target-ui.css?v=3','/reference-polish.css?v=1','/parchment-v4.css?v=4','/reference-exact.css?v=1','/liquid-menu.css?v=6','/app.js?v=12','/reference-crest.webp?v=1','/reference-hero.webp?v=1','/reference-tree.webp?v=1']) assert.ok(sw.includes(asset),`service worker missing ${asset}`);
 assert.ok(sw.includes("cache:'no-store'"),'service worker must bypass stale HTTP artwork cache');
 assert.ok(wrangler.includes('"directory": "./public"'),'Wrangler must deploy ./public');
 assert.ok(manifest.includes('"theme_color": "#650912"')||manifest.includes('"theme_color": "#65080d"'),'PWA theme must be heritage red');
 
-console.log('Giaphaphamvan glossy active-tab Liquid Glass v24 audit: PASS');
+console.log('Giaphaphamvan gold tab sweep v25 audit: PASS');
