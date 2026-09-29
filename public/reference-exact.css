@@ -1,44 +1,85 @@
-/* Exact approved artwork lock — source: Library reference image, v1 */
+/* Exact heritage artwork — v2: crisp vector crest, hero and full-page parchment */
 :root{
-  --reference-paper:#f7eddd;
-  --reference-paper-deep:#efe0c6;
+  --reference-paper:#f8eddc;
+  --reference-paper-deep:#ead2ae;
 }
 
 html,body{background:#65080d!important}
+body{background:#65080d!important}
 .app-shell{
-  background:linear-gradient(180deg,#fbf4e8 0%,#f4e6d0 48%,#efdec2 100%)!important;
+  min-height:100svh!important;
+  background:
+    linear-gradient(180deg,rgba(255,251,244,.16),rgba(248,236,216,.10)),
+    url('/heritage-bg.svg?v=5') center top/cover fixed no-repeat,
+    #f1ddbd!important;
 }
+main{padding-top:10px!important}
+.view{background:transparent!important}
 
-/* Use the approved crest artwork in the compact header. */
+/* Crisp vector crest in compact header. */
 .top-brand{grid-template-columns:76px minmax(0,1fr)!important;gap:7px!important}
 .top-logo{
-  content:url('/reference-crest.webp?v=1')!important;
   width:76px!important;
   height:46px!important;
   object-fit:contain!important;
-  filter:none!important;
+  filter:drop-shadow(0 1px 1px rgba(58,8,8,.20))!important;
+  image-rendering:auto!important;
 }
 
-/* The approved hero is treated as a locked visual asset, not redrawn in CSS. */
+/* Hero is rebuilt from vectors instead of the soft raster reference. */
 .hero-panel{
-  height:130px!important;
-  padding:0!important;
+  height:138px!important;
+  margin-top:2px!important;
+  padding:7px 12px 9px!important;
   overflow:hidden!important;
-  border:0!important;
-  border-radius:18px!important;
-  background:#f8eedf url('/reference-hero.webp?v=1') center/100% 100% no-repeat!important;
-  box-shadow:0 8px 18px rgba(87,51,22,.11)!important;
+  border:1px solid rgba(194,139,49,.48)!important;
+  border-radius:20px!important;
+  background:
+    linear-gradient(180deg,rgba(255,255,255,.07),rgba(255,251,241,.02)),
+    url('/hero-parchment.svg?v=5') center/cover no-repeat!important;
+  box-shadow:
+    0 8px 20px rgba(87,51,22,.10),
+    inset 0 1px 0 rgba(255,255,255,.78)!important;
 }
-.hero-panel:after{display:none!important}
+.hero-panel:after{
+  display:block!important;
+  background:radial-gradient(circle at 50% 2%,rgba(255,255,255,.18),transparent 54%)!important;
+}
 .hero-panel>.hero-crest,
 .hero-panel>h1,
 .hero-panel>p,
-.hero-panel>.ornament{opacity:0!important;pointer-events:none!important}
+.hero-panel>.ornament{
+  opacity:1!important;
+  pointer-events:auto!important;
+}
+.hero-crest{
+  width:132px!important;
+  height:61px!important;
+  object-fit:contain!important;
+  margin-top:-2px!important;
+  filter:drop-shadow(0 2px 2px rgba(75,34,10,.16))!important;
+  image-rendering:auto!important;
+}
+.hero-panel h1{
+  margin-top:1px!important;
+  font-size:16px!important;
+  color:#704111!important;
+  text-shadow:0 1px 0 rgba(255,255,255,.48)!important;
+}
+.hero-panel p{margin-top:4px!important;color:#7b392c!important}
+.hero-panel .ornament{margin-top:5px!important}
 
-/* Continuous warm ivory parchment matching the approved genealogy mock-up. */
-#tree-view{background:var(--reference-paper)!important}
+/* One continuous sharp parchment across Tree and every other view. */
+#overview-view,
+#tree-view,
+#members-view,
+#events-view,
+#documents-view,
+#settings-view{
+  background:transparent!important;
+}
 #tree-view .tree-stage{
-  background:#f8eedf url('/reference-tree.webp?v=1') center/100% 100% no-repeat!important;
+  background:transparent!important;
   border-radius:0!important;
   box-shadow:none!important;
 }
@@ -46,11 +87,11 @@ html,body{background:#65080d!important}
 #tree-view .generation-title{
   background:transparent!important;
   color:#8d591a!important;
-  text-shadow:0 1px rgba(255,255,255,.55)!important;
+  text-shadow:0 1px rgba(255,255,255,.58)!important;
 }
 #tree-view .person-card{
   background:linear-gradient(145deg,rgba(255,253,248,.985),rgba(251,246,237,.975))!important;
-  border-color:rgba(139,91,39,.12)!important;
+  border-color:rgba(139,91,39,.13)!important;
   box-shadow:0 5px 12px rgba(76,46,22,.08)!important;
 }
 #tree-view .person-card.ancestor{
@@ -58,8 +99,9 @@ html,body{background:#65080d!important}
   background:linear-gradient(145deg,rgba(255,254,249,.995),rgba(255,249,238,.985))!important;
 }
 
-/* Overview uses the same warm reference parchment instead of a gray/flat cream fill. */
-#overview-view{
-  background:linear-gradient(180deg,#fbf4e8 0%,#f5e8d2 42%,#efe0c7 100%)!important;
+/* Cards stay readable while the same heritage artwork remains visible behind them. */
+.surface,.member-row,.timeline-item,.document-row,.empty-state,
+.settings-group,.search-row{
+  -webkit-backdrop-filter:blur(2px) saturate(1.02)!important;
+  backdrop-filter:blur(2px) saturate(1.02)!important;
 }
-#overview-view:after{opacity:.18!important;filter:sepia(.18) saturate(.92)!important}
