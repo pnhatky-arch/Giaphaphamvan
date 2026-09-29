@@ -50,7 +50,7 @@ assert.ok(data.includes("/target-ui.css?v=3"),'approved target reference stylesh
 assert.ok(data.includes("/reference-polish.css?v=1"),'final genealogy polish stylesheet must be loaded');
 assert.ok(data.includes("/parchment-v4.css?v=4"),'warm parchment v4 stylesheet must be loaded');
 assert.ok(data.includes("/reference-exact.css?v=1"),'exact reference artwork stylesheet must be loaded');
-assert.ok(data.includes("/liquid-menu.css?v=1"),'Liquid Glass menu stylesheet must be loaded last');
+assert.ok(data.includes("/liquid-menu.css?v=2"),'dense Liquid Glass menu stylesheet must be loaded last');
 assert.ok(data.includes('/reference-crest.webp?v=1'),'approved reference crest must be routed at runtime');
 assert.ok(target.includes('.topbar')&&target.includes('height:calc(58px + env(safe-area-inset-top))'),'target header safe-area geometry missing');
 assert.ok(target.includes('.hero-panel')&&target.includes('height:130px'),'target hero geometry missing');
@@ -60,9 +60,9 @@ assert.ok(target.includes('.tree-stage')&&target.includes('height:clamp(320px,ca
 assert.ok(polish.includes('justify-content:space-between!important'),'tall mobile genealogy must distribute generations across parchment');
 assert.ok(polish.includes('#overview-view:after'),'overview heritage background layer missing');
 assert.ok(parchment.includes("url('/heritage-bg.svg?v=4')")&&parchment.includes("url('/hero-parchment.svg?v=4')")&&parchment.includes("url('/tree-parchment.svg?v=4')"),'parchment v4 artwork routing missing');
-assert.ok(liquid.includes('backdrop-filter:blur(26px)')&&liquid.includes('-webkit-backdrop-filter:blur(26px)'),'bottom navigation must use true Liquid Glass blur');
+assert.ok(liquid.includes('backdrop-filter:blur(18px)')&&liquid.includes('-webkit-backdrop-filter:blur(18px)'),'bottom navigation must use dense Liquid Glass blur');
 assert.ok(liquid.includes('.menu-button')&&liquid.includes('.language-button')&&liquid.includes('.avatar-button'),'top controls must use Liquid Glass material');
-assert.ok(liquid.includes('.bottom-nav button.active')&&liquid.includes('rgba(255,255,255,.23)'),'active navigation tab must be translucent rather than opaque red');
+assert.ok(liquid.includes('.bottom-nav button.active')&&liquid.includes('rgba(173,72,79,.82)'),'active navigation tab must remain translucent but readable');
 assert.ok(liquid.includes('border-radius:25px!important'),'floating dock geometry missing');
 
 assert.ok(app.includes('function renderGenerationControls'),'generation chips renderer missing');
@@ -83,8 +83,8 @@ assert.ok(hero.length>3000,'hero artwork unexpectedly simple');
 assert.ok(treebg.length>3000,'tree parchment artwork unexpectedly simple');
 assert.ok(heritage.length>3000,'full-page heritage background missing');
 
-assert.ok(sw.includes("giaphaphamvan-v20"),'service worker cache version mismatch');
-for(const asset of ['/styles.css?v=12','/target-ui.css?v=3','/reference-polish.css?v=1','/parchment-v4.css?v=4','/reference-exact.css?v=1','/liquid-menu.css?v=1','/app.js?v=12','/reference-crest.webp?v=1','/reference-hero.webp?v=1','/reference-tree.webp?v=1']) assert.ok(sw.includes(asset),`service worker missing ${asset}`);
+assert.ok(sw.includes("giaphaphamvan-v21"),'service worker cache version mismatch');
+for(const asset of ['/styles.css?v=12','/target-ui.css?v=3','/reference-polish.css?v=1','/parchment-v4.css?v=4','/reference-exact.css?v=1','/liquid-menu.css?v=2','/app.js?v=12','/reference-crest.webp?v=1','/reference-hero.webp?v=1','/reference-tree.webp?v=1']) assert.ok(sw.includes(asset),`service worker missing ${asset}`);
 assert.ok(sw.includes("cache:'no-store'"),'service worker must bypass stale HTTP artwork cache');
 assert.ok(!sw.includes('/ui.js'),'service worker must not cache legacy UI runtime');
 assert.ok(wrangler.includes('"directory": "./public"'),'Wrangler must deploy ./public');
@@ -98,4 +98,4 @@ assert.ok(cloud.includes('resolveConflict'),'cloud conflicts must be explicit');
 assert.ok(app.includes('appConfirm'),'destructive actions must use shared confirm');
 assert.ok(!app.includes('window.confirm('),'native window.confirm is forbidden');
 
-console.log('Giaphaphamvan Liquid Glass v20 audit: PASS');
+console.log('Giaphaphamvan dense Liquid Glass v21 audit: PASS');
