@@ -1,0 +1,139 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="724" height="50000" viewBox="0 0 724 50000" preserveAspectRatio="xMidYMin meet">
+<defs>
+  <linearGradient id="paper" x1="0" y1="0" x2="0" y2="1">
+    <stop offset="0" stop-color="#f8dfb4"/>
+    <stop offset=".48" stop-color="#f3d4a3"/>
+    <stop offset="1" stop-color="#edc88f"/>
+  </linearGradient>
+  <radialGradient id="glow" cx="50%" cy="28%" r="72%">
+    <stop offset="0" stop-color="#fff5d8" stop-opacity=".72"/>
+    <stop offset=".55" stop-color="#f7ddb0" stop-opacity=".18"/>
+    <stop offset="1" stop-color="#c98d3f" stop-opacity=".06"/>
+  </radialGradient>
+  <pattern id="grain" width="24" height="24" patternUnits="userSpaceOnUse">
+    <circle cx="4" cy="6" r=".6" fill="#8c5b24" opacity=".035"/>
+    <circle cx="18" cy="17" r=".45" fill="#9b6427" opacity=".028"/>
+    <path d="M2 20l7-.8M13 4l6-.6" stroke="#8c5b24" stroke-width=".4" opacity=".025"/>
+  </pattern>
+  <pattern id="tri" width="26" height="12" patternUnits="userSpaceOnUse">
+    <path d="M0 12 6.5 1 13 12 19.5 1 26 12" fill="none" stroke="#a56d2c" stroke-width="1"/>
+  </pattern>
+  <pattern id="fret" width="36" height="15" patternUnits="userSpaceOnUse">
+    <path d="M0 3h15v9H6V8h24v4h-9V3h15" fill="none" stroke="#9f6929" stroke-width="1"/>
+  </pattern>
+  <g id="lacBird" fill="none" stroke="#a56a29" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M-34 2c12-12 26-16 39-12 9 3 18 9 26 20-12-4-23-3-32 1 10 4 19 11 27 20-14-6-27-8-38-5-9 2-17 8-24 16 4-12 10-22 17-29-6-3-11-6-15-11z"/>
+    <path d="M-5 2c6-8 11-14 15-20M1 8c10-4 20-5 30-2M-1 14c11 2 21 5 30 10M-28 7l-15 6 10 2-10 7 15-3"/>
+  </g>
+  <g id="crane" fill="none" stroke="#9c6427" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M-40 2c10-12 23-16 37-12 12 4 22 14 31 26-11-5-22-6-31-2 10 3 19 10 27 18-13-6-26-8-38-4-8 3-15 8-22 15 3-10 8-19 14-26-6-3-12-7-18-15z"/>
+    <path d="M-4 0c16-8 27-18 34-31 4-8 10-10 16-8"/>
+    <path d="M45-39c7-2 12 0 16 5M-9 12c12 0 24 3 35 9M-30 7l-17 7 12 3-11 8 17-4"/>
+  </g>
+  <g id="cloud" fill="none" stroke="#a16a2d" stroke-linecap="round">
+    <path d="M-33 5c7-10 15-13 24-8 2-10 14-12 20-4 8-5 18 0 19 8 8-3 16 1 18 8-16 4-32 4-48 1-13-2-24-4-33-5z"/>
+    <path d="M-8 9c6 4 13 5 20 2M12 10c7 3 14 2 20-2"/>
+  </g>
+  <g id="person" fill="none" stroke="#9d6829" stroke-linecap="round">
+    <circle cy="-12" r="3"/>
+    <path d="M0-9v17M0-4l-8 7M0-4l8 7M0 8l-6 13M0 8l6 13"/>
+  </g>
+  <g id="deer" fill="none" stroke="#9d6829" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M-18 3H4l9-7 8 2-5 5 7 4-9 3-7 8M-13 3l-3 15M-2 3l-2 15M6 4l7 14"/>
+    <path d="M13-3l2-9m2 9 4-7m-6 7-4-7"/>
+  </g>
+  <pattern id="continuation" width="724" height="1700" patternUnits="userSpaceOnUse">
+    <rect width="724" height="1700" fill="#f3d7a8"/>
+    <g fill="none" stroke="#a97131" opacity=".27">
+      <path stroke-width="1.7" d="M-40 110c115-50 220-44 318 10 83 46 168 45 256-4 88-49 177-45 270 14"/>
+      <path stroke-width="1.1" d="M-40 150c120-40 230-33 330 20 76 40 155 39 238-5 92-49 184-44 276 14"/>
+      <path stroke-width="2.1" d="M-40 300c94-50 188-52 282-5 94 47 189 44 284-9 96-53 190-50 282 9"/>
+      <path stroke-width="1.2" d="M-40 342c104-43 205-42 303 4 87 41 176 39 266-7 94-48 188-43 279 16"/>
+      <path stroke-width="1.6" d="M-40 535c120-44 230-37 330 20 75 42 151 40 230-8 93-55 188-52 284 9"/>
+      <path stroke-width="1.0" d="M-40 578c123-37 235-29 338 24 72 37 146 35 221-7 96-54 191-50 285 10"/>
+      <path stroke-width="1.8" d="M-40 770c110-51 213-49 309 7 81 47 163 44 246-8 95-59 192-55 289 11"/>
+      <path stroke-width="1.2" d="M-40 814c115-43 220-38 315 14 80 43 159 41 239-6 97-57 194-51 290 15"/>
+      <path stroke-width="1.8" d="M-40 1010c108-47 210-43 305 13 82 48 166 45 250-8 96-60 193-57 289 8"/>
+      <path stroke-width="1.1" d="M-40 1052c115-39 220-33 315 18 79 42 159 39 239-8 98-57 195-51 290 14"/>
+      <path stroke-width="1.7" d="M-40 1240c118-45 227-39 327 18 77 43 155 40 235-8 94-56 188-51 282 11"/>
+      <path stroke-width="1.0" d="M-40 1284c124-38 236-31 338 22 73 38 147 36 223-6 95-54 189-49 283 12"/>
+      <path stroke-width="1.8" d="M-40 1480c112-48 216-46 312 7 82 45 164 43 247-6 96-57 191-53 285 10"/>
+      <path stroke-width="1.1" d="M-40 1522c118-40 225-35 321 17 78 42 156 40 234-5 97-56 193-50 289 15"/>
+    </g>
+    <g opacity=".20">
+      <rect y="205" width="724" height="12" fill="url(#tri)"/>
+      <rect y="425" width="724" height="15" fill="url(#fret)"/>
+      <rect y="660" width="724" height="12" fill="url(#tri)"/>
+      <rect y="905" width="724" height="15" fill="url(#fret)"/>
+      <rect y="1140" width="724" height="12" fill="url(#tri)"/>
+      <rect y="1380" width="724" height="15" fill="url(#fret)"/>
+      <rect y="1605" width="724" height="12" fill="url(#tri)"/>
+    </g>
+    <g opacity=".24" stroke-width="1.15">
+      <use href="#crane" transform="translate(120 250) scale(.78) rotate(-8)"/>
+      <use href="#crane" transform="translate(600 460) scale(-.72 .72) rotate(-3)"/>
+      <use href="#crane" transform="translate(165 720) scale(.68) rotate(7)"/>
+      <use href="#crane" transform="translate(575 985) scale(-.74 .74) rotate(4)"/>
+      <use href="#crane" transform="translate(125 1240) scale(.70) rotate(-5)"/>
+      <use href="#crane" transform="translate(590 1485) scale(-.70 .70) rotate(5)"/>
+    </g>
+    <g opacity=".16" stroke-width="1">
+      <use href="#cloud" transform="translate(90 410) scale(.75)"/>
+      <use href="#cloud" transform="translate(350 170) scale(.62)"/>
+      <use href="#cloud" transform="translate(625 690) scale(.72)"/>
+      <use href="#cloud" transform="translate(335 930) scale(.68)"/>
+      <use href="#cloud" transform="translate(95 1150) scale(.74)"/>
+      <use href="#cloud" transform="translate(610 1360) scale(.66)"/>
+      <use href="#cloud" transform="translate(370 1580) scale(.72)"/>
+    </g>
+  </pattern>
+</defs>
+<rect width="724" height="50000" fill="url(#paper)"/>
+<rect width="724" height="50000" fill="url(#grain)"/>
+<rect width="724" height="50000" fill="url(#glow)"/>
+<g transform="translate(362 345)" opacity=".31">
+  <circle r="330" fill="none" stroke="#9f6728" stroke-width="2.1"/>
+  <circle r="306" fill="none" stroke="#9f6728" stroke-width="1.2"/>
+  <circle r="284" fill="none" stroke="#9f6728" stroke-width="8" stroke-dasharray="2 11"/>
+  <circle r="260" fill="none" stroke="#9f6728" stroke-width="1.1"/>
+  <circle r="238" fill="none" stroke="#9f6728" stroke-width="13" stroke-dasharray="13 7"/>
+  <circle r="212" fill="none" stroke="#9f6728" stroke-width="1.1"/>
+  <circle r="188" fill="none" stroke="#9f6728" stroke-width="8" stroke-dasharray="2 9"/>
+  <circle r="164" fill="none" stroke="#9f6728" stroke-width="1.1"/>
+  <circle r="140" fill="none" stroke="#9f6728" stroke-width="1.1" stroke-dasharray="3 6"/>
+  <circle r="116" fill="none" stroke="#9f6728" stroke-width="1.2"/>
+  <g fill="#b97b32" opacity=".62"><path d="M0-105 14-42 41-97 40-34 74-74 47-22 97-41 54-11 105 0 54 11 97 41 47 22 74 74 40 34 41 97 14 42 0 105-14 42-41 97-40 34-74 74-47 22-97 41-54 11-105 0-54-11-97-41-47-22-74-74-40-34-41-97-14-42z"/></g>
+  <circle r="34" fill="#f5dbad" opacity=".72"/>
+  <g stroke-width="1.15">
+    <use href="#lacBird" transform="translate(0 -208) scale(.72) rotate(0)"/>
+    <use href="#lacBird" transform="translate(180 -104) scale(.72) rotate(58)"/>
+    <use href="#lacBird" transform="translate(180 104) scale(.72) rotate(120)"/>
+    <use href="#lacBird" transform="translate(0 208) scale(.72) rotate(180)"/>
+    <use href="#lacBird" transform="translate(-180 104) scale(.72) rotate(238)"/>
+    <use href="#lacBird" transform="translate(-180 -104) scale(.72) rotate(300)"/>
+  </g>
+  <g stroke-width="1.1" opacity=".88">
+    <use href="#person" transform="translate(0 -155) scale(.7)"/>
+    <use href="#deer" transform="translate(110 -110) scale(.66) rotate(40)"/>
+    <use href="#person" transform="translate(155 0) scale(.7) rotate(90)"/>
+    <use href="#deer" transform="translate(110 110) scale(.66) rotate(135)"/>
+    <use href="#person" transform="translate(0 155) scale(.7) rotate(180)"/>
+    <use href="#deer" transform="translate(-110 110) scale(.66) rotate(225)"/>
+    <use href="#person" transform="translate(-155 0) scale(.7) rotate(270)"/>
+    <use href="#deer" transform="translate(-110 -110) scale(.66) rotate(315)"/>
+  </g>
+</g>
+<g opacity=".22" stroke-width="1.2">
+  <use href="#crane" transform="translate(95 90) scale(.82) rotate(-7)"/>
+  <use href="#crane" transform="translate(635 92) scale(-.82 .82) rotate(-7)"/>
+  <use href="#crane" transform="translate(90 535) scale(.68) rotate(-10)"/>
+  <use href="#crane" transform="translate(635 540) scale(-.68 .68) rotate(-10)"/>
+</g>
+<g opacity=".14" stroke-width="1">
+  <use href="#cloud" transform="translate(65 190) scale(.8)"/>
+  <use href="#cloud" transform="translate(650 190) scale(.8)"/>
+  <use href="#cloud" transform="translate(120 600) scale(.72)"/>
+  <use href="#cloud" transform="translate(585 600) scale(.72)"/>
+</g>
+<rect x="0" y="700" width="724" height="49300" fill="url(#continuation)"/>
+</svg>
