@@ -50,8 +50,8 @@ window.PHAM_VAN_SEED = {
   ensureStyle('pham-van-approved-reference-css','/target-ui.css?v=3');
   ensureStyle('pham-van-reference-polish-css','/reference-polish.css?v=1');
   ensureStyle('pham-van-parchment-v4-css','/parchment-v4.css?v=4');
-  ensureStyle('pham-van-reference-exact-css','/reference-exact.css?v=5');
-  ensureStyle('pham-van-liquid-menu-css','/liquid-menu.css?v=10');
+  ensureStyle('pham-van-reference-exact-css','/reference-exact.css?v=6');
+  ensureStyle('pham-van-liquid-menu-css','/liquid-menu.css?v=11');
 
   const approvedCrest='/reference-crest.webp?v=2';
   const refreshCrest = () => document.querySelectorAll('img.top-logo,img.hero-crest').forEach(img => {
