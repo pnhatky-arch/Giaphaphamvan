@@ -1,4 +1,4 @@
-/* Liquid Glass navigation material — v9: six tabs, swipe auto-hide, brighter gold lighting */
+/* Liquid Glass navigation material — v10: one shared Dong Son background */
 @property --gold-sweep-angle{
   syntax:'<angle>';
   inherits:false;
@@ -17,19 +17,17 @@
   --lg-menu-subtle:rgba(255,245,232,.96);
   --lg-menu-gold:#f4ce76;
   --lg-menu-gold-soft:rgba(244,206,118,.32);
-  --lg-dock-red-top:rgba(164,29,41,.97);
-  --lg-dock-red-bottom:rgba(108,9,18,.985);
   --lg-active-border:rgba(255,226,151,.96);
 }
 
+/* No independent header texture: the same page background shows through the red glass. */
 .topbar{
   grid-template-columns:minmax(0,1fr) auto!important;
-  background:
-    radial-gradient(circle at 50% -18px,rgba(245,207,114,.14) 0 56px,transparent 57px),
-    linear-gradient(180deg,rgba(109,8,15,.32),rgba(72,4,9,.22)),
-    #65080d url('/dongson-header.svg?v=3') center/cover no-repeat!important;
-  border-bottom:1px solid rgba(255,239,208,.16)!important;
-  box-shadow:0 6px 18px rgba(45,3,7,.20)!important;
+  background:linear-gradient(180deg,rgba(125,7,17,.90),rgba(82,4,11,.88))!important;
+  border-bottom:1px solid rgba(255,239,208,.18)!important;
+  -webkit-backdrop-filter:none!important;
+  backdrop-filter:none!important;
+  box-shadow:0 6px 18px rgba(45,3,7,.20),inset 0 1px 0 rgba(255,255,255,.08)!important;
 }
 
 .language-button,
@@ -37,10 +35,10 @@
   position:relative;
   overflow:hidden;
   color:var(--lg-menu-text)!important;
-  border:1px solid rgba(255,248,232,.32)!important;
-  background:linear-gradient(180deg,rgba(255,255,255,.22),rgba(255,255,255,.09))!important;
-  -webkit-backdrop-filter:blur(20px) saturate(1.22)!important;
-  backdrop-filter:blur(20px) saturate(1.22)!important;
+  border:1px solid rgba(255,248,232,.34)!important;
+  background:linear-gradient(180deg,rgba(255,255,255,.20),rgba(255,255,255,.08))!important;
+  -webkit-backdrop-filter:none!important;
+  backdrop-filter:none!important;
   box-shadow:0 8px 20px rgba(55,8,12,.18),inset 0 1px 0 rgba(255,255,255,.44),inset 0 -1px 0 rgba(255,255,255,.08)!important;
 }
 .language-button::before,
@@ -56,6 +54,7 @@
 .avatar-button{border-radius:999px!important;color:#f7dd98!important}
 .language-button:active,.avatar-button:active{transform:scale(.98)}
 
+/* The dock is only translucent red glass; it owns no artwork of its own. */
 .bottom-nav{
   grid-template-columns:repeat(6,minmax(0,1fr))!important;
   left:8px!important;
@@ -69,18 +68,16 @@
   overflow:hidden;
   will-change:transform,opacity;
   transition:transform .28s cubic-bezier(.22,.72,.22,1),opacity .20s ease,box-shadow .20s ease!important;
-  background:
-    radial-gradient(circle at 50% -24px,rgba(255,225,143,.20),transparent 88px),
-    linear-gradient(180deg,var(--lg-dock-red-top),var(--lg-dock-red-bottom))!important;
-  border:1px solid rgba(255,238,188,.58)!important;
-  -webkit-backdrop-filter:blur(16px) saturate(1.16)!important;
-  backdrop-filter:blur(16px) saturate(1.16)!important;
+  background:linear-gradient(180deg,rgba(162,24,39,.88),rgba(104,7,17,.92))!important;
+  border:1px solid rgba(255,238,188,.62)!important;
+  -webkit-backdrop-filter:none!important;
+  backdrop-filter:none!important;
   box-shadow:
     0 16px 34px rgba(43,3,7,.34),
-    0 0 16px rgba(255,213,105,.12),
+    0 0 18px rgba(255,213,105,.14),
     inset 0 1px 0 rgba(255,255,255,.30),
     inset 0 -1px 0 rgba(70,3,9,.30),
-    0 0 0 1px rgba(255,222,142,.12)!important;
+    0 0 0 1px rgba(255,222,142,.14)!important;
 }
 .bottom-nav::before{
   content:"";
@@ -95,7 +92,7 @@
   content:"";
   position:absolute;
   inset:0;
-  background:linear-gradient(180deg,rgba(255,255,255,.07),transparent 46%);
+  background:linear-gradient(180deg,rgba(255,255,255,.06),transparent 46%);
   pointer-events:none;
 }
 
@@ -129,13 +126,11 @@ body.nav-visible .bottom-nav{transform:translate3d(0,0,0)!important;opacity:1!im
 
 .bottom-nav button.active{
   overflow:hidden;
-  background:
-    radial-gradient(ellipse at 50% -10%,rgba(255,255,255,.38) 0%,rgba(255,255,255,.14) 38%,transparent 66%),
-    linear-gradient(180deg,rgba(255,255,255,.25) 0%,rgba(255,255,255,.12) 46%,rgba(255,255,255,.065) 100%)!important;
+  background:linear-gradient(180deg,rgba(255,255,255,.25) 0%,rgba(255,255,255,.12) 48%,rgba(255,255,255,.065) 100%)!important;
   color:#fff4d4!important;
   border:1px solid var(--lg-active-border)!important;
-  -webkit-backdrop-filter:blur(21px) saturate(1.28) brightness(1.10)!important;
-  backdrop-filter:blur(21px) saturate(1.28) brightness(1.10)!important;
+  -webkit-backdrop-filter:none!important;
+  backdrop-filter:none!important;
   box-shadow:
     0 9px 22px rgba(72,6,12,.22),
     0 0 20px rgba(255,215,111,.25),
@@ -169,11 +164,7 @@ body.nav-visible .bottom-nav{transform:translate3d(0,0,0)!important;opacity:1!im
   mask:linear-gradient(#000 0 0) content-box exclude,linear-gradient(#000 0 0);
   pointer-events:none;
   mix-blend-mode:screen;
-  filter:
-    brightness(1.62)
-    drop-shadow(0 0 2px rgba(255,255,255,1))
-    drop-shadow(0 0 8px rgba(255,242,173,1))
-    drop-shadow(0 0 18px rgba(255,195,39,1));
+  filter:brightness(1.62) drop-shadow(0 0 2px rgba(255,255,255,1)) drop-shadow(0 0 8px rgba(255,242,173,1)) drop-shadow(0 0 18px rgba(255,195,39,1));
   animation:goldTabSweep .9s cubic-bezier(.22,.72,.22,1) 1 both;
 }
 
@@ -183,22 +174,13 @@ body.nav-visible .bottom-nav{transform:translate3d(0,0,0)!important;opacity:1!im
   z-index:0;
   inset:0;
   border-radius:16px;
-  background:
-    radial-gradient(ellipse at 28% 4%,rgba(255,255,255,.34) 0%,rgba(255,255,255,.11) 32%,transparent 56%),
-    linear-gradient(180deg,rgba(255,255,255,.13),transparent 42%);
+  background:linear-gradient(180deg,rgba(255,255,255,.13),transparent 42%);
   pointer-events:none;
 }
 .bottom-nav button.active svg,
 .bottom-nav button.active b{position:relative;z-index:2}
-.bottom-nav button.active svg{
-  color:#ffe28c!important;
-  filter:drop-shadow(0 0 10px rgba(255,226,140,.48)) drop-shadow(0 2px 4px rgba(45,3,7,.22));
-}
-.bottom-nav button.active b{
-  color:#fff3c5!important;
-  font-weight:760!important;
-  text-shadow:0 1px 5px rgba(61,5,10,.22),0 0 10px rgba(255,226,140,.18);
-}
+.bottom-nav button.active svg{color:#ffe28c!important;filter:drop-shadow(0 0 10px rgba(255,226,140,.48)) drop-shadow(0 2px 4px rgba(45,3,7,.22))}
+.bottom-nav button.active b{color:#fff3c5!important;font-weight:760!important;text-shadow:0 1px 5px rgba(61,5,10,.22),0 0 10px rgba(255,226,140,.18)}
 
 .app-shell{padding-bottom:calc(88px + env(safe-area-inset-bottom))!important}
 
@@ -208,10 +190,6 @@ body.nav-visible .bottom-nav{transform:translate3d(0,0,0)!important;opacity:1!im
 }
 
 @media (prefers-reduced-transparency:reduce){
-  .language-button,.avatar-button,.bottom-nav,.bottom-nav button.active{
-    -webkit-backdrop-filter:none!important;
-    backdrop-filter:none!important;
-  }
   .language-button,.avatar-button{background:rgba(120,20,28,.86)!important}
   .bottom-nav{background:#8e111c!important}
   .bottom-nav button.active{background:rgba(255,255,255,.18)!important}
