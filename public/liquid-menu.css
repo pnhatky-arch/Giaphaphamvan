@@ -1,0 +1,138 @@
+/* Liquid Glass navigation material — v1 */
+:root{
+  --lg-menu-glass-top:rgba(255,255,255,.17);
+  --lg-menu-glass-bottom:rgba(255,255,255,.07);
+  --lg-menu-border:rgba(255,245,220,.30);
+  --lg-menu-border-strong:rgba(246,205,112,.58);
+  --lg-menu-text:#fff4dc;
+  --lg-menu-accent:#f2cf78;
+  --lg-menu-shadow:0 12px 30px rgba(45,3,7,.26);
+}
+
+/* Keep the traditional red artwork behind the glass, but remove the opaque-control look. */
+.topbar{
+  background:
+    radial-gradient(circle at 50% -18px,rgba(245,207,114,.16) 0 58px,transparent 59px),
+    linear-gradient(180deg,rgba(104,5,13,.34),rgba(65,3,8,.22)),
+    #65080d url('/dongson-header.svg?v=3') center/cover no-repeat!important;
+  border-bottom:1px solid rgba(255,235,191,.14)!important;
+  box-shadow:0 6px 20px rgba(45,3,7,.22)!important;
+}
+
+.menu-button,
+.language-button,
+.avatar-button{
+  position:relative;
+  overflow:hidden;
+  background:
+    linear-gradient(180deg,var(--lg-menu-glass-top),var(--lg-menu-glass-bottom))!important;
+  border:1px solid var(--lg-menu-border)!important;
+  -webkit-backdrop-filter:blur(22px) saturate(1.22)!important;
+  backdrop-filter:blur(22px) saturate(1.22)!important;
+  box-shadow:
+    0 7px 18px rgba(49,3,7,.18),
+    inset 0 1px 0 rgba(255,255,255,.34),
+    inset 0 -1px 0 rgba(255,215,145,.06)!important;
+  color:var(--lg-menu-text)!important;
+}
+.menu-button:before,
+.language-button:before,
+.avatar-button:before{
+  content:"";
+  position:absolute;
+  left:12%;right:12%;top:0;height:1px;
+  background:linear-gradient(90deg,transparent,rgba(255,255,255,.72),transparent);
+  opacity:.72;
+  pointer-events:none;
+}
+.menu-button{border-radius:14px!important}
+.language-button{border-radius:15px!important}
+.avatar-button{border-radius:999px!important;color:var(--lg-menu-accent)!important}
+.menu-button svg,.language-button svg{filter:drop-shadow(0 1px 4px rgba(255,221,151,.16))}
+.menu-button:active,.language-button:active,.avatar-button:active{
+  transform:scale(.975);
+  background:linear-gradient(180deg,rgba(255,255,255,.25),rgba(255,255,255,.10))!important;
+  border-color:rgba(247,210,124,.50)!important;
+}
+
+/* Floating bottom dock. Geometry remains five equal tabs; material becomes translucent glass. */
+.bottom-nav{
+  left:8px!important;
+  right:8px!important;
+  bottom:calc(7px + env(safe-area-inset-bottom))!important;
+  width:auto!important;
+  height:74px!important;
+  padding:7px 7px!important;
+  gap:5px!important;
+  border-radius:25px!important;
+  overflow:hidden;
+  background:
+    radial-gradient(circle at 50% -24px,rgba(250,216,127,.16),transparent 86px),
+    linear-gradient(180deg,rgba(129,14,23,.42),rgba(82,5,11,.30)),
+    linear-gradient(180deg,rgba(255,255,255,.15),rgba(255,255,255,.055))!important;
+  border:1px solid rgba(255,238,199,.20)!important;
+  -webkit-backdrop-filter:blur(26px) saturate(1.22)!important;
+  backdrop-filter:blur(26px) saturate(1.22)!important;
+  box-shadow:
+    0 16px 34px rgba(43,3,7,.30),
+    inset 0 1px 0 rgba(255,255,255,.26),
+    inset 0 -1px 0 rgba(83,5,10,.12)!important;
+}
+.bottom-nav:before{
+  content:"";
+  position:absolute;
+  left:18px;right:18px;top:0;height:1px;
+  background:linear-gradient(90deg,transparent,rgba(255,255,255,.58),transparent);
+  opacity:.68;
+  pointer-events:none;
+}
+.bottom-nav button{
+  position:relative;
+  height:58px!important;
+  min-height:58px!important;
+  border-radius:18px!important;
+  border:1px solid transparent!important;
+  background:transparent!important;
+  color:rgba(255,246,225,.92)!important;
+  box-shadow:none!important;
+  -webkit-backdrop-filter:none!important;
+  backdrop-filter:none!important;
+  transition:transform .16s ease,background .16s ease,border-color .16s ease,box-shadow .16s ease!important;
+}
+.bottom-nav button:active{transform:scale(.975)}
+.bottom-nav button svg{filter:drop-shadow(0 2px 5px rgba(31,2,5,.22))}
+.bottom-nav button.active{
+  background:
+    radial-gradient(circle at 50% -4px,rgba(255,230,163,.15),transparent 42px),
+    linear-gradient(180deg,rgba(255,255,255,.23),rgba(255,255,255,.105))!important;
+  color:#fff1c8!important;
+  border-color:var(--lg-menu-border-strong)!important;
+  -webkit-backdrop-filter:blur(20px) saturate(1.18)!important;
+  backdrop-filter:blur(20px) saturate(1.18)!important;
+  box-shadow:
+    0 8px 20px rgba(73,7,12,.20),
+    inset 0 1px 0 rgba(255,255,255,.42),
+    inset 0 -1px 0 rgba(246,200,99,.08),
+    0 0 0 1px rgba(244,200,100,.10)!important;
+}
+.bottom-nav button.active:before{
+  content:"";
+  position:absolute;
+  left:16%;right:16%;top:0;height:1px;
+  background:linear-gradient(90deg,transparent,rgba(255,255,255,.82),transparent);
+  opacity:.72;
+}
+.bottom-nav button.active svg{color:var(--lg-menu-accent)!important;filter:drop-shadow(0 0 8px rgba(244,200,100,.20))}
+.bottom-nav button.active span{font-weight:750!important;color:#fff0c3!important}
+
+/* Preserve content clearance now that the dock floats above the page. */
+.app-shell{padding-bottom:calc(88px + env(safe-area-inset-bottom))!important}
+
+@media (prefers-reduced-transparency:reduce){
+  .menu-button,.language-button,.avatar-button,.bottom-nav,.bottom-nav button.active{
+    -webkit-backdrop-filter:none!important;
+    backdrop-filter:none!important;
+  }
+  .menu-button,.language-button,.avatar-button{background:rgba(101,8,14,.88)!important}
+  .bottom-nav{background:rgba(101,8,14,.94)!important}
+}
