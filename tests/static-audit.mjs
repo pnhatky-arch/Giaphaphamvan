@@ -29,7 +29,7 @@ assert.ok(index.includes('/data.js?v=9'),'index must load current visual runtime
 assert.ok(css.includes('.tree-connectors'),'SVG connector layer must be styled');
 assert.ok(css.includes('.person-card.ancestor'),'ancestor card styling missing');
 assert.ok(data.includes("/target-ui.css?v=4"),'geometry stylesheet must be v4');
-assert.ok(data.includes("/reference-exact.css?v=21"),'approved visual stylesheet must be v21');
+assert.ok(data.includes("/reference-exact.css?v=22"),'approved visual stylesheet must be v22');
 assert.ok(data.includes("/liquid-menu.css?v=14"),'navigation stylesheet must be v14');
 assert.ok(data.includes("const approvedCrest='/reference-crest.webp?v=2'"),'approved crest must remain canonical');
 assert.ok(data.includes("img.src='/heritage-approved-full.webp?v=4'"),'runtime must keep the approved full artwork canonical');
@@ -38,11 +38,12 @@ assert.ok(data.includes("if((window.scrollY||0)<80)return show()"),'nav must sta
 
 assert.ok(exact.includes('.heritage-bg-image{'),'full heritage image node must be styled');
 assert.ok(exact.includes('width:100%!important;height:auto!important'),'approved artwork must preserve its natural vertical ratio');
-assert.ok(exact.includes('opacity:.58!important'),'heritage artwork visibility balance missing');
-assert.ok(!exact.includes('filter:blur('),'approved artwork itself must remain unblurred');
-assert.ok(exact.includes('-webkit-backdrop-filter:blur(9px)'),'cards must blur only the background behind the glass');
-assert.ok(exact.includes('-webkit-backdrop-filter:blur(8px)'),'controls and tree cards must use translucent glass blur');
+assert.ok(exact.includes('opacity:1!important'),'approved artwork must render at full opacity');
+assert.ok(exact.includes('filter:none!important'),'approved artwork must not be tone-shifted or image-blurred');
+assert.ok(exact.includes('-webkit-backdrop-filter:blur(7px)'),'cards must blur only the artwork behind the glass');
+assert.ok(exact.includes('-webkit-backdrop-filter:blur(6px)'),'controls and tree cards must use translucent Liquid Glass blur');
 assert.ok(exact.includes('background:transparent!important'),'all views must expose the same underlying artwork');
+assert.ok(exact.includes('.sheet-panel,.modal-panel'),'system overlays must share the same Liquid Glass material');
 assert.ok(exact.includes('.heritage-canvas>img:not(.heritage-bg-image)'),'legacy broken image placeholder must be suppressed');
 assert.ok(!exact.includes('heritage-approved-top.webp'),'split top background must not render');
 assert.ok(!exact.includes('heritage-approved-cont.webp'),'split continuation background must not render');
@@ -66,12 +67,12 @@ assert.ok(cloud.includes('drive.appdata'),'Google Drive must use appDataFolder s
 assert.ok(cloud.includes('resolveConflict'),'cloud conflicts must be explicit');
 assert.ok(app.includes('appConfirm'),'destructive actions must use shared confirm');
 assert.ok(!app.includes('window.confirm('),'native window.confirm is forbidden');
-assert.ok(sw.includes("giaphaphamvan-v47"),'service worker cache version mismatch');
-for(const asset of ['/target-ui.css?v=4','/reference-exact.css?v=21','/liquid-menu.css?v=14','/reference-crest.webp?v=2','/heritage-approved-full.webp?v=4','/data.js?v=9']) assert.ok(sw.includes(asset),`service worker missing ${asset}`);
+assert.ok(sw.includes("giaphaphamvan-v48"),'service worker cache version mismatch');
+for(const asset of ['/target-ui.css?v=4','/reference-exact.css?v=22','/liquid-menu.css?v=14','/reference-crest.webp?v=2','/heritage-approved-full.webp?v=4','/data.js?v=9']) assert.ok(sw.includes(asset),`service worker missing ${asset}`);
 assert.ok(!sw.includes('heritage-approved-top.webp'),'split top background must not be precached');
 assert.ok(!sw.includes('heritage-approved-cont.webp'),'split continuation background must not be precached');
 assert.ok(!sw.includes('heritage-background.svg'),'broken embedded SVG must not be precached');
 assert.ok(sw.includes("cache:'no-store'"),'service worker must bypass stale HTTP artwork cache');
 assert.ok(wrangler.includes('"directory": "./public"'),'Wrangler must deploy ./public');
 assert.ok(manifest.includes('"theme_color": "#650912"')||manifest.includes('"theme_color": "#65080d"'),'PWA theme must be heritage red');
-console.log('Giaphaphamvan single approved heritage + continuous Liquid Glass v47 audit: PASS');
+console.log('Giaphaphamvan exact approved heritage + continuous Liquid Glass v48 audit: PASS');
