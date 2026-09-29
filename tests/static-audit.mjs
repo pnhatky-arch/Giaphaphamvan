@@ -9,6 +9,7 @@ const polish=read('public/reference-polish.css');
 const parchment=read('public/parchment-v4.css');
 const exact=read('public/reference-exact.css');
 const liquid=read('public/liquid-menu.css');
+const heritage=read('public/heritage-bg.svg');
 const data=read('public/data.js');
 const app=read('public/app.js');
 const backup=read('public/backup-engine.js');
@@ -39,14 +40,23 @@ assert.ok(liquid.includes('grid-template-columns:repeat(6,minmax(0,1fr))'),'bott
 assert.ok(data.includes("/target-ui.css?v=3"),'approved target reference stylesheet v3 must be loaded');
 assert.ok(data.includes("/reference-polish.css?v=1"),'reference polish stylesheet must be loaded');
 assert.ok(data.includes("/parchment-v4.css?v=4"),'warm parchment stylesheet must be loaded');
-assert.ok(data.includes("/reference-exact.css?v=3"),'canonical reference artwork stylesheet must be loaded');
+assert.ok(data.includes("/reference-exact.css?v=4"),'Dong Son reference artwork stylesheet must be loaded');
 assert.ok(data.includes("/liquid-menu.css?v=9"),'Liquid Glass stylesheet must be loaded last');
 assert.ok(data.includes("const approvedCrest='/reference-crest.webp?v=2'"),'approved crest must be the only runtime crest');
 assert.ok(!data.includes('rasterFallback'),'legacy crest fallback must be removed');
 
 assert.ok(exact.includes("content:url('/reference-crest.webp?v=2')"),'header must use canonical approved crest');
 assert.ok(exact.includes("url('/reference-hero.webp?v=2')"),'hero must use canonical approved artwork');
-assert.ok(exact.includes("url('/heritage-bg.svg?v=5')"),'full-page heritage parchment routing missing');
+assert.ok(exact.includes("url('/heritage-bg.svg?v=6')"),'approved Dong Son background routing missing');
+for(const view of ['#overview-view','#tree-view','#members-view','#events-view','#documents-view','#settings-view']) assert.ok(exact.includes(view),`Dong Son background transparency missing ${view}`);
+assert.ok(exact.includes('background-attachment:scroll!important'),'full-page background must scroll with app content');
+
+assert.ok(heritage.includes('Main Dong Son drum medallion'),'Dong Son medallion marker missing');
+assert.ok(heritage.includes('central Đông Sơn starburst'),'Dong Son starburst marker missing');
+assert.ok(heritage.includes('circular scenes: birds'),'Dong Son bird ring missing');
+assert.ok(heritage.includes('circular scenes: people, deer and boats'),'Dong Son narrative ring missing');
+assert.ok(heritage.includes('lower waves / water bands'),'Dong Son lower wave band missing');
+assert.ok(heritage.includes('viewBox="0 0 1200 1800"'),'background must remain full-page mobile artwork');
 
 assert.ok(target.includes('.topbar')&&target.includes('height:calc(58px + env(safe-area-inset-top))'),'target header safe-area geometry missing');
 assert.ok(target.includes('.hero-panel')&&target.includes('height:130px'),'target hero geometry missing');
@@ -75,12 +85,12 @@ assert.ok(cloud.includes('resolveConflict'),'cloud conflicts must be explicit');
 assert.ok(app.includes('appConfirm'),'destructive actions must use shared confirm');
 assert.ok(!app.includes('window.confirm('),'native window.confirm is forbidden');
 
-assert.ok(sw.includes("giaphaphamvan-v29"),'service worker cache version mismatch');
-for(const asset of ['/styles.css?v=12','/target-ui.css?v=3','/reference-polish.css?v=1','/parchment-v4.css?v=4','/reference-exact.css?v=3','/liquid-menu.css?v=9','/app.js?v=12','/reference-crest.webp?v=2','/reference-hero.webp?v=2']) assert.ok(sw.includes(asset),`service worker missing ${asset}`);
+assert.ok(sw.includes("giaphaphamvan-v30"),'service worker cache version mismatch');
+for(const asset of ['/styles.css?v=12','/target-ui.css?v=3','/reference-polish.css?v=1','/parchment-v4.css?v=4','/reference-exact.css?v=4','/liquid-menu.css?v=9','/app.js?v=12','/reference-crest.webp?v=2','/reference-hero.webp?v=2','/heritage-bg.svg?v=6']) assert.ok(sw.includes(asset),`service worker missing ${asset}`);
 assert.ok(!sw.includes('/crest.svg'),'legacy crest must not be precached');
 assert.ok(!sw.includes('/hero-parchment.svg'),'legacy hero artwork must not be precached');
 assert.ok(sw.includes("cache:'no-store'"),'service worker must bypass stale HTTP artwork cache');
 assert.ok(wrangler.includes('"directory": "./public"'),'Wrangler must deploy ./public');
 assert.ok(manifest.includes('"theme_color": "#650912"')||manifest.includes('"theme_color": "#65080d"'),'PWA theme must be heritage red');
 
-console.log('Giaphaphamvan canonical artwork + no automatic CI email audit: PASS');
+console.log('Giaphaphamvan approved Dong Son full-system background v30 audit: PASS');
