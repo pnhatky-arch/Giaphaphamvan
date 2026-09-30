@@ -10,6 +10,7 @@ const safariShell=read('public/safari-shell.css');
 const data=read('public/data.js');
 const app=read('public/app.js');
 const detail=read('public/detail-features.js');
+const memberFeatures=read('public/member-features.js');
 const sample=read('public/sample-data.js');
 const backup=read('public/backup-engine.js');
 const cloud=read('public/cloud-adapter.js');
@@ -17,7 +18,7 @@ const sw=read('public/sw.js');
 const manifest=read('public/manifest.webmanifest');
 const wrangler=read('wrangler.jsonc');
 
-for(const file of ['public/index.html','public/styles.css','public/target-ui.css','public/reference-exact.css','public/liquid-menu.css','public/safari-shell.css','public/app.js','public/detail-features.js','public/data.js','public/sample-data.js','public/backup-engine.js','public/storage-engine.js','public/cloud-adapter.js','public/manifest.webmanifest','public/icon.svg','public/reference-crest.webp','public/heritage-approved-full.webp','public/sw.js']) assert.ok(fs.existsSync(file),`missing ${file}`);
+for(const file of ['public/index.html','public/styles.css','public/target-ui.css','public/reference-exact.css','public/liquid-menu.css','public/safari-shell.css','public/app.js','public/detail-features.js','public/member-features.js','public/data.js','public/sample-data.js','public/backup-engine.js','public/storage-engine.js','public/cloud-adapter.js','public/manifest.webmanifest','public/icon.svg','public/dongson-pattern.svg','public/reference-crest.webp','public/heritage-approved-full.webp','public/sw.js']) assert.ok(fs.existsSync(file),`missing ${file}`);
 for(const retired of ['public/heritage-bg.svg','public/heritage-background.svg','public/heritage-background.webp','public/reference-polish.css','public/parchment-v4.css','public/final-polish.css','public/reference-hero.webp','public/reference-tree.webp','public/dongson-header.svg','public/tree-parchment.svg','public/hero-parchment.svg']) assert.ok(!fs.existsSync(retired),`retired visual layer must be deleted: ${retired}`);
 assert.ok(!fs.existsSync('public/ui.js'),'legacy secondary UI runtime must be deleted');
 
@@ -28,6 +29,7 @@ assert.ok(!index.includes('id="menuButton"'),'hamburger control must be removed'
 assert.ok(!index.includes('id="drawer"'),'duplicate drawer navigation must be removed');
 assert.ok(index.includes('class="heritage-bg-image" src="/heritage-approved-full.webp?v=4"'),'canonical full background image must be present directly in HTML');
 assert.ok(index.includes('/detail-features.js?v=1'),'detail enhancement runtime must load');
+assert.ok(index.includes('/member-features.js?v=1'),'member profile runtime must load');
 assert.ok(index.includes('/sample-data.js?v=1'),'sample data runtime must load');
 assert.ok(index.includes('/safari-shell.css?v=2'),'Safari shell stabilization must load before runtime');
 assert.ok(!index.includes('heritage-approved-top.webp')&&!index.includes('heritage-approved-cont.webp'),'split background must not render');
@@ -47,6 +49,8 @@ assert.ok(fs.statSync('public/heritage-approved-full.webp').size>10000,'approved
 assert.ok(liquid.includes('--heritage-burgundy:#65080d'),'canonical burgundy token missing');
 assert.ok(liquid.includes('.topbar{')&&liquid.includes('background:var(--heritage-burgundy)!important'),'top bar must use canonical burgundy');
 assert.ok(liquid.includes('.bottom-nav{')&&liquid.includes('background:var(--heritage-burgundy-raised)!important'),'bottom nav must use canonical burgundy');
+assert.ok(liquid.includes("url('/dongson-pattern.svg?v=1')"),'Dong Son motif must render on app bars');
+assert.ok(liquid.includes('.topbar::before')&&liquid.includes('.bottom-nav::after'),'both top and bottom bars must carry Dong Son motif layers');
 assert.ok(liquid.includes('grid-template-columns:repeat(6,minmax(0,1fr))'),'bottom nav must use six equal tabs');
 assert.ok(liquid.includes('@keyframes goldTabSweep')&&liquid.includes('animation:goldTabSweep .9s'),'selected tab must retain one-shot gold tracer');
 
@@ -72,6 +76,12 @@ assert.ok(detail.includes('data-remove-image'),'document image removal control m
 assert.ok(detail.includes('function enrichSample('),'sample feature enrichment missing');
 assert.ok(detail.includes('sample-doc-img-'),'sample documents must receive image fixtures');
 
+assert.ok(memberFeatures.includes('function openMemberDetail('),'member tab must open full member detail');
+assert.ok(memberFeatures.includes('memberImageInput'),'member editor must include image picker');
+assert.ok(memberFeatures.includes('multiple'),'member editor must support multiple photos');
+assert.ok(memberFeatures.includes('avatarPhotoId'),'member profile must support a selected avatar');
+assert.ok(memberFeatures.includes('#memberSearch{padding-left:14px'),'member search field needs safe left padding');
+
 assert.ok(sample.includes('SAMPLE_MEMBER_COUNT = 168'),'sample dataset must contain 168 members');
 assert.ok(sample.includes('SAMPLE_GENERATION_COUNTS = [1,3,6,12,24,36,42,44]'),'sample dataset must cover eight generations');
 assert.ok(sample.includes("type:'birthday'")&&sample.includes("type:'memorial'"),'sample birthdays and memorials missing');
@@ -81,11 +91,11 @@ assert.ok(backup.includes('snapshotCurrent'),'restore must snapshot current data
 assert.ok(cloud.includes('drive.appdata'),'Google Drive must use appDataFolder scope');
 assert.ok(cloud.includes('resolveConflict'),'cloud conflicts must be explicit');
 
-assert.ok(sw.includes("giaphaphamvan-v55"),'service worker cache version mismatch');
-for(const asset of ['/target-ui.css?v=4','/reference-exact.css?v=24','/liquid-menu.css?v=15','/safari-shell.css?v=2','/detail-features.js?v=1','/sample-data.js?v=1','/reference-crest.webp?v=2','/heritage-approved-full.webp?v=4','/data.js?v=9']) assert.ok(sw.includes(asset),`service worker missing ${asset}`);
+assert.ok(sw.includes("giaphaphamvan-v56"),'service worker cache version mismatch');
+for(const asset of ['/target-ui.css?v=4','/reference-exact.css?v=24','/liquid-menu.css?v=15','/safari-shell.css?v=2','/detail-features.js?v=1','/member-features.js?v=1','/sample-data.js?v=1','/dongson-pattern.svg?v=1','/reference-crest.webp?v=2','/heritage-approved-full.webp?v=4','/data.js?v=9']) assert.ok(sw.includes(asset),`service worker missing ${asset}`);
 assert.ok(!sw.includes('heritage-approved-top.webp')&&!sw.includes('heritage-approved-cont.webp'),'split backgrounds must not be precached');
 assert.ok(sw.includes("cache:'no-store'"),'service worker must bypass stale HTTP cache');
 assert.ok(wrangler.includes('"directory": "./public"'),'Wrangler must deploy ./public');
 assert.ok(/"theme_color"\s*:\s*"#65080D"/i.test(manifest),'PWA theme must be canonical burgundy');
 
-console.log('Giaphaphamvan stable Safari shell + member detail + document gallery + isolated sample audit: PASS');
+console.log('Giaphaphamvan burgundy Dong Son bars + stable Safari shell + member/document detail audit: PASS');
