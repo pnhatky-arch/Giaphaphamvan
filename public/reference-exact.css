@@ -1,6 +1,6 @@
 /* Single approved-background system — v24; exact artwork at 10% under true Liquid Glass */
 :root{--reference-paper:#f5ddb4;--glass-clear:rgba(255,251,243,.24);--glass-clear-strong:rgba(255,251,243,.34);--glass-line:rgba(255,245,220,.46);--glass-gold:rgba(187,128,42,.30)}
-html,body{background:#65080d!important}body{background:#65080d!important}
+html,body{background:#f4ddb6!important}body{background:#f4ddb6!important}
 .app-shell{position:relative!important;min-height:100svh!important;background:#f4ddb6!important;isolation:isolate!important;overflow-x:hidden!important}
 /* Exactly one approved artwork. No tiling, no stitching, no redraw. The artwork is intentionally shown at 10% opacity. */
 .heritage-canvas{position:absolute!important;inset:0!important;z-index:0!important;overflow:hidden!important;pointer-events:none!important;min-height:100%!important;background:#f4ddb6!important}
