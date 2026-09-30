@@ -29,7 +29,7 @@ assert.ok(index.includes('/data.js?v=9'),'index must load current visual runtime
 assert.ok(css.includes('.tree-connectors'),'SVG connector layer must be styled');
 assert.ok(css.includes('.person-card.ancestor'),'ancestor card styling missing');
 assert.ok(data.includes("/target-ui.css?v=4"),'geometry stylesheet must be v4');
-assert.ok(data.includes("/reference-exact.css?v=23"),'approved visual stylesheet must be v23');
+assert.ok(data.includes("/reference-exact.css?v=24"),'approved visual stylesheet must be v24');
 assert.ok(data.includes("/liquid-menu.css?v=14"),'navigation stylesheet must be v14');
 assert.ok(data.includes("const approvedCrest='/reference-crest.webp?v=2'"),'approved crest must remain canonical');
 assert.ok(data.includes("img.src='/heritage-approved-full.webp?v=4'"),'runtime must keep the approved full artwork canonical');
@@ -45,6 +45,10 @@ assert.ok(exact.includes('-webkit-backdrop-filter:blur(6px)'),'controls and tree
 assert.ok(exact.includes('background:transparent!important'),'all views must expose the same underlying artwork');
 assert.ok(exact.includes('.sheet-panel,.modal-panel'),'system overlays must share the same Liquid Glass material');
 assert.ok(exact.includes('.heritage-canvas>img:not(.heritage-bg-image)'),'legacy broken image placeholder must be suppressed');
+assert.ok(exact.includes('#tree-view .generation-title{position:relative!important;z-index:8!important'),'generation labels must sit above connector geometry');
+assert.ok(exact.includes('min-width:112px!important;height:20px!important'),'generation labels must have protected capsule geometry');
+assert.ok(exact.includes('background:linear-gradient(145deg,rgba(255,249,236,.86),rgba(244,222,184,.78))'),'generation labels must shield text from connector lines');
+assert.ok(exact.includes('#tree-view .generation-title::before,#tree-view .generation-title::after{content:none!important'),'legacy decorative lines around generation labels must be removed');
 assert.ok(!exact.includes('heritage-approved-top.webp'),'split top background must not render');
 assert.ok(!exact.includes('heritage-approved-cont.webp'),'split continuation background must not render');
 assert.ok(!exact.includes('heritage-background.svg'),'embedded-raster SVG must never render on Safari');
@@ -67,12 +71,12 @@ assert.ok(cloud.includes('drive.appdata'),'Google Drive must use appDataFolder s
 assert.ok(cloud.includes('resolveConflict'),'cloud conflicts must be explicit');
 assert.ok(app.includes('appConfirm'),'destructive actions must use shared confirm');
 assert.ok(!app.includes('window.confirm('),'native window.confirm is forbidden');
-assert.ok(sw.includes("giaphaphamvan-v49"),'service worker cache version mismatch');
-for(const asset of ['/target-ui.css?v=4','/reference-exact.css?v=23','/liquid-menu.css?v=14','/reference-crest.webp?v=2','/heritage-approved-full.webp?v=4','/data.js?v=9']) assert.ok(sw.includes(asset),`service worker missing ${asset}`);
+assert.ok(sw.includes("giaphaphamvan-v50"),'service worker cache version mismatch');
+for(const asset of ['/target-ui.css?v=4','/reference-exact.css?v=24','/liquid-menu.css?v=14','/reference-crest.webp?v=2','/heritage-approved-full.webp?v=4','/data.js?v=9']) assert.ok(sw.includes(asset),`service worker missing ${asset}`);
 assert.ok(!sw.includes('heritage-approved-top.webp'),'split top background must not be precached');
 assert.ok(!sw.includes('heritage-approved-cont.webp'),'split continuation background must not be precached');
 assert.ok(!sw.includes('heritage-background.svg'),'broken embedded SVG must not be precached');
 assert.ok(sw.includes("cache:'no-store'"),'service worker must bypass stale HTTP artwork cache');
 assert.ok(wrangler.includes('"directory": "./public"'),'Wrangler must deploy ./public');
 assert.ok(manifest.includes('"theme_color": "#650912"')||manifest.includes('"theme_color": "#65080d"'),'PWA theme must be heritage red');
-console.log('Giaphaphamvan 10 percent heritage + continuous Liquid Glass v49 audit: PASS');
+console.log('Giaphaphamvan protected generation labels + 10 percent heritage v50 audit: PASS');
