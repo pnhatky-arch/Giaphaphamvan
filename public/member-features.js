@@ -6,9 +6,8 @@
 
   const $ = (s, r=document) => r.querySelector(s);
   const $$ = (s, r=document) => [...r.querySelectorAll(s)];
-  const esc = v => String(v ?? '').replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+  const esc = v => String(v ?? '').replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot',"'":'&#39;'}[c]));
   const uid = p => `${p}-${Date.now()}-${Math.random().toString(36).slice(2,8)}`;
-  const avatarFallbacks = ['/avatar-1.svg','/avatar-2.svg','/avatar-3.svg','/avatar-4.svg'];
   let lastMemberId = null;
   let editingPhotos = [];
   let editingAvatarId = null;
@@ -35,11 +34,12 @@
       .member-profile-modal,.member-editor-modal{position:fixed;inset:0;z-index:255;display:grid;align-items:end;padding:12px;padding-bottom:calc(12px + env(safe-area-inset-bottom))}.member-profile-modal[hidden],.member-editor-modal[hidden]{display:none!important}.member-modal-backdrop{position:absolute;inset:0;background:rgba(28,17,11,.32);-webkit-backdrop-filter:blur(8px);backdrop-filter:blur(8px)}
       .member-modal-panel{position:relative;z-index:1;width:100%;max-width:680px;max-height:min(86svh,860px);margin:0 auto;overflow:auto;border:1px solid rgba(255,245,220,.64);border-radius:24px;padding:16px;background:linear-gradient(145deg,rgba(255,253,248,.78),rgba(244,224,194,.68));-webkit-backdrop-filter:blur(18px) saturate(1.08);backdrop-filter:blur(18px) saturate(1.08);box-shadow:0 24px 60px rgba(61,25,12,.22),inset 0 1px 0 rgba(255,255,255,.78)}
       .member-modal-head{display:flex;align-items:flex-start;justify-content:space-between;gap:12px;margin-bottom:13px}.member-modal-titlewrap{display:flex;align-items:center;gap:11px;min-width:0}.member-detail-avatar{width:64px;height:64px;flex:0 0 64px;border-radius:50%;overflow:hidden;border:2px solid rgba(196,143,54,.70);background:rgba(242,218,169,.72);display:grid;place-items:center;color:#65080d;font:700 20px Georgia,serif}.member-detail-avatar img{width:100%;height:100%;object-fit:cover;display:block}.member-modal-head p{margin:0 0 3px;color:#65080d;font-size:9px;font-weight:850;letter-spacing:.15em}.member-modal-head h2{margin:0;color:#3e2b1f;font-family:Georgia,serif;font-size:22px;line-height:1.08;overflow-wrap:anywhere}.member-modal-close{width:40px;height:40px;flex:0 0 40px;border:1px solid rgba(255,255,255,.72);border-radius:999px;background:rgba(255,252,246,.60);font-size:24px;color:#49372d}
-      .member-info-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:8px}.member-info{min-width:0;padding:10px 11px;border:1px solid rgba(255,245,224,.56);border-radius:15px;background:rgba(255,252,246,.28)}.member-info.wide{grid-column:1/-1}.member-info span{display:block;margin-bottom:3px;color:#8a786a;font-size:9px}.member-info strong,.member-info p{display:block;margin:0;color:#3e332b;font-size:12px;line-height:1.38;white-space:pre-wrap;overflow-wrap:anywhere}
+      .member-info-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));grid-auto-flow:row dense;align-items:start;gap:8px}.member-info{min-width:0;height:auto;padding:10px 11px;border:1px solid rgba(255,245,224,.56);border-radius:15px;background:rgba(255,252,246,.28)}.member-info.wide{grid-column:1/-1}.member-info span{display:block;margin-bottom:3px;color:#8a786a;font-size:9px}.member-info strong,.member-info p{display:block;margin:0;color:#3e332b;font-size:12px;line-height:1.38;white-space:pre-wrap;overflow-wrap:anywhere}
       .member-gallery-title{margin:14px 0 7px;color:#65080d;font-size:10px;font-weight:850;letter-spacing:.08em}.member-gallery{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:7px}.member-photo{position:relative;aspect-ratio:1/1;border-radius:13px;overflow:hidden;border:1px solid rgba(255,245,224,.66);background:rgba(255,255,255,.28)}.member-photo img{width:100%;height:100%;display:block;object-fit:cover}.member-photo.is-avatar{outline:2px solid #d9a73c;outline-offset:-2px}.member-photo-badge{position:absolute;left:5px;bottom:5px;padding:3px 6px;border-radius:8px;background:rgba(101,8,13,.86);color:#fff4d4;font-size:7px;font-weight:800}.member-photo-remove{position:absolute;right:5px;top:5px;width:27px;height:27px;border:0;border-radius:999px;background:rgba(101,8,13,.90);color:white;font-size:16px}.member-photo-select{position:absolute;inset:0;border:0;background:transparent;color:transparent}
       .member-modal-actions{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:9px;margin-top:14px}.member-modal-actions button{min-height:45px;border-radius:14px;border:1px solid rgba(255,245,224,.68);background:rgba(255,252,246,.36);color:#4b3b31;font-weight:750}.member-modal-actions button.primary{background:#65080d;color:#fff4d4;border-color:rgba(255,226,151,.88)}
       .member-form{display:grid;gap:11px}.member-fields{display:grid;grid-template-columns:1fr;gap:11px}.member-field{display:grid;gap:5px}.member-field label{font-size:9px;font-weight:800;color:#6f5d50}.member-field input,.member-field select,.member-field textarea{width:100%;min-width:0;box-sizing:border-box;border:1px solid rgba(255,245,224,.64);border-radius:14px;background:rgba(255,252,246,.34);padding:11px 12px;color:#3f332b;font:inherit}.member-field input,.member-field select{min-height:46px}.member-field textarea{min-height:100px;resize:vertical}.member-image-picker{display:block;width:100%;box-sizing:border-box;padding:12px;border:1px dashed rgba(101,8,13,.36);border-radius:14px;background:rgba(255,252,246,.24);color:#65080d;font-weight:780;text-align:center}.member-image-picker input{position:absolute;width:1px;height:1px;opacity:0;pointer-events:none}.member-image-help{margin:4px 0 0;color:#806f61;font-size:9px;line-height:1.35}.member-empty-gallery{padding:12px;border-radius:14px;border:1px solid rgba(255,245,224,.52);background:rgba(255,252,246,.22);color:#75675d;font-size:10px;text-align:center}
-      @media(max-width:420px){.member-info-grid{grid-template-columns:1fr}.member-info.wide{grid-column:auto}.member-modal-panel{padding:14px}.member-gallery{grid-template-columns:repeat(3,minmax(0,1fr))}}
+      @media(max-width:420px){.member-info-grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:7px}.member-info.wide{grid-column:1/-1}.member-modal-panel{padding:14px}.member-gallery{grid-template-columns:repeat(3,minmax(0,1fr))}}
+      @media(max-width:330px){.member-info-grid{grid-template-columns:1fr}.member-info.wide{grid-column:auto}}
     `;
     document.head.appendChild(style);
   }
@@ -73,7 +73,12 @@
     }
   }
 
-  const info = (label,value,wide=false) => `<div class="member-info${wide?' wide':''}"><span>${esc(label)}</span><strong>${esc(value || '—')}</strong></div>`;
+  const hasValue = value => { const text=String(value??'').trim(); return Boolean(text&&text!=='—'&&text!=='Chưa có'); };
+  const info = (label,value,wide=false,showEmpty=false) => {
+    if(!showEmpty&&!hasValue(value)) return '';
+    const text=hasValue(value)?String(value):'—';
+    return `<div class="member-info${wide||text.length>34?' wide':''}"><span>${esc(label)}</span><strong>${esc(text)}</strong></div>`;
+  };
 
   function openMemberDetail(id){
     ensureUi();
@@ -88,7 +93,7 @@
     const avatar = memberAvatar(member);
     const initial = String(member.name || 'P').trim().split(/\s+/).at(-1)?.[0] || 'P';
     const gallery = photos.length ? `<div class="member-gallery-title">KHO ẢNH THÀNH VIÊN · ${photos.length} ẢNH</div><div class="member-gallery">${photos.map(p=>`<div class="member-photo ${p.id===member.avatarPhotoId?'is-avatar':''}"><img src="${esc(imageSrc(p))}" alt="${esc(p.name||'Ảnh thành viên')}">${p.id===member.avatarPhotoId?'<span class="member-photo-badge">ĐẠI DIỆN</span>':''}</div>`).join('')}</div>` : '<div class="member-gallery-title">KHO ẢNH THÀNH VIÊN</div><div class="member-empty-gallery">Chưa có hình ảnh thành viên.</div>';
-    $('#memberProfileContent').innerHTML = `<div class="member-modal-head"><div class="member-modal-titlewrap"><div class="member-detail-avatar">${avatar?`<img src="${esc(avatar)}" alt="">`:esc(initial)}</div><div><p>HỒ SƠ THÀNH VIÊN</p><h2>${esc(member.name)}</h2></div></div><button type="button" class="member-modal-close" data-member-profile-close>×</button></div><div class="member-info-grid">${info('Đời',`Đời thứ ${member.generation}`)}${info('Vai trò',member.role||'Thành viên')}${info('Giới tính',member.gender)}${info('Ngày sinh',fmtDate(member.birthDate))}${info('Ngày mất',member.deathDate?fmtDate(member.deathDate):'—')}${info('Vợ / chồng',member.spouse)}${info('Quê quán',member.hometown)}${info('Nghề nghiệp',member.occupation)}${info('Cha / mẹ',parent?.name||'—')}${info('Con trực tiếp',children.length?children.map(c=>c.name).join(', '):'—',true)}${info('Sự kiện liên quan',String(linkedEvents.length))}${info('Ghi chú',member.note||'—',true)}</div>${gallery}<div class="member-modal-actions"><button type="button" data-member-profile-close>Đóng</button><button type="button" class="primary" data-member-profile-edit>Chỉnh sửa</button></div>`;
+    $('#memberProfileContent').innerHTML = `<div class="member-modal-head"><div class="member-modal-titlewrap"><div class="member-detail-avatar">${avatar?`<img src="${esc(avatar)}" alt="">`:esc(initial)}</div><div><p>HỒ SƠ THÀNH VIÊN</p><h2>${esc(member.name)}</h2></div></div><button type="button" class="member-modal-close" data-member-profile-close>×</button></div><div class="member-info-grid">${info('Đời',`Đời thứ ${member.generation}`)}${info('Vai trò',member.role||'Thành viên')}${info('Giới tính',member.gender)}${info('Ngày sinh',member.birthDate?fmtDate(member.birthDate):'')}${info('Ngày mất',member.deathDate?fmtDate(member.deathDate):'')}${info('Vợ / chồng',member.spouse)}${info('Quê quán',member.hometown)}${info('Nghề nghiệp',member.occupation)}${info('Cha / mẹ',parent?.name||'')}${info('Con trực tiếp',children.length?children.map(c=>c.name).join(', '):'')}${info('Sự kiện liên quan',String(linkedEvents.length),false,true)}${info('Ghi chú',member.note||'')}</div>${gallery}<div class="member-modal-actions"><button type="button" data-member-profile-close>Đóng</button><button type="button" class="primary" data-member-profile-edit>Chỉnh sửa</button></div>`;
     $('#memberProfileContent').querySelector('[data-member-profile-edit]')?.addEventListener('click',()=>{ $('#memberProfileModal').hidden=true; openMemberEditor(id); });
     $('#memberProfileModal').hidden = false;
   }
@@ -173,15 +178,34 @@
     }
   }
 
+  function svgData(svg){ return `data:image/svg+xml;charset=UTF-8,${encodeURIComponent(svg)}`; }
+  function sampleMemberArt(member,variant=0){
+    const female=member.gender==='Nữ';
+    const deceased=Boolean(member.deathDate);
+    const gen=Math.max(1,Number(member.generation)||1);
+    const palettes=[['#65080d','#d7a84b'],['#70461f','#d9b86b'],['#315d52','#c0a55a'],['#6d3c4d','#d6aa68']];
+    const [accent,gold]=palettes[(gen+variant)%palettes.length];
+    const bg=deceased?'#d8d0c1':'#ead9b7';
+    const hair=deceased?'#5a554f':'#3b2b23';
+    const shirt=deceased?'#77726b':accent;
+    const hairShape=female?'<path d="M35 56c0-25 12-39 29-39s29 14 29 39v28H35z" fill="'+hair+'"/><path d="M40 49c5-21 14-29 24-29s19 8 24 29c-7-7-16-10-24-10s-17 3-24 10z" fill="#2f241e"/>':'<path d="M39 43c4-18 13-27 25-27 14 0 23 9 27 27-11-7-19-10-27-10-9 0-17 3-25 10z" fill="'+hair+'"/>';
+    const memorial=deceased?'<path d="M101 19v28" stroke="#65080d" stroke-width="5"/><path d="M91 29h20" stroke="#65080d" stroke-width="5"/>':'';
+    return svgData(`<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128"><rect width="128" height="128" rx="24" fill="${bg}"/><circle cx="64" cy="55" r="25" fill="#d9ab83"/>${hairShape}<circle cx="55" cy="56" r="2" fill="#3a2a22"/><circle cx="73" cy="56" r="2" fill="#3a2a22"/><path d="M57 68c5 4 9 4 14 0" fill="none" stroke="#9b604d" stroke-width="2" stroke-linecap="round"/><path d="M22 128c2-29 17-46 42-46s40 17 42 46z" fill="${shirt}"/><path d="M45 91 64 110l19-19" fill="#f2dfb2" opacity=".9"/><circle cx="103" cy="103" r="18" fill="${accent}" stroke="${gold}" stroke-width="3"/><text x="103" y="108" text-anchor="middle" fill="#fff7e8" font-family="Arial,sans-serif" font-size="13" font-weight="700">Đ${gen}</text>${memorial}</svg>`);
+  }
+
   function enrichSampleMemberMedia(){
     if (Store.workspace?.() !== 'sample') return;
     const s = state();
     let changed = false;
-    s.members = s.members.map((m,i)=>{
-      if (Array.isArray(m.photos) && m.photos.length) return m;
+    s.members = s.members.map((m)=>{
+      const photos=Array.isArray(m.photos)?m.photos:[];
+      const generated=photos.length&&photos.every(p=>p.sample&&String(imageSrc(p)).startsWith('data:image/svg+xml'));
+      const legacy=photos.length&&photos.every(p=>p.sample&&!String(imageSrc(p)).startsWith('data:image/svg+xml'));
+      if(generated) return m;
+      if(photos.length&&!legacy) return m;
       changed = true;
-      const photos = [0,1].map(offset=>({id:`sample-member-photo-${m.id}-${offset+1}`,name:`Ảnh mẫu ${offset+1} · ${m.name}`,src:avatarFallbacks[(i+offset)%avatarFallbacks.length],sample:true}));
-      return {...m,photos,avatarPhotoId:photos[0].id};
+      const next = [0,1].map(offset=>({id:`sample-member-photo-${m.id}-${offset+1}`,name:`Minh họa ${m.name} ${offset+1}`,src:sampleMemberArt(m,offset),sample:true,generated:true}));
+      return {...m,photos:next,avatarPhotoId:next[0].id};
     });
     if (changed) Store.saveData(s);
   }
