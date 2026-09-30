@@ -1,6 +1,6 @@
 /* Single approved-background system — v24; exact artwork at 10% under true Liquid Glass */
 :root{--reference-paper:#f5ddb4;--glass-clear:rgba(255,251,243,.24);--glass-clear-strong:rgba(255,251,243,.34);--glass-line:rgba(255,245,220,.46);--glass-gold:rgba(187,128,42,.30)}
-html,body{background:#f4ddb6!important}body{background:#f4ddb6!important}
+html,body{background:transparent!important}body{background:transparent!important}
 .app-shell{position:relative!important;min-height:100svh!important;background:#f4ddb6!important;isolation:isolate!important;overflow-x:hidden!important}
 /* Exactly one approved artwork. No tiling, no stitching, no redraw. The artwork is intentionally shown at 10% opacity. */
 .heritage-canvas{position:absolute!important;inset:0!important;z-index:0!important;overflow:hidden!important;pointer-events:none!important;min-height:100%!important;background:#f4ddb6!important}
@@ -44,5 +44,16 @@ html body #tree-view .generation-column .person-card:not(.ancestor) .person-avat
 html body #tree-view .generation-column .person-card:not(.ancestor) .person-copy strong{font-size:7.4px!important;line-height:1.06!important}
 html body #tree-view .generation-column .person-card:not(.ancestor) .person-copy span{font-size:6.6px!important;line-height:1.08!important}
 html body #tree-view .generation-column .person-card:not(.ancestor) .person-badge{width:20px!important;height:20px!important;font-size:6.6px!important}
+
+/* Editor forms: every information field spans the usable sheet width on mobile. */
+#editorModal .editor-panel{width:calc(100vw - 24px)!important;max-width:680px!important;margin-inline:auto!important;padding-left:14px!important;padding-right:14px!important}
+#editorModal .form-grid{display:grid!important;grid-template-columns:minmax(0,1fr)!important;width:100%!important;gap:12px!important}
+#editorModal .form-field{display:block!important;width:100%!important;min-width:0!important;margin:0!important}
+#editorModal .form-field label{display:block!important;width:100%!important;margin:0 0 6px!important}
+#editorModal .form-field input,#editorModal .form-field select,#editorModal .form-field textarea{display:block!important;width:100%!important;max-width:none!important;min-width:0!important;box-sizing:border-box!important;margin:0!important}
+#editorModal .form-field input,#editorModal .form-field select{min-height:48px!important}
+#editorModal .form-field textarea{min-height:104px!important;resize:vertical!important}
+#editorModal .modal-actions{display:grid!important;grid-template-columns:repeat(2,minmax(0,1fr))!important;gap:10px!important;width:100%!important}
+#editorModal .modal-actions .ui-button{width:100%!important;min-width:0!important;margin:0!important}
 
 @media (prefers-reduced-transparency:reduce){.hero-panel,.surface,.member-row,.timeline-item,.document-row,.empty-state,.settings-group,.search-row,.source-status,.stat-card,.quick-card,.tree-controls,.account-card,.storage-metrics>div,.backup-action,.cloud-status,.sheet-panel,.modal-panel,#tree-view .person-card{background:rgba(255,248,233,.88)!important;-webkit-backdrop-filter:none!important;backdrop-filter:none!important}}
