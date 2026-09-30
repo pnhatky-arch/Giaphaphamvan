@@ -1,0 +1,39 @@
+/* Safari outer-chrome stabilization v1
+   Keep browser-owned regions untinted and prevent tab changes from changing page compositing. */
+html,body{
+  background:transparent!important;
+  background-image:none!important;
+  -webkit-backdrop-filter:none!important;
+  backdrop-filter:none!important;
+  filter:none!important;
+  border:0!important;
+  box-shadow:none!important;
+  transition:none!important;
+  animation:none!important;
+}
+html{min-height:100%!important}
+body{min-height:100lvh!important;overflow-x:hidden!important}
+.app-shell{min-height:100lvh!important}
+
+/* A tab swap is a content swap, not a full-page optical transition. */
+.view,.view.active{
+  animation:none!important;
+  transition:none!important;
+}
+.view.active{opacity:1!important}
+
+/* The application header remains solid burgundy, but it no longer becomes a
+   sticky browser-edge sampling layer. */
+.topbar{
+  position:relative!important;
+  top:auto!important;
+  -webkit-backdrop-filter:none!important;
+  backdrop-filter:none!important;
+}
+
+/* Browser chrome itself is outside page control. Keep every page-owned layer
+   around it free of tint/blur/border so Safari only exposes the page beneath. */
+body::before,body::after,html::before,html::after{
+  content:none!important;
+  display:none!important;
+}
