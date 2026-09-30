@@ -1,4 +1,4 @@
-const CACHE='giaphaphamvan-v56';
+const CACHE='giaphaphamvan-v57';
 const ASSETS=['/','/index.html','/styles.css?v=12','/target-ui.css?v=4','/reference-exact.css?v=24','/liquid-menu.css?v=15','/safari-shell.css?v=2','/app.js?v=12','/detail-features.js?v=1','/member-features.js?v=1','/data.js?v=9','/backup-engine.js?v=3','/sample-data.js?v=1','/storage-engine.js?v=3','/cloud-adapter.js?v=3','/manifest.webmanifest','/icon.svg','/dongson-pattern.svg?v=1','/reference-crest.webp?v=2','/heritage-approved-full.webp?v=4','/avatar-ancestor.svg','/avatar-1.svg','/avatar-2.svg','/avatar-3.svg','/avatar-4.svg'];
 self.addEventListener('install',event=>event.waitUntil(caches.open(CACHE).then(cache=>cache.addAll(ASSETS)).then(()=>self.skipWaiting())));
 self.addEventListener('activate',event=>event.waitUntil(caches.keys().then(keys=>Promise.all(keys.filter(key=>key!==CACHE).map(key=>caches.delete(key)))).then(()=>self.clients.claim())));
