@@ -3,6 +3,6 @@
   "version": "0.3.0",
   "private": true,
   "scripts": {
-    "test": "node --check public/data.js && node --check public/backup-engine.js && node --check public/storage-engine.js && node --check public/cloud-adapter.js && node --check public/auth-audit.js && node --check public/app.js && node --check public/sw.js && node tests/static-audit.mjs"
+    "test": "node --check public/data.js && node --check public/backup-engine.js && node --check public/storage-engine.js && node --check public/cloud-adapter.js && node --check public/auth-fix.js && node --check public/auth-audit.js && node --check public/app.js && node --check public/sw.js && node tests/static-audit.mjs && node tests/auth-gate-audit.mjs"
   }
 }
