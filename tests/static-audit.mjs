@@ -28,11 +28,11 @@ assert.ok(!index.includes('data-nav="more"'),'legacy Khác tab must be removed')
 assert.ok(!index.includes('id="menuButton"'),'hamburger control must be removed');
 assert.ok(!index.includes('id="drawer"'),'duplicate drawer navigation must be removed');
 assert.ok(index.includes('class="heritage-bg-image" src="/heritage-approved-full.webp?v=4"'),'canonical full background image must be present directly in HTML');
-assert.ok(index.includes('/detail-features.js?v=1'),'detail enhancement runtime must load');
-assert.ok(index.includes('/member-features.js?v=1'),'member profile runtime must load');
+assert.ok(index.includes('/detail-features.js?v=2'),'detail enhancement runtime must load');
+assert.ok(index.includes('/member-features.js?v=2'),'member profile runtime must load');
 assert.ok(index.includes('/sample-data.js?v=1'),'sample data runtime must load');
 assert.ok(index.includes('/safari-shell.css?v=5'),'Safari shell stabilization must load before runtime');
-assert.ok(index.includes('/liquid-menu.css?v=20'),'latest liquid menu stylesheet must load');
+assert.ok(index.includes('/liquid-menu.css?v=21'),'latest liquid menu stylesheet must load');
 assert.ok(!index.includes('heritage-approved-top.webp')&&!index.includes('heritage-approved-cont.webp'),'split background must not render');
 
 assert.ok(css.includes('.tree-connectors'),'SVG connector layer must be styled');
@@ -53,6 +53,8 @@ assert.ok(liquid.includes("background-image:url('/heritage-approved-full.webp?v=
 assert.ok(!liquid.includes('dongson-pattern.svg'),'app bars must not use a separate Dong Son pattern asset');
 assert.ok(liquid.includes('filter:grayscale(1) contrast(2.25) invert(1)'),'header heritage crop must be reduced to linework');
 assert.ok(liquid.includes('filter:grayscale(1) contrast(2.35) invert(1)'),'bottom-nav heritage crop must be reduced to linework');
+assert.ok(liquid.includes('opacity:.32'),'header heritage linework must be stronger than the previous revision');
+assert.ok(liquid.includes('opacity:.28'),'bottom-nav heritage linework must be stronger than the previous revision');
 assert.ok(liquid.includes('.topbar .top-brand{')&&liquid.includes('gap:3px!important'),'header copy must sit close to the crest');
 assert.ok(liquid.includes('.topbar .top-copy{')&&liquid.includes('align-self:center!important'),'three header lines must be vertically centered against the crest');
 assert.ok(liquid.includes('.top-header-ornament>span{display:block!important'),'header ornament must keep both side rules');
@@ -74,12 +76,16 @@ assert.ok(!app.includes('window.confirm('),'native window.confirm is forbidden')
 
 assert.ok(detail.includes('function memberDetail('),'event-linked member detail viewer missing');
 for(const field of ['Giới tính','Ngày sinh','Ngày mất','Vợ / chồng','Quê quán','Nghề nghiệp','Cha / mẹ','Con cháu trực tiếp','Sự kiện liên quan','Ghi chú']) assert.ok(detail.includes(field),`member detail missing ${field}`);
+assert.ok(detail.includes('grid-auto-flow:row dense'),'detail fields must auto-pack without empty visual holes');
+assert.ok(detail.includes("text!=='—'&&text!=='Chưa có'"),'empty detail fields must be suppressible');
 assert.ok(detail.includes('event.memberId'),'event-to-member linkage missing');
 assert.ok(detail.includes('function documentDetail('),'document full detail viewer missing');
 assert.ok(detail.includes('type="file" accept="image/*" multiple'),'document image picker must allow multiple images');
 assert.ok(detail.includes('images.push(...added)'),'document editor must support repeated unlimited image additions');
 assert.ok(detail.includes('data-remove-image'),'document image removal control missing');
 assert.ok(detail.includes('function enrichSample('),'sample feature enrichment missing');
+assert.ok(detail.includes('function sampleDocumentArt('),'sample document images must be drawn from document context');
+assert.ok(detail.includes('data:image/svg+xml'),'sample document art must stay sharp as vector media');
 assert.ok(detail.includes('sample-doc-img-'),'sample documents must receive image fixtures');
 
 assert.ok(memberFeatures.includes('function openMemberDetail('),'member tab must open full member detail');
@@ -87,6 +93,10 @@ assert.ok(memberFeatures.includes('memberImageInput'),'member editor must includ
 assert.ok(memberFeatures.includes('multiple'),'member editor must support multiple photos');
 assert.ok(memberFeatures.includes('avatarPhotoId'),'member profile must support a selected avatar');
 assert.ok(memberFeatures.includes('#memberSearch{padding-left:14px'),'member search field needs safe left padding');
+assert.ok(memberFeatures.includes('grid-auto-flow:row dense'),'member profile fields must auto-pack without gaps');
+assert.ok(memberFeatures.includes('function sampleMemberArt('),'sample member portraits must be drawn from member data');
+assert.ok(memberFeatures.includes("member.gender==='Nữ'"),'sample portraits must reflect member gender');
+assert.ok(memberFeatures.includes('Boolean(member.deathDate)'),'sample portraits must reflect living/deceased state');
 
 assert.ok(sample.includes('SAMPLE_MEMBER_COUNT = 168'),'sample dataset must contain 168 members');
 assert.ok(sample.includes('SAMPLE_GENERATION_COUNTS = [1,3,6,12,24,36,42,44]'),'sample dataset must cover eight generations');
@@ -97,12 +107,12 @@ assert.ok(backup.includes('snapshotCurrent'),'restore must snapshot current data
 assert.ok(cloud.includes('drive.appdata'),'Google Drive must use appDataFolder scope');
 assert.ok(cloud.includes('resolveConflict'),'cloud conflicts must be explicit');
 
-assert.ok(sw.includes("giaphaphamvan-v63"),'service worker cache version mismatch');
-for(const asset of ['/target-ui.css?v=4','/reference-exact.css?v=24','/liquid-menu.css?v=20','/safari-shell.css?v=5','/detail-features.js?v=1','/member-features.js?v=1','/sample-data.js?v=1','/reference-crest.webp?v=2','/heritage-approved-full.webp?v=4','/data.js?v=9']) assert.ok(sw.includes(asset),`service worker missing ${asset}`);
+assert.ok(sw.includes("giaphaphamvan-v64"),'service worker cache version mismatch');
+for(const asset of ['/target-ui.css?v=4','/reference-exact.css?v=24','/liquid-menu.css?v=21','/safari-shell.css?v=5','/detail-features.js?v=2','/member-features.js?v=2','/sample-data.js?v=1','/reference-crest.webp?v=2','/heritage-approved-full.webp?v=4','/data.js?v=9']) assert.ok(sw.includes(asset),`service worker missing ${asset}`);
 assert.ok(!sw.includes('/dongson-pattern.svg'),'separate Dong Son asset must not be precached after heritage-linework switch');
 assert.ok(!sw.includes('heritage-approved-top.webp')&&!sw.includes('heritage-approved-cont.webp'),'split backgrounds must not be precached');
 assert.ok(sw.includes("cache:'no-store'"),'service worker must bypass stale HTTP cache');
 assert.ok(wrangler.includes('"directory": "./public"'),'Wrangler must deploy ./public');
 assert.ok(/"theme_color"\s*:\s*"#65080D"/i.test(manifest),'PWA theme must be canonical burgundy');
 
-console.log('Giaphaphamvan heritage-derived linework bars + stable shell + member/document detail audit: PASS');
+console.log('Giaphaphamvan compact profile packing + generated sample media + stronger heritage bars audit: PASS');
