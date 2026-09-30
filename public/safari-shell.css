@@ -1,14 +1,17 @@
-/* Safari outer-chrome stabilization v2
-   The page root never scrolls. Only <main> scrolls, so changing tabs cannot make
-   Safari retint/reblur its browser chrome from page scroll or full-view fades. */
+/* Safari outer-chrome stabilization v3
+   Root page stays scroll-locked, but the page-owned area exposed above/below the
+   app now uses the same canonical burgundy + Dong Son motif as the app bars. */
 html,body{
   width:100%!important;
   height:100%!important;
   min-height:100%!important;
   margin:0!important;
   overflow:hidden!important;
-  background:transparent!important;
-  background-image:none!important;
+  background-color:#65080d!important;
+  background-image:url('/dongson-pattern.svg?v=1')!important;
+  background-repeat:repeat!important;
+  background-position:center top!important;
+  background-size:auto 96px!important;
   -webkit-backdrop-filter:none!important;
   backdrop-filter:none!important;
   filter:none!important;
@@ -19,8 +22,8 @@ html,body{
 }
 body{position:relative!important}
 
-/* Stable large viewport: content continues behind browser UI instead of exposing
-   a white/root canvas when Safari expands or collapses its controls. */
+/* Stable large viewport: the app itself keeps its own content/background layers,
+   while any page-owned area revealed by Safari remains burgundy + Dong Son. */
 .app-shell{
   display:flex!important;
   flex-direction:column!important;
@@ -31,8 +34,8 @@ body{position:relative!important}
   overflow:hidden!important;
 }
 
-/* App header keeps its own opaque burgundy material but is not a sticky browser
-   edge layer, so Safari does not sample it as chrome tint during a tab change. */
+/* App header keeps its own opaque burgundy + Dong Son treatment and is not a
+   sticky browser-edge layer. */
 .topbar{
   position:relative!important;
   top:auto!important;
@@ -42,7 +45,7 @@ body{position:relative!important}
 }
 
 /* All vertical movement happens inside main. Safari's outer page scroll remains
-   exactly zero, preventing the white/burgundy/blur flip seen during tab changes. */
+   exactly zero, preventing tab changes from retinting/reblurring the root. */
 main{
   position:relative!important;
   flex:1 1 auto!important;
@@ -66,9 +69,7 @@ main::-webkit-scrollbar{display:none!important}
 }
 .view.active{opacity:1!important}
 
-/* Keep every page-owned root layer free of tint, blur, border and generated
-   overlays. Browser chrome remains browser-owned and only sees page content
-   underneath it. */
+/* No pseudo overlays on html/body: the Dong Son image is the single root layer. */
 body::before,body::after,html::before,html::after{
   content:none!important;
   display:none!important;
