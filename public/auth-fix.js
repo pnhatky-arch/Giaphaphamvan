@@ -2,7 +2,7 @@
   'use strict';
   const SESSION_KEY='giaphaphamvan_auth_session_v1';
   const GATE_VERSION_KEY='giaphaphamvan_auth_gate_revision';
-  const GATE_VERSION='2';
+  const GATE_VERSION='3';
   const DATA_KEYS=['giaphaphamvan_data_v1__pham-van-family','giaphaphamvan_sample_data_v1__pham-van-family'];
 
   document.body.dataset.authenticated='false';
@@ -43,4 +43,12 @@
   }
   const accountButton=document.getElementById('accountButton');
   if(accountButton)accountButton.textContent='?';
+
+  if(!document.querySelector('script[data-phamvan-auth-theme]')){
+    const script=document.createElement('script');
+    script.src='/auth-theme.js?v=1';
+    script.dataset.phamvanAuthTheme='1';
+    script.defer=true;
+    document.head.appendChild(script);
+  }
 })();
