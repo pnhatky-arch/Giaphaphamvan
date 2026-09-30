@@ -7,7 +7,6 @@ const css=read('public/styles.css');
 const exact=read('public/reference-exact.css');
 const liquid=read('public/liquid-menu.css');
 const safariShell=read('public/safari-shell.css');
-const dongson=read('public/dongson-pattern.svg');
 const data=read('public/data.js');
 const app=read('public/app.js');
 const detail=read('public/detail-features.js');
@@ -19,7 +18,7 @@ const sw=read('public/sw.js');
 const manifest=read('public/manifest.webmanifest');
 const wrangler=read('wrangler.jsonc');
 
-for(const file of ['public/index.html','public/styles.css','public/target-ui.css','public/reference-exact.css','public/liquid-menu.css','public/safari-shell.css','public/app.js','public/detail-features.js','public/member-features.js','public/data.js','public/sample-data.js','public/backup-engine.js','public/storage-engine.js','public/cloud-adapter.js','public/manifest.webmanifest','public/icon.svg','public/dongson-pattern.svg','public/reference-crest.webp','public/heritage-approved-full.webp','public/sw.js']) assert.ok(fs.existsSync(file),`missing ${file}`);
+for(const file of ['public/index.html','public/styles.css','public/target-ui.css','public/reference-exact.css','public/liquid-menu.css','public/safari-shell.css','public/app.js','public/detail-features.js','public/member-features.js','public/data.js','public/sample-data.js','public/backup-engine.js','public/storage-engine.js','public/cloud-adapter.js','public/manifest.webmanifest','public/icon.svg','public/reference-crest.webp','public/heritage-approved-full.webp','public/sw.js']) assert.ok(fs.existsSync(file),`missing ${file}`);
 for(const retired of ['public/heritage-bg.svg','public/heritage-background.svg','public/heritage-background.webp','public/reference-polish.css','public/parchment-v4.css','public/final-polish.css','public/reference-hero.webp','public/reference-tree.webp','public/dongson-header.svg','public/tree-parchment.svg','public/hero-parchment.svg']) assert.ok(!fs.existsSync(retired),`retired visual layer must be deleted: ${retired}`);
 assert.ok(!fs.existsSync('public/ui.js'),'legacy secondary UI runtime must be deleted');
 
@@ -32,8 +31,8 @@ assert.ok(index.includes('class="heritage-bg-image" src="/heritage-approved-full
 assert.ok(index.includes('/detail-features.js?v=1'),'detail enhancement runtime must load');
 assert.ok(index.includes('/member-features.js?v=1'),'member profile runtime must load');
 assert.ok(index.includes('/sample-data.js?v=1'),'sample data runtime must load');
-assert.ok(index.includes('/safari-shell.css?v=4'),'Safari shell stabilization must load before runtime');
-assert.ok(index.includes('/liquid-menu.css?v=19'),'latest liquid menu stylesheet must load');
+assert.ok(index.includes('/safari-shell.css?v=5'),'Safari shell stabilization must load before runtime');
+assert.ok(index.includes('/liquid-menu.css?v=20'),'latest liquid menu stylesheet must load');
 assert.ok(!index.includes('heritage-approved-top.webp')&&!index.includes('heritage-approved-cont.webp'),'split background must not render');
 
 assert.ok(css.includes('.tree-connectors'),'SVG connector layer must be styled');
@@ -50,26 +49,23 @@ assert.ok(fs.statSync('public/heritage-approved-full.webp').size>10000,'approved
 assert.ok(liquid.includes('--heritage-burgundy:#65080d'),'canonical burgundy token missing');
 assert.ok(liquid.includes('.topbar{')&&liquid.includes('background:var(--heritage-burgundy)!important'),'top bar must use canonical burgundy');
 assert.ok(liquid.includes('.bottom-nav{')&&liquid.includes('background:var(--heritage-burgundy-raised)!important'),'bottom nav must use canonical burgundy');
-assert.ok(liquid.includes("url('/dongson-pattern.svg?v=3')"),'Dong Son motif v3 must render on app bars');
-assert.ok(liquid.includes('.topbar::before')&&liquid.includes('.bottom-nav::after'),'both top and bottom bars must carry Dong Son motif layers');
+assert.ok(liquid.includes("background-image:url('/heritage-approved-full.webp?v=4')"),'app bars must derive their motif from the canonical heritage background');
+assert.ok(!liquid.includes('dongson-pattern.svg'),'app bars must not use a separate Dong Son pattern asset');
+assert.ok(liquid.includes('filter:grayscale(1) contrast(2.25) invert(1)'),'header heritage crop must be reduced to linework');
+assert.ok(liquid.includes('filter:grayscale(1) contrast(2.35) invert(1)'),'bottom-nav heritage crop must be reduced to linework');
 assert.ok(liquid.includes('.topbar .top-brand{')&&liquid.includes('gap:3px!important'),'header copy must sit close to the crest');
 assert.ok(liquid.includes('.topbar .top-copy{')&&liquid.includes('align-self:center!important'),'three header lines must be vertically centered against the crest');
 assert.ok(liquid.includes('.top-header-ornament>span{display:block!important'),'header ornament must keep both side rules');
 assert.ok(liquid.includes('grid-template-columns:repeat(6,minmax(0,1fr))'),'bottom nav must use six equal tabs');
 assert.ok(liquid.includes('@keyframes goldTabSweep')&&liquid.includes('animation:goldTabSweep .9s'),'selected tab must retain one-shot gold tracer');
 
-assert.ok(dongson.includes('id="sun-ray"'),'Dong Son motif must include the many-rayed central sun');
-assert.ok(dongson.includes('id="lac-bird"'),'Dong Son motif must include Lac bird figures');
-assert.ok(dongson.includes('id="drum-face"'),'Dong Son motif must include concentric drum-face structure');
-assert.ok((dongson.match(/<circle/g)||[]).length>=5,'Dong Son drum motif needs concentric circular bands');
-
 assert.ok(safariShell.includes('overflow:hidden!important'),'root page must be scroll-locked');
 assert.ok(safariShell.includes('height:100lvh!important'),'app shell must cover the stable large viewport');
 assert.ok(safariShell.includes('overflow-y:auto!important'),'main must own vertical scrolling');
 assert.ok(safariShell.includes('.view,.view.active'),'tab transitions must be optically stable');
 assert.ok(safariShell.includes('animation:none!important'),'full-view fade must be disabled');
-assert.ok(safariShell.includes("background-image:url('/dongson-pattern.svg?v=3'),url('/dongson-pattern.svg?v=3')"),'outer top and bottom shell must both use Dong Son motif v3');
-assert.ok(safariShell.includes('background-position:center top,center bottom'),'outer motif must be anchored independently at top and bottom');
+assert.ok(safariShell.includes("url('/heritage-approved-full.webp?v=4'),url('/heritage-approved-full.webp?v=4')"),'outer shell must use the same canonical heritage source');
+assert.ok(!safariShell.includes('dongson-pattern.svg'),'outer shell must not use the separate Dong Son asset');
 
 assert.ok(app.includes('function renderTree'),'family tree renderer missing');
 assert.ok(app.includes('function drawConnectors'),'coordinate connector renderer missing');
@@ -101,11 +97,12 @@ assert.ok(backup.includes('snapshotCurrent'),'restore must snapshot current data
 assert.ok(cloud.includes('drive.appdata'),'Google Drive must use appDataFolder scope');
 assert.ok(cloud.includes('resolveConflict'),'cloud conflicts must be explicit');
 
-assert.ok(sw.includes("giaphaphamvan-v62"),'service worker cache version mismatch');
-for(const asset of ['/target-ui.css?v=4','/reference-exact.css?v=24','/liquid-menu.css?v=19','/safari-shell.css?v=4','/detail-features.js?v=1','/member-features.js?v=1','/sample-data.js?v=1','/dongson-pattern.svg?v=3','/reference-crest.webp?v=2','/heritage-approved-full.webp?v=4','/data.js?v=9']) assert.ok(sw.includes(asset),`service worker missing ${asset}`);
+assert.ok(sw.includes("giaphaphamvan-v63"),'service worker cache version mismatch');
+for(const asset of ['/target-ui.css?v=4','/reference-exact.css?v=24','/liquid-menu.css?v=20','/safari-shell.css?v=5','/detail-features.js?v=1','/member-features.js?v=1','/sample-data.js?v=1','/reference-crest.webp?v=2','/heritage-approved-full.webp?v=4','/data.js?v=9']) assert.ok(sw.includes(asset),`service worker missing ${asset}`);
+assert.ok(!sw.includes('/dongson-pattern.svg'),'separate Dong Son asset must not be precached after heritage-linework switch');
 assert.ok(!sw.includes('heritage-approved-top.webp')&&!sw.includes('heritage-approved-cont.webp'),'split backgrounds must not be precached');
 assert.ok(sw.includes("cache:'no-store'"),'service worker must bypass stale HTTP cache');
 assert.ok(wrangler.includes('"directory": "./public"'),'Wrangler must deploy ./public');
 assert.ok(/"theme_color"\s*:\s*"#65080D"/i.test(manifest),'PWA theme must be canonical burgundy');
 
-console.log('Giaphaphamvan compact centered header + Dong Son motif + member/document detail audit: PASS');
+console.log('Giaphaphamvan heritage-derived linework bars + stable shell + member/document detail audit: PASS');
