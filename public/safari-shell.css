@@ -1,6 +1,12 @@
-/* Safari outer-chrome stabilization v1
-   Keep browser-owned regions untinted and prevent tab changes from changing page compositing. */
+/* Safari outer-chrome stabilization v2
+   The page root never scrolls. Only <main> scrolls, so changing tabs cannot make
+   Safari retint/reblur its browser chrome from page scroll or full-view fades. */
 html,body{
+  width:100%!important;
+  height:100%!important;
+  min-height:100%!important;
+  margin:0!important;
+  overflow:hidden!important;
   background:transparent!important;
   background-image:none!important;
   -webkit-backdrop-filter:none!important;
@@ -11,28 +17,58 @@ html,body{
   transition:none!important;
   animation:none!important;
 }
-html{min-height:100%!important}
-body{min-height:100lvh!important;overflow-x:hidden!important}
-.app-shell{min-height:100lvh!important}
+body{position:relative!important}
 
-/* A tab swap is a content swap, not a full-page optical transition. */
+/* Stable large viewport: content continues behind browser UI instead of exposing
+   a white/root canvas when Safari expands or collapses its controls. */
+.app-shell{
+  display:flex!important;
+  flex-direction:column!important;
+  width:100%!important;
+  height:100lvh!important;
+  min-height:100lvh!important;
+  max-height:100lvh!important;
+  overflow:hidden!important;
+}
+
+/* App header keeps its own opaque burgundy material but is not a sticky browser
+   edge layer, so Safari does not sample it as chrome tint during a tab change. */
+.topbar{
+  position:relative!important;
+  top:auto!important;
+  flex:0 0 auto!important;
+  -webkit-backdrop-filter:none!important;
+  backdrop-filter:none!important;
+}
+
+/* All vertical movement happens inside main. Safari's outer page scroll remains
+   exactly zero, preventing the white/burgundy/blur flip seen during tab changes. */
+main{
+  position:relative!important;
+  flex:1 1 auto!important;
+  min-height:0!important;
+  width:100%!important;
+  overflow-x:hidden!important;
+  overflow-y:auto!important;
+  -webkit-overflow-scrolling:touch!important;
+  overscroll-behavior-y:contain!important;
+  scrollbar-width:none!important;
+  padding-bottom:calc(110px + env(safe-area-inset-bottom))!important;
+}
+main::-webkit-scrollbar{display:none!important}
+
+/* A tab swap is a content swap, never a full-page optical transition. */
 .view,.view.active{
+  background:transparent!important;
+  background-image:none!important;
   animation:none!important;
   transition:none!important;
 }
 .view.active{opacity:1!important}
 
-/* The application header remains solid burgundy, but it no longer becomes a
-   sticky browser-edge sampling layer. */
-.topbar{
-  position:relative!important;
-  top:auto!important;
-  -webkit-backdrop-filter:none!important;
-  backdrop-filter:none!important;
-}
-
-/* Browser chrome itself is outside page control. Keep every page-owned layer
-   around it free of tint/blur/border so Safari only exposes the page beneath. */
+/* Keep every page-owned root layer free of tint, blur, border and generated
+   overlays. Browser chrome remains browser-owned and only sees page content
+   underneath it. */
 body::before,body::after,html::before,html::after{
   content:none!important;
   display:none!important;
