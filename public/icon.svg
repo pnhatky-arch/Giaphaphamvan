@@ -1,9 +1,9 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" role="img" aria-label="Cây gia phả họ Phạm Văn">
   <defs>
     <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
-      <stop stop-color="#5d0710"/>
-      <stop offset=".46" stop-color="#8f101c"/>
-      <stop offset="1" stop-color="#b6202d"/>
+      <stop stop-color="#65080D"/>
+      <stop offset=".46" stop-color="#65080D"/>
+      <stop offset="1" stop-color="#65080D"/>
     </linearGradient>
     <linearGradient id="gold" x1="0" y1="0" x2="1" y2="1">
       <stop stop-color="#fff2bb"/>
@@ -19,27 +19,12 @@
   <rect x="18" y="18" width="476" height="476" rx="100" fill="url(#halo)" stroke="#f1ce78" stroke-opacity=".32" stroke-width="3"/>
   <circle cx="256" cy="244" r="156" fill="none" stroke="url(#gold)" stroke-width="10" opacity=".96"/>
   <circle cx="256" cy="244" r="139" fill="none" stroke="#fff3c5" stroke-opacity=".16" stroke-width="2"/>
-
-  <!-- trunk -->
   <path d="M256 333V229" fill="none" stroke="url(#gold)" stroke-width="20" stroke-linecap="round"/>
-  <!-- primary branches -->
   <path d="M256 259C235 233 216 219 190 209M256 259C277 233 296 219 322 209M256 230C241 203 226 188 204 175M256 230C271 203 286 188 308 175" fill="none" stroke="url(#gold)" stroke-width="14" stroke-linecap="round" stroke-linejoin="round"/>
-  <!-- secondary branches -->
   <path d="M190 209L165 184M190 209L160 222M322 209L347 184M322 209L352 222M204 175L182 150M308 175L330 150" fill="none" stroke="url(#gold)" stroke-width="10" stroke-linecap="round"/>
-  <!-- generation nodes -->
   <g fill="#f7dea0" stroke="#7c4a10" stroke-width="4">
-    <circle cx="160" cy="222" r="13"/>
-    <circle cx="165" cy="184" r="13"/>
-    <circle cx="182" cy="150" r="13"/>
-    <circle cx="204" cy="175" r="13"/>
-    <circle cx="308" cy="175" r="13"/>
-    <circle cx="330" cy="150" r="13"/>
-    <circle cx="347" cy="184" r="13"/>
-    <circle cx="352" cy="222" r="13"/>
-    <circle cx="190" cy="209" r="12"/>
-    <circle cx="322" cy="209" r="12"/>
+    <circle cx="160" cy="222" r="13"/><circle cx="165" cy="184" r="13"/><circle cx="182" cy="150" r="13"/><circle cx="204" cy="175" r="13"/><circle cx="308" cy="175" r="13"/><circle cx="330" cy="150" r="13"/><circle cx="347" cy="184" r="13"/><circle cx="352" cy="222" r="13"/><circle cx="190" cy="209" r="12"/><circle cx="322" cy="209" r="12"/>
   </g>
-  <!-- roots -->
   <path d="M256 332C236 347 218 359 190 365M256 332C276 347 294 359 322 365M256 332C248 354 244 370 244 386M256 332C264 354 268 370 268 386" fill="none" stroke="url(#gold)" stroke-width="12" stroke-linecap="round"/>
   <path d="M180 386H332" stroke="#f2cf7a" stroke-width="6" stroke-linecap="round" opacity=".82"/>
 </svg>
