@@ -6,6 +6,7 @@ const index=read('public/index.html');
 const css=read('public/styles.css');
 const exact=read('public/reference-exact.css');
 const liquid=read('public/liquid-menu.css');
+const safariShell=read('public/safari-shell.css');
 const data=read('public/data.js');
 const app=read('public/app.js');
 const detail=read('public/detail-features.js');
@@ -16,7 +17,7 @@ const sw=read('public/sw.js');
 const manifest=read('public/manifest.webmanifest');
 const wrangler=read('wrangler.jsonc');
 
-for(const file of ['public/index.html','public/styles.css','public/target-ui.css','public/reference-exact.css','public/liquid-menu.css','public/app.js','public/detail-features.js','public/data.js','public/sample-data.js','public/backup-engine.js','public/storage-engine.js','public/cloud-adapter.js','public/manifest.webmanifest','public/icon.svg','public/reference-crest.webp','public/heritage-approved-full.webp','public/sw.js']) assert.ok(fs.existsSync(file),`missing ${file}`);
+for(const file of ['public/index.html','public/styles.css','public/target-ui.css','public/reference-exact.css','public/liquid-menu.css','public/safari-shell.css','public/app.js','public/detail-features.js','public/data.js','public/sample-data.js','public/backup-engine.js','public/storage-engine.js','public/cloud-adapter.js','public/manifest.webmanifest','public/icon.svg','public/reference-crest.webp','public/heritage-approved-full.webp','public/sw.js']) assert.ok(fs.existsSync(file),`missing ${file}`);
 for(const retired of ['public/heritage-bg.svg','public/heritage-background.svg','public/heritage-background.webp','public/reference-polish.css','public/parchment-v4.css','public/final-polish.css','public/reference-hero.webp','public/reference-tree.webp','public/dongson-header.svg','public/tree-parchment.svg','public/hero-parchment.svg']) assert.ok(!fs.existsSync(retired),`retired visual layer must be deleted: ${retired}`);
 assert.ok(!fs.existsSync('public/ui.js'),'legacy secondary UI runtime must be deleted');
 
@@ -28,12 +29,15 @@ assert.ok(!index.includes('id="drawer"'),'duplicate drawer navigation must be re
 assert.ok(index.includes('class="heritage-bg-image" src="/heritage-approved-full.webp?v=4"'),'canonical full background image must be present directly in HTML');
 assert.ok(index.includes('/detail-features.js?v=1'),'detail enhancement runtime must load');
 assert.ok(index.includes('/sample-data.js?v=1'),'sample data runtime must load');
+assert.ok(index.includes('/safari-shell.css?v=2'),'Safari shell stabilization must load before runtime');
 assert.ok(!index.includes('heritage-approved-top.webp')&&!index.includes('heritage-approved-cont.webp'),'split background must not render');
 
 assert.ok(css.includes('.tree-connectors'),'SVG connector layer must be styled');
 assert.ok(data.includes("/reference-exact.css?v=24"),'approved visual stylesheet must remain v24');
+assert.ok(data.includes("/safari-shell.css?v=2"),'runtime must retain Safari shell stabilization');
 assert.ok(data.includes("img.src='/heritage-approved-full.webp?v=4'"),'runtime must keep approved background canonical');
 assert.ok(!data.includes("window.addEventListener('scroll'"),'Safari toolbar scroll events must not auto-hide navigation');
+assert.ok(data.includes("const scrollOffset=()=>scroller?.scrollTop||0"),'nav auto-hide must read the internal main scroller');
 assert.ok(exact.includes('opacity:.10!important'),'heritage artwork must remain at ten percent visibility');
 assert.ok(exact.includes('filter:none!important'),'approved artwork must not be image-blurred');
 assert.ok(exact.includes('-webkit-backdrop-filter:blur(7px)'),'cards must retain Liquid Glass blur');
@@ -45,6 +49,13 @@ assert.ok(liquid.includes('.topbar{')&&liquid.includes('background:var(--heritag
 assert.ok(liquid.includes('.bottom-nav{')&&liquid.includes('background:var(--heritage-burgundy-raised)!important'),'bottom nav must use canonical burgundy');
 assert.ok(liquid.includes('grid-template-columns:repeat(6,minmax(0,1fr))'),'bottom nav must use six equal tabs');
 assert.ok(liquid.includes('@keyframes goldTabSweep')&&liquid.includes('animation:goldTabSweep .9s'),'selected tab must retain one-shot gold tracer');
+
+assert.ok(safariShell.includes('overflow:hidden!important'),'root page must be scroll-locked');
+assert.ok(safariShell.includes('height:100lvh!important'),'app shell must cover the stable large viewport');
+assert.ok(safariShell.includes('overflow-y:auto!important'),'main must own vertical scrolling');
+assert.ok(safariShell.includes('.view,.view.active'),'tab transitions must be optically stable');
+assert.ok(safariShell.includes('animation:none!important'),'full-view fade must be disabled');
+assert.ok(safariShell.includes('position:relative!important'),'header must not be a sticky Safari edge layer');
 
 assert.ok(app.includes('function renderTree'),'family tree renderer missing');
 assert.ok(app.includes('function drawConnectors'),'coordinate connector renderer missing');
@@ -70,11 +81,11 @@ assert.ok(backup.includes('snapshotCurrent'),'restore must snapshot current data
 assert.ok(cloud.includes('drive.appdata'),'Google Drive must use appDataFolder scope');
 assert.ok(cloud.includes('resolveConflict'),'cloud conflicts must be explicit');
 
-assert.ok(sw.includes("giaphaphamvan-v54"),'service worker cache version mismatch');
-for(const asset of ['/target-ui.css?v=4','/reference-exact.css?v=24','/liquid-menu.css?v=15','/detail-features.js?v=1','/sample-data.js?v=1','/reference-crest.webp?v=2','/heritage-approved-full.webp?v=4','/data.js?v=9']) assert.ok(sw.includes(asset),`service worker missing ${asset}`);
+assert.ok(sw.includes("giaphaphamvan-v55"),'service worker cache version mismatch');
+for(const asset of ['/target-ui.css?v=4','/reference-exact.css?v=24','/liquid-menu.css?v=15','/safari-shell.css?v=2','/detail-features.js?v=1','/sample-data.js?v=1','/reference-crest.webp?v=2','/heritage-approved-full.webp?v=4','/data.js?v=9']) assert.ok(sw.includes(asset),`service worker missing ${asset}`);
 assert.ok(!sw.includes('heritage-approved-top.webp')&&!sw.includes('heritage-approved-cont.webp'),'split backgrounds must not be precached');
 assert.ok(sw.includes("cache:'no-store'"),'service worker must bypass stale HTTP cache');
 assert.ok(wrangler.includes('"directory": "./public"'),'Wrangler must deploy ./public');
 assert.ok(/"theme_color"\s*:\s*"#65080D"/i.test(manifest),'PWA theme must be canonical burgundy');
 
-console.log('Giaphaphamvan event member detail + document image gallery + isolated 168-member sample audit: PASS');
+console.log('Giaphaphamvan stable Safari shell + member detail + document gallery + isolated sample audit: PASS');
