@@ -1,0 +1,49 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 2200" role="img" aria-label="Hoa văn trống đồng Đông Sơn">
+<defs>
+  <radialGradient id="bg" cx="50%" cy="18%" r="86%"><stop offset="0" stop-color="#9f2419"/><stop offset=".46" stop-color="#71100f"/><stop offset="1" stop-color="#3b0508"/></radialGradient>
+  <radialGradient id="gold"><stop offset="0" stop-color="#fff2b8"/><stop offset=".24" stop-color="#f8cf72"/><stop offset=".62" stop-color="#c58228"/><stop offset="1" stop-color="#70400f"/></radialGradient>
+  <filter id="glow"><feGaussianBlur stdDeviation="16" result="b"/><feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge></filter>
+  <pattern id="chev" width="56" height="28" patternUnits="userSpaceOnUse"><path d="M0 24 14 6l14 18L42 6l14 18" fill="none" stroke="#d79e42" stroke-width="4" opacity=".72"/></pattern>
+</defs>
+<rect width="1200" height="2200" fill="url(#bg)"/>
+<g opacity=".14" fill="none" stroke="#efb858" stroke-width="3">
+  <circle cx="600" cy="450" r="520"/><circle cx="600" cy="450" r="470"/><circle cx="600" cy="450" r="415"/><circle cx="600" cy="450" r="350"/><circle cx="600" cy="450" r="285"/>
+</g>
+<g transform="translate(600 450)" filter="url(#glow)">
+  <circle r="330" fill="#5c0b0d" stroke="#efbd60" stroke-width="12"/>
+  <circle r="286" fill="none" stroke="#d69235" stroke-width="10"/>
+  <circle r="238" fill="none" stroke="#f1c96f" stroke-width="5"/>
+  <circle r="190" fill="none" stroke="#b86c20" stroke-width="14"/>
+  <g fill="#f1c567" opacity=".92">
+    <path d="M0-150 24-58 106-106 58-24 150 0 58 24 106 106 24 58 0 150-24 58-106 106-58 24-150 0-58-24-106-106-24-58Z"/>
+    <circle r="54" fill="url(#gold)"/>
+  </g>
+  <g fill="none" stroke="#efbd60" stroke-width="10" stroke-linecap="round" opacity=".9">
+    <path d="M-218-94q42-28 84 0t84 0 84 0 84 0"/>
+    <path d="M-218 94q42-28 84 0t84 0 84 0 84 0"/>
+  </g>
+</g>
+<g fill="#e8ac4f" opacity=".86">
+  <path d="M106 650c70-92 154-132 252-120-62 20-104 52-132 98 58-34 112-36 164-4-97 8-167 46-210 114Z"/>
+  <path d="M1094 650c-70-92-154-132-252-120 62 20 104 52 132 98-58-34-112-36-164-4 97 8 167 46 210 114Z"/>
+</g>
+<g opacity=".38" fill="#25100c">
+  <path d="M0 1510c90-110 168-132 238-72 64-132 138-170 222-70 72-164 170-216 288-74 84-108 156-104 216 34 82-68 160-34 236 102v770H0Z"/>
+  <path d="M120 1630h960v260H120z" opacity=".16"/>
+</g>
+<g transform="translate(120 1560)" fill="#3b100c" stroke="#d89031" stroke-width="8">
+  <path d="M0 212h960M76 212V66h152v146M732 212V66h152v146M330 212V10h300v202"/>
+  <path d="M42 66h220L152 0ZM698 66h220L808 0ZM286 10h388L480-92Z"/>
+  <rect x="410" y="94" width="140" height="118" rx="4"/>
+</g>
+<rect y="1950" width="1200" height="180" fill="url(#chev)" opacity=".55"/>
+<g transform="translate(70 2025)" fill="#d79e42" opacity=".8">
+  <circle cx="50" cy="20" r="13"/><path d="M50 34v46m0-30-26 20m26-20 28 18m-28 12-22 36m22-36 24 36" stroke="#d79e42" stroke-width="9" fill="none" stroke-linecap="round"/>
+  <circle cx="210" cy="20" r="13"/><path d="M210 34v46m0-30-26 20m26-20 28 18m-28 12-22 36m22-36 24 36" stroke="#d79e42" stroke-width="9" fill="none" stroke-linecap="round"/>
+  <circle cx="370" cy="20" r="13"/><path d="M370 34v46m0-30-26 20m26-20 28 18m-28 12-22 36m22-36 24 36" stroke="#d79e42" stroke-width="9" fill="none" stroke-linecap="round"/>
+  <circle cx="530" cy="20" r="13"/><path d="M530 34v46m0-30-26 20m26-20 28 18m-28 12-22 36m22-36 24 36" stroke="#d79e42" stroke-width="9" fill="none" stroke-linecap="round"/>
+  <circle cx="690" cy="20" r="13"/><path d="M690 34v46m0-30-26 20m26-20 28 18m-28 12-22 36m22-36 24 36" stroke="#d79e42" stroke-width="9" fill="none" stroke-linecap="round"/>
+  <circle cx="850" cy="20" r="13"/><path d="M850 34v46m0-30-26 20m26-20 28 18m-28 12-22 36m22-36 24 36" stroke="#d79e42" stroke-width="9" fill="none" stroke-linecap="round"/>
+  <circle cx="1010" cy="20" r="13"/><path d="M1010 34v46m0-30-26 20m26-20 28 18m-28 12-22 36m22-36 24 36" stroke="#d79e42" stroke-width="9" fill="none" stroke-linecap="round"/>
+</g>
+</svg>
