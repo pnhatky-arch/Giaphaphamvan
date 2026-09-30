@@ -1,4 +1,4 @@
-/* Canonical burgundy system — v25: centered genealogy header + true Dong Son drum motif */
+/* Canonical burgundy system — v26: tighter centered genealogy header + true Dong Son drum motif */
 @property --gold-sweep-angle{syntax:'<angle>';inherits:false;initial-value:0deg}
 @keyframes goldTabSweep{from{--gold-sweep-angle:0deg;opacity:0}5%{opacity:1}95%{opacity:1}to{--gold-sweep-angle:360deg;opacity:0}}
 :root{
@@ -24,12 +24,14 @@ html,body{background:#65080d!important;-webkit-backdrop-filter:none!important;ba
 .topbar{position:relative!important;top:auto!important;grid-template-columns:minmax(0,1fr) auto!important;background:var(--heritage-burgundy)!important;background-image:none!important;border-bottom:1px solid rgba(239,197,105,.34)!important;-webkit-backdrop-filter:none!important;backdrop-filter:none!important;box-shadow:0 6px 18px rgba(101,8,13,.24),inset 0 -1px 0 rgba(255,255,255,.05)!important;overflow:hidden!important;isolation:isolate!important}
 .topbar::before{content:"";position:absolute;z-index:0;inset:0;background-image:url('/dongson-pattern.svg?v=3');background-repeat:repeat-x;background-position:center;background-size:auto 118%;opacity:.46;pointer-events:none!important}
 .topbar>*{position:relative!important;z-index:1!important}
-/* Three header lines share one exact visual center: title, motto, diamond. */
-.topbar .top-copy{display:flex!important;flex-direction:column!important;align-items:center!important;justify-content:center!important;text-align:center!important;min-width:0!important}
-.topbar .top-copy>strong,.topbar .top-copy>span{display:block!important;width:100%!important;text-align:center!important;margin-left:auto!important;margin-right:auto!important}
-.topbar .top-copy .top-header-ornament{display:flex!important;width:100%!important;height:8px!important;margin:2px 0 0!important;align-items:center!important;justify-content:center!important;gap:0!important;text-align:center!important;color:#efcf78!important;line-height:1!important}
-.topbar .top-copy .top-header-ornament>span{display:none!important}
-.topbar .top-copy .top-header-ornament>b{display:block!important;margin:0 auto!important;font-size:7px!important;line-height:1!important;color:#efcf78!important;font-weight:700!important}
+/* Logo + three text lines form one compact, vertically centered brand block. */
+.topbar .top-brand{display:flex!important;align-items:center!important;justify-content:flex-start!important;gap:3px!important;min-width:0!important}
+.topbar .top-logo{flex:0 0 auto!important;margin:0!important;align-self:center!important}
+.topbar .top-copy{display:flex!important;flex:0 1 auto!important;width:auto!important;min-width:0!important;flex-direction:column!important;align-items:center!important;justify-content:center!important;align-self:center!important;text-align:center!important;margin:0!important}
+.topbar .top-copy>strong,.topbar .top-copy>span{display:block!important;width:auto!important;max-width:100%!important;text-align:center!important;margin-left:auto!important;margin-right:auto!important;white-space:nowrap!important}
+.topbar .top-copy .top-header-ornament{display:flex!important;width:auto!important;height:8px!important;margin:2px auto 0!important;align-items:center!important;justify-content:center!important;gap:4px!important;text-align:center!important;color:#efcf78!important;line-height:1!important}
+.topbar .top-copy .top-header-ornament>span{display:block!important;flex:0 0 22px!important;width:22px!important;height:1px!important;background:#d4a94b!important;opacity:.86!important}
+.topbar .top-copy .top-header-ornament>b{display:block!important;flex:0 0 auto!important;margin:0 1px!important;font-size:7px!important;line-height:1!important;color:#efcf78!important;font-weight:700!important}
 .language-button,.avatar-button{position:relative;overflow:hidden;color:var(--lg-menu-text)!important;border:1px solid rgba(255,226,151,.58)!important;background:rgba(101,8,13,.86)!important;background-image:none!important;-webkit-backdrop-filter:none!important;backdrop-filter:none!important;box-shadow:0 5px 12px rgba(101,8,13,.20),inset 0 1px 0 rgba(255,255,255,.13)!important;transform:none!important}
 .language-button::before,.avatar-button::before{content:"";position:absolute;left:10%;right:10%;top:0;height:1px;background:linear-gradient(90deg,transparent,rgba(255,255,255,.58),transparent);opacity:.72;pointer-events:none}.language-button{border-radius:16px!important}.avatar-button{border-radius:999px!important;color:#f7dd98!important}.language-button:active,.avatar-button:active{transform:none!important}
 
