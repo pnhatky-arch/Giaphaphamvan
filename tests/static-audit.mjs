@@ -26,11 +26,14 @@ assert.ok(index.includes('class="heritage-bg-image" src="/heritage-approved-full
 assert.ok(!index.includes('heritage-approved-top.webp'),'legacy top image must be removed from HTML');
 assert.ok(!index.includes('heritage-approved-cont.webp'),'legacy continuation image must be removed from HTML');
 assert.ok(index.includes('/data.js?v=9'),'index must load current visual runtime');
+assert.ok(index.includes('id="pham-van-approved-reference-css"'),'final geometry CSS must load in head before first paint');
+assert.ok(index.includes('id="pham-van-reference-exact-css"'),'final heritage CSS must load in head before first paint');
+assert.ok(index.includes('id="pham-van-liquid-menu-css"'),'final navigation CSS must load in head before first paint');
 assert.ok(css.includes('.tree-connectors'),'SVG connector layer must be styled');
 assert.ok(css.includes('.person-card.ancestor'),'ancestor card styling missing');
 assert.ok(data.includes("/target-ui.css?v=4"),'geometry stylesheet must be v4');
 assert.ok(data.includes("/reference-exact.css?v=24"),'approved visual stylesheet must be v24');
-assert.ok(data.includes("/liquid-menu.css?v=14"),'navigation stylesheet must be v14');
+assert.ok(data.includes("/liquid-menu.css?v=14"),'navigation stylesheet must remain canonical URL');
 assert.ok(data.includes("const approvedCrest='/reference-crest.webp?v=2'"),'approved crest must remain canonical');
 assert.ok(data.includes("img.src='/heritage-approved-full.webp?v=4'"),'runtime must keep the approved full artwork canonical');
 assert.ok(!data.includes("window.addEventListener('scroll'"),'Safari toolbar scroll events must not auto-hide navigation');
@@ -54,9 +57,15 @@ assert.ok(!exact.includes('heritage-approved-cont.webp'),'split continuation bac
 assert.ok(!exact.includes('heritage-background.svg'),'embedded-raster SVG must never render on Safari');
 assert.ok(!exact.includes('heritage-background.webp'),'invalid temporary full background must not render');
 assert.ok(fs.statSync('public/heritage-approved-full.webp').size>10000,'approved full heritage WebP asset looks invalid');
+
 assert.ok(liquid.includes('position:fixed!important'),'bottom navigation must be viewport-fixed on Safari');
-assert.ok(liquid.includes('-webkit-backdrop-filter:blur(16px)'),'bottom navigation must remain translucent Liquid Glass');
-assert.ok(liquid.includes('-webkit-backdrop-filter:blur(12px)'),'top bar and selected tab must use Liquid Glass blur');
+assert.ok(liquid.includes('--heritage-burgundy:#65080d'),'canonical burgundy token missing');
+assert.ok(liquid.includes('.topbar{')&&liquid.includes('background:var(--heritage-burgundy)!important'),'top bar must use opaque canonical burgundy');
+assert.ok(liquid.includes('.topbar{')&&liquid.includes('-webkit-backdrop-filter:none!important;backdrop-filter:none!important'),'top bar must not blur the heritage background');
+assert.ok(liquid.includes('.language-button,.avatar-button{')&&liquid.includes('background:var(--heritage-burgundy-raised)!important'),'language and avatar controls must use opaque burgundy');
+assert.ok(liquid.includes('.bottom-nav{')&&liquid.includes('background:var(--heritage-burgundy-raised)!important'),'bottom navigation must use opaque burgundy');
+assert.ok(liquid.includes('.bottom-nav{')&&liquid.includes('-webkit-backdrop-filter:none!important;backdrop-filter:none!important'),'bottom navigation must not blur the heritage background');
+assert.ok(liquid.includes('.bottom-nav button.active{')&&liquid.includes('-webkit-backdrop-filter:none!important;backdrop-filter:none!important'),'selected tab must retain highlight without backdrop blur');
 assert.ok(liquid.includes('grid-template-columns:repeat(6,minmax(0,1fr))'),'bottom navigation must use six equal tabs');
 assert.ok(liquid.includes('@keyframes goldTabSweep'),'selected tab must retain the one-shot gold tracer');
 assert.ok(liquid.includes('animation:goldTabSweep .9s'),'gold tracer must run once per selection');
@@ -71,7 +80,7 @@ assert.ok(cloud.includes('drive.appdata'),'Google Drive must use appDataFolder s
 assert.ok(cloud.includes('resolveConflict'),'cloud conflicts must be explicit');
 assert.ok(app.includes('appConfirm'),'destructive actions must use shared confirm');
 assert.ok(!app.includes('window.confirm('),'native window.confirm is forbidden');
-assert.ok(sw.includes("giaphaphamvan-v50"),'service worker cache version mismatch');
+assert.ok(sw.includes("giaphaphamvan-v51"),'service worker cache version mismatch');
 for(const asset of ['/target-ui.css?v=4','/reference-exact.css?v=24','/liquid-menu.css?v=14','/reference-crest.webp?v=2','/heritage-approved-full.webp?v=4','/data.js?v=9']) assert.ok(sw.includes(asset),`service worker missing ${asset}`);
 assert.ok(!sw.includes('heritage-approved-top.webp'),'split top background must not be precached');
 assert.ok(!sw.includes('heritage-approved-cont.webp'),'split continuation background must not be precached');
@@ -79,4 +88,4 @@ assert.ok(!sw.includes('heritage-background.svg'),'broken embedded SVG must not 
 assert.ok(sw.includes("cache:'no-store'"),'service worker must bypass stale HTTP artwork cache');
 assert.ok(wrangler.includes('"directory": "./public"'),'Wrangler must deploy ./public');
 assert.ok(manifest.includes('"theme_color": "#650912"')||manifest.includes('"theme_color": "#65080d"'),'PWA theme must be heritage red');
-console.log('Giaphaphamvan protected generation labels + 10 percent heritage v50 audit: PASS');
+console.log('Giaphaphamvan solid burgundy bars + protected generation labels + 10 percent heritage v51 audit: PASS');
