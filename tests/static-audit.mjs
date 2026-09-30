@@ -33,7 +33,7 @@ assert.ok(index.includes('/detail-features.js?v=1'),'detail enhancement runtime 
 assert.ok(index.includes('/member-features.js?v=1'),'member profile runtime must load');
 assert.ok(index.includes('/sample-data.js?v=1'),'sample data runtime must load');
 assert.ok(index.includes('/safari-shell.css?v=4'),'Safari shell stabilization must load before runtime');
-assert.ok(index.includes('/liquid-menu.css?v=18'),'latest liquid menu stylesheet must load');
+assert.ok(index.includes('/liquid-menu.css?v=19'),'latest liquid menu stylesheet must load');
 assert.ok(!index.includes('heritage-approved-top.webp')&&!index.includes('heritage-approved-cont.webp'),'split background must not render');
 
 assert.ok(css.includes('.tree-connectors'),'SVG connector layer must be styled');
@@ -52,8 +52,9 @@ assert.ok(liquid.includes('.topbar{')&&liquid.includes('background:var(--heritag
 assert.ok(liquid.includes('.bottom-nav{')&&liquid.includes('background:var(--heritage-burgundy-raised)!important'),'bottom nav must use canonical burgundy');
 assert.ok(liquid.includes("url('/dongson-pattern.svg?v=3')"),'Dong Son motif v3 must render on app bars');
 assert.ok(liquid.includes('.topbar::before')&&liquid.includes('.bottom-nav::after'),'both top and bottom bars must carry Dong Son motif layers');
-assert.ok(liquid.includes('.topbar .top-copy{')&&liquid.includes('text-align:center!important'),'header title and motto must share a centered axis');
-assert.ok(liquid.includes('.top-header-ornament>span{display:none!important}'),'header ornament must render diamond only');
+assert.ok(liquid.includes('.topbar .top-brand{')&&liquid.includes('gap:3px!important'),'header copy must sit close to the crest');
+assert.ok(liquid.includes('.topbar .top-copy{')&&liquid.includes('align-self:center!important'),'three header lines must be vertically centered against the crest');
+assert.ok(liquid.includes('.top-header-ornament>span{display:block!important'),'header ornament must keep both side rules');
 assert.ok(liquid.includes('grid-template-columns:repeat(6,minmax(0,1fr))'),'bottom nav must use six equal tabs');
 assert.ok(liquid.includes('@keyframes goldTabSweep')&&liquid.includes('animation:goldTabSweep .9s'),'selected tab must retain one-shot gold tracer');
 
@@ -100,11 +101,11 @@ assert.ok(backup.includes('snapshotCurrent'),'restore must snapshot current data
 assert.ok(cloud.includes('drive.appdata'),'Google Drive must use appDataFolder scope');
 assert.ok(cloud.includes('resolveConflict'),'cloud conflicts must be explicit');
 
-assert.ok(sw.includes("giaphaphamvan-v61"),'service worker cache version mismatch');
-for(const asset of ['/target-ui.css?v=4','/reference-exact.css?v=24','/liquid-menu.css?v=18','/safari-shell.css?v=4','/detail-features.js?v=1','/member-features.js?v=1','/sample-data.js?v=1','/dongson-pattern.svg?v=3','/reference-crest.webp?v=2','/heritage-approved-full.webp?v=4','/data.js?v=9']) assert.ok(sw.includes(asset),`service worker missing ${asset}`);
+assert.ok(sw.includes("giaphaphamvan-v62"),'service worker cache version mismatch');
+for(const asset of ['/target-ui.css?v=4','/reference-exact.css?v=24','/liquid-menu.css?v=19','/safari-shell.css?v=4','/detail-features.js?v=1','/member-features.js?v=1','/sample-data.js?v=1','/dongson-pattern.svg?v=3','/reference-crest.webp?v=2','/heritage-approved-full.webp?v=4','/data.js?v=9']) assert.ok(sw.includes(asset),`service worker missing ${asset}`);
 assert.ok(!sw.includes('heritage-approved-top.webp')&&!sw.includes('heritage-approved-cont.webp'),'split backgrounds must not be precached');
 assert.ok(sw.includes("cache:'no-store'"),'service worker must bypass stale HTTP cache');
 assert.ok(wrangler.includes('"directory": "./public"'),'Wrangler must deploy ./public');
 assert.ok(/"theme_color"\s*:\s*"#65080D"/i.test(manifest),'PWA theme must be canonical burgundy');
 
-console.log('Giaphaphamvan true Dong Son drum motif + outer shell + member/document detail audit: PASS');
+console.log('Giaphaphamvan compact centered header + Dong Son motif + member/document detail audit: PASS');
