@@ -11,6 +11,7 @@ const data=read('public/data.js');
 const app=read('public/app.js');
 const detail=read('public/detail-features.js');
 const memberFeatures=read('public/member-features.js');
+const authAudit=read('public/auth-audit.js');
 const sample=read('public/sample-data.js');
 const backup=read('public/backup-engine.js');
 const cloud=read('public/cloud-adapter.js');
@@ -18,7 +19,7 @@ const sw=read('public/sw.js');
 const manifest=read('public/manifest.webmanifest');
 const wrangler=read('wrangler.jsonc');
 
-for(const file of ['public/index.html','public/styles.css','public/target-ui.css','public/reference-exact.css','public/liquid-menu.css','public/safari-shell.css','public/app.js','public/detail-features.js','public/member-features.js','public/data.js','public/sample-data.js','public/backup-engine.js','public/storage-engine.js','public/cloud-adapter.js','public/manifest.webmanifest','public/icon.svg','public/reference-crest.webp','public/heritage-approved-full.webp','public/sw.js']) assert.ok(fs.existsSync(file),`missing ${file}`);
+for(const file of ['public/index.html','public/styles.css','public/target-ui.css','public/reference-exact.css','public/liquid-menu.css','public/safari-shell.css','public/app.js','public/detail-features.js','public/member-features.js','public/auth-audit.js','public/data.js','public/sample-data.js','public/backup-engine.js','public/storage-engine.js','public/cloud-adapter.js','public/manifest.webmanifest','public/icon.svg','public/reference-crest.webp','public/heritage-approved-full.webp','public/sw.js']) assert.ok(fs.existsSync(file),`missing ${file}`);
 for(const retired of ['public/heritage-bg.svg','public/heritage-background.svg','public/heritage-background.webp','public/reference-polish.css','public/parchment-v4.css','public/final-polish.css','public/reference-hero.webp','public/reference-tree.webp','public/dongson-header.svg','public/tree-parchment.svg','public/hero-parchment.svg']) assert.ok(!fs.existsSync(retired),`retired visual layer must be deleted: ${retired}`);
 assert.ok(!fs.existsSync('public/ui.js'),'legacy secondary UI runtime must be deleted');
 
@@ -30,6 +31,7 @@ assert.ok(!index.includes('id="drawer"'),'duplicate drawer navigation must be re
 assert.ok(index.includes('class="heritage-bg-image" src="/heritage-approved-full.webp?v=4"'),'canonical full background image must be present directly in HTML');
 assert.ok(index.includes('/detail-features.js?v=2'),'detail enhancement runtime must load');
 assert.ok(index.includes('/member-features.js?v=2'),'member profile runtime must load');
+assert.ok(index.includes('/auth-audit.js?v=1'),'account and member audit runtime must load');
 assert.ok(index.includes('/sample-data.js?v=1'),'sample data runtime must load');
 assert.ok(index.includes('/safari-shell.css?v=5'),'Safari shell stabilization must load before runtime');
 assert.ok(index.includes('/liquid-menu.css?v=21'),'latest liquid menu stylesheet must load');
@@ -98,6 +100,19 @@ assert.ok(memberFeatures.includes('function sampleMemberArt('),'sample member po
 assert.ok(memberFeatures.includes("member.gender==='Nữ'"),'sample portraits must reflect member gender');
 assert.ok(memberFeatures.includes('Boolean(member.deathDate)'),'sample portraits must reflect living/deceased state');
 
+assert.ok(authAudit.includes("const ROOT_USERNAME = 'devphamgia'"),'root username must be devphamgia');
+assert.ok(authAudit.includes("const ROOT_PASSWORD = 'devphamgia'"),'default root password must be devphamgia');
+assert.ok(authAudit.includes("role:'root'" )&&authAudit.includes("capabilities:['*']"),'root account must have highest privilege marker');
+assert.ok(authAudit.includes('async function register(')&&authAudit.includes('async function login('),'registration and login flows are required');
+assert.ok(authAudit.includes('crypto.subtle.digest')&&authAudit.includes('passwordHash'),'passwords must be stored as hashes rather than plain text account records');
+assert.ok(authAudit.includes('Đăng nhập hoặc đăng ký tài khoản để sử dụng đầy đủ hệ thống'),'full-use account gate copy missing');
+assert.ok(authAudit.includes("Store.saveData=function auditedSaveData"),'member saves must be wrapped by audit logging');
+assert.ok(authAudit.includes('auditHistory'),'member history storage missing');
+assert.ok(authAudit.includes('actorSnapshot'),'audit entries must record the acting account');
+assert.ok(authAudit.includes('Lịch sử chỉnh sửa'),'member hamburger must expose edit history');
+assert.ok(authAudit.includes('function openMemberHistory('),'member history viewer missing');
+assert.ok(authAudit.includes('Dữ liệu có trước lịch sử'),'legacy member provenance must be explicit rather than fabricated');
+
 assert.ok(sample.includes('SAMPLE_MEMBER_COUNT = 168'),'sample dataset must contain 168 members');
 assert.ok(sample.includes('SAMPLE_GENERATION_COUNTS = [1,3,6,12,24,36,42,44]'),'sample dataset must cover eight generations');
 assert.ok(sample.includes("type:'birthday'")&&sample.includes("type:'memorial'"),'sample birthdays and memorials missing');
@@ -107,12 +122,12 @@ assert.ok(backup.includes('snapshotCurrent'),'restore must snapshot current data
 assert.ok(cloud.includes('drive.appdata'),'Google Drive must use appDataFolder scope');
 assert.ok(cloud.includes('resolveConflict'),'cloud conflicts must be explicit');
 
-assert.ok(sw.includes("giaphaphamvan-v64"),'service worker cache version mismatch');
-for(const asset of ['/target-ui.css?v=4','/reference-exact.css?v=24','/liquid-menu.css?v=21','/safari-shell.css?v=5','/detail-features.js?v=2','/member-features.js?v=2','/sample-data.js?v=1','/reference-crest.webp?v=2','/heritage-approved-full.webp?v=4','/data.js?v=9']) assert.ok(sw.includes(asset),`service worker missing ${asset}`);
+assert.ok(sw.includes("giaphaphamvan-v65"),'service worker cache version mismatch');
+for(const asset of ['/target-ui.css?v=4','/reference-exact.css?v=24','/liquid-menu.css?v=21','/safari-shell.css?v=5','/detail-features.js?v=2','/member-features.js?v=2','/auth-audit.js?v=1','/sample-data.js?v=1','/reference-crest.webp?v=2','/heritage-approved-full.webp?v=4','/data.js?v=9']) assert.ok(sw.includes(asset),`service worker missing ${asset}`);
 assert.ok(!sw.includes('/dongson-pattern.svg'),'separate Dong Son asset must not be precached after heritage-linework switch');
 assert.ok(!sw.includes('heritage-approved-top.webp')&&!sw.includes('heritage-approved-cont.webp'),'split backgrounds must not be precached');
 assert.ok(sw.includes("cache:'no-store'"),'service worker must bypass stale HTTP cache');
 assert.ok(wrangler.includes('"directory": "./public"'),'Wrangler must deploy ./public');
 assert.ok(/"theme_color"\s*:\s*"#65080D"/i.test(manifest),'PWA theme must be canonical burgundy');
 
-console.log('Giaphaphamvan compact profile packing + generated sample media + stronger heritage bars audit: PASS');
+console.log('Giaphaphamvan account gate + root authority + member edit history audit: PASS');
