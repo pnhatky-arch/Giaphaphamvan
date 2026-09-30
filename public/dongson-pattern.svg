@@ -1,35 +1,62 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 96" fill="none">
-  <g stroke="#F6D784" stroke-linecap="round" stroke-linejoin="round">
-    <g opacity=".76">
-      <circle cx="88" cy="48" r="38" stroke-width="1.8"/>
-      <circle cx="88" cy="48" r="30" stroke-width="1.5"/>
-      <circle cx="88" cy="48" r="22" stroke-width="1.5"/>
-      <path d="M88 27l4.6 12.4 13.2-3.4-8.4 10.8 10.9 8.2-13.6-.6L88 67l-6.7-12.6-13.6.6 10.9-8.2L70.2 36l13.2 3.4L88 27Z" stroke-width="1.9"/>
-      <path d="M53 48h10m50 0h10M88 13v8m0 54v8M63 23l7 7m36 36 7 7m0-50-7 7M70 66l-7 7" stroke-width="1.4"/>
-      <path d="M26 48h20m84 0h20M38 40l8 8-8 8m100-16-8 8 8 8" stroke-width="1.4"/>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 768 128" fill="none">
+  <defs>
+    <g id="sun-ray" fill="#F4D071">
+      <path d="M64 13 68 39 64 35 60 39Z"/>
     </g>
-    <g opacity=".58" stroke-width="1.45">
-      <path d="M168 32h38l8 8-8 8 8 8-8 8h-38l-8-8 8-8-8-8 8-8Z"/>
-      <path d="M182 40l8 8-8 8m16-16l8 8-8 8"/>
-      <path d="M236 41c7-6 14-6 21 0-8 1-12 4-15 10 6-2 12-1 18 4-10 3-19 0-26-9l2-5Z"/>
-      <path d="M284 31v34m14-34v34m-21-25h28m-28 16h28"/>
-      <path d="M326 35l10 13-10 13m20-26-10 13 10 13m16-26 10 13-10 13"/>
+    <g id="lac-bird" stroke="#F4D071" stroke-width="1.65" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M52 21c7-5 15-5 22-1-5 1-9 3-12 7 6-2 12-1 17 3-9 3-18 1-25-5l-2-4Z"/>
+      <path d="M73 20l7-4m-4 6 8-1"/>
     </g>
-    <g opacity=".52">
-      <circle cx="402" cy="48" r="18" stroke-width="1.5"/>
-      <path d="M402 31l3.8 10 10.2-2.7-6.5 8.3 8.5 6.4-10.6-.4L402 63l-5.4-10.4-10.6.4 8.5-6.4-6.5-8.3 10.2 2.7 3.8-10Z" stroke-width="1.55"/>
+    <g id="drum-face">
+      <circle cx="64" cy="64" r="58" stroke="#F4D071" stroke-width="1.6" opacity=".8"/>
+      <circle cx="64" cy="64" r="51" stroke="#F4D071" stroke-width="1.1" opacity=".68"/>
+      <circle cx="64" cy="64" r="43" stroke="#F4D071" stroke-width="1.2" opacity=".76"/>
+      <circle cx="64" cy="64" r="31" stroke="#F4D071" stroke-width="1.2" opacity=".8"/>
+      <circle cx="64" cy="64" r="18" stroke="#F4D071" stroke-width="1.15" opacity=".86"/>
+      <g opacity=".94">
+        <use href="#sun-ray"/>
+        <use href="#sun-ray" transform="rotate(30 64 64)"/>
+        <use href="#sun-ray" transform="rotate(60 64 64)"/>
+        <use href="#sun-ray" transform="rotate(90 64 64)"/>
+        <use href="#sun-ray" transform="rotate(120 64 64)"/>
+        <use href="#sun-ray" transform="rotate(150 64 64)"/>
+        <use href="#sun-ray" transform="rotate(180 64 64)"/>
+        <use href="#sun-ray" transform="rotate(210 64 64)"/>
+        <use href="#sun-ray" transform="rotate(240 64 64)"/>
+        <use href="#sun-ray" transform="rotate(270 64 64)"/>
+        <use href="#sun-ray" transform="rotate(300 64 64)"/>
+        <use href="#sun-ray" transform="rotate(330 64 64)"/>
+        <circle cx="64" cy="64" r="7.5" fill="#F4D071" opacity=".9"/>
+      </g>
+      <g opacity=".72">
+        <use href="#lac-bird"/>
+        <use href="#lac-bird" transform="rotate(90 64 64)"/>
+        <use href="#lac-bird" transform="rotate(180 64 64)"/>
+        <use href="#lac-bird" transform="rotate(270 64 64)"/>
+      </g>
+      <g stroke="#F4D071" stroke-width="1" opacity=".62">
+        <path d="M16 64h9m78 0h9M64 16v9m0 78v9"/>
+        <path d="M25 31l7 5-7 5 7 5-7 5m78-20-7 5 7 5-7 5 7 5"/>
+        <path d="M31 103l5-7 5 7 5-7 5 7m20 0 5-7 5 7 5-7 5 7"/>
+      </g>
+      <g fill="#F4D071" opacity=".56">
+        <path d="m33 17 4 7h-8Z"/><path d="m47 12 4 7h-8Z"/><path d="m81 12 4 7h-8Z"/><path d="m95 17 4 7h-8Z"/>
+        <path d="m17 33 7 4v-8Z"/><path d="m12 47 7 4v-8Z"/><path d="m12 81 7 4v-8Z"/><path d="m17 95 7 4v-8Z"/>
+        <path d="m111 33-7 4v-8Z"/><path d="m116 47-7 4v-8Z"/><path d="m116 81-7 4v-8Z"/><path d="m111 95-7 4v-8Z"/>
+      </g>
     </g>
-    <g opacity=".58" stroke-width="1.45">
-      <path d="M442 32h38l8 8-8 8 8 8-8 8h-38l-8-8 8-8-8-8 8-8Z"/>
-      <path d="M456 40l8 8-8 8m16-16l8 8-8 8"/>
-      <path d="M510 41c7-6 14-6 21 0-8 1-12 4-15 10 6-2 12-1 18 4-10 3-19 0-26-9l2-5Z"/>
-      <path d="M558 31v34m14-34v34m-21-25h28m-28 16h28"/>
-      <path d="M600 35l10 13-10 13m20-26-10 13 10 13"/>
-    </g>
-    <g opacity=".76">
-      <circle cx="664" cy="48" r="30" stroke-width="1.6"/>
-      <circle cx="664" cy="48" r="22" stroke-width="1.5"/>
-      <path d="M664 28l4.2 11.3 12-3.1-7.6 9.8 9.9 7.5-12.4-.6L664 64l-6.1-11.1-12.4.6 9.9-7.5-7.6-9.8 12 3.1L664 28Z" stroke-width="1.8"/>
-    </g>
+  </defs>
+
+  <g opacity=".78">
+    <use href="#drum-face" x="0" y="0"/>
+    <use href="#drum-face" x="256" y="0"/>
+    <use href="#drum-face" x="512" y="0"/>
+  </g>
+
+  <g stroke="#F4D071" stroke-width="1.25" opacity=".46" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M137 64h103M393 64h103M649 64h103"/>
+    <path d="m151 54 10 10-10 10 10 10m18-30 10 10-10 10 10 10m18-30 10 10-10 10 10 10"/>
+    <path d="m407 54 10 10-10 10 10 10m18-30 10 10-10 10 10 10m18-30 10 10-10 10 10 10"/>
+    <path d="m663 54 10 10-10 10 10 10m18-30 10 10-10 10 10 10m18-30 10 10-10 10 10 10"/>
   </g>
 </svg>
