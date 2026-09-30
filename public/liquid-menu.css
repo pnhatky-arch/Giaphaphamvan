@@ -1,4 +1,4 @@
-/* Canonical burgundy system — v18: crisp iOS navigation, transparent tab bottoms, one red only (#65080D) */
+/* Canonical burgundy system — v19: crisp iOS navigation, full-width editors, one red only (#65080D) */
 @property --gold-sweep-angle{syntax:'<angle>';inherits:false;initial-value:0deg}
 @keyframes goldTabSweep{from{--gold-sweep-angle:0deg;opacity:0}5%{opacity:1}95%{opacity:1}to{--gold-sweep-angle:360deg;opacity:0}}
 :root{
@@ -43,6 +43,17 @@ body.nav-visible .bottom-nav{transform:none!important;will-change:auto!important
 /* One-red rule for red text/icons/badges throughout the app. */
 .eyebrow,.status-icon,.status-copy span,.stat-card>strong,.quick-card>span:first-child,.filter-button,.person-badge,.settings-icon,.search-icon,.backup-action.danger,.danger-button,.ui-button.danger{color:#65080d!important}
 .person-badge{background:rgba(101,8,13,.08)!important}
+
+/* Editor/modal forms: every information field uses the full usable width. */
+#editorModal .modal-panel,#editorModal .editor-panel{width:calc(100vw - 24px)!important;max-width:680px!important;margin-left:auto!important;margin-right:auto!important;padding-left:16px!important;padding-right:16px!important}
+#editorModal .form-grid{display:grid!important;grid-template-columns:minmax(0,1fr)!important;width:100%!important;gap:12px!important}
+#editorModal .form-field{display:grid!important;grid-template-columns:minmax(0,1fr)!important;width:100%!important;min-width:0!important;margin:0!important}
+#editorModal .form-field label{display:block!important;width:100%!important;margin-bottom:6px!important}
+#editorModal .form-field input,#editorModal .form-field select,#editorModal .form-field textarea{display:block!important;width:100%!important;max-width:none!important;min-width:0!important;box-sizing:border-box!important;margin:0!important}
+#editorModal .form-field input,#editorModal .form-field select{min-height:48px!important}
+#editorModal .form-field textarea{min-height:108px!important;resize:vertical!important}
+#editorModal .modal-actions{display:grid!important;grid-template-columns:repeat(2,minmax(0,1fr))!important;gap:10px!important;width:100%!important;margin-top:14px!important}
+#editorModal .modal-actions .ui-button{width:100%!important;min-width:0!important;margin:0!important}
 
 .app-shell{padding-bottom:calc(98px + env(safe-area-inset-bottom))!important}
 @media (prefers-reduced-motion:reduce){.bottom-nav,body.nav-hidden .bottom-nav,body.nav-visible .bottom-nav{transition:none!important}.bottom-nav button.active::before{animation:none!important;opacity:0!important}}
