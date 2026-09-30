@@ -30,4 +30,19 @@ html,body{background:#65080d!important}body{background:#65080d!important}
 .generation-chip.active,.display-segment button.active,.theme-segment button.active,.settings-display-segment button.active,.filter-button.active{font-weight:760!important;text-shadow:0 1px 5px rgba(61,5,10,.22),0 0 10px rgba(255,226,140,.14)!important}
 @media (prefers-reduced-motion:reduce){.tree-control-primary::before,.generation-chip.active::before,.display-segment button.active::before,.theme-segment button.active::before,.settings-display-segment button.active::before,.filter-button.active::before{animation:none!important;opacity:0!important}}
 
+/* Adaptive tree geometry — every generation uses the same vertical rhythm and the stage grows with content. */
+html body #tree-view .tree-controls{height:auto!important;min-height:0!important;grid-template-rows:40px auto!important;align-items:stretch!important;overflow:visible!important}
+html body #tree-view .generation-chips{display:grid!important;grid-template-columns:repeat(auto-fit,minmax(72px,1fr))!important;grid-auto-rows:28px!important;gap:6px!important;align-items:stretch!important;margin:0!important}
+html body #tree-view .generation-chip{height:28px!important;min-height:28px!important;margin:0!important}
+html body #tree-view .tree-stage{height:auto!important;min-height:0!important;overflow:visible!important;padding:0!important}
+html body #tree-view .tree-viewport{height:auto!important;min-height:0!important;overflow:visible!important;padding:10px 3px 12px!important}
+html body #tree-view .family-tree{height:auto!important;min-height:0!important;overflow:visible!important;align-content:start!important}
+html body #tree-view .generation-column{row-gap:7px!important;column-gap:6px!important;padding-top:0!important;padding-bottom:20px!important;margin:0!important;align-items:start!important}
+html body #tree-view .generation-column:last-child{padding-bottom:10px!important}
+html body #tree-view .generation-column .person-card:not(.ancestor){height:42px!important;min-height:42px!important;grid-template-columns:29px minmax(0,1fr) 20px!important;gap:4px!important;padding:4px 5px!important}
+html body #tree-view .generation-column .person-card:not(.ancestor) .person-avatar{width:29px!important;height:29px!important}
+html body #tree-view .generation-column .person-card:not(.ancestor) .person-copy strong{font-size:7.4px!important;line-height:1.06!important}
+html body #tree-view .generation-column .person-card:not(.ancestor) .person-copy span{font-size:6.6px!important;line-height:1.08!important}
+html body #tree-view .generation-column .person-card:not(.ancestor) .person-badge{width:20px!important;height:20px!important;font-size:6.6px!important}
+
 @media (prefers-reduced-transparency:reduce){.hero-panel,.surface,.member-row,.timeline-item,.document-row,.empty-state,.settings-group,.search-row,.source-status,.stat-card,.quick-card,.tree-controls,.account-card,.storage-metrics>div,.backup-action,.cloud-status,.sheet-panel,.modal-panel,#tree-view .person-card{background:rgba(255,248,233,.88)!important;-webkit-backdrop-filter:none!important;backdrop-filter:none!important}}
